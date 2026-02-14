@@ -19,7 +19,8 @@
     "next-intl": "^4.8.2",
     "npm": "^11.10.0",
     "react": "19.2.3",
-    "react-dom": "19.2.3"
+    "react-dom": "19.2.3",
+    "uuid": "^13.0.0"
   },
   "devDependencies": {
     "@types/node": "^20",
@@ -27,6 +28,7 @@
     "@types/react-dom": "^19",
     "eslint": "^9",
     "eslint-config-next": "16.1.6",
+    "prettier-plugin-organize-imports": "^4.3.0",
     "typescript": "^5"
   }
 }
