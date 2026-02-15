@@ -1,8 +1,11 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 
+import MuiThemeProvider from "@/components/templates/mui";
+import NavBar from "@/components/templates/navBar";
+import { CartProvider } from "@/data/cartContext";
+import { AppRouterCacheProvider } from "@mui/material-nextjs/v15-appRouter";
 import favicon from "./favicon.ico";
-import NavBar from "../components/templates/navBar";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -28,8 +31,14 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
-        <NavBar />
-        {children}
+        <CartProvider>
+          <AppRouterCacheProvider>
+            <MuiThemeProvider>
+              <NavBar />
+              {children}
+            </MuiThemeProvider>
+          </AppRouterCacheProvider>
+        </CartProvider>
       </body>
     </html>
   );

@@ -14,13 +14,13 @@
     "@emotion/styled": "^11.14.0",
     "@mui/icons-material": "^6.4.8",
     "@mui/material": "^6.4.8",
+    "@mui/material-nextjs": "^7.3.8",
     "install": "^0.13.0",
     "next": "16.1.6",
     "next-intl": "^4.8.2",
     "npm": "^11.10.0",
     "react": "19.2.3",
-    "react-dom": "19.2.3",
-    "uuid": "^13.0.0"
+    "react-dom": "19.2.3"
   },
   "devDependencies": {
     "@types/node": "^20",

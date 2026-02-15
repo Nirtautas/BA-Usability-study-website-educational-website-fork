@@ -1,9 +1,7 @@
-"use client";
-
-import ProductPage from "@/components/pages/productPage";
+import ProductsPage from "@/components/pages/productsPage/productsPage";
 
 const Page = () => {
-  return <ProductPage />;
+  return <ProductsPage />;
 };
 
 export default Page;

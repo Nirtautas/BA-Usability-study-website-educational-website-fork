@@ -1,20 +1,37 @@
-export type Entity = {
-  id: string;
-};
-
 export type Product = {
-  id: string
+  id: number
+  type: ProductType,
   name: string
   picturePaths?: string[]
   description?: string
   price: number
+  discountedPrice?: number
 };
 
+export enum ProductType {
+  Shoes = "shoes",
+  DeceptiveExtra = "extra"
+}
+
 export type CartItem = {
-  products: Product[]
+  itemId: number
   quantity: number
 };
 
-export type Cart = {
-  items: CartItem[]
+export type FullCartItem = {
+  item: Product;
+  quantity: number;
+};
+
+export type CartItemDetailed = {
+  item: Product
+  quantity: number
+}
+
+export interface CartContextInterface {
+  cart: CartItem[];
+  modifyCart: (itemId: number, quantityChange: number) => void;
+  removeFromCart: (id: number) => void;
+  removeAllFromCart: () => void;
+  getUniqueItemsCount: () => number;
 };
