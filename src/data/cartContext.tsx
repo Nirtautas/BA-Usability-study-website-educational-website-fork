@@ -44,8 +44,9 @@ export function CartProvider({ children }: { children: ReactNode }) {
     setCart([]);
   };
 
-  const getUniqueItemsCount = () => {
-    return cart.length - (cart.find((i) => i.itemId === 1) ? 1 : 0);
+  const getUniqueItemsCount = (includeDeceptive = false) => {
+    const deceptiveExists = cart.find((i) => i.itemId === 1) ? true : false;
+    return cart.length - (!includeDeceptive && deceptiveExists ? 1 : 0);
   };
 
   return (

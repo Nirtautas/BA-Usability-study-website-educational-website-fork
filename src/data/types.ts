@@ -6,6 +6,9 @@ export type Product = {
   description?: string
   price: number
   discountedPrice?: number
+  rating: number
+  ratingCount: number
+  deliveryTime: string
 };
 
 export enum ProductType {
@@ -33,5 +36,5 @@ export interface CartContextInterface {
   modifyCart: (itemId: number, quantityChange: number) => void;
   removeFromCart: (id: number) => void;
   removeAllFromCart: () => void;
-  getUniqueItemsCount: () => number;
+  getUniqueItemsCount: (includeDeceptive?: boolean) => number;
 };

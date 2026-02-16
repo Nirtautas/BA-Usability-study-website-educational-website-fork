@@ -3,11 +3,21 @@
 import { useCart } from "@/data/cartContext";
 import { products } from "@/data/entityData";
 import { FullCartItem } from "@/data/types";
-import { Button, Container, Grid2, Paper, Stack, Typography } from "@mui/material";
+import { Button, Container, Dialog, DialogActions, DialogTitle, Grid2, Paper, Stack, Typography } from "@mui/material";
+import { useState } from "react";
 import CartItemCard from "./cartItemCard";
 
 const CartPage = () => {
   const cartContext = useCart();
+  const [openDialog, setOpenDialog] = useState(false);
+
+  const handleRemoveClick = () => setOpenDialog(true);
+  const handleCancel = () => setOpenDialog(false);
+  const handleConfirmRemove = () => {
+    cartContext?.removeAllFromCart();
+    setOpenDialog(false);
+  };
+
   const items: FullCartItem[] =
     cartContext?.cart
       .map((item) => {
@@ -17,6 +27,13 @@ const CartPage = () => {
       .filter((i): i is FullCartItem => i.item !== undefined) || [];
 
   const serviceFee = 2.99;
+  const calculateItemTotal = (items: FullCartItem[]) => {
+    return items.reduce((total, cartItem) => total + (cartItem.item.discountedPrice !== undefined ? cartItem.item.discountedPrice : cartItem.item.price) * cartItem.quantity, 0);
+  };
+
+  const calculateTotal = (items: FullCartItem[]) => {
+    return calculateItemTotal(items) + (cartContext?.getUniqueItemsCount(true) !== 0 ? serviceFee : 0);
+  };
 
   return (
     <Container>
@@ -24,31 +41,61 @@ const CartPage = () => {
         Cart Page
       </Typography>
 
-      <Grid2 container justifyContent="center" spacing={2}>
+      <Grid2 container justifyContent="center">
         <Grid2 size={7}>
+          <Grid2>
+            {cartContext?.cart.length !== 0 ? (
+              <>
+                <Grid2 display="flex" justifyContent="space-between">
+                  <Typography variant="h5" gutterBottom>
+                    Items in your cart:
+                  </Typography>
+                  <Button color="error" variant="contained" onClick={handleRemoveClick}>
+                    Empty cart
+                  </Button>
+                </Grid2>
+              </>
+            ) : (
+              <Typography variant="h5" gutterBottom>
+                Your cart is empty.
+              </Typography>
+            )}
+          </Grid2>
           <Stack spacing={2}>
-            {cartContext?.cart.length === 0 ? <Typography>Your cart is empty.</Typography> : items?.map((cartItem) => <CartItemCard key={cartItem?.item?.id} fullCartItem={cartItem} />)}
+            {items.map((cartItem) => (
+              <CartItemCard key={cartItem.item.id} fullCartItem={cartItem} />
+            ))}
           </Stack>
         </Grid2>
-        <Grid2 container display="flex">
+
+        <Grid2 container>
           <Paper elevation={3} sx={{ padding: 2 }}>
             <Typography variant="h6">Cart Summary</Typography>
             <Typography>
               Item total:
-              {items.reduce((total, cartItem) => total + (cartItem.item.discountedPrice !== undefined ? cartItem.item.discountedPrice : cartItem.item.price) * cartItem.quantity, 0).toFixed(2)}€
+              {calculateItemTotal(items).toFixed(2)}€
             </Typography>
-            <Typography>Service fee: {serviceFee.toFixed(2)}€</Typography>
+            {cartContext?.getUniqueItemsCount(true) !== 0 && <Typography>Service fee: {serviceFee.toFixed(2)}€</Typography>}
             <Typography>
               Total:
-              {(
-                items.reduce((total, cartItem) => total + (cartItem.item.discountedPrice !== undefined ? cartItem.item.discountedPrice : cartItem.item.price) * cartItem.quantity, 0) + serviceFee
-              ).toFixed(2)}
-              €
+              {calculateTotal(items).toFixed(2)}€
             </Typography>
             <Button variant="contained">Continue to checkout</Button>
           </Paper>
         </Grid2>
       </Grid2>
+
+      <Dialog open={openDialog} onClose={handleCancel}>
+        <DialogTitle>Do you really want to empty your cart?</DialogTitle>
+        <DialogActions>
+          <Button onClick={handleCancel} color="primary">
+            Cancel
+          </Button>
+          <Button onClick={handleConfirmRemove} variant="contained" color="error">
+            Empty cart
+          </Button>
+        </DialogActions>
+      </Dialog>
     </Container>
   );
 };

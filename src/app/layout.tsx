@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 
+import { Footer } from "@/components/templates/footer";
 import MuiThemeProvider from "@/components/templates/mui";
 import NavBar from "@/components/templates/navBar";
 import { CartProvider } from "@/data/cartContext";
@@ -30,12 +31,21 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${geistSans.variable} ${geistMono.variable}`}>
+      <body
+        className={`${geistSans.variable} ${geistMono.variable}`}
+        style={{
+          display: "grid",
+          gridTemplateRows: "auto 1fr auto",
+          minHeight: "100vh",
+          margin: 0,
+        }}
+      >
         <CartProvider>
           <AppRouterCacheProvider>
             <MuiThemeProvider>
               <NavBar />
               {children}
+              <Footer />
             </MuiThemeProvider>
           </AppRouterCacheProvider>
         </CartProvider>
