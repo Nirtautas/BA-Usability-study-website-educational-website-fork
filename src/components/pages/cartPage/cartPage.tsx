@@ -1,9 +1,10 @@
 "use client";
 
+import TwoActionDialog from "@/components/templates/shared/twoActionDialog";
 import { useCart } from "@/data/cartContext";
 import { products } from "@/data/entityData";
 import { FullCartItem } from "@/data/types";
-import { Button, Container, Dialog, DialogActions, DialogTitle, Grid2, Paper, Stack, Typography } from "@mui/material";
+import { Button, Container, Grid2, Paper, Stack, Typography } from "@mui/material";
 import { useState } from "react";
 import CartItemCard from "./cartItemCard";
 
@@ -85,17 +86,7 @@ const CartPage = () => {
         </Grid2>
       </Grid2>
 
-      <Dialog open={openDialog} onClose={handleCancel}>
-        <DialogTitle>Do you really want to empty your cart?</DialogTitle>
-        <DialogActions>
-          <Button onClick={handleCancel} color="primary">
-            Cancel
-          </Button>
-          <Button onClick={handleConfirmRemove} variant="contained" color="error">
-            Empty cart
-          </Button>
-        </DialogActions>
-      </Dialog>
+      <TwoActionDialog open={openDialog} onClose={handleCancel} onConfirm={handleConfirmRemove} title="Do you really want to empty your cart?" confirmText="Empty my cart" isDestructiveAction={true} />
     </Container>
   );
 };

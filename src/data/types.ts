@@ -26,11 +26,6 @@ export type FullCartItem = {
   quantity: number;
 };
 
-export type CartItemDetailed = {
-  item: Product
-  quantity: number
-}
-
 export interface CartContextInterface {
   cart: CartItem[];
   modifyCart: (itemId: number, quantityChange: number) => void;

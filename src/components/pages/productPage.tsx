@@ -4,10 +4,11 @@ import { useCart } from "@/data/cartContext";
 import { getPageUrl, placeholderImageLink } from "@/data/constants";
 import { products } from "@/data/entityData";
 import { Add, LocalShippingOutlined, Remove } from "@mui/icons-material";
-import { Box, Button, Card, CardMedia, Container, Dialog, DialogActions, DialogContent, DialogTitle, Divider, Grid2, IconButton, Rating, Stack, Typography } from "@mui/material";
+import { Box, Button, Card, CardMedia, Container, Divider, Grid2, IconButton, Rating, Stack, Typography } from "@mui/material";
 import Image from "next/image";
 import { notFound, useRouter } from "next/navigation";
 import { useState } from "react";
+import TwoActionDialog from "../templates/shared/twoActionDialog";
 
 type Props = {
   productId: number;
@@ -91,25 +92,14 @@ const ProductPage = ({ productId }: Props) => {
         </Grid2>
       </Grid2>
 
-      <Dialog open={openDialog} onClose={handleClose}>
-        <DialogTitle>Added to Cart!</DialogTitle>
-        <DialogContent>
-          <Card>
-            <Grid2 display="flex" alignItems="center" gap={2}>
-              <CardMedia component="img" height="140" image={product.picturePaths?.[0] || placeholderImageLink} alt={product.name} />
-              <Typography>{product.name}</Typography>
-            </Grid2>
-          </Card>
-        </DialogContent>
-        <DialogActions>
-          <Button onClick={handleClose} color="primary">
-            Continue Shopping
-          </Button>
-          <Button onClick={handleGoToCart} variant="contained" color="primary">
-            Go to Cart
-          </Button>
-        </DialogActions>
-      </Dialog>
+      <TwoActionDialog open={openDialog} onClose={handleClose} onConfirm={handleGoToCart} title="Added to cart!" cancelText="Continue shopping" confirmText="Go to cart">
+        <Card>
+          <Grid2 display="flex" alignItems="center" gap={2}>
+            <CardMedia component="img" height="140" image={product.picturePaths?.[0] || placeholderImageLink} alt={product.name} />
+            <Typography>{product.name}</Typography>
+          </Grid2>
+        </Card>
+      </TwoActionDialog>
     </Container>
   );
 };

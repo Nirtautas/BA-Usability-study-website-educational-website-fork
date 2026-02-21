@@ -1,10 +1,11 @@
 "use client";
 
+import TwoActionDialog from "@/components/templates/shared/twoActionDialog";
 import { useCart } from "@/data/cartContext";
 import { placeholderImageLink } from "@/data/constants";
 import { FullCartItem } from "@/data/types";
 import { Add, Delete, Remove } from "@mui/icons-material";
-import { Button, Card, CardContent, CardMedia, Container, Dialog, DialogActions, DialogContent, DialogTitle, Grid2, IconButton, Typography } from "@mui/material";
+import { Card, CardContent, CardMedia, Container, Grid2, IconButton, Typography } from "@mui/material";
 import { useState } from "react";
 
 type Props = {
@@ -54,25 +55,21 @@ const CartItemCard = ({ fullCartItem }: Props) => {
         </CardContent>
       </Card>
 
-      <Dialog open={openDialog} onClose={handleCancel}>
-        <DialogTitle>Do you really want to remove this item from your cart?</DialogTitle>
-        <DialogContent>
-          <Card>
-            <Grid2 display="flex" alignItems="center" gap={2}>
-              <CardMedia component="img" height="140" image={item.picturePaths?.[0] || placeholderImageLink} alt={item.name} />
-              <Typography>{item.name}</Typography>
-            </Grid2>
-          </Card>
-        </DialogContent>
-        <DialogActions>
-          <Button onClick={handleCancel} color="primary">
-            Cancel
-          </Button>
-          <Button onClick={handleConfirmRemove} variant="contained" color="error">
-            Remove
-          </Button>
-        </DialogActions>
-      </Dialog>
+      <TwoActionDialog
+        open={openDialog}
+        onClose={handleCancel}
+        onConfirm={handleConfirmRemove}
+        title="Do you really want to remove this item from your cart?"
+        confirmText="Remove"
+        isDestructiveAction={true}
+      >
+        <Card>
+          <Grid2 display="flex" alignItems="center" gap={2}>
+            <CardMedia component="img" height="140" image={item.picturePaths?.[0] || placeholderImageLink} alt={item.name} />
+            <Typography>{item.name}</Typography>
+          </Grid2>
+        </Card>
+      </TwoActionDialog>
     </Container>
   );
 };
