@@ -1,12 +1,15 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 
-import { Footer } from "@/components/templates/footer";
+import favicon from "@/app/favicon.ico";
+import Footer from "@/components/templates/footer";
 import MuiThemeProvider from "@/components/templates/mui";
 import NavBar from "@/components/templates/navBar";
 import { CartProvider } from "@/data/cartContext";
+import { routing } from "@/i18n/routing";
 import { AppRouterCacheProvider } from "@mui/material-nextjs/v15-appRouter";
-import favicon from "./favicon.ico";
+import { hasLocale, NextIntlClientProvider } from "next-intl";
+import { notFound } from "next/navigation";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -21,16 +24,22 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "Store",
   description: "Store",
-  icons: favicon.src,
+  icons: favicon,
 };
 
-export default function RootLayout({
-  children,
-}: Readonly<{
+type Props = {
   children: React.ReactNode;
-}>) {
+  params: Promise<{ locale: string }>;
+};
+
+export default async function RootLayout({ children, params }: Props) {
+  const { locale } = await params;
+  if (!hasLocale(routing.locales, locale)) {
+    notFound();
+  }
+
   return (
-    <html lang="en">
+    <html>
       <body
         className={`${geistSans.variable} ${geistMono.variable}`}
         style={{
@@ -43,9 +52,11 @@ export default function RootLayout({
         <CartProvider>
           <AppRouterCacheProvider>
             <MuiThemeProvider>
-              <NavBar />
-              {children}
-              <Footer />
+              <NextIntlClientProvider>
+                <NavBar />
+                {children}
+                <Footer />
+              </NextIntlClientProvider>
             </MuiThemeProvider>
           </AppRouterCacheProvider>
         </CartProvider>

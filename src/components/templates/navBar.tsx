@@ -4,11 +4,13 @@ import { useCart } from "@/data/cartContext";
 import { getPageUrl } from "@/data/constants";
 import { Login, ShoppingBag, ShoppingCart } from "@mui/icons-material";
 import { AppBar, Badge, Button, Grid2, Stack, Toolbar, Typography } from "@mui/material";
+import { useTranslations } from "next-intl";
 import { useRouter } from "next/navigation";
 
 export function NavBar() {
   const router = useRouter();
   const cartContext = useCart();
+  const t = useTranslations("NavBar");
 
   return (
     <Stack sx={{ mb: 2 }}>
@@ -17,7 +19,7 @@ export function NavBar() {
         <Toolbar disableGutters>
           <Grid2>
             <Button color="inherit" onClick={() => router.push(getPageUrl.home())}>
-              <Typography>Store</Typography>
+              <Typography>{t("title")}</Typography>
             </Button>
           </Grid2>
 
