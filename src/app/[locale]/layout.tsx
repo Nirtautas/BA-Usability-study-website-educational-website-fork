@@ -24,7 +24,7 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "Store",
   description: "Store",
-  icons: favicon,
+  icons: favicon.src,
 };
 
 type Props = {
