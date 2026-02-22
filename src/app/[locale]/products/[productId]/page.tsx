@@ -1,4 +1,4 @@
-import ProductPage from "@/components/pages/productPage";
+import ProductPage from "@/components/pages/productPage/productPage";
 import { notFound } from "next/navigation";
 
 type Props = {

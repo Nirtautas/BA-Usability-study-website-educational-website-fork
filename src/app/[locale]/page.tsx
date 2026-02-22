@@ -1,11 +1,7 @@
-import { Typography } from "@mui/material";
+import HomePage from "@/components/pages/homePage/homePage";
 
-export default function Home() {
-  return (
-    <div>
-      <Typography variant="h4" gutterBottom>
-        Welcome to the Store!
-      </Typography>
-    </div>
-  );
-}
+const Home = () => {
+  return <HomePage />;
+};
+
+export default Home;

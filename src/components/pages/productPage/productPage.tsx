@@ -8,7 +8,7 @@ import { Box, Button, Card, CardMedia, Container, Divider, Grid2, IconButton, Ra
 import Image from "next/image";
 import { notFound, useRouter } from "next/navigation";
 import { useState } from "react";
-import TwoActionDialog from "../templates/shared/twoActionDialog";
+import TwoActionDialog from "../../templates/shared/twoActionDialog";
 
 type Props = {
   productId: number;

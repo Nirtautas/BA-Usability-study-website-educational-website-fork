@@ -20,8 +20,8 @@ const ProductsFilter = ({ products, appliedFilters }: Props) => {
   const minPrice = Math.min(...prices);
   const maxPrice = Math.max(...prices);
 
-  const [selectedMinPrice, setSelectedMinPrice] = useState<number>(appliedFilters.oldMinPrice ?? minPrice);
-  const [selectedMaxPrice, setSelectedMaxPrice] = useState<number>(appliedFilters.oldMaxPrice ?? maxPrice);
+  const [selectedMinPrice, setSelectedMinPrice] = useState<number>(Number.isNaN(appliedFilters.oldMinPrice) ? minPrice : appliedFilters.oldMinPrice);
+  const [selectedMaxPrice, setSelectedMaxPrice] = useState<number>(Number.isNaN(appliedFilters.oldMaxPrice) ? maxPrice : appliedFilters.oldMaxPrice);
   const [onlyDiscounted, setOnlyDiscounted] = useState(appliedFilters.oldOnlyDiscounted ?? false);
   const [selectedTypes, setSelectedTypes] = useState<ProductType[]>(appliedFilters.oldProductTypes?.map((t) => t as ProductType) ?? []);
 
