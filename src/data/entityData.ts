@@ -33,7 +33,7 @@ export const products: Product[] = [
   },
   {
     id: 4,
-    type: ProductType.Shoes,
+    type: ProductType.Shirts,
     name: "Product 3",
     description: "This is the description for Product 3",
     price: 30.99,

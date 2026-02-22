@@ -12,8 +12,9 @@ export type Product = {
 };
 
 export enum ProductType {
-  Shoes = "shoes",
-  DeceptiveExtra = "extra"
+  Shoes = "Shoes",
+  Shirts = "Shirts",
+  DeceptiveExtra = "Extra"
 }
 
 export type CartItem = {
