@@ -2,13 +2,16 @@
 
 import TwoActionDialog from "@/components/templates/shared/twoActionDialog";
 import { useCart } from "@/data/cartContext";
+import { getPageUrl } from "@/data/constants";
 import { products } from "@/data/entityData";
 import { FullCartItem } from "@/data/types";
 import { Button, Container, Grid2, Paper, Stack, Typography } from "@mui/material";
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 import CartItemCard from "./cartItemCard";
 
 const CartPage = () => {
+  const router = useRouter();
   const cartContext = useCart();
   const [openDialog, setOpenDialog] = useState(false);
 
@@ -71,17 +74,27 @@ const CartPage = () => {
 
         <Grid2 container>
           <Paper elevation={3} sx={{ padding: 2 }}>
-            <Typography variant="h6">Cart Summary</Typography>
-            <Typography>
-              Item total:
-              {calculateItemTotal(items).toFixed(2)}€
-            </Typography>
-            {cartContext?.getUniqueItemsCount(true) !== 0 && <Typography>Service fee: {serviceFee.toFixed(2)}€</Typography>}
-            <Typography>
-              Total:
-              {calculateTotal(items).toFixed(2)}€
-            </Typography>
-            <Button variant="contained">Continue to checkout</Button>
+            <Stack gap={0.2}>
+              <Typography variant="h6">Cart Summary</Typography>
+              <Typography>
+                Item total:
+                {calculateItemTotal(items).toFixed(2)}€
+              </Typography>
+              {cartContext?.getUniqueItemsCount(true) !== 0 && <Typography>Service fee: {serviceFee.toFixed(2)}€</Typography>}
+              <Typography>
+                Total:
+                {calculateTotal(items).toFixed(2)}€
+              </Typography>
+              {calculateTotal(items) === 0 ? (
+                <Button variant="contained" disabled onClick={() => router.push(getPageUrl.checkout())}>
+                  Continue to checkout
+                </Button>
+              ) : (
+                <Button variant="contained" onClick={() => router.push(getPageUrl.checkout())}>
+                  Continue to checkout
+                </Button>
+              )}
+            </Stack>
           </Paper>
         </Grid2>
       </Grid2>

@@ -1,3 +1,4 @@
+import { placeholderImageLink } from "./constants";
 import { Product, ProductType } from "./types";
 
 export const products: Product[] = [
@@ -19,7 +20,8 @@ export const products: Product[] = [
     price: 10.99,
     rating: 4.5,
     ratingCount: 124,
-    deliveryTime: "1-2 d."
+    deliveryTime: "1-2 d.",
+    picturePaths: [placeholderImageLink, placeholderImageLink, placeholderImageLink, placeholderImageLink, placeholderImageLink, placeholderImageLink]
   },
   {
     id: 3,
@@ -29,7 +31,8 @@ export const products: Product[] = [
     price: 20.99,
     rating: 3.5,
     ratingCount: 124,
-    deliveryTime: "1-2 d."
+    deliveryTime: "1-2 d.",
+    picturePaths: [placeholderImageLink, placeholderImageLink, placeholderImageLink],
   },
   {
     id: 4,
@@ -40,6 +43,7 @@ export const products: Product[] = [
     discountedPrice: 20.99,
     rating: 5,
     ratingCount: 124,
-    deliveryTime: "1-2 d."
+    deliveryTime: "1-2 d.",
+    picturePaths: [placeholderImageLink, placeholderImageLink, placeholderImageLink],
   }
 ];
