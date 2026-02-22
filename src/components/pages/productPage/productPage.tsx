@@ -3,7 +3,7 @@
 import { useCart } from "@/data/cartContext";
 import { getPageUrl, placeholderImageLink } from "@/data/constants";
 import { products } from "@/data/entityData";
-import { Add, LocalShippingOutlined, Remove } from "@mui/icons-material";
+import { AccessTime, Add, LocalShippingOutlined, Remove } from "@mui/icons-material";
 import { Box, Button, Card, CardMedia, Container, Divider, Grid2, IconButton, Rating, Stack, Typography } from "@mui/material";
 import Image from "next/image";
 import { notFound, useRouter } from "next/navigation";
@@ -45,17 +45,23 @@ const ProductPage = ({ productId }: Props) => {
         </Grid2>
 
         <Grid2 container spacing={2}>
-          <Stack>
+          <Stack gap={1}>
             <Typography variant="h3">{product.name}</Typography>
             {product.discountedPrice !== undefined ? (
-              <Box display="flex" gap={1}>
-                <Typography variant="h6" color="success.main">
-                  {product.discountedPrice.toFixed(2)}€
-                </Typography>
-                <Typography variant="h6" color="error.main" sx={{ textDecoration: "line-through" }}>
-                  {product.price.toFixed(2)}€
-                </Typography>
-              </Box>
+              <Stack direction="column" display="flex" borderRadius={3} padding={1} sx={{ backgroundColor: "error.light" }}>
+                <Grid2 display="flex" gap={1}>
+                  <AccessTime />
+                  <Typography>Sale ending soon!</Typography>
+                </Grid2>
+                <Grid2 display="flex" gap={1}>
+                  <Typography variant="h6" color="success.main">
+                    {product.discountedPrice.toFixed(2)}€
+                  </Typography>
+                  <Typography variant="h6" sx={{ textDecoration: "line-through" }}>
+                    {product.price.toFixed(2)}€
+                  </Typography>
+                </Grid2>
+              </Stack>
             ) : (
               <Box>
                 <Typography variant="h6">{product.price.toFixed(2)}€</Typography>
