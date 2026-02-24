@@ -1,5 +1,10 @@
 {
   "NavBar": {
     "title": "Parduotuvė"
+  },
+  "Products": {
+    "Filter": {
+      "title": "Filtrai"
+    }
   }
 }

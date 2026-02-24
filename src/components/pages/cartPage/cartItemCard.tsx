@@ -1,6 +1,6 @@
 "use client";
 
-import TwoActionDialog from "@/components/templates/shared/twoActionDialog";
+import TwoActionDialog from "@/components/shared/twoActionDialog";
 import { useCart } from "@/data/cartContext";
 import { placeholderImageLink } from "@/data/constants";
 import { FullCartItem } from "@/data/types";

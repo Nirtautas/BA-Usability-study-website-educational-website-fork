@@ -7,7 +7,7 @@ import { AccessTime, Add, LocalShippingOutlined, Remove } from "@mui/icons-mater
 import { Box, Button, Card, CardMedia, Container, Divider, Grid2, IconButton, Paper, Rating, Stack, Typography } from "@mui/material";
 import { notFound, useRouter } from "next/navigation";
 import { useState } from "react";
-import TwoActionDialog from "../../templates/shared/twoActionDialog";
+import TwoActionDialog from "../../shared/twoActionDialog";
 import ProductGallery from "./productGallery";
 
 type Props = {

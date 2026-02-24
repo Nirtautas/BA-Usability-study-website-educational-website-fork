@@ -3,6 +3,7 @@
 import { getPageUrl } from "@/data/constants";
 import { Product, ProductType } from "@/data/types";
 import { Button, Checkbox, FormControlLabel, Grid2, Link, Paper, Slider, Switch, Typography } from "@mui/material";
+import { useTranslations } from "next-intl";
 import { useState } from "react";
 
 type Props = {
@@ -16,6 +17,7 @@ type Props = {
 };
 
 const ProductsFilter = ({ products, appliedFilters }: Props) => {
+  const t = useTranslations("Products.Filter");
   const prices = products.map((p) => p.discountedPrice ?? p.price);
   const minPrice = Math.min(...prices);
   const maxPrice = Math.max(...prices);
@@ -47,7 +49,7 @@ const ProductsFilter = ({ products, appliedFilters }: Props) => {
 
   return (
     <Paper elevation={3} sx={{ padding: 2, width: "100%" }}>
-      <Typography variant="h6">Filters</Typography>
+      <Typography variant="h6">{t("title")}</Typography>
       <Grid2>
         <Typography>Product type:</Typography>
         {Object.values(ProductType).map(

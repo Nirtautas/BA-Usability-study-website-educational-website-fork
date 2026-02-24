@@ -7,6 +7,7 @@ import { AppBar, Badge, Button, Grid2, Menu, MenuItem, Stack, Toolbar, Typograph
 import { useTranslations } from "next-intl";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
+import LanguageSwitcher from "./languageSwitcher";
 
 export function NavBar() {
   const router = useRouter();
@@ -23,7 +24,10 @@ export function NavBar() {
 
   return (
     <Stack sx={{ mb: 2 }}>
-      <Typography align="center">Reach us at +370 651 84956 or info@store.com</Typography>
+      <Typography fontSize={11} align="center">
+        Reach us at +370 651 84956 or info@store.com
+      </Typography>
+
       <AppBar position="static">
         <Toolbar disableGutters sx={{ display: "flex", justifyContent: "space-between" }}>
           <Button color="inherit" onClick={() => router.push(getPageUrl.home())}>
@@ -32,6 +36,10 @@ export function NavBar() {
 
           <Stack direction="row" spacing={2} alignItems="center">
             <Grid2 display="flex" alignItems="center" gap={1}>
+              <Grid2>
+                <LanguageSwitcher />
+              </Grid2>
+
               <Grid2 display="flex" alignItems="center">
                 <ShoppingBag />
                 <Button color="inherit" onClick={handleClick}>
