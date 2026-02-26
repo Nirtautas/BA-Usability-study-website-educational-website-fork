@@ -9,12 +9,12 @@ export function CartProvider({ children }: { children: ReactNode }) {
   const [cart, setCart] = useState<CartItem[]>([]);
 
   useEffect(() => {
-    const storedCart = localStorage.getItem("cart");
+    const storedCart = sessionStorage.getItem("cart");
     if (storedCart) setCart(JSON.parse(storedCart));
   }, []);
 
   useEffect(() => {
-    localStorage.setItem("cart", JSON.stringify(cart));
+    sessionStorage.setItem("cart", JSON.stringify(cart));
   }, [cart]);
 
   const modifyCart = (itemId: number, quantityChange: number) => {

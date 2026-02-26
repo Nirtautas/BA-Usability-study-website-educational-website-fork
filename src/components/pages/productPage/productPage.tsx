@@ -4,7 +4,7 @@ import { useCart } from "@/data/cartContext";
 import { getPageUrl, placeholderImageLink } from "@/data/constants";
 import { products } from "@/data/entityData";
 import { AccessTime, Add, LocalShippingOutlined, Remove } from "@mui/icons-material";
-import { Box, Button, Card, CardMedia, Container, Divider, Grid2, IconButton, Paper, Rating, Stack, Typography } from "@mui/material";
+import { Box, Button, CardMedia, Container, Divider, Grid2, IconButton, Paper, Rating, Stack, Typography } from "@mui/material";
 import { notFound, useRouter } from "next/navigation";
 import { useState } from "react";
 import TwoActionDialog from "../../shared/twoActionDialog";
@@ -106,13 +106,22 @@ const ProductPage = ({ productId }: Props) => {
         </Grid2>
       </Grid2>
 
-      <TwoActionDialog open={openDialog} onClose={handleClose} onConfirm={handleGoToCart} title="Added to cart!" cancelText="Continue shopping" confirmText="Go to cart">
-        <Card>
-          <Grid2 display="flex" alignItems="center" gap={2}>
-            <CardMedia component="img" height="140" image={product.picturePaths?.[0] || placeholderImageLink} alt={product.name} />
-            <Typography>{product.name}</Typography>
-          </Grid2>
-        </Card>
+      <TwoActionDialog
+        open={openDialog}
+        onClose={handleClose}
+        onConfirm={handleGoToCart}
+        title={`Added ${product.name.toLowerCase()} to cart!`}
+        cancelText="Continue shopping"
+        confirmText="Go to cart"
+      >
+        <Paper elevation={3} sx={{ padding: 1 }}>
+          <Stack direction="row" alignItems="center">
+            <CardMedia width={150} height={150} component="img" image={product.picturePaths?.[0] || placeholderImageLink} alt={product.name} sx={{ objectFit: "contain" }} />
+            <Typography width={150} noWrap>
+              {product.name}
+            </Typography>
+          </Stack>
+        </Paper>
       </TwoActionDialog>
     </Container>
   );

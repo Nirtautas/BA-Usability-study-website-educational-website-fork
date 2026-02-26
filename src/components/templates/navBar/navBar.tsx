@@ -3,7 +3,7 @@
 import { useCart } from "@/data/cartContext";
 import { getPageUrl } from "@/data/constants";
 import { Login, ShoppingBag, ShoppingCart } from "@mui/icons-material";
-import { AppBar, Badge, Button, Grid2, Menu, MenuItem, Stack, Toolbar, Typography } from "@mui/material";
+import { AppBar, Badge, Button, Grid2, Link, Menu, MenuItem, Stack, Toolbar, Typography } from "@mui/material";
 import { useTranslations } from "next-intl";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
@@ -24,15 +24,17 @@ export function NavBar() {
 
   return (
     <Stack sx={{ mb: 2 }}>
-      <Typography fontSize={11} align="center">
+      <Typography fontSize={11} align="center" color="text.secondary">
         Reach us at +370 651 84956 or info@store.com
       </Typography>
 
       <AppBar position="static">
         <Toolbar disableGutters sx={{ display: "flex", justifyContent: "space-between" }}>
-          <Button color="inherit" onClick={() => router.push(getPageUrl.home())}>
-            <Typography>{t("title")}</Typography>
-          </Button>
+          <Link href={getPageUrl.home()} padding={1} sx={{ color: "inherit", textDecoration: "none" }}>
+            <Typography fontFamily="elephant" fontSize={36}>
+              {t("title")}
+            </Typography>
+          </Link>
 
           <Stack direction="row" spacing={2} alignItems="center">
             <Grid2 display="flex" alignItems="center" gap={1}>

@@ -4,7 +4,7 @@ import TwoActionDialog from "@/components/shared/twoActionDialog";
 import { useCart } from "@/data/cartContext";
 import { products } from "@/data/entityData";
 import { FullCartItem } from "@/data/types";
-import { Button, Container, Grid2, Stack, Typography } from "@mui/material";
+import { Box, Button, Container, Divider, Grid2, Stack, Typography } from "@mui/material";
 import { useState } from "react";
 import CartItemCard from "./cartItemCard";
 import CartSummary from "./cartSummary";
@@ -34,27 +34,28 @@ const CartPage = () => {
         Cart Page
       </Typography>
 
-      <Grid2 container justifyContent="center">
+      <Grid2 container justifyContent="center" gap={2}>
         <Grid2 size={7}>
-          <Grid2>
+          <Stack spacing={2}>
             {cartContext?.cart.length !== 0 ? (
-              <>
-                <Grid2 display="flex" justifyContent="space-between">
+              <Box>
+                <Stack direction="row" display="flex" justifyContent="space-between">
                   <Typography variant="h5" gutterBottom>
                     Items in your cart:
                   </Typography>
                   <Button color="error" variant="contained" onClick={handleRemoveClick}>
                     Empty cart
                   </Button>
-                </Grid2>
-              </>
+                </Stack>
+              </Box>
             ) : (
               <Typography variant="h5" gutterBottom>
                 Your cart is empty.
               </Typography>
             )}
-          </Grid2>
-          <Stack spacing={2}>
+
+            <Divider />
+
             {items.map((cartItem) => (
               <CartItemCard key={cartItem.item.id} fullCartItem={cartItem} />
             ))}

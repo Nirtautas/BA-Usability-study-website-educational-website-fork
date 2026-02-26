@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 
 import favicon from "@/app/favicon.ico";
 import Footer from "@/components/templates/footer";
+import MarketingPopup from "@/components/templates/marketingPopup";
 import MuiThemeProvider from "@/components/templates/mui";
 import NavBar from "@/components/templates/navBar/navBar";
 import { CartProvider } from "@/data/cartContext";
@@ -22,8 +23,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Store",
-  description: "Store",
+  title: "Keeps - Apparel & more",
+  description: "An apperel store",
   icons: favicon.src,
 };
 
@@ -56,6 +57,7 @@ export default async function RootLayout({ children, params }: Props) {
                 <NavBar />
                 {children}
                 <Footer />
+                <MarketingPopup />
               </NextIntlClientProvider>
             </MuiThemeProvider>
           </AppRouterCacheProvider>

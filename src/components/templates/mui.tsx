@@ -8,7 +8,11 @@ export default function MuiThemeProvider({ children }: { children: React.ReactNo
     palette: {
       primary: {
         main: "#CE874B",
+        light: "#EFD8C5",
       },
+    },
+    typography: {
+      allVariants: { textTransform: "none" },
     },
   });
 

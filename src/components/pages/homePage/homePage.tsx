@@ -1,5 +1,5 @@
 import { getPageUrl } from "@/data/constants";
-import { Button, Container, Grid2, Link, Stack, Typography } from "@mui/material";
+import { Button, Container, Link, Paper, Stack, Typography } from "@mui/material";
 
 const HomePage = () => {
   return (
@@ -8,12 +8,15 @@ const HomePage = () => {
         <Typography variant="h4" gutterBottom>
           Welcome to the Store!
         </Typography>
-        <Grid2>
-          <Typography>SALE ENDING SOON</Typography>
-          <Link href={getPageUrl.products().concat(`?onlyDiscounted=true`)}>
-            <Button variant="contained">Check discounted products!!!</Button>
-          </Link>
-        </Grid2>
+        <Stack direction="column">
+          <Paper elevation={3} sx={{ padding: 1, bgcolor: "primary.light" }}>
+            <Typography>Winter sale ending soon!</Typography>
+            <Typography>Get up to 40% off on selected products and save big!</Typography>
+            <Link href={getPageUrl.products().concat(`?onlyDiscounted=true`)}>
+              <Button variant="contained">Click here to see discounted offers!</Button>
+            </Link>
+          </Paper>
+        </Stack>
       </Stack>
     </Container>
   );

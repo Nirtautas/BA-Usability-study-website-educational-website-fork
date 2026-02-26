@@ -5,7 +5,7 @@ import { useCart } from "@/data/cartContext";
 import { placeholderImageLink } from "@/data/constants";
 import { FullCartItem } from "@/data/types";
 import { Add, Delete, Remove } from "@mui/icons-material";
-import { Card, CardContent, CardMedia, Container, Grid2, IconButton, Typography } from "@mui/material";
+import { Box, Card, CardContent, CardMedia, Grid2, IconButton, Paper, Stack, Typography } from "@mui/material";
 import { useState } from "react";
 
 type Props = {
@@ -25,13 +25,13 @@ const CartItemCard = ({ fullCartItem }: Props) => {
   const handleCancel = () => setOpenDialog(false);
 
   return (
-    <Container>
+    <Box>
       <Card>
         <CardContent>
           <Grid2 container alignItems="center" justifyContent="space-between">
             <Grid2 display="flex" alignItems="center" gap={2}>
               <Grid2>
-                <CardMedia component="img" height="140" image={item.picturePaths?.[0] || placeholderImageLink} alt={item.name} />
+                <CardMedia component="img" height="95" image={item.picturePaths?.[0] || placeholderImageLink} alt={item.name} />
               </Grid2>
               <Grid2>
                 <Typography>{item.name}</Typography>
@@ -59,18 +59,20 @@ const CartItemCard = ({ fullCartItem }: Props) => {
         open={openDialog}
         onClose={handleCancel}
         onConfirm={handleConfirmRemove}
-        title="Do you really want to remove this item from your cart?"
+        title={`Do you really want to remove ${item.name} from your cart?`}
         confirmText="Remove"
         isDestructiveAction={true}
       >
-        <Card>
-          <Grid2 display="flex" alignItems="center" gap={2}>
-            <CardMedia component="img" height="140" image={item.picturePaths?.[0] || placeholderImageLink} alt={item.name} />
-            <Typography>{item.name}</Typography>
-          </Grid2>
-        </Card>
+        <Paper elevation={3} sx={{ padding: 1 }}>
+          <Stack direction="row" alignItems="center">
+            <CardMedia width={150} height={150} component="img" image={item.picturePaths?.[0] || placeholderImageLink} alt={item.name} sx={{ objectFit: "contain" }} />
+            <Typography width={150} noWrap>
+              {item.name}
+            </Typography>
+          </Stack>
+        </Paper>
       </TwoActionDialog>
-    </Container>
+    </Box>
   );
 };
 
