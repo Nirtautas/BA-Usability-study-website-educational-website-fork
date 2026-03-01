@@ -1,5 +1,6 @@
 "use client";
 
+import SubheadingBold from "@/components/shared/subheadingBold";
 import TwoActionDialog from "@/components/shared/twoActionDialog";
 import { useCart } from "@/data/cartContext";
 import { getPageUrl } from "@/data/constants";
@@ -25,10 +26,6 @@ const CartPage = () => {
 
   return (
     <Container>
-      <Typography variant="h4" gutterBottom>
-        Cart Page
-      </Typography>
-
       <Grid2 container justifyContent="center" gap={2}>
         <Grid2 size={7}>
           <Stack spacing={2}>
@@ -64,7 +61,7 @@ const CartPage = () => {
 
         <Grid2 container>
           <Paper elevation={3} sx={{ padding: 2 }}>
-            <Typography variant="h6">Cart Summary</Typography>
+            <SubheadingBold headingText="Cart summary" />
             <CartSummary fullCartItems={items ?? []} />
 
             {cartContext?.calculateTotal() === 0 ? (

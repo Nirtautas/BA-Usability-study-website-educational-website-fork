@@ -41,7 +41,7 @@ const ProductsPage = ({ searchParams }: Props) => {
   return (
     <Container>
       <Typography variant="h4" gutterBottom>
-        Products Page
+        Our products:
       </Typography>
 
       <Grid2 container spacing={2} justifyContent="center" sx={{ alignItems: "flex-start" }}>

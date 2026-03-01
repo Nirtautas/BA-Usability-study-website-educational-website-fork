@@ -37,3 +37,8 @@ export interface CartContextInterface {
   calculateItemTotal: () => number;
   calculateTotal: () => number;
 };
+
+export type Bank = {
+  name: string;
+  picturePath: string;
+};

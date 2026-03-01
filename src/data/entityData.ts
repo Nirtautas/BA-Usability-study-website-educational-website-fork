@@ -1,5 +1,5 @@
 import { placeholderImageLink } from "./constants";
-import { Product, ProductType } from "./types";
+import { Bank, Product, ProductType } from "./types";
 
 export const products: Product[] = [
   {
@@ -46,4 +46,27 @@ export const products: Product[] = [
     deliveryTime: "1-2 d.",
     picturePaths: [placeholderImageLink, placeholderImageLink, placeholderImageLink],
   }
+];
+
+export const banks: Bank[] = [
+  {
+    name: "Bank 1",
+    picturePath: placeholderImageLink
+  },
+  {
+    name: "Bank 2",
+    picturePath: placeholderImageLink
+  },
+  {
+    name: "Bank 3",
+    picturePath: placeholderImageLink
+  },
+  {
+    name: "Bank 4",
+    picturePath: placeholderImageLink
+  },
+  {
+    name: "Bank 5",
+    picturePath: placeholderImageLink
+  },
 ];

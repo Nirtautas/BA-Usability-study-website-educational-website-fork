@@ -5,7 +5,7 @@ import { Grid2, Paper, Stack, Typography } from "@mui/material";
 
 export function Footer() {
   return (
-    <Paper component="footer" sx={{ bgcolor: "primary.main" }}>
+    <Paper component="footer" sx={{ bgcolor: "primary.main", marginTop: 1 }}>
       <Stack alignItems="flex-end">
         <Grid2 display="flex">
           <Facebook />

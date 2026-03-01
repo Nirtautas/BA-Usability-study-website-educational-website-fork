@@ -1,8 +1,9 @@
 "use client";
 
+import SubheadingBold from "@/components/shared/subheadingBold";
 import { getPageUrl } from "@/data/constants";
 import { Product, ProductType } from "@/data/types";
-import { Button, Checkbox, FormControlLabel, Grid2, Link, Paper, Slider, Switch, Typography } from "@mui/material";
+import { Button, Checkbox, Divider, FormControlLabel, Link, Paper, Slider, Stack, Switch, Typography } from "@mui/material";
 import { useTranslations } from "next-intl";
 import { useState } from "react";
 
@@ -49,47 +50,51 @@ const ProductsFilter = ({ products, appliedFilters }: Props) => {
 
   return (
     <Paper elevation={3} sx={{ padding: 2, width: "100%" }}>
-      <Typography variant="h6">{t("title")}</Typography>
-      <Grid2>
+      <SubheadingBold headingText={t("title")} />
+      <Divider />
+
+      <Stack direction="column">
         <Typography>Product type:</Typography>
-        {Object.values(ProductType).map(
-          (type) =>
-            type !== ProductType.DeceptiveExtra && (
-              <FormControlLabel
-                key={type}
-                control={
-                  <Checkbox
-                    checked={selectedTypes.includes(type)}
-                    onChange={(e) => {
-                      if (e.target.checked) {
-                        setSelectedTypes([...selectedTypes, type]);
-                      } else {
-                        setSelectedTypes(selectedTypes.filter((t) => t !== type));
-                      }
-                    }}
-                  />
-                }
-                label={type}
-              />
-            ),
-        )}
-      </Grid2>
-      <Grid2>
+        <Stack direction="row">
+          {Object.values(ProductType).map(
+            (type) =>
+              type !== ProductType.DeceptiveExtra && (
+                <FormControlLabel
+                  key={type}
+                  control={
+                    <Checkbox
+                      checked={selectedTypes.includes(type)}
+                      onChange={(e) => {
+                        if (e.target.checked) {
+                          setSelectedTypes([...selectedTypes, type]);
+                        } else {
+                          setSelectedTypes(selectedTypes.filter((t) => t !== type));
+                        }
+                      }}
+                    />
+                  }
+                  label={type}
+                />
+              ),
+          )}
+        </Stack>
+
+        <Divider />
         <Typography>
           Price range: {minPrice}€ - {maxPrice}€
         </Typography>
         <Slider value={[selectedMinPrice, selectedMaxPrice]} onChange={handlePriceChange} valueLabelDisplay="auto" min={minPrice} max={maxPrice} />
-      </Grid2>
-      <Grid2>
+
+        <Divider />
         <FormControlLabel control={<Switch checked={onlyDiscounted} onChange={(e) => setOnlyDiscounted(e.target.checked)} />} label="Only discounted" />
-      </Grid2>
-      <Grid2>
-        <Link href={getSearchString()}>
+
+        <Divider />
+        <Link href={getSearchString()} paddingTop={1}>
           <Button fullWidth variant="contained">
             Search
           </Button>
         </Link>
-      </Grid2>
+      </Stack>
     </Paper>
   );
 };

@@ -17,6 +17,7 @@ const CheckoutPage = () => {
 
   const [delivery, setDelivery] = useState("");
   const [payment, setPayment] = useState("");
+  const [bankValue, setBankValue] = useState("");
 
   const [deliveryError, setDeliveryError] = useState("");
   const [paymentError, setPaymentError] = useState("");
@@ -44,11 +45,19 @@ const CheckoutPage = () => {
   };
 
   return (
-    <Box component="form" onSubmit={handleSubmit}>
+    <Box component="form" onSubmit={handleSubmit} display="flex" justifyContent="center">
       <Stack direction="column" alignItems="center" gap={1}>
-        <Typography variant="h4" gutterBottom>
-          Checkout page
-        </Typography>
+        <Box width={600}>
+          <Stack direction="row" display="flex" justifyContent="space-between">
+            <Typography variant="h5" gutterBottom>
+              Checkout:
+            </Typography>
+            <Button variant="contained" onClick={() => router.push(getPageUrl.cart())}>
+              Back to cart
+            </Button>
+          </Stack>
+        </Box>
+
         <Paper sx={{ width: 600, padding: 1 }}>
           <SubheadingBold headingText="Choose delivery method:" />
           <Divider />
@@ -57,7 +66,7 @@ const CheckoutPage = () => {
         <Paper sx={{ width: 600, padding: 1 }}>
           <SubheadingBold headingText="Choose payment method:" />
           <Divider />
-          <PaymentSelection value={payment} setValue={setPayment} error={paymentError} />
+          <PaymentSelection value={payment} setValue={setPayment} error={paymentError} bankValue={bankValue} setBankValue={setBankValue} />
         </Paper>
         <Paper sx={{ width: 600, padding: 1 }}>
           <SubheadingBold headingText="Cart summary" />
