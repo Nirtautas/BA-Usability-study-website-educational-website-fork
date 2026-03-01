@@ -2,15 +2,16 @@
 
 import TwoActionDialog from "@/components/shared/twoActionDialog";
 import { useCart } from "@/data/cartContext";
-import { products } from "@/data/entityData";
-import { FullCartItem } from "@/data/types";
-import { Box, Button, Container, Divider, Grid2, Stack, Typography } from "@mui/material";
+import { getPageUrl } from "@/data/constants";
+import { useRouter } from "@/i18n/navigation";
+import { Box, Button, Container, Divider, Grid2, Link, Paper, Stack, Typography } from "@mui/material";
 import { useState } from "react";
+import CartSummary from "../../shared/cartSummary";
 import CartItemCard from "./cartItemCard";
-import CartSummary from "./cartSummary";
 
 const CartPage = () => {
   const cartContext = useCart();
+  const router = useRouter();
   const [openDialog, setOpenDialog] = useState(false);
 
   const handleRemoveClick = () => setOpenDialog(true);
@@ -20,13 +21,7 @@ const CartPage = () => {
     setOpenDialog(false);
   };
 
-  const items: FullCartItem[] =
-    cartContext?.cart
-      .map((item) => {
-        const product = products.find((p) => p.id === item.itemId);
-        return { item: product, quantity: item.quantity };
-      })
-      .filter((i): i is FullCartItem => i.item !== undefined) || [];
+  const items = cartContext?.getFullCartItems();
 
   return (
     <Container>
@@ -49,20 +44,40 @@ const CartPage = () => {
                 </Stack>
               </Box>
             ) : (
-              <Typography variant="h5" gutterBottom>
-                Your cart is empty.
-              </Typography>
+              <Stack direction="row" display="flex" justifyContent="space-between">
+                <Typography variant="h5" gutterBottom>
+                  Your cart is empty.
+                </Typography>
+                <Link href={getPageUrl.products()}>
+                  <Button variant="contained">Go to products</Button>
+                </Link>
+              </Stack>
             )}
 
             <Divider />
 
-            {items.map((cartItem) => (
+            {items?.map((cartItem) => (
               <CartItemCard key={cartItem.item.id} fullCartItem={cartItem} />
             ))}
           </Stack>
         </Grid2>
 
-        <CartSummary fullCartItems={items} />
+        <Grid2 container>
+          <Paper elevation={3} sx={{ padding: 2 }}>
+            <Typography variant="h6">Cart Summary</Typography>
+            <CartSummary fullCartItems={items ?? []} />
+
+            {cartContext?.calculateTotal() === 0 ? (
+              <Button variant="contained" disabled onClick={() => router.push(getPageUrl.checkout())}>
+                Continue to checkout
+              </Button>
+            ) : (
+              <Button variant="contained" onClick={() => router.push(getPageUrl.checkout())}>
+                Continue to checkout
+              </Button>
+            )}
+          </Paper>
+        </Grid2>
       </Grid2>
 
       <TwoActionDialog open={openDialog} onClose={handleCancel} onConfirm={handleConfirmRemove} title="Do you really want to empty your cart?" confirmText="Empty my cart" isDestructiveAction={true} />

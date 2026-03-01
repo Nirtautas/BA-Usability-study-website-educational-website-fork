@@ -1,7 +1,9 @@
 "use client";
 
 import { createContext, ReactNode, useContext, useEffect, useState } from "react";
-import { CartContextInterface, CartItem } from "./types";
+import { serviceFee } from "./constants";
+import { products } from "./entityData";
+import { CartContextInterface, CartItem, FullCartItem } from "./types";
 
 const CartContext = createContext<CartContextInterface | undefined>(undefined);
 
@@ -49,6 +51,25 @@ export function CartProvider({ children }: { children: ReactNode }) {
     return cart.length - (!includeDeceptive && deceptiveExists ? 1 : 0);
   };
 
+  const getFullCartItems = () => {
+    return (
+      cart
+        .map((item) => {
+          const product = products.find((p) => p.id === item.itemId);
+          return { item: product, quantity: item.quantity };
+        })
+        .filter((i): i is FullCartItem => i.item !== undefined) || []
+    );
+  };
+
+  const calculateItemTotal = () => {
+    return getFullCartItems().reduce((total, cartItem) => total + (cartItem.item.discountedPrice !== undefined ? cartItem.item.discountedPrice : cartItem.item.price) * cartItem.quantity, 0);
+  };
+
+  const calculateTotal = () => {
+    return calculateItemTotal() + (getUniqueItemsCount(true) !== 0 ? serviceFee : 0);
+  };
+
   return (
     <CartContext.Provider
       value={{
@@ -57,6 +78,9 @@ export function CartProvider({ children }: { children: ReactNode }) {
         removeFromCart,
         removeAllFromCart,
         getUniqueItemsCount,
+        getFullCartItems,
+        calculateItemTotal,
+        calculateTotal,
       }}
     >
       {children}

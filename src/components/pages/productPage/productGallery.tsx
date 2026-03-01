@@ -14,13 +14,16 @@ const ProductGallery = ({ product }: Props) => {
 
   return (
     <Stack direction="column" spacing={1}>
-      <Image key={0} src={product?.picturePaths?.[0] || placeholderImageLink} alt={product?.name || "Placeholder"} width={532} height={532} />
+      <Box borderRadius={2} overflow="hidden">
+        <Image key={0} src={product?.picturePaths?.[0] || placeholderImageLink} alt={product?.name || "Placeholder"} width={532} height={532} />
+      </Box>
+
       <Stack direction="row" spacing={1}>
         {visibleThumbnailPaths.map((path, index) => {
           const isLastThumbnailWithMore = index === maxProductThumbnails - 1 && hiddenThumbnailCount > 0;
 
           return (
-            <Box key={index} sx={{ position: "relative", width: 100, height: 100 }}>
+            <Box key={index} borderRadius={2} overflow="hidden" sx={{ position: "relative", width: 100, height: 100 }}>
               <Image key={index} src={path || placeholderImageLink} alt={product?.name + " thumbnail " + (index + 1)} width={100} height={100} />
               {isLastThumbnailWithMore && (
                 <Box

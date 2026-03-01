@@ -46,6 +46,7 @@ const ProductPage = ({ productId }: Props) => {
             <Divider />
             <Stack>
               <Typography variant="h5">Description:</Typography>
+              <Typography>{product.description}</Typography>
             </Stack>
           </Stack>
         </Paper>

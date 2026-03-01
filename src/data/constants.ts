@@ -5,7 +5,9 @@ export const getPageUrl = {
     cart: () => `/cart`,
     checkout: () => `/checkout`,
     login: () => '/login',
+    orderComplete: () => `/order-complete`,
 }
 
 export const placeholderImageLink = "/images/productPictures/placeholder.jpg";
 export const maxProductThumbnails = 5;
+export const serviceFee = 2.99;

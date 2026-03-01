@@ -33,4 +33,7 @@ export interface CartContextInterface {
   removeFromCart: (id: number) => void;
   removeAllFromCart: () => void;
   getUniqueItemsCount: (includeDeceptive?: boolean) => number;
+  getFullCartItems: () => FullCartItem[];
+  calculateItemTotal: () => number;
+  calculateTotal: () => number;
 };
