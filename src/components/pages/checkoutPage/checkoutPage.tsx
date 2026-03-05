@@ -41,6 +41,8 @@ const CheckoutPage = () => {
     }
 
     if (hasError) return;
+
+    cartContext?.removeAllFromCart();
     router.push(getPageUrl.orderComplete());
   };
 

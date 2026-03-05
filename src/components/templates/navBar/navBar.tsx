@@ -1,10 +1,10 @@
 "use client";
 
+import { ShopTitle } from "@/components/shared/simpleShared";
 import { useCart } from "@/data/cartContext";
 import { getPageUrl } from "@/data/constants";
 import { Login, ShoppingBag, ShoppingCart } from "@mui/icons-material";
 import { AppBar, Badge, Button, Grid2, Link, Menu, MenuItem, Stack, Toolbar, Typography } from "@mui/material";
-import { useTranslations } from "next-intl";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import LanguageSwitcher from "./languageSwitcher";
@@ -12,7 +12,6 @@ import LanguageSwitcher from "./languageSwitcher";
 export function NavBar() {
   const router = useRouter();
   const cartContext = useCart();
-  const t = useTranslations("NavBar");
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
   const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
@@ -31,9 +30,7 @@ export function NavBar() {
       <AppBar position="static">
         <Toolbar disableGutters sx={{ display: "flex", justifyContent: "space-between" }}>
           <Link href={getPageUrl.home()} padding={1} sx={{ color: "inherit", textDecoration: "none" }}>
-            <Typography fontFamily="elephant" fontSize={36}>
-              {t("title")}
-            </Typography>
+            <ShopTitle />
           </Link>
 
           <Stack direction="row" spacing={2} alignItems="center">
