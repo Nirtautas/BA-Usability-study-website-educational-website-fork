@@ -1,21 +1,60 @@
 "use client";
 
-import { Box, FormControl, FormControlLabel, FormHelperText, Radio, RadioGroup } from "@mui/material";
+import { parcelLockerLocations, postOfficeLocations, storeLocations } from "@/data/entityData";
+import { DeliveryInfo } from "@/data/types";
+import { Box, FormControl, FormControlLabel, FormHelperText, Radio, RadioGroup, SelectChangeEvent, Stack } from "@mui/material";
+import LockerDeliverySelection from "./lockerDeliverySelection";
+import PostDeliverySelection from "./postDeliverySelection";
+import StoreDeliverySelection from "./storeDeliveryFields";
 
 type Props = {
-  value: string;
-  setValue: (val: string) => void;
+  deliveryInfo: DeliveryInfo;
+  setDeliveryInfo: (info: DeliveryInfo) => void;
   error?: string;
 };
 
-const DeliverySelection = ({ value, setValue, error }: Props) => {
+const DeliverySelection = ({ deliveryInfo, setDeliveryInfo, error }: Props) => {
+  const handleDeliveryMethodChange = (event: SelectChangeEvent) => {
+    switch (event.target.value) {
+      case "store":
+        setDeliveryInfo({ deliveryMethod: event.target.value, locationId: storeLocations[0]?.id, differentPersonPickUp: false });
+      case "post":
+        setDeliveryInfo({ deliveryMethod: event.target.value, locationId: postOfficeLocations[0]?.id, consigneeName: "", phoneNumber: "" });
+      case "locker":
+        setDeliveryInfo({ deliveryMethod: event.target.value, locationId: parcelLockerLocations[0]?.id, consigneeName: "", phoneNumber: "" });
+    }
+  };
+
+  const handleDeliveryLocationChange = (event: SelectChangeEvent) => {
+    setDeliveryInfo({ ...deliveryInfo, locationId: parseInt(event.target.value) });
+  };
+
   return (
     <Box>
       <FormControl required fullWidth>
-        <RadioGroup value={value} name="delivery" onChange={(e) => setValue(e.target.value)}>
-          <FormControlLabel value="store" control={<Radio />} label="Pick up at the store" />
-          <FormControlLabel value="post" control={<Radio />} label="Pick up at Lithuanian Post office" />
-          <FormControlLabel value="locker" control={<Radio />} label="Pick up at parcel locker" />
+        <RadioGroup value={deliveryInfo.deliveryMethod} name="deliveryMethod" onChange={handleDeliveryMethodChange}>
+          <Stack>
+            <FormControlLabel value="store" control={<Radio />} label="Pick up at the store" />
+
+            {deliveryInfo.deliveryMethod === "store" && (
+              <StoreDeliverySelection deliveryInfo={deliveryInfo} setDeliveryInfo={setDeliveryInfo} handleDeliveryLocationChange={handleDeliveryLocationChange} />
+            )}
+          </Stack>
+
+          <Stack>
+            <FormControlLabel value="post" control={<Radio />} label="Pick up at Lithuanian Post office" />
+
+            {deliveryInfo.deliveryMethod === "post" && (
+              <PostDeliverySelection deliveryInfo={deliveryInfo} setDeliveryInfo={setDeliveryInfo} handleDeliveryLocationChange={handleDeliveryLocationChange} />
+            )}
+          </Stack>
+          <Stack>
+            <FormControlLabel value="locker" control={<Radio />} label="Pick up at parcel locker" />
+
+            {deliveryInfo.deliveryMethod === "locker" && (
+              <LockerDeliverySelection deliveryInfo={deliveryInfo} setDeliveryInfo={setDeliveryInfo} handleDeliveryLocationChange={handleDeliveryLocationChange} />
+            )}
+          </Stack>
         </RadioGroup>
         <FormHelperText error={error?.length != 0}>{error}</FormHelperText>
       </FormControl>

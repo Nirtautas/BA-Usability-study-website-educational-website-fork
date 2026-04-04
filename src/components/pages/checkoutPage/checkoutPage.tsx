@@ -3,6 +3,8 @@
 import SubheadingBold from "@/components/shared/subheadingBold";
 import { useCart } from "@/data/cartContext";
 import { getPageUrl } from "@/data/constants";
+import { storeLocations } from "@/data/entityData";
+import { DeliveryInfo } from "@/data/types";
 import { useRouter } from "@/i18n/navigation";
 import { Box, Button, Divider, Paper, Stack, Typography } from "@mui/material";
 import { useState } from "react";
@@ -15,7 +17,7 @@ const CheckoutPage = () => {
   const cartContext = useCart();
   const cartItems = cartContext?.getFullCartItems();
 
-  const [delivery, setDelivery] = useState("");
+  const [deliveryInfo, setDeliveryInfo] = useState<DeliveryInfo>({ deliveryMethod: "store", locationId: storeLocations[0]?.id, differentPersonPickUp: false });
   const [payment, setPayment] = useState("");
   const [bankValue, setBankValue] = useState("");
 
@@ -26,7 +28,7 @@ const CheckoutPage = () => {
     e.preventDefault();
     let hasError = false;
 
-    if (!delivery) {
+    if (!deliveryInfo.deliveryMethod) {
       setDeliveryError("Delivery option is required!");
       hasError = true;
     } else {
@@ -63,7 +65,7 @@ const CheckoutPage = () => {
         <Paper sx={{ width: 600, padding: 1 }}>
           <SubheadingBold headingText="Choose delivery method:" />
           <Divider />
-          <DeliverySelection value={delivery} setValue={setDelivery} error={deliveryError} />
+          <DeliverySelection deliveryInfo={deliveryInfo} setDeliveryInfo={setDeliveryInfo} error={deliveryError} />
         </Paper>
         <Paper sx={{ width: 600, padding: 1 }}>
           <SubheadingBold headingText="Choose payment method:" />

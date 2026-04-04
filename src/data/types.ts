@@ -39,6 +39,22 @@ export interface CartContextInterface {
 };
 
 export type Bank = {
+  id: number;
   name: string;
   picturePath: string;
+};
+
+export type DeliveryLocation = {
+  id: number;
+  locationName: string;
+};
+
+export type DeliveryMethod = "store" | "post" | "locker";
+
+export type DeliveryInfo = {
+  deliveryMethod: DeliveryMethod;
+  locationId?: number;
+  differentPersonPickUp?: boolean;
+  phoneNumber?: string;
+  consigneeName?: string;
 };
