@@ -55,7 +55,7 @@ const ProductsFilter = ({ products, appliedFilters }: Props) => {
 
       <Stack direction="column">
         <Typography>Product type:</Typography>
-        <Stack direction="row">
+        <Stack direction="column">
           {Object.values(ProductType).map(
             (type) =>
               type !== ProductType.DeceptiveExtra && (

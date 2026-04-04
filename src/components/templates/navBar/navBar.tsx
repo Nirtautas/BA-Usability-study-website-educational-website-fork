@@ -5,11 +5,13 @@ import { useCart } from "@/data/cartContext";
 import { getPageUrl } from "@/data/constants";
 import { Login, ShoppingBag, ShoppingCart } from "@mui/icons-material";
 import { AppBar, Badge, Button, Grid2, Link, Menu, MenuItem, Stack, Toolbar, Typography } from "@mui/material";
+import { useTranslations } from "next-intl";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import LanguageSwitcher from "./languageSwitcher";
 
 export function NavBar() {
+  const t = useTranslations();
   const router = useRouter();
   const cartContext = useCart();
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
@@ -24,7 +26,7 @@ export function NavBar() {
   return (
     <Stack sx={{ mb: 2 }}>
       <Typography fontSize={11} align="center" color="text.secondary">
-        Reach us at +370 651 84956 or info@store.com
+        {t("NavBar.infoText")}
       </Typography>
 
       <AppBar position="static">
@@ -42,13 +44,15 @@ export function NavBar() {
               <Grid2 display="flex" alignItems="center">
                 <ShoppingBag />
                 <Button color="inherit" onClick={handleClick}>
-                  <Typography>Products</Typography>
+                  <Typography>{t("NavBar.Products.title")}</Typography>
                 </Button>
 
                 <Menu anchorEl={anchorEl} open={open} onClose={handleClose}>
-                  <MenuItem onClick={() => router.push(getPageUrl.products())}>All Products</MenuItem>
-                  <MenuItem onClick={() => router.push(getPageUrl.products().concat(`?productType=Shoes`))}>Shoes</MenuItem>
-                  <MenuItem onClick={() => router.push(getPageUrl.products().concat(`?productType=Shirts`))}>Shirts</MenuItem>
+                  <MenuItem onClick={() => router.push(getPageUrl.products())}>{t("NavBar.Products.allProducts")}</MenuItem>
+                  <MenuItem onClick={() => router.push(getPageUrl.products().concat(`?productType=Shoes`))}>{t("ProductsPage.Filter.ProductType.shoesOption")}</MenuItem>
+                  <MenuItem onClick={() => router.push(getPageUrl.products().concat(`?productType=Pants`))}>{t("ProductsPage.Filter.ProductType.pantsOption")}</MenuItem>
+                  <MenuItem onClick={() => router.push(getPageUrl.products().concat(`?productType=Shirts`))}>{t("ProductsPage.Filter.ProductType.shirtOption")}</MenuItem>
+                  <MenuItem onClick={() => router.push(getPageUrl.products().concat(`?productType=Sweaters`))}>{t("ProductsPage.Filter.ProductType.sweaterOption")}</MenuItem>
                 </Menu>
               </Grid2>
 
@@ -57,14 +61,14 @@ export function NavBar() {
                   <ShoppingCart />
                 </Badge>
                 <Button color="inherit" onClick={() => router.push(getPageUrl.cart())}>
-                  <Typography>Cart</Typography>
+                  <Typography>{t("NavBar.cart")}</Typography>
                 </Button>
               </Grid2>
 
               <Grid2 display="flex" alignItems="center">
                 <Login />
                 <Button color="inherit" onClick={() => router.push(getPageUrl.login())}>
-                  <Typography>Login</Typography>
+                  <Typography>{t("NavBar.login")}</Typography>
                 </Button>
               </Grid2>
             </Grid2>

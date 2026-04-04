@@ -14,6 +14,8 @@ export type Product = {
 export enum ProductType {
   Shoes = "Shoes",
   Shirts = "Shirts",
+  Pants = "Pants",
+  Sweaters = "Sweaters",
   DeceptiveExtra = "Extra"
 }
 

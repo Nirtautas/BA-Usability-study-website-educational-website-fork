@@ -1,6 +1,11 @@
 {
   "NavBar": {
-    "title": "Keeps"
+    "title": "Keeps",
+    "Products": {
+      "title:": "Produktai"
+    },
+    "cart": "Krepšelis",
+    "login": "Prisijungti"
   },
   "Products": {
     "Filter": {

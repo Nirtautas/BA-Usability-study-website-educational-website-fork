@@ -1,10 +1,84 @@
 {
   "NavBar": {
-    "title": "Keeps"
+    "title": "Keeps",
+    "infoText": "Reach us at +370 651 84956 or info@store.com",
+    "Products": {
+      "title": "Products",
+      "allProducts": "All products"
+    },
+    "cart": "Cart",
+    "login": "Login"
   },
-  "Products": {
-    "Filter": {
-      "title": "Filters"
+  "Footer": {
+    "rightsText": "&quot;Store&quot; © 2025-2026. All rights reserved.",
+    "freepikAckText": "Photos from - ",
+    "freepikAckLinkText": "Freepik"
+  },
+  "LandingPage": {
+    "SpringSale": {
+      "title": "Spring sale is ending SOON!",
+      "description": "The spring sale is wrapping up soon! Get up to 40% off selected products and save BIG!",
+      "buttonText": "Click here to see discounted offers!"
+    },
+    "MainBanner": {
+      "title": "Welcome to",
+      "buttonText": "Explore our products"
+    },
+    "StoreInformation": {
+      "Introduction": {
+        "title": "Who we are:",
+        "description": "Established in 1995, &quot;Keeps&quot; is an environmentaly conscious apperel brand, aiming to provide its customers with high-quality choices while keeping the planet in mind. We provide a wide range of products and are constantly trying to improve our offerings so you can have the best experience possible."
+      },
+      "CustomerSatisfaction": {
+        "title": "Hundreds of satisfied customers:",
+        "description": "We have been in the business for over 25 years and are proud to have a high satisfaction rate!"
+      }
     }
+  },
+  "ProductsPage": {
+    "title": "Our products:",
+    "saleTagText": "Sale",
+    "Filter": {
+      "title": "Filters",
+      "ProductType": {
+        "title": "Product type:",
+        "shoesOption": "Shoes",
+        "pantsOption": "Pants",
+        "shirtOption": "Shirts",
+        "sweaterOption": "Sweaters & Hoodies"
+      },
+      "PriceRange": {
+        "title": "Price range:"
+      },
+      "OnlyDiscounted": {
+        "title": "Only discounted"
+      },
+      "searchButtonText": "Search"
+    }
+  },
+  "ProductPage": {
+    "addToCartButtonText": "Add to cart",
+    "descriptionTitle": "Description:"
+  },
+  "AddToCartModal": {
+    "title": "{`Added ${product.name.toLowerCase()} to cart!`}",
+    "cancelButtonText": "Continue shopping",
+    "confirmButtonText": "Go to cart"
+  },
+  "CartPage": {
+    "title": "Items in your cart:",
+    "emptyCartButtonText": "Empty cart",
+    "Summary": {
+      "title": "Cart summary:",
+      "itemTotal": "Item total:",
+      "serviceFee": "Service fee:",
+      "total": "Total:",
+      "continueToCheckoutButtonText": "Continue to checkout"
+    }
+  },
+  "EmptyCartModal": {
+    "title": "Do you really want to empty your cart?",
+    "cancelButtonText": "Cancel",
+    "confirmButtonText": "Empty my cart"
   }
 }
