@@ -3,6 +3,7 @@
 import { postOfficeLocations } from "@/data/entityData";
 import { DeliveryInfo } from "@/data/types";
 import { Box, MenuItem, Select, SelectChangeEvent, Stack, TextField, Typography } from "@mui/material";
+import { useTranslations } from "next-intl";
 
 type Props = {
   deliveryInfo: DeliveryInfo;
@@ -11,11 +12,13 @@ type Props = {
 };
 
 const PostDeliverySelection = ({ deliveryInfo, setDeliveryInfo, handleDeliveryLocationChange }: Props) => {
+  const t = useTranslations("CheckoutPage.DeliveryInformation");
+
   return (
     <Stack direction="column" gap={1} paddingLeft={1}>
       <Box>
-        <Typography fontSize={12}>Select your post office location:</Typography>
-        <Select labelId="postOfficeLocationLabel" id="postOfficeLocationSelect" value={deliveryInfo.locationId?.toString()} label="Age" onChange={handleDeliveryLocationChange}>
+        <Typography fontSize={12}>{t("PostDeliveryOption.postOfficeLocationLabel")}</Typography>
+        <Select labelId="postOfficeLocationLabel" id="postOfficeLocationSelect" value={deliveryInfo.locationId?.toString()} onChange={handleDeliveryLocationChange}>
           {postOfficeLocations.map((location) => (
             <MenuItem key={location.id} value={location.id.toString()}>
               {location.locationName}
@@ -25,7 +28,7 @@ const PostDeliverySelection = ({ deliveryInfo, setDeliveryInfo, handleDeliveryLo
       </Box>
       <TextField
         id="outlined-basic"
-        label="Your full name"
+        label={t("PostDeliveryOption.fullNameLabel")}
         size="small"
         variant="outlined"
         required
@@ -34,7 +37,7 @@ const PostDeliverySelection = ({ deliveryInfo, setDeliveryInfo, handleDeliveryLo
       />
       <TextField
         id="outlined-basic"
-        label="Your phone number"
+        label={t("PostDeliveryOption.phoneNumberLabel")}
         size="small"
         variant="outlined"
         required

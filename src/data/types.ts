@@ -19,6 +19,14 @@ export enum ProductType {
   DeceptiveExtra = "Extra"
 }
 
+export const productTypeTranslationKeyMap: Record<ProductType, string> = {
+  [ProductType.Shoes]: "ProductType.shoesOption",
+  [ProductType.Pants]: "ProductType.pantsOption",
+  [ProductType.Shirts]: "ProductType.shirtOption",
+  [ProductType.Sweaters]: "ProductType.sweaterOption",
+  [ProductType.DeceptiveExtra]: "",
+};
+
 export type CartItem = {
   itemId: number
   quantity: number

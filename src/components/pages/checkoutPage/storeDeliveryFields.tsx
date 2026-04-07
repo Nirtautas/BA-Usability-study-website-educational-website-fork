@@ -3,6 +3,7 @@
 import { storeLocations } from "@/data/entityData";
 import { DeliveryInfo } from "@/data/types";
 import { Box, FormControlLabel, MenuItem, Select, SelectChangeEvent, Stack, Switch, Typography } from "@mui/material";
+import { useTranslations } from "next-intl";
 
 type Props = {
   deliveryInfo: DeliveryInfo;
@@ -11,10 +12,12 @@ type Props = {
 };
 
 const StoreDeliverySelection = ({ deliveryInfo, setDeliveryInfo, handleDeliveryLocationChange }: Props) => {
+  const t = useTranslations("CheckoutPage.DeliveryInformation");
+
   return (
     <Stack direction="column" gap={1} paddingLeft={1}>
       <Box>
-        <Typography fontSize={12}>Select your store location:</Typography>
+        <Typography fontSize={12}>{t("StoreDeliveryOption.storeLocationLabel")}</Typography>
         <Select labelId="storeLocationLabel" id="storeLocationSelect" value={deliveryInfo.locationId?.toString()} label="Age" onChange={handleDeliveryLocationChange}>
           {storeLocations.map((location) => (
             <MenuItem key={location.id} value={location.id.toString()}>
@@ -25,7 +28,7 @@ const StoreDeliverySelection = ({ deliveryInfo, setDeliveryInfo, handleDeliveryL
       </Box>
       <FormControlLabel
         control={<Switch checked={deliveryInfo.differentPersonPickUp} onChange={(e) => setDeliveryInfo({ ...deliveryInfo, differentPersonPickUp: e.target.checked })} />}
-        label="Different person picking up"
+        label={t("StoreDeliveryOption.differentPersonPickingUpText")}
       />
     </Stack>
   );

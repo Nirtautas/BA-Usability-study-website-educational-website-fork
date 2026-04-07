@@ -4,6 +4,7 @@ import { getPageUrl, placeholderImageLink } from "@/data/constants";
 import { Product } from "@/data/types";
 import { Discount, LocalShippingOutlined } from "@mui/icons-material";
 import { Box, Card, CardActionArea, CardContent, CardMedia, Chip, Grid2, Rating, Typography } from "@mui/material";
+import { useTranslations } from "next-intl";
 import { useRouter } from "next/navigation";
 
 type Props = {
@@ -11,13 +12,14 @@ type Props = {
 };
 
 const ProductCard = ({ item }: Props) => {
+  const t = useTranslations("ProductsPage");
   const router = useRouter();
 
   return (
     <Grid2 key={item.id}>
       <Card>
         <CardActionArea key={item.id} component="a" onClick={() => router.push(getPageUrl.product(item.id))}>
-          {item.discountedPrice !== undefined ? <Chip label="Sale" icon={<Discount />} color="success" sx={{ position: "absolute", top: 8, left: 8 }} /> : null}
+          {item.discountedPrice !== undefined ? <Chip label={t("saleTagText")} icon={<Discount />} color="success" sx={{ position: "absolute", top: 8, left: 8 }} /> : null}
           <CardMedia component="img" height="180" image={item.picturePaths?.[0] || placeholderImageLink} alt={item.name} />
           <CardContent>
             <Grid2 display="flex" alignItems="center" gap={1}>

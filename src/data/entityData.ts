@@ -51,28 +51,28 @@ export const products: Product[] = [
 export const banks: Bank[] = [
   {
     id: 1,
-    name: "Bank 1",
-    picturePath: placeholderImageLink
+    name: "Fintech",
+    picturePath: "/images/bankPictures/fintech.jpg"
   },
   {
     id: 2,
-    name: "Bank 2",
-    picturePath: placeholderImageLink
+    name: "Finance",
+    picturePath: "/images/bankPictures/finance.jpg"
   },
   {
     id: 3,
-    name: "Bank 3",
-    picturePath: placeholderImageLink
+    name: "Avobank",
+    picturePath: "/images/bankPictures/avobank.jpg"
   },
   {
     id: 4,
-    name: "Bank 4",
-    picturePath: placeholderImageLink
+    name: "MoneyCare",
+    picturePath: "/images/bankPictures/moneycare.jpg"
   },
   {
     id: 5,
-    name: "Bank 5",
-    picturePath: placeholderImageLink
+    name: "FastCash",
+    picturePath: "/images/bankPictures/fastcash.jpg"
   },
 ];
 

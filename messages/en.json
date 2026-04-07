@@ -10,9 +10,9 @@
     "login": "Login"
   },
   "Footer": {
-    "rightsText": "&quot;Store&quot; © 2025-2026. All rights reserved.",
-    "freepikAckText": "Photos from - ",
-    "freepikAckLinkText": "Freepik"
+    "rightsText": "\"Keeps\" © 2025-2026. All rights reserved.",
+    "resourceAttributionsText": "Resource attributions - ",
+    "resourceAttributionsLinkText": "HERE"
   },
   "LandingPage": {
     "SpringSale": {
@@ -27,7 +27,7 @@
     "StoreInformation": {
       "Introduction": {
         "title": "Who we are:",
-        "description": "Established in 1995, &quot;Keeps&quot; is an environmentaly conscious apperel brand, aiming to provide its customers with high-quality choices while keeping the planet in mind. We provide a wide range of products and are constantly trying to improve our offerings so you can have the best experience possible."
+        "description": "Established in 1995, \"Keeps\" is an environmentaly conscious apperel brand, aiming to provide its customers with high-quality choices while keeping the planet in mind. We provide a wide range of products and are constantly trying to improve our offerings so you can have the best experience possible."
       },
       "CustomerSatisfaction": {
         "title": "Hundreds of satisfied customers:",
@@ -48,26 +48,33 @@
         "sweaterOption": "Sweaters & Hoodies"
       },
       "PriceRange": {
-        "title": "Price range:"
+        "title": "Price range: {minPrice}€ - {maxPrice}€"
       },
       "OnlyDiscounted": {
         "title": "Only discounted"
+      },
+      "SearchFragment": {
+        "title": "Search products",
+        "filterLabel": "Search by product name:"
       },
       "searchButtonText": "Search"
     }
   },
   "ProductPage": {
     "addToCartButtonText": "Add to cart",
-    "descriptionTitle": "Description:"
+    "descriptionTitle": "Description:",
+    "saleEndingSoonText": "Sale ending soon!"
   },
   "AddToCartModal": {
-    "title": "{`Added ${product.name.toLowerCase()} to cart!`}",
+    "title": "Added {productName} to cart!",
     "cancelButtonText": "Continue shopping",
     "confirmButtonText": "Go to cart"
   },
   "CartPage": {
     "title": "Items in your cart:",
     "emptyCartButtonText": "Empty cart",
+    "cartIsEmptyText": "Your cart is empty.",
+    "goToProductsButtonText": "Go to products",
     "Summary": {
       "title": "Cart summary:",
       "itemTotal": "Item total:",
@@ -80,5 +87,70 @@
     "title": "Do you really want to empty your cart?",
     "cancelButtonText": "Cancel",
     "confirmButtonText": "Empty my cart"
+  },
+  "CheckoutPage": {
+    "title": "Delivery and payment information:",
+    "backToCartButtonText": "Back to cart",
+    "DeliveryInformation": {
+      "title": "Choose delivery method:",
+      "StoreDeliveryOption": {
+        "title": "Pick up at store",
+        "storeLocationLabel": "Select your store location:",
+        "differentPersonPickingUpText": "Different person picking up?"
+      },
+      "PostDeliveryOption": {
+        "title": "Pick up at Lithuanian Post office",
+        "postOfficeLocationLabel": "Select your post office location:",
+        "fullNameLabel": "Your full name",
+        "phoneNumberLabel": "Your phone number"
+      },
+      "ParcelLockerDeliveryOption": {
+        "title": "Pick up at parcel locker",
+        "parcelLockerLocationLabel": "Select your parcel locker location:",
+        "fullNameLabel": "Your full name",
+        "phoneNumberLabel": "Your phone number"
+      },
+      "deliveryOptionMandatoryErrorText": "Delivery option is required!"
+    },
+    "PaymentInformation": {
+      "title": "Choose payment method:",
+      "OnPickup": {
+        "title": "Cash or card on pickup",
+        "description": "If you choose this payment method, you will pay for goods by cash or card when you pick up the item."
+      },
+      "OnlineBanking": {
+        "title": "Through online banking",
+        "selectBankLabel": "Select your bank:"
+      },
+      "CreditCart": {
+        "title": "Using a credit card",
+        "defaultCardholderName": "John Doe",
+        "enterCardDetailsLabel": "Enter your card details:",
+        "cardholderNameText": "Cardholder full name",
+        "cardNumberText": "Card number",
+        "expiryDateText": "Card expiry date",
+        "securityCodeText": "Security code"
+      },
+      "paymentOptionMandatoryErrorText": "Payment option is required!"
+    },
+    "continueToPaymentButtonText": "Continue to payment"
+  },
+  "MarketingPopup": {
+    "title": "Get 10% OFF your first purchase!",
+    "description": "Join our mailing list to get 10% off your first purchase with us.",
+    "emailPlaceholder": "Enter your email",
+    "cancelButtonText": "No thanks, I like paying full price",
+    "confirmButtonText": "Please sign me up!"
+  },
+  "OrderCompletePage": {
+    "title": "Thank you for your order!",
+    "orderNumberText": "Your order number is: {orderNumber}",
+    "description": "We will send you an email reminder when the parcel is in transit!",
+    "goToProductsButtonText": "Go back to products"
+  },
+  "AttributionsPage": {
+    "title": "Resource attributions:",
+    "description": "Below are attributions for the photo resources used in this project:",
+    "freepikText": "Photos from - Freepik"
   }
 }

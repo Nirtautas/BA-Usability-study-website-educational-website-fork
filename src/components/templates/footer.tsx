@@ -1,5 +1,6 @@
 "use client";
 
+import { getPageUrl } from "@/data/constants";
 import { Facebook, Instagram, LinkedIn, YouTube } from "@mui/icons-material";
 import { Grid2, Link, Paper, Stack, Typography } from "@mui/material";
 import { useTranslations } from "next-intl";
@@ -12,9 +13,9 @@ export function Footer() {
       <Stack direction="row" justifyContent="space-between" alignItems="center">
         <Stack direction="column" justifyContent="center">
           <Typography variant="body2">
-            {t("Footer.freepikAckText")}
-            <Link href="https://www.freepik.com/" underline="hover" color="inherit" rel="noreferrer" target="_blank">
-              {t("Footer.freepikAckLinkText")}
+            {t("Footer.resourceAttributionsText")}
+            <Link href={getPageUrl.attributions()} underline="hover" color="inherit">
+              {t("Footer.resourceAttributionsLinkText")}
             </Link>
           </Typography>
         </Stack>

@@ -5,6 +5,7 @@ import { getPageUrl, placeholderImageLink } from "@/data/constants";
 import { products } from "@/data/entityData";
 import { AccessTime, Add, LocalShippingOutlined, Remove } from "@mui/icons-material";
 import { Box, Button, CardMedia, Container, Divider, Grid2, IconButton, Paper, Rating, Stack, Typography } from "@mui/material";
+import { useTranslations } from "next-intl";
 import { notFound, useRouter } from "next/navigation";
 import { useState } from "react";
 import TwoActionDialog from "../../shared/twoActionDialog";
@@ -17,6 +18,7 @@ type Props = {
 const ProductPage = ({ productId }: Props) => {
   const router = useRouter();
   const cartContext = useCart();
+  const t = useTranslations();
   const [openDialog, setOpenDialog] = useState(false);
   const [selectedProductQuantity, setSelectedProductQuantity] = useState(1);
 
@@ -35,17 +37,13 @@ const ProductPage = ({ productId }: Props) => {
 
   return (
     <Container>
-      <Typography variant="h4" gutterBottom>
-        Product Page
-      </Typography>
-
       <Grid2 container spacing={2} justifyContent="center">
         <Paper elevation={3} sx={{ padding: 2 }}>
           <Stack gap={1}>
             <ProductGallery product={product} />
             <Divider />
             <Stack>
-              <Typography variant="h5">Description:</Typography>
+              <Typography variant="h5">{t("ProductPage.descriptionTitle")}</Typography>
               <Typography>{product.description}</Typography>
             </Stack>
           </Stack>
@@ -59,7 +57,7 @@ const ProductPage = ({ productId }: Props) => {
                 <Stack direction="column" display="flex" borderRadius={3} padding={1} sx={{ backgroundColor: "error.light" }}>
                   <Grid2 display="flex" gap={1}>
                     <AccessTime />
-                    <Typography>Sale ending soon!</Typography>
+                    <Typography>{t("ProductPage.saleEndingSoonText")}</Typography>
                   </Grid2>
                   <Grid2 display="flex" gap={1}>
                     <Typography variant="h6" color="success.main">
@@ -99,7 +97,7 @@ const ProductPage = ({ productId }: Props) => {
                   <Add />
                 </IconButton>
                 <Button variant="contained" onClick={handleAddToCart}>
-                  Add to Cart
+                  {t("ProductPage.addToCartButtonText")}
                 </Button>
               </Grid2>
             </Stack>
@@ -111,9 +109,9 @@ const ProductPage = ({ productId }: Props) => {
         open={openDialog}
         onClose={handleClose}
         onConfirm={handleGoToCart}
-        title={`Added ${product.name.toLowerCase()} to cart!`}
-        cancelText="Continue shopping"
-        confirmText="Go to cart"
+        title={t("AddToCartModal.title", { productName: product.name.toLowerCase() })}
+        cancelText={t("AddToCartModal.cancelButtonText")}
+        confirmText={t("AddToCartModal.confirmButtonText")}
       >
         <Paper elevation={3} sx={{ padding: 1 }}>
           <Stack direction="row" alignItems="center">

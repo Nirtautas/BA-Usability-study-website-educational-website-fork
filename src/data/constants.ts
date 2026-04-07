@@ -6,6 +6,7 @@ export const getPageUrl = {
     checkout: () => `/checkout`,
     login: () => '/login',
     orderComplete: () => `/order-complete`,
+    attributions: () => `/attributions`
 }
 
 export const placeholderImageLink = "/images/productPictures/placeholder.jpg";

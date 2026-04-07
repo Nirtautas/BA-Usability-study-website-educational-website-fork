@@ -3,6 +3,7 @@
 import { parcelLockerLocations } from "@/data/entityData";
 import { DeliveryInfo } from "@/data/types";
 import { Box, MenuItem, Select, SelectChangeEvent, Stack, TextField, Typography } from "@mui/material";
+import { useTranslations } from "next-intl";
 
 type Props = {
   deliveryInfo: DeliveryInfo;
@@ -11,11 +12,13 @@ type Props = {
 };
 
 const LockerDeliverySelection = ({ deliveryInfo, setDeliveryInfo, handleDeliveryLocationChange }: Props) => {
+  const t = useTranslations("CheckoutPage.DeliveryInformation");
+
   return (
     <Stack direction="column" gap={1} paddingLeft={1}>
       <Box>
-        <Typography fontSize={12}>Select your parcel locker location:</Typography>
-        <Select labelId="parcelLockerLocationLabel" id="parcelLockerLocationSelect" value={deliveryInfo.locationId?.toString()} label="Age" onChange={handleDeliveryLocationChange}>
+        <Typography fontSize={12}>{t("ParcelLockerDeliveryOption.parcelLockerLocationLabel")}</Typography>
+        <Select labelId="parcelLockerLocationLabel" id="parcelLockerLocationSelect" value={deliveryInfo.locationId?.toString()} onChange={handleDeliveryLocationChange}>
           {parcelLockerLocations.map((location) => (
             <MenuItem key={location.id} value={location.id.toString()}>
               {location.locationName}
@@ -25,7 +28,7 @@ const LockerDeliverySelection = ({ deliveryInfo, setDeliveryInfo, handleDelivery
       </Box>
       <TextField
         id="outlined-basic"
-        label="Your full name"
+        label={t("ParcelLockerDeliveryOption.fullNameLabel")}
         size="small"
         variant="outlined"
         required
@@ -34,7 +37,7 @@ const LockerDeliverySelection = ({ deliveryInfo, setDeliveryInfo, handleDelivery
       />
       <TextField
         id="outlined-basic"
-        label="Your phone number"
+        label={t("ParcelLockerDeliveryOption.phoneNumberLabel")}
         size="small"
         variant="outlined"
         required

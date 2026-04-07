@@ -2,8 +2,8 @@
 
 import SubheadingBold from "@/components/shared/subheadingBold";
 import { getPageUrl } from "@/data/constants";
-import { Product, ProductType } from "@/data/types";
-import { Button, Checkbox, Divider, FormControlLabel, Link, Paper, Slider, Stack, Switch, Typography } from "@mui/material";
+import { Product, ProductType, productTypeTranslationKeyMap } from "@/data/types";
+import { Button, Checkbox, Divider, FormControlLabel, Link, Paper, Slider, Stack, Switch, TextField, Typography } from "@mui/material";
 import { useTranslations } from "next-intl";
 import { useState } from "react";
 
@@ -14,11 +14,12 @@ type Props = {
     oldMaxPrice: number;
     oldOnlyDiscounted: boolean;
     oldProductTypes: string[];
+    oldSearchFragment: string;
   };
 };
 
 const ProductsFilter = ({ products, appliedFilters }: Props) => {
-  const t = useTranslations("Products.Filter");
+  const t = useTranslations("ProductsPage.Filter");
   const prices = products.map((p) => p.discountedPrice ?? p.price);
   const minPrice = Math.min(...prices);
   const maxPrice = Math.max(...prices);
@@ -27,6 +28,7 @@ const ProductsFilter = ({ products, appliedFilters }: Props) => {
   const [selectedMaxPrice, setSelectedMaxPrice] = useState<number>(Number.isNaN(appliedFilters.oldMaxPrice) ? maxPrice : appliedFilters.oldMaxPrice);
   const [onlyDiscounted, setOnlyDiscounted] = useState(appliedFilters.oldOnlyDiscounted ?? false);
   const [selectedTypes, setSelectedTypes] = useState<ProductType[]>(appliedFilters.oldProductTypes?.map((t) => t as ProductType) ?? []);
+  const [searchFragment, setSearchFragment] = useState(appliedFilters.oldSearchFragment ?? "");
 
   const getSearchString = () => {
     const params = new URLSearchParams();
@@ -37,6 +39,10 @@ const ProductsFilter = ({ products, appliedFilters }: Props) => {
     selectedTypes.forEach((type) => {
       params.append("productType", type.toString());
     });
+
+    if (searchFragment.trim()) {
+      params.append("searchFragment", searchFragment.trim());
+    }
 
     return getPageUrl.products().concat(`?${params.toString()}`);
   };
@@ -53,8 +59,8 @@ const ProductsFilter = ({ products, appliedFilters }: Props) => {
       <SubheadingBold headingText={t("title")} />
       <Divider />
 
-      <Stack direction="column">
-        <Typography>Product type:</Typography>
+      <Stack direction="column" gap={1}>
+        <Typography>{t("ProductType.title")}</Typography>
         <Stack direction="column">
           {Object.values(ProductType).map(
             (type) =>
@@ -73,25 +79,27 @@ const ProductsFilter = ({ products, appliedFilters }: Props) => {
                       }}
                     />
                   }
-                  label={type}
+                  label={t(productTypeTranslationKeyMap[type])}
                 />
               ),
           )}
         </Stack>
 
         <Divider />
-        <Typography>
-          Price range: {minPrice}€ - {maxPrice}€
-        </Typography>
+        <Typography>{t("PriceRange.title", { minPrice, maxPrice })}</Typography>
         <Slider value={[selectedMinPrice, selectedMaxPrice]} onChange={handlePriceChange} valueLabelDisplay="auto" min={minPrice} max={maxPrice} />
 
         <Divider />
-        <FormControlLabel control={<Switch checked={onlyDiscounted} onChange={(e) => setOnlyDiscounted(e.target.checked)} />} label="Only discounted" />
+        <FormControlLabel control={<Switch checked={onlyDiscounted} onChange={(e) => setOnlyDiscounted(e.target.checked)} />} label={t("OnlyDiscounted.title")} />
+
+        <Divider />
+        <Typography>{t("SearchFragment.filterLabel")}</Typography>
+        <TextField label={t("SearchFragment.title")} variant="outlined" size="small" fullWidth value={searchFragment} onChange={(e) => setSearchFragment(e.target.value)} />
 
         <Divider />
         <Link href={getSearchString()} paddingTop={1}>
           <Button fullWidth variant="contained">
-            Search
+            {t("searchButtonText")}
           </Button>
         </Link>
       </Stack>

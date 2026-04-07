@@ -1,15 +1,156 @@
 {
   "NavBar": {
     "title": "Keeps",
+    "infoText": "Pasiekite mus telefonu +370 651 84956 arba el. paštu info@store.com",
     "Products": {
-      "title:": "Produktai"
+      "title": "Prekės",
+      "allProducts": "Visos prekės"
     },
     "cart": "Krepšelis",
     "login": "Prisijungti"
   },
-  "Products": {
-    "Filter": {
-      "title": "Filtrai"
+  "Footer": {
+    "rightsText": "\"Keeps\" © 2025-2026. Visos teisės saugomos.",
+    "resourceAttributionsText": "Naudotos medžiagos atribucija - ",
+    "resourceAttributionsLinkText": "ČIA"
+  },
+  "LandingPage": {
+    "SpringSale": {
+      "title": "Pavasarinis išpardavimas eina į PABAIGĄ!",
+      "description": "Pavasarinis išpašdavimas greitai pasibaigs! Gaukite iki 40% nuolaidą rinktinėms prekėms ir SUTAUPYKITE!",
+      "buttonText": "Paspauskite čia, jog peržiūrėtumėte pasiūlymus!"
+    },
+    "MainBanner": {
+      "title": "Sveiki atvyke į",
+      "buttonText": "Peržiūrėkite mūsų prekes"
+    },
+    "StoreInformation": {
+      "Introduction": {
+        "title": "Kas mes esame:",
+        "description": "Įkurta 1995 metais, \"Keeps\" yra sąmoningai į aplinką žiūrintis aprangos prekių ženklas, siekiantis suteikti savo vartotojams aukštos kokybės pasirinkimus su planeta priešakyje. Mes siūlome platų prekių pasirinkimą bei stengiamės nuolat pagerinti savo pasiūlą, jog Jūs turėtumėte įmanomai geriausią apsipirkimo patirtį."
+      },
+      "CustomerSatisfaction": {
+        "title": "Šimtai patenkintų klientų:",
+        "description": "Turime daugiau nei 25 metų patirties šioje srityje ir didžiuojamės aukštu klientų pasitenkinimo lygiu!"
+      }
     }
+  },
+  "ProductsPage": {
+    "title": "Mūsų prekės:",
+    "saleTagText": "Išpardavimas",
+    "Filter": {
+      "title": "Filtrai",
+      "ProductType": {
+        "title": "Prekės tipas:",
+        "shoesOption": "Batai",
+        "pantsOption": "Kelnės",
+        "shirtOption": "Marškinėliai",
+        "sweaterOption": "Megztiniai ir džemperiai"
+      },
+      "PriceRange": {
+        "title": "Kainos intervalas: {minPrice}€ - {maxPrice}€"
+      },
+      "OnlyDiscounted": {
+        "title": "Tik nukainuotos prekės"
+      },
+      "SearchFragment": {
+        "title": "Ieškoti prekių",
+        "filterLabel": "Ieškoti pagal prekės pavadinimą:"
+      },
+      "searchButtonText": "Ieškoti"
+    }
+  },
+  "ProductPage": {
+    "addToCartButtonText": "Pridėti į krepšelį",
+    "descriptionTitle": "Aprašymas:",
+    "saleEndingSoonText": "Išpardavimas greitai baigiasi!"
+  },
+  "AddToCartModal": {
+    "title": "{productName} pridėtas į krepšelį!",
+    "cancelButtonText": "Tęsti apsipirkimą",
+    "confirmButtonText": "Eiti į krepšelį"
+  },
+  "CartPage": {
+    "title": "Prekės jūsų krepšelyje:",
+    "emptyCartButtonText": "Išvalyti krepšelį",
+    "cartIsEmptyText": "Jūsų krepšelis yra tuščias.",
+    "goToProductsButtonText": "Eiti į prekes",
+    "Summary": {
+      "title": "Krepšelio informacija:",
+      "itemTotal": "Prekių suma:",
+      "serviceFee": "Aptarnavimo mokestis:",
+      "total": "Iš viso:",
+      "continueToCheckoutButtonText": "Eiti į pristatymo informaciją"
+    }
+  },
+  "EmptyCartModal": {
+    "title": "Ar tikrai norite išvalyti savo krepšelį?",
+    "cancelButtonText": "Atšaukti",
+    "confirmButtonText": "Išvalyti krepšelį"
+  },
+  "CheckoutPage": {
+    "title": "Pristatymo ir apmokėjimo informacija:",
+    "backToCartButtonText": "Grįžti į krepšelį",
+    "DeliveryInformation": {
+      "title": "Pasirinkite pristatymo būdą:",
+      "StoreDeliveryOption": {
+        "title": "Atsiimti parduotuvėje",
+        "storeLocationLabel": "Pasirinkite parduotuvę:",
+        "differentPersonPickingUpText": "Prekę atsiims kitas asmuo?"
+      },
+      "PostDeliveryOption": {
+        "title": "Atsiimti Lietuvos Pašto skyriuje",
+        "postOfficeLocationLabel": "Pasirinkite pašto skyrių:",
+        "fullNameLabel": "Jūsų vardas ir pavardė",
+        "phoneNumberLabel": "Jūsų telefono numeris"
+      },
+      "ParcelLockerDeliveryOption": {
+        "title": "Atsiimti iš paštomato",
+        "parcelLockerLocationLabel": "Pasirinkite paštomato adresą:",
+        "fullNameLabel": "Jūsų vardas ir pavardė",
+        "phoneNumberLabel": "Jūsų telefono numeris"
+      },
+      "deliveryOptionMandatoryErrorText": "Privaloma pasirinkti pristatymo būdą!"
+    },
+    "PaymentInformation": {
+      "title": "Pasirinkite apmokėjimo būdą:",
+      "OnPickup": {
+        "title": "Grynais arba kortele atsiėmimo metu",
+        "description": "Jei pasirinksite šį apmokėjimo būdą, už prekes susimokėsite grynais arba kortele atsiėmimo metu."
+      },
+      "OnlineBanking": {
+        "title": "Naudojantis internetine bankininkyste",
+        "selectBankLabel": "Pasirinkite savo banką:"
+      },
+      "CreditCart": {
+        "title": "Naudojantis bankine kortele",
+        "defaultCardholderName": "Jonas Jonaitis",
+        "enterCardDetailsLabel": "Įveskite kortelės duomenis:",
+        "cardholderNameText": "Kortelės savininko vardas ir pavardė",
+        "cardNumberText": "Kortelės numeris",
+        "expiryDateText": "Kortelės galiojimo data",
+        "securityCodeText": "Saugos kodas"
+      },
+      "paymentOptionMandatoryErrorText": "Privaloma pasirinkti apmokėjimo būdą!"
+    },
+    "continueToPaymentButtonText": "Eiti į apmokėjimą"
+  },
+  "MarketingPopup": {
+    "title": "Gaukite 10% NUOLAIDĄ nuo savo pirmo pirkinio!",
+    "description": "Prisijunkite prie mūsų naujienlaiškio ir gaukite 10% nuolaidą nuo savo pirmo pirkinio!",
+    "emailPlaceholder": "Įveskite savo el. paštą",
+    "cancelButtonText": "Dėkui, bet man patinka mokėti pilną kainą",
+    "confirmButtonText": "Užregistruokite mane!"
+  },
+  "OrderCompletePage": {
+    "title": "Ačiū už Jūsų užsakymą!",
+    "orderNumberText": "Jūsų užsakymo numeris yra: {orderNumber}",
+    "description": "Išsiųsime Jums el. laiško priminimą, kuomet siuntinys bus išsiustas!",
+    "goToProductsButtonText": "Grįžti į prekes"
+  },
+  "AttributionsPage": {
+    "title": "Naudotų šaltinių atribucijos:",
+    "description": "Čia pateikiamos nuorodos į nuotraukų resursus, kurie buvo naudoti šiame projekte:",
+    "freepikText": "Nuotraukos iš - Freepik"
   }
 }

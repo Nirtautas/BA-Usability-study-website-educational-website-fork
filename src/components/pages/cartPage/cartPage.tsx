@@ -6,6 +6,7 @@ import { useCart } from "@/data/cartContext";
 import { getPageUrl } from "@/data/constants";
 import { useRouter } from "@/i18n/navigation";
 import { Box, Button, Container, Divider, Grid2, Link, Paper, Stack, Typography } from "@mui/material";
+import { useTranslations } from "next-intl";
 import { useState } from "react";
 import CartSummary from "../../shared/cartSummary";
 import CartItemCard from "./cartItemCard";
@@ -13,6 +14,7 @@ import CartItemCard from "./cartItemCard";
 const CartPage = () => {
   const cartContext = useCart();
   const router = useRouter();
+  const t = useTranslations();
   const [openDialog, setOpenDialog] = useState(false);
 
   const handleRemoveClick = () => setOpenDialog(true);
@@ -33,20 +35,20 @@ const CartPage = () => {
               <Box>
                 <Stack direction="row" display="flex" justifyContent="space-between">
                   <Typography variant="h5" gutterBottom>
-                    Items in your cart:
+                    {t("CartPage.title")}
                   </Typography>
                   <Button color="error" variant="contained" onClick={handleRemoveClick}>
-                    Empty cart
+                    {t("CartPage.emptyCartButtonText")}
                   </Button>
                 </Stack>
               </Box>
             ) : (
               <Stack direction="row" display="flex" justifyContent="space-between">
                 <Typography variant="h5" gutterBottom>
-                  Your cart is empty.
+                  {t("CartPage.cartIsEmptyText")}
                 </Typography>
                 <Link href={getPageUrl.products()}>
-                  <Button variant="contained">Go to products</Button>
+                  <Button variant="contained">{t("CartPage.goToProductsButtonText")}</Button>
                 </Link>
               </Stack>
             )}
@@ -61,23 +63,31 @@ const CartPage = () => {
 
         <Grid2 container>
           <Paper elevation={3} sx={{ padding: 2 }}>
-            <SubheadingBold headingText="Cart summary" />
+            <SubheadingBold headingText={t("CartPage.Summary.title")} />
             <CartSummary fullCartItems={items ?? []} />
 
             {cartContext?.calculateTotal() === 0 ? (
               <Button variant="contained" disabled onClick={() => router.push(getPageUrl.checkout())}>
-                Continue to checkout
+                {t("CartPage.Summary.continueToCheckoutButtonText")}
               </Button>
             ) : (
               <Button variant="contained" onClick={() => router.push(getPageUrl.checkout())}>
-                Continue to checkout
+                {t("CartPage.Summary.continueToCheckoutButtonText")}
               </Button>
             )}
           </Paper>
         </Grid2>
       </Grid2>
 
-      <TwoActionDialog open={openDialog} onClose={handleCancel} onConfirm={handleConfirmRemove} title="Do you really want to empty your cart?" confirmText="Empty my cart" isDestructiveAction={true} />
+      <TwoActionDialog
+        open={openDialog}
+        onClose={handleCancel}
+        onConfirm={handleConfirmRemove}
+        title={t("EmptyCartModal.title")}
+        cancelText={t("EmptyCartModal.cancelButtonText")}
+        confirmText={t("EmptyCartModal.confirmButtonText")}
+        isDestructiveAction={true}
+      />
     </Container>
   );
 };
