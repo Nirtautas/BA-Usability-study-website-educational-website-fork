@@ -63,7 +63,9 @@
   "ProductPage": {
     "addToCartButtonText": "Pridėti į krepšelį",
     "descriptionTitle": "Aprašymas:",
-    "saleEndingSoonText": "Išpardavimas greitai baigiasi!"
+    "saleEndingSoonText": "Išpardavimas greitai baigiasi!",
+    "backToProductsButtonText": "Grįžti į prekes",
+    "inStockText": "Liko {itemCount} vienetų sandelyje"
   },
   "AddToCartModal": {
     "title": "{productName} pridėtas į krepšelį!",
@@ -158,5 +160,67 @@
     "description": "Čia pateikiamos nuorodos į nuotraukų resursus, kurie buvo naudoti šiame projekte:",
     "freepikText": "Nuotraukos iš - Freepik",
     "aiText": "DI sugeneruotos nuotraukos"
+  },
+  "Products": {
+    "P2": {
+      "name": "Klasikiniai rudi Oksfordo batai",
+      "description": "Nesenstantys vyriški bateliai, pasiūti iš poliruotos rudos odos su elegantišku dizainu nuo viršugalvio. Rafinuotas siluetas, švarios siūlės ir subtilus blizgesys puikiai tinka oficialioms progoms, dalykiniam aprangai ir elegantiškam vakariniam įvaizdžiui. Sukurti taip, kad lengvai derėtų su pasiūtais kostiumais ir elegantiškomis kelnėmis."
+     },
+     "P3": {
+      "name": "Juodi dvigubo vienuolio dirželio batai",
+      "description": "Rafinuoti juodi odiniai bateliai su moderniu dvigubu dirželiu ir sidabrinėmis sagtimis. Lygus paviršius ir aštri, struktūriška forma sukuria prabangų ir modernų įvaizdį, idealiai tinkantį vestuvėms, biuro aprangai ir prabangiam oficialiam stiliui."
+     },
+     "P4": {
+      "name": "Juoda apvyniojama atlasinė palaidinė",
+      "description": "Elegantiška ir minimalistinė palaidinė, pasiūta iš lygaus atlaso su švelniu blizgesiu. Prigludusi, apvyniojama V formos iškirpte ir švelniai struktūruotu juosmeniu sukuria rafinuotą siluetą. Ilgos, subtiliai apvalios rankovės suteikia elegancijos, todėl puikiai tinka tiek biurui, tiek vakariniam stiliui."
+     },
+     "P5": {
+      "name": "Auksiniai dirželiniai sandalai",
+      "description": "Elegantiškos ir žvilgančios basutės su subtiliais auksiniais dirželiais ir patogiu blokiniu kulnu. Elegantiškas siluetas ir subtilus spindesys puikiai tinka vasaros renginiams, vakarėliams ar vakaro progoms, tuo pačiu užtikrindamos stilių ir stabilumą."
+     },
+     "P6": {
+      "name": "Juodi smailios nosies baleto bateliai",
+      "description": "Rafinuotas kasdienis drabužis, pasiūtas iš minkštos juodos medžiagos su elegantiška smailia nosele ir minimaliu kaspino detale. Švarus, santūrus dizainas suteikia nerūpestingą eleganciją ir patogumą, idealiai tinka tiek laisvalaikiui, tiek stilingam biuro įvaizdžiui."
+     },
+     "P7": {
+      "name": "Plačios elegantiškos kelnės",
+      "description": "Rafinuotos, plačios kelnės aukštu liemeniu, laisvo silueto ir švarių, priglundančių linijų. Lygus, struktūrizuotas audinys gražiai krenta, sukurdamas pailgą ir rafinuotą įvaizdį. Šios kelnės puikiai tinka oficialioms progoms arba kasdieniam dėvėjimui, jose derinamas patogumas ir nerūpestinga elegancija."
+     },
+     "P8": {
+      "name": "Juodos, priglundančios, elegantiškos kelnės",
+      "description": "Elegantiškos juodos, priglundančios kelnės, sukurtos taip, kad atitiktų siluetą, pasižymi švariu, prigludusiu dizainu. Pasiūtos iš lygaus, aukštos kokybės audinio, jos atrodo elegantiškai ir moderniai. Puikiai tinkančios biuro aprangai ar oficialioms progoms, šios kelnės derina rafinuotumą ir dailų, aptakų kirpimą."
+     },
+     "P9": {
+      "name": "Pilkos, pasiūtos suknelės kelnės",
+      "description": "Rafinuotos pilkos kelnės, pasižyminčios tiesiomis, tvarkingo silueto ir tiksliu pasiuvimu. Pasiūtos iš lygaus, aukštos kokybės audinio, jos atrodo elegantiškai ir universaliai. Šios kelnės idealiai tinka tiek verslo, tiek oficialioms progoms ir puikiai dera su marškiniais bei švarkais, sukuriant ryškų ir rafinuotą stilių."
+     },
+     "P10": {
+      "name": "Tamsiai mėlyna vakarinė suknelė atvirais pečiais",
+      "description": "Elegantiška iki grindų siekianti suknelė su dailia pečius atidengiančia iškirpte ir švelniai drapiruota liemene. Laisvas siluetas ir subtilus priekinis skeltukas suteikia judesio ir rafinuotumo, o lygus, prabangus audinys – rafinuotą užbaigą. Puikiai tinka oficialiems renginiams, vakarėliams ar ypatingoms šventėms."
+     },
+     "P11": {
+      "name": "Raudona kokteilinė suknelė atvirais pečiais",
+      "description": "Ryški raudona kokteilinė suknelė su elegantiška pečius atidengiančia iškirpte ir dailiomis rauktukų detalėmis. Prigludusi figūra ir asimetriškas apgaubiamasis sijonas paryškina figūrą, sukurdami drąsų, tačiau rafinuotą įvaizdį – puikiai tinka vakarėliams, vakarams ir ypatingoms progoms."
+     },
+     "P12": {
+      "name": "Satino midi suknelė su šalavijų raštu",
+      "description": "Elegantiška atlasinė midi ilgio suknelė su minkšta gobtuvo formos iškirpte ir subtiliomis „spagečių“ petnešėlėmis. Rauktos šoninės detalės su reguliuojamais raišteliais paryškina siluetą, o lygus, laisvai krintantis audinys suteikia prabangos. Puikiai tinka vakariniams renginiams ar rafinuotoms progoms."
+     },
+     "P13": {
+      "name": "Juoda raukta mini suknelė",
+      "description": "Drąsi ir rafinuota mini suknelė su dailiu, raukiniu priglundančiu siluetu ir miela iškirpte. Permatomos ilgos rankovės suteikia elegancijos, o suvarstymas nugaroje sukuria ryškų akcentą – puikiai tinka vakarėliams ir ypatingoms progoms."
+     },
+     "P14": {
+      "name": "Šampano spalvos atlasinė apvyniojama palaidinė",
+      "description": "Elegantiška palaidinė švelnaus šampano spalvos atspalvio, su dailia, apvyniojama V formos iškirpte ir surištu juosmens raišteliu. Lygus atlasinis audinys suteikia subtilaus blizgesio, o šiek tiek plačios rankovės paryškina rafinuotą siluetą – puikiai tinka tiek profesionaliai, tiek vakarinei aprangai."
+     },
+     "P15": {
+      "name": "Juodi aptempti marškiniai",
+      "description": "Modernūs juodi marškiniai, pasiūti elegantiško, priglundančio silueto ir subtilaus atlasinio apdailos. Dėl aštrios apykaklės, tvarkingo sagų užsegimo ir preciziško pasiuvimo jie atrodo stilingai ir stilingai – puikiai tinka oficialiems renginiams, vakarinei aprangai ar prabangiam stiliui."
+     },
+     "P16": {
+      "name": "Šviesiai mėlyni medvilniniai marškiniai",
+      "description": "Klasikiniai šviesiai mėlyni marškiniai, pasiūti iš lygios, kvėpuojančios medvilnės su rafinuotu matiniu paviršiumi. Prigludus, su tiesia apykakle ir tvarkingu sagų priekiu, jie pasižymi nesenstančia elegancija ir universalumu – puikiai tinka tiek dalykiniam aprangai, tiek elegantiškoms oficialioms progoms."
+     }
   }
 }

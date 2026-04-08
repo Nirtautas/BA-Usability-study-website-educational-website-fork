@@ -10,7 +10,8 @@ export const products: Product[] = [
     price: 3.99,
     rating: 0,
     ratingCount: 124,
-    deliveryTime: "1-2 d."
+    deliveryTime: "1-2 d.",
+    stock: 9999
   },
   {
     id: 2,
@@ -21,7 +22,8 @@ export const products: Product[] = [
     rating: 4.8,
     ratingCount: 125,
     deliveryTime: "Products.P2.deliveryTime",
-    picturePaths: ["/images/products/shoes/men_shoe_1.png"]
+    picturePaths: ["/images/products/shoes/men_shoe_1.png"],
+    stock: 12
   },
   {
     id: 3,
@@ -33,6 +35,7 @@ export const products: Product[] = [
     ratingCount: 15,
     deliveryTime: "Products.P3.deliveryTime",
     picturePaths: ["/images/products/shoes/men_shoe_2.png"],
+    stock: 3
   },
   {
     id: 4,
@@ -45,6 +48,7 @@ export const products: Product[] = [
     ratingCount: 18,
     deliveryTime: "Products.P4.deliveryTime",
     picturePaths: ["/images/products/blouses/women_blouse_1_1.png", "/images/products/blouses/women_blouse_1_2.png"],
+    stock: 7
   },
   {
     id: 5,
@@ -56,7 +60,8 @@ export const products: Product[] = [
     rating: 4.2,
     ratingCount: 73,
     deliveryTime: "Products.P5.deliveryTime",
-    picturePaths: ["/images/products/shoes/women_shoe_1.png"]
+    picturePaths: ["/images/products/shoes/women_shoe_1.png"],
+    stock: 15
   },
   {
     id: 6,
@@ -68,6 +73,7 @@ export const products: Product[] = [
     ratingCount: 112,
     deliveryTime: "Products.P6.deliveryTime",
     picturePaths: ["/images/products/shoes/women_shoe_2.png"],
+    stock: 2
   },
   {
     id: 7,
@@ -79,6 +85,7 @@ export const products: Product[] = [
     ratingCount: 56,
     deliveryTime: "Products.P7.deliveryTime",
     picturePaths: ["/images/products/pants/women_pants_1_1.png", "/images/products/pants/women_pants_1_2.png"],
+    stock: 1
   },
   {
     id: 8,
@@ -91,6 +98,7 @@ export const products: Product[] = [
     ratingCount: 48,
     deliveryTime: "Products.P8.deliveryTime",
     picturePaths: ["/images/products/pants/women_pants_2_1.png", "/images/products/pants/women_pants_2_2.png"],
+    stock: 12
   },
   {
     id: 9,
@@ -102,6 +110,7 @@ export const products: Product[] = [
     ratingCount: 35,
     deliveryTime: "Products.P9.deliveryTime",
     picturePaths: ["/images/products/pants/men_pants_1_1.png", "/images/products/pants/men_pants_1_2.png"],
+    stock: 25
   },
   {
     id: 10,
@@ -113,6 +122,7 @@ export const products: Product[] = [
     ratingCount: 48,
     deliveryTime: "Products.P10.deliveryTime",
     picturePaths: ["/images/products/dresses/women_dress_1_1.png", "/images/products/dresses/women_dress_1_2.png"],
+    stock: 8
   },
   {
     id: 11,
@@ -125,6 +135,7 @@ export const products: Product[] = [
     ratingCount: 189,
     deliveryTime: "Products.P11.deliveryTime",
     picturePaths: ["/images/products/dresses/women_dress_2_1.png", "/images/products/dresses/women_dress_2_2.png"],
+    stock: 6
   },
   {
     id: 12,
@@ -136,6 +147,7 @@ export const products: Product[] = [
     ratingCount: 32,
     deliveryTime: "Products.P12.deliveryTime",
     picturePaths: ["/images/products/dresses/women_dress_3_1.png", "/images/products/dresses/women_dress_3_2.png"],
+    stock: 4
   },
   {
     id: 13,
@@ -147,6 +159,7 @@ export const products: Product[] = [
     ratingCount: 59,
     deliveryTime: "Products.P13.deliveryTime",
     picturePaths: ["/images/products/dresses/women_dress_4_1.png", "/images/products/dresses/women_dress_4_2.png"],
+    stock: 1
   },
   {
     id: 14,
@@ -158,6 +171,7 @@ export const products: Product[] = [
     ratingCount: 64,
     deliveryTime: "Products.P14.deliveryTime",
     picturePaths: ["/images/products/blouses/women_blouse_2_1.png", "/images/products/blouses/women_blouse_2_2.png"],
+    stock: 19
   },
   {
     id: 15,
@@ -170,6 +184,7 @@ export const products: Product[] = [
     ratingCount: 178,
     deliveryTime: "Products.P15.deliveryTime",
     picturePaths: ["/images/products/shirts/men_shirt_1_1.png", "/images/products/shirts/men_shirt_1_2.png"],
+    stock: 23
   },
   {
     id: 16,
@@ -181,6 +196,7 @@ export const products: Product[] = [
     ratingCount: 112,
     deliveryTime: "Products.P16.deliveryTime",
     picturePaths: ["/images/products/shirts/men_shirt_2_1.png", "/images/products/shirts/men_shirt_2_2.png"],
+    stock: 14
   },
 ];
 
@@ -215,44 +231,68 @@ export const banks: Bank[] = [
 export const storeLocations: DeliveryLocation[] = [
   {
     id: 1,
-    locationName: "Store Location 1"
+    locationName: "Vilnius, Titnago g. 15"
   },
   {
     id: 2,
-    locationName: "Store Location 2"
+    locationName: "Kaunas, Šiaurės pr. 20"
   },
   {
     id: 3,
-    locationName: "Store Location 3"
+    locationName: "Klapėda, Plento g, 12"
+  },
+  {
+    id: 4,
+    locationName: "Šiauliai, Gėlių g. 5"
+  },
+  {
+    id: 5,
+    locationName: "Panevėžys, Nevėžio g. 1A"
   }
 ];
 
 export const postOfficeLocations: DeliveryLocation[] = [
   {
     id: 1,
-    locationName: "Post Office Location 1"
+    locationName: "Vilnius, Vokiečių g. 7"
   },
   {
     id: 2,
-    locationName: "Post Office Location 2"
+    locationName: "Kaunas, Karaliaus Mindaugo pr. 49"
   },
   {
     id: 3,
-    locationName: "Post Office Location 3"
+    locationName: "Klaipėda, H. Manto g. 7"
+  },
+  {
+    id: 4,
+    locationName: "Šiauliai, Tilžės g. 225"
+  },
+  {
+    id: 5,
+    locationName: "Panevėžys, Ukmergės g. 18"
   }
 ];
 
 export const parcelLockerLocations: DeliveryLocation[] = [
   {
     id: 1,
-    locationName: "Parcel Locker Location 1"
+    locationName: "Vilnius, Totorių g. 8"
   },
   {
     id: 2,
-    locationName: "Parcel Locker Location 2"
+    locationName: "Kaunas, Kovo 11-osios g. 20"
   },
   {
     id: 3,
-    locationName: "Parcel Locker Location 3"
+    locationName: "Klaipėda, Taikos pr. 61"
+  },
+  {
+    id: 4,
+    locationName: "Šiauliai, Aido g. 8"
+  },
+  {
+    id: 5,
+    locationName: "Panevėžys, Vakarinė g. 61"
   }
 ];

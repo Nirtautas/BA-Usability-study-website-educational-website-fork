@@ -3,7 +3,8 @@
 import { useCart } from "@/data/cartContext";
 import { getPageUrl, placeholderImageLink } from "@/data/constants";
 import { products } from "@/data/entityData";
-import { AccessTime, Add, LocalShippingOutlined, Remove } from "@mui/icons-material";
+import { Link } from "@/i18n/navigation";
+import { AccessTime, Add, ArrowBack, Inventory2Outlined, LocalShippingOutlined, Remove } from "@mui/icons-material";
 import { Box, Button, CardMedia, Container, Divider, Grid2, IconButton, Paper, Rating, Stack, Typography } from "@mui/material";
 import { useTranslations } from "next-intl";
 import { notFound, useRouter } from "next/navigation";
@@ -37,74 +38,86 @@ const ProductPage = ({ productId }: Props) => {
 
   return (
     <Container>
-      <Stack direction="row" gap={1} justifyContent="center" maxWidth={900}>
-        <Paper elevation={3} sx={{ padding: 2, width: "100%", maxWidth: 600 }}>
-          <Stack gap={1}>
-            <ProductGallery product={product} />
-            <Divider />
-            <Stack>
-              <Typography variant="h5" gutterBottom>
-                {t("ProductPage.descriptionTitle")}
-              </Typography>
-              <Typography>{product.description ? t(product.description) : ""}</Typography>
-            </Stack>
-          </Stack>
-        </Paper>
+      <Stack direction="column" gap={1}>
+        <Link href={getPageUrl.products()}>
+          <Button variant="contained">{t("ProductPage.backToProductsButtonText")}</Button>
+        </Link>
 
-        <Grid2 container spacing={2}>
-          <Paper elevation={3} sx={{ padding: 2, width: "100%" }}>
+        <Stack direction="row" gap={1} justifyContent="center" maxWidth={900}>
+          <Paper elevation={3} sx={{ padding: 2, width: "100%", maxWidth: 600 }}>
             <Stack gap={1}>
-              <Typography variant="h3">{t(product.name)}</Typography>
-              {product.discountedPrice !== undefined ? (
-                <Stack direction="column" display="flex" borderRadius={3} padding={1} sx={{ backgroundColor: "error.light" }}>
-                  <Grid2 display="flex" gap={1}>
-                    <AccessTime />
-                    <Typography>{t("ProductPage.saleEndingSoonText")}</Typography>
-                  </Grid2>
-                  <Grid2 display="flex" gap={1}>
-                    <Typography fontSize={24} color="success.main">
-                      {product.discountedPrice.toFixed(2)}€
-                    </Typography>
-                    <Typography fontSize={24} sx={{ textDecoration: "line-through" }}>
-                      {product.price.toFixed(2)}€
-                    </Typography>
-                  </Grid2>
-                </Stack>
-              ) : (
-                <Box>
-                  <Typography fontSize={24}>{product.price.toFixed(2)}€</Typography>
-                </Box>
-              )}
-
-              <Grid2 display="flex" alignItems="center" gap={1}>
-                <Rating readOnly={true} value={product.rating} />
-                <Typography variant="body2" color="text.secondary">
-                  ({product.ratingCount})
-                </Typography>
-              </Grid2>
-
-              <Grid2 display="flex" alignItems="center" gap={1}>
-                <LocalShippingOutlined />
-                <Typography>{product.deliveryTime}</Typography>
-              </Grid2>
-
+              <ProductGallery product={product} />
               <Divider />
-
-              <Grid2 display="flex" alignItems="center">
-                <IconButton onClick={() => setSelectedProductQuantity(Math.max(1, selectedProductQuantity - 1))}>
-                  <Remove />
-                </IconButton>
-                <Typography>{selectedProductQuantity}</Typography>
-                <IconButton onClick={() => setSelectedProductQuantity(selectedProductQuantity + 1)}>
-                  <Add />
-                </IconButton>
-                <Button variant="contained" onClick={handleAddToCart}>
-                  {t("ProductPage.addToCartButtonText")}
-                </Button>
-              </Grid2>
+              <Stack>
+                <Typography variant="h5" gutterBottom>
+                  {t("ProductPage.descriptionTitle")}
+                </Typography>
+                <Typography>{product.description ? t(product.description) : ""}</Typography>
+              </Stack>
             </Stack>
           </Paper>
-        </Grid2>
+
+          <Grid2 container spacing={2}>
+            <Paper elevation={3} sx={{ padding: 2, width: "100%" }}>
+              <Stack gap={1}>
+                <Typography variant="h3">{t(product.name)}</Typography>
+                <Divider />
+
+                {product.discountedPrice !== undefined ? (
+                  <Stack direction="column" display="flex" padding={1}>
+                    <Grid2 display="flex" gap={1} borderRadius={3} sx={{ backgroundColor: "error.light" }} padding={1} marginBottom={1}>
+                      <AccessTime />
+                      <Typography>{t("ProductPage.saleEndingSoonText")}</Typography>
+                    </Grid2>
+                    <Grid2 display="flex" gap={1} alignItems="center">
+                      <Typography fontSize={24} color="success.main">
+                        {product.discountedPrice.toFixed(2)}€
+                      </Typography>
+                      <ArrowBack />
+                      <Typography fontSize={24} color="error.light" sx={{ textDecoration: "line-through" }}>
+                        {product.price.toFixed(2)}€
+                      </Typography>
+                    </Grid2>
+                  </Stack>
+                ) : (
+                  <Box>
+                    <Typography fontSize={24}>{product.price.toFixed(2)}€</Typography>
+                  </Box>
+                )}
+
+                <Grid2 display="flex" alignItems="center" gap={1}>
+                  <Rating readOnly={true} value={product.rating} />
+                  <Typography color="text.secondary">({product.ratingCount})</Typography>
+                </Grid2>
+
+                <Grid2 display="flex" alignItems="center" gap={1}>
+                  <LocalShippingOutlined />
+                  <Typography>{product.deliveryTime}</Typography>
+                </Grid2>
+
+                <Grid2 display="flex" alignItems="center" gap={1}>
+                  <Inventory2Outlined />
+                  <Typography>{t("ProductPage.inStockText", { itemCount: product.stock })}</Typography>
+                </Grid2>
+
+                <Divider />
+
+                <Grid2 display="flex" alignItems="center">
+                  <IconButton onClick={() => setSelectedProductQuantity(Math.max(1, selectedProductQuantity - 1))}>
+                    <Remove />
+                  </IconButton>
+                  <Typography>{selectedProductQuantity}</Typography>
+                  <IconButton onClick={() => setSelectedProductQuantity(selectedProductQuantity + 1)}>
+                    <Add />
+                  </IconButton>
+                  <Button variant="contained" onClick={handleAddToCart}>
+                    {t("ProductPage.addToCartButtonText")}
+                  </Button>
+                </Grid2>
+              </Stack>
+            </Paper>
+          </Grid2>
+        </Stack>
       </Stack>
 
       <TwoActionDialog

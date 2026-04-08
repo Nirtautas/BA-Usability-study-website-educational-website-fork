@@ -63,7 +63,9 @@
   "ProductPage": {
     "addToCartButtonText": "Add to cart",
     "descriptionTitle": "Description:",
-    "saleEndingSoonText": "Sale ending soon!"
+    "saleEndingSoonText": "Sale ending soon!",
+    "backToProductsButtonText": "Back to products",
+    "inStockText": "{itemCount} left in stock"
   },
   "AddToCartModal": {
     "title": "Added {productName} to cart!",

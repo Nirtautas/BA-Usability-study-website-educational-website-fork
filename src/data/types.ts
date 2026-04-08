@@ -9,6 +9,7 @@ export type Product = {
   rating: number
   ratingCount: number
   deliveryTime: string
+  stock: number
 };
 
 export enum ProductType {
