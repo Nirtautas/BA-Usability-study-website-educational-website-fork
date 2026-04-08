@@ -17,17 +17,17 @@
   "LandingPage": {
     "SpringSale": {
       "title": "Pavasarinis išpardavimas eina į PABAIGĄ!",
-      "description": "Pavasarinis išpašdavimas greitai pasibaigs! Gaukite iki 40% nuolaidą rinktinėms prekėms ir SUTAUPYKITE!",
+      "description": "Pavasarinis išpardavimas greitai pasibaigs! Gaukite iki 40% nuolaidą rinktinėms prekėms ir SUTAUPYKITE!",
       "buttonText": "Paspauskite čia, jog peržiūrėtumėte pasiūlymus!"
     },
     "MainBanner": {
-      "title": "Sveiki atvyke į",
+      "title": "Sveiki atvykę į",
       "buttonText": "Peržiūrėkite mūsų prekes"
     },
     "StoreInformation": {
       "Introduction": {
         "title": "Kas mes esame:",
-        "description": "Įkurta 1995 metais, \"Keeps\" yra sąmoningai į aplinką žiūrintis aprangos prekių ženklas, siekiantis suteikti savo vartotojams aukštos kokybės pasirinkimus su planeta priešakyje. Mes siūlome platų prekių pasirinkimą bei stengiamės nuolat pagerinti savo pasiūlą, jog Jūs turėtumėte įmanomai geriausią apsipirkimo patirtį."
+        "description": "Įkurtas 1995 metais, \"Keeps\" yra sąmoningai į aplinką žiūrintis aprangos prekių ženklas, siekiantis suteikti savo vartotojams aukštos kokybės pasirinkimus su planeta priešakyje. Mes siūlome platų prekių pasirinkimą bei stengiamės nuolat pagerinti savo pasiūlą, jog Jūs turėtumėte įmanomai geriausią apsipirkimo patirtį."
       },
       "CustomerSatisfaction": {
         "title": "Šimtai patenkintų klientų:",
@@ -44,8 +44,8 @@
         "title": "Prekės tipas:",
         "shoesOption": "Batai",
         "pantsOption": "Kelnės",
-        "shirtOption": "Marškinėliai",
-        "sweaterOption": "Megztiniai ir džemperiai"
+        "shirtOption": "Marškiniai ir palaidinės",
+        "dressOption": "Suknelės"
       },
       "PriceRange": {
         "title": "Kainos intervalas: {minPrice}€ - {maxPrice}€"
@@ -82,6 +82,11 @@
       "total": "Iš viso:",
       "continueToCheckoutButtonText": "Eiti į pristatymo informaciją"
     }
+  },
+  "RemoveItemFromCartModal": {
+    "title": "Ar norite pašalinti {productName} iš savo krepšelio?",
+    "cancelButtonText": "Atšaukti",
+    "confirmButtonText": "Pašalinti iš krepšelio"
   },
   "EmptyCartModal": {
     "title": "Ar tikrai norite išvalyti savo krepšelį?",
@@ -151,6 +156,7 @@
   "AttributionsPage": {
     "title": "Naudotų šaltinių atribucijos:",
     "description": "Čia pateikiamos nuorodos į nuotraukų resursus, kurie buvo naudoti šiame projekte:",
-    "freepikText": "Nuotraukos iš - Freepik"
+    "freepikText": "Nuotraukos iš - Freepik",
+    "aiText": "DI sugeneruotos nuotraukos"
   }
 }

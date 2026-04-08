@@ -10,7 +10,7 @@ const HomePage = () => {
     <Container>
       <Stack direction="column" alignItems="center" gap={1}>
         <Stack direction="column" alignItems="center" bgcolor="primary.light" paddingInline={2} paddingBlock={1} borderRadius={2} gap={1}>
-          <Typography fontSize={24} fontFamily="elephant" color="error.main">
+          <Typography variant="h5" color="error.main">
             {t("SpringSale.title")}
           </Typography>
           <Typography>{t("SpringSale.description")}</Typography>
@@ -22,11 +22,9 @@ const HomePage = () => {
         <Box sx={{ position: "relative", width: "100%", maxWidth: 1200, maxHeight: 400, borderRadius: 2, overflow: "hidden" }}>
           <Box component="img" src="/images/landingPagePicture.jpg" sx={{ width: "100%", height: "100%", display: "block" }} />
 
-          <Box sx={{ position: "absolute", top: "55%", left: "75%", textAlign: "center", color: "white" }}>
+          <Box sx={{ position: "absolute", top: "55%", left: "70%", textAlign: "center", color: "white" }}>
             <Stack direction="column" alignItems="flex-end" fontFamily="elephant">
-              <Typography fontFamily="elephant" fontSize={36}>
-                {t("MainBanner.title")}
-              </Typography>
+              <Typography variant="h3">{t("MainBanner.title")}</Typography>
               <ShopTitle />
               <Link href={getPageUrl.products()} paddingTop={1}>
                 <Button variant="contained" sx={{ bgcolor: "primary.light" }}>
@@ -39,16 +37,12 @@ const HomePage = () => {
 
         <Divider sx={{ width: "100%" }} />
 
-        <Typography fontFamily="elephant" fontSize={36}>
-          {t("StoreInformation.Introduction.title")}
-        </Typography>
+        <Typography variant="h3">{t("StoreInformation.Introduction.title")}</Typography>
         <Typography textAlign="center" fontSize={24}>
           {t("StoreInformation.Introduction.description")}
         </Typography>
 
-        <Typography fontFamily="elephant" fontSize={36}>
-          {t("StoreInformation.CustomerSatisfaction.title")}
-        </Typography>
+        <Typography variant="h3">{t("StoreInformation.CustomerSatisfaction.title")}</Typography>
         <Typography textAlign="center" fontSize={24}>
           {t("StoreInformation.CustomerSatisfaction.description")}
         </Typography>

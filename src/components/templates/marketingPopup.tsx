@@ -44,7 +44,7 @@ const MarketingPopup = () => {
             <Typography fontSize={12}>{t("description")}</Typography>
             <TextField id="outlined-basic" label={t("emailPlaceholder")} size="small" variant="outlined" />
             <Stack direction="row" justifyContent="space-between" gap={1}>
-              <Button onClick={handleClose} sx={{ padding: 0.7 }}>
+              <Button onClick={handleClose} variant="outlined" sx={{ padding: 0.7 }}>
                 {t("cancelButtonText")}
               </Button>
               <Button variant="contained" type="submit" sx={{ padding: 0.7 }}>

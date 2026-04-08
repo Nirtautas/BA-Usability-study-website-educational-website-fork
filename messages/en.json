@@ -44,8 +44,8 @@
         "title": "Product type:",
         "shoesOption": "Shoes",
         "pantsOption": "Pants",
-        "shirtOption": "Shirts",
-        "sweaterOption": "Sweaters & Hoodies"
+        "shirtOption": "Shirts & Blouses",
+        "dressOption": "Dresses"
       },
       "PriceRange": {
         "title": "Price range: {minPrice}€ - {maxPrice}€"
@@ -82,6 +82,11 @@
       "total": "Total:",
       "continueToCheckoutButtonText": "Continue to checkout"
     }
+  },
+  "RemoveItemFromCartModal": {
+    "title": "Do you want to remove {productName} from your cart?",
+    "cancelButtonText": "Cancel",
+    "confirmButtonText": "Remove from cart"
   },
   "EmptyCartModal": {
     "title": "Do you really want to empty your cart?",
@@ -151,6 +156,69 @@
   "AttributionsPage": {
     "title": "Resource attributions:",
     "description": "Below are attributions for the photo resources used in this project:",
-    "freepikText": "Photos from - Freepik"
+    "freepikText": "Photos from - Freepik",
+    "aiText": "AI generated photos"
+  },
+  "Products": {
+    "P2": {
+      "name": "Classic Brown Cap-Toe Oxford",
+      "description": "A timeless men’s dress shoe crafted in polished brown leather with a sleek cap-toe design. Its refined silhouette, clean stitching, and subtle shine make it perfect for formal occasions, business wear, and elegant evening looks. Designed to pair effortlessly with tailored suits and smart trousers."
+     },
+     "P3": {
+      "name": "Black Double Monk Strap Shoe",
+      "description": "A sophisticated black leather dress shoe featuring a modern double monk strap with silver buckles. The smooth finish and sharp, structured shape create a luxurious and contemporary appearance, ideal for weddings, office wear, and upscale formal styling."
+     },
+     "P4": {
+      "name": "Black Wrap Satin Blouse",
+      "description": "A sleek and minimalist blouse crafted from smooth satin with a soft sheen. Featuring a flattering wrap-style V-neckline and gently structured waist, it creates a refined silhouette. The long sleeves with subtle volume add elegance, making it perfect for both office wear and evening styling."
+     },
+     "P5": {
+      "name": "Gold Strappy Block Heel Sandal",
+      "description": "A chic and shimmering sandal featuring delicate gold straps and a comfortable block heel. The elegant silhouette and subtle sparkle make it perfect for summer events, parties, or evening occasions while offering both style and stability."
+     },
+     "P6": {
+      "name": "Black Pointed-Toe Ballet Flat",
+      "description": "A refined everyday essential crafted in soft black material with a sleek pointed toe and minimal bow detail. Its clean, understated design provides effortless elegance and comfort, ideal for both casual wear and polished office looks."
+     },
+     "P7": {
+      "name": "Wide-Leg Elegant Trousers",
+      "description": "A sophisticated pair of high-waisted wide-leg trousers designed with a flowing silhouette and clean tailored lines. The smooth, structured fabric drapes beautifully, creating an elongated and refined look. Perfect for formal settings or elevated everyday wear, these trousers combine comfort with effortless elegance."
+     },
+     "P8": {
+      "name": "Black Slim-Fit Elegant Trousers",
+      "description": "A sleek pair of black slim-fit trousers designed to contour the silhouette with a clean, tailored finish. Crafted from smooth, high-quality fabric, they offer a polished and modern look. Perfect for office wear or formal occasions, these trousers combine sophistication with a flattering, streamlined fit."
+     },
+     "P9": {
+      "name": "Grey Tailored Dress Trousers",
+      "description": "A refined pair of grey dress trousers designed with a clean, straight-leg silhouette and precise tailoring. Crafted from smooth, high-quality fabric, they offer a polished and versatile look. Ideal for business or formal occasions, these trousers pair effortlessly with shirts and blazers for a sharp, sophisticated style."
+     },
+     "P10": {
+      "name": "Navy Off-Shoulder Evening Gown",
+      "description": "An elegant floor-length gown featuring a flattering off-the-shoulder neckline and softly draped bodice. The flowing silhouette and subtle front slit add movement and sophistication, while the smooth, luxurious fabric creates a refined finish. Perfect for formal events, evening occasions, or special celebrations."
+     },
+     "P11": {
+      "name": "Red Off-Shoulder Cocktail Dress",
+      "description": "A striking red cocktail dress featuring an elegant off-the-shoulder neckline and flattering ruched detailing. The fitted silhouette and asymmetric wrap-style skirt enhance the figure, creating a bold yet sophisticated look—perfect for parties, evenings, and special occasions."
+     },
+     "P12": {
+      "name": "Sage Satin Midi Dress",
+      "description": "An elegant satin midi dress featuring a soft cowl neckline and delicate spaghetti straps. The ruched side detailing with adjustable ties enhances the silhouette, while the smooth, flowing fabric adds a touch of luxury. Perfect for evening events or refined occasions."
+     },
+     "P13": {
+      "name": "Black Ruched Mini Dress",
+      "description": "A bold and sophisticated mini dress featuring a flattering ruched bodycon silhouette and a sweetheart neckline. The sheer long sleeves add a touch of elegance, while the lace-up back detail creates a striking finish—perfect for nights out and special occasions."
+     },
+     "P14": {
+      "name": "Champagne Satin Wrap Blouse",
+      "description": "An elegant blouse in a soft champagne tone, designed with a flattering wrap-style V-neckline and a cinched waist tie. The smooth satin fabric adds a subtle sheen, while the gently voluminous sleeves enhance its refined silhouette—perfect for both professional and evening wear."
+     },
+     "P15": {
+      "name": "Black Slim-Fit Dress Shirt",
+      "description": "A modern black dress shirt crafted with a sleek slim-fit silhouette and a subtle satin finish. Featuring a sharp collar, clean button closure, and precise tailoring, it delivers a polished and refined look—perfect for formal events, evening wear, or upscale styling."
+     },
+     "P16": {
+      "name": "Light Blue Cotton Dress Shirt",
+      "description": "A classic light blue dress shirt crafted from smooth, breathable cotton with a refined matte finish. Featuring a tailored fit, crisp collar, and clean button front, it offers timeless elegance and versatility—perfect for business attire or smart formal occasions."
+     }
   }
 }

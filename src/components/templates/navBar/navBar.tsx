@@ -52,7 +52,7 @@ export function NavBar() {
                   <MenuItem onClick={() => router.push(getPageUrl.products().concat(`?productType=Shoes`))}>{t("ProductsPage.Filter.ProductType.shoesOption")}</MenuItem>
                   <MenuItem onClick={() => router.push(getPageUrl.products().concat(`?productType=Pants`))}>{t("ProductsPage.Filter.ProductType.pantsOption")}</MenuItem>
                   <MenuItem onClick={() => router.push(getPageUrl.products().concat(`?productType=Shirts`))}>{t("ProductsPage.Filter.ProductType.shirtOption")}</MenuItem>
-                  <MenuItem onClick={() => router.push(getPageUrl.products().concat(`?productType=Sweaters`))}>{t("ProductsPage.Filter.ProductType.sweaterOption")}</MenuItem>
+                  <MenuItem onClick={() => router.push(getPageUrl.products().concat(`?productType=Dresses`))}>{t("ProductsPage.Filter.ProductType.dressOption")}</MenuItem>
                 </Menu>
               </Grid2>
 

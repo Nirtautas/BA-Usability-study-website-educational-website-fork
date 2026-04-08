@@ -19,7 +19,7 @@ const TwoActionDialog = ({ open, onClose, onConfirm, title = "Dialog box", cance
       <DialogTitle>{title}</DialogTitle>
       <DialogContent>{children}</DialogContent>
       <DialogActions>
-        <Button onClick={onClose} color="primary">
+        <Button onClick={onClose} variant="outlined" color="primary">
           {cancelText}
         </Button>
         <Button onClick={onConfirm} variant="contained" color={isDestructiveAction ? "error" : "primary"}>

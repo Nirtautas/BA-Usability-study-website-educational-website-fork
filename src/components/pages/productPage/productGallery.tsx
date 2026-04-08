@@ -14,8 +14,17 @@ const ProductGallery = ({ product }: Props) => {
 
   return (
     <Stack direction="column" spacing={1}>
-      <Box borderRadius={2} overflow="hidden">
-        <Image key={0} src={product?.picturePaths?.[0] || placeholderImageLink} alt={product?.name || "Placeholder"} width={532} height={532} />
+      <Box borderRadius={2} overflow="hidden" position="relative">
+        <Image
+          key={0}
+          src={product?.picturePaths?.[0] || placeholderImageLink}
+          alt={product?.name || "Placeholder"}
+          width={532}
+          height={532}
+          style={{
+            objectFit: "contain",
+          }}
+        />
       </Box>
 
       <Stack direction="row" spacing={1}>
@@ -24,7 +33,7 @@ const ProductGallery = ({ product }: Props) => {
 
           return (
             <Box key={index} borderRadius={2} overflow="hidden" sx={{ position: "relative", width: 100, height: 100 }}>
-              <Image key={index} src={path || placeholderImageLink} alt={product?.name + " thumbnail " + (index + 1)} width={100} height={100} />
+              <Image key={index} src={path || placeholderImageLink} alt={product?.name + " thumbnail " + (index + 1)} width={100} height={100} style={{ objectFit: "contain" }} />
               {isLastThumbnailWithMore && (
                 <Box
                   sx={{

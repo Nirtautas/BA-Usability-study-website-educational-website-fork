@@ -9,7 +9,7 @@ const AttributionsPage = () => {
 
   return (
     <Container>
-      <Stack direction="column" display="flex" alignItems="center">
+      <Stack direction="column" display="flex" alignItems="center" gap={1}>
         <Typography variant="h5" gutterBottom>
           {t("title")}
         </Typography>
@@ -92,6 +92,17 @@ const AttributionsPage = () => {
                 rel="noopener noreferrer"
               >
                 <ListItemText primary="freepik - FastCash bank logo" />
+              </ListItemButton>
+            </ListItem>
+          </List>
+        </Paper>
+
+        <Paper elevation={3} sx={{ padding: 2, width: 600 }}>
+          <SubheadingBold headingText={t("aiText")} />
+          <List dense={true}>
+            <ListItem>
+              <ListItemButton component="a" href="https://chatgpt.com/" target="_blank" rel="noopener noreferrer">
+                <ListItemText primary="Chat GPT - Product photos & descriptions" />
               </ListItemButton>
             </ListItem>
           </List>

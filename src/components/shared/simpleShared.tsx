@@ -4,9 +4,5 @@ import { useTranslations } from "next-intl";
 export const ShopTitle = () => {
   const t = useTranslations("NavBar");
 
-  return (
-    <Typography fontFamily="elephant" fontSize={36}>
-      {t("title")}
-    </Typography>
-  );
+  return <Typography variant="h3">{t("title")}</Typography>;
 };

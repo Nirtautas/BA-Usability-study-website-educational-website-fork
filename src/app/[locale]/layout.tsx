@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Abril_Fatface, Geist, Geist_Mono } from "next/font/google";
 
 import favicon from "@/app/favicon.ico";
 import Footer from "@/components/templates/footer";
@@ -22,6 +22,12 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+const abril = Abril_Fatface({
+  weight: "400",
+  subsets: ["latin", "latin-ext"],
+  variable: "--font-abril",
+});
+
 export const metadata: Metadata = {
   title: "Keeps - Apparel & more",
   description: "An apperel store",
@@ -42,7 +48,7 @@ export default async function RootLayout({ children, params }: Props) {
   return (
     <html>
       <body
-        className={`${geistSans.variable} ${geistMono.variable}`}
+        className={`${geistSans.variable} ${geistMono.variable} ${abril.variable}`}
         style={{
           display: "grid",
           gridTemplateRows: "auto 1fr auto",

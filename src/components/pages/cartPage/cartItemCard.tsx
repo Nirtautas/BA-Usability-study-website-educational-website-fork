@@ -6,6 +6,7 @@ import { placeholderImageLink } from "@/data/constants";
 import { FullCartItem } from "@/data/types";
 import { Add, Delete, Remove } from "@mui/icons-material";
 import { Box, Card, CardContent, CardMedia, Grid2, IconButton, Paper, Stack, Typography } from "@mui/material";
+import { useTranslations } from "next-intl";
 import { useState } from "react";
 
 type Props = {
@@ -16,6 +17,7 @@ const CartItemCard = ({ fullCartItem }: Props) => {
   const { item, quantity } = fullCartItem;
   const [openDialog, setOpenDialog] = useState(false);
   const cartContext = useCart();
+  const t = useTranslations();
 
   const handleRemoveClick = () => setOpenDialog(true);
   const handleConfirmRemove = () => {
@@ -31,10 +33,21 @@ const CartItemCard = ({ fullCartItem }: Props) => {
           <Grid2 container alignItems="center" justifyContent="space-between">
             <Grid2 display="flex" alignItems="center" gap={2}>
               <Grid2>
-                <CardMedia component="img" height="95" image={item.picturePaths?.[0] || placeholderImageLink} alt={item.name} />
+                <Box width={100} height={100} paddingRight={3}>
+                  <CardMedia
+                    component="img"
+                    image={item.picturePaths?.[0] || placeholderImageLink}
+                    alt={t(item.name)}
+                    width="100%"
+                    height="100%"
+                    sx={{
+                      objectFit: "contain",
+                    }}
+                  />
+                </Box>
               </Grid2>
               <Grid2>
-                <Typography>{item.name}</Typography>
+                <Typography>{t(item.name)}</Typography>
               </Grid2>
             </Grid2>
 
@@ -59,15 +72,27 @@ const CartItemCard = ({ fullCartItem }: Props) => {
         open={openDialog}
         onClose={handleCancel}
         onConfirm={handleConfirmRemove}
-        title={`Do you really want to remove ${item.name} from your cart?`}
-        confirmText="Remove"
+        title={t("RemoveItemFromCartModal.title", { productName: t(item.name) })}
+        confirmText={t("RemoveItemFromCartModal.confirmButtonText")}
+        cancelText={t("RemoveItemFromCartModal.cancelButtonText")}
         isDestructiveAction={true}
       >
         <Paper elevation={3} sx={{ padding: 1 }}>
           <Stack direction="row" alignItems="center">
-            <CardMedia width={150} height={150} component="img" image={item.picturePaths?.[0] || placeholderImageLink} alt={item.name} sx={{ objectFit: "contain" }} />
+            <Box width={150} height={150} paddingRight={3}>
+              <CardMedia
+                component="img"
+                image={item.picturePaths?.[0] || placeholderImageLink}
+                alt={t(item.name)}
+                width="100%"
+                height="100%"
+                sx={{
+                  objectFit: "contain",
+                }}
+              />
+            </Box>
             <Typography width={150} noWrap>
-              {item.name}
+              {t(item.name)}
             </Typography>
           </Stack>
         </Paper>

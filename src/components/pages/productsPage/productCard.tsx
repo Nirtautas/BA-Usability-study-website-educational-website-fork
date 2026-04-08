@@ -12,42 +12,55 @@ type Props = {
 };
 
 const ProductCard = ({ item }: Props) => {
-  const t = useTranslations("ProductsPage");
+  const t = useTranslations();
   const router = useRouter();
 
   return (
-    <Grid2 key={item.id}>
+    <Grid2 key={item.id} width={270}>
       <Card>
         <CardActionArea key={item.id} component="a" onClick={() => router.push(getPageUrl.product(item.id))}>
-          {item.discountedPrice !== undefined ? <Chip label={t("saleTagText")} icon={<Discount />} color="success" sx={{ position: "absolute", top: 8, left: 8 }} /> : null}
-          <CardMedia component="img" height="180" image={item.picturePaths?.[0] || placeholderImageLink} alt={item.name} />
+          {item.discountedPrice !== undefined ? <Chip label={t("ProductsPage.saleTagText")} icon={<Discount />} color="success" sx={{ position: "absolute", top: 8, left: 8, zIndex: 2 }} /> : null}
+          <Box width="100%" paddingTop="100%" position="relative">
+            <CardMedia
+              component="img"
+              image={item.picturePaths?.[0] || placeholderImageLink}
+              alt={item.name}
+              width="100%"
+              height="100%"
+              sx={{
+                position: "absolute",
+                top: 0,
+                left: 0,
+                objectFit: "contain",
+                borderBottom: "1px solid #ccc",
+              }}
+            />
+          </Box>
           <CardContent>
             <Grid2 display="flex" alignItems="center" gap={1}>
               <LocalShippingOutlined />
               <Typography>{item.deliveryTime}</Typography>
             </Grid2>
 
-            <Typography variant="h5">{item.name}</Typography>
+            <Typography fontSize={24}>{t(item.name)}</Typography>
             {item.discountedPrice !== undefined ? (
               <Box display="flex" gap={1}>
-                <Typography variant="h6" color="success.main">
+                <Typography fontSize={24} color="success.main">
                   {item.discountedPrice.toFixed(2)}€
                 </Typography>
-                <Typography variant="h6" color="error.main" sx={{ textDecoration: "line-through" }}>
+                <Typography fontSize={24} color="error.main" sx={{ textDecoration: "line-through" }}>
                   {item.price.toFixed(2)}€
                 </Typography>
               </Box>
             ) : (
               <Box>
-                <Typography variant="h6">{item.price.toFixed(2)}€</Typography>
+                <Typography fontSize={24}>{item.price.toFixed(2)}€</Typography>
               </Box>
             )}
 
             <Grid2 display="flex" alignItems="center" gap={1}>
               <Rating readOnly={true} value={item.rating} />
-              <Typography variant="body2" color="text.secondary">
-                ({item.ratingCount})
-              </Typography>
+              <Typography color="text.secondary">({item.ratingCount})</Typography>
             </Grid2>
           </CardContent>
         </CardActionArea>

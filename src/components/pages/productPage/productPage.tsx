@@ -37,22 +37,24 @@ const ProductPage = ({ productId }: Props) => {
 
   return (
     <Container>
-      <Grid2 container spacing={2} justifyContent="center">
-        <Paper elevation={3} sx={{ padding: 2 }}>
+      <Stack direction="row" gap={1} justifyContent="center" maxWidth={900}>
+        <Paper elevation={3} sx={{ padding: 2, width: "100%", maxWidth: 600 }}>
           <Stack gap={1}>
             <ProductGallery product={product} />
             <Divider />
             <Stack>
-              <Typography variant="h5">{t("ProductPage.descriptionTitle")}</Typography>
-              <Typography>{product.description}</Typography>
+              <Typography variant="h5" gutterBottom>
+                {t("ProductPage.descriptionTitle")}
+              </Typography>
+              <Typography>{product.description ? t(product.description) : ""}</Typography>
             </Stack>
           </Stack>
         </Paper>
 
         <Grid2 container spacing={2}>
-          <Paper elevation={3} sx={{ padding: 2 }}>
+          <Paper elevation={3} sx={{ padding: 2, width: "100%" }}>
             <Stack gap={1}>
-              <Typography variant="h3">{product.name}</Typography>
+              <Typography variant="h3">{t(product.name)}</Typography>
               {product.discountedPrice !== undefined ? (
                 <Stack direction="column" display="flex" borderRadius={3} padding={1} sx={{ backgroundColor: "error.light" }}>
                   <Grid2 display="flex" gap={1}>
@@ -60,17 +62,17 @@ const ProductPage = ({ productId }: Props) => {
                     <Typography>{t("ProductPage.saleEndingSoonText")}</Typography>
                   </Grid2>
                   <Grid2 display="flex" gap={1}>
-                    <Typography variant="h6" color="success.main">
+                    <Typography fontSize={24} color="success.main">
                       {product.discountedPrice.toFixed(2)}€
                     </Typography>
-                    <Typography variant="h6" sx={{ textDecoration: "line-through" }}>
+                    <Typography fontSize={24} sx={{ textDecoration: "line-through" }}>
                       {product.price.toFixed(2)}€
                     </Typography>
                   </Grid2>
                 </Stack>
               ) : (
                 <Box>
-                  <Typography variant="h6">{product.price.toFixed(2)}€</Typography>
+                  <Typography fontSize={24}>{product.price.toFixed(2)}€</Typography>
                 </Box>
               )}
 
@@ -103,21 +105,32 @@ const ProductPage = ({ productId }: Props) => {
             </Stack>
           </Paper>
         </Grid2>
-      </Grid2>
+      </Stack>
 
       <TwoActionDialog
         open={openDialog}
         onClose={handleClose}
         onConfirm={handleGoToCart}
-        title={t("AddToCartModal.title", { productName: product.name.toLowerCase() })}
+        title={t("AddToCartModal.title", { productName: t(product.name) })}
         cancelText={t("AddToCartModal.cancelButtonText")}
         confirmText={t("AddToCartModal.confirmButtonText")}
       >
         <Paper elevation={3} sx={{ padding: 1 }}>
           <Stack direction="row" alignItems="center">
-            <CardMedia width={150} height={150} component="img" image={product.picturePaths?.[0] || placeholderImageLink} alt={product.name} sx={{ objectFit: "contain" }} />
+            <Box width={150} height={150} paddingRight={3}>
+              <CardMedia
+                component="img"
+                image={product.picturePaths?.[0] || placeholderImageLink}
+                alt={t(product.name)}
+                width="100%"
+                height="100%"
+                sx={{
+                  objectFit: "contain",
+                }}
+              />
+            </Box>
             <Typography width={150} noWrap>
-              {product.name}
+              {t(product.name)}
             </Typography>
           </Stack>
         </Paper>

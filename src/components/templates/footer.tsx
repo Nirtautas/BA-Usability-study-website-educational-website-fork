@@ -9,12 +9,12 @@ export function Footer() {
   const t = useTranslations();
 
   return (
-    <Paper component="footer" sx={{ bgcolor: "primary.main", marginTop: 1 }}>
+    <Paper component="footer" sx={{ bgcolor: "primary.main", color: "primary.contrastText", marginTop: 1 }}>
       <Stack direction="row" justifyContent="space-between" alignItems="center">
         <Stack direction="column" justifyContent="center">
-          <Typography variant="body2">
+          <Typography>
             {t("Footer.resourceAttributionsText")}
-            <Link href={getPageUrl.attributions()} underline="hover" color="inherit">
+            <Link href={getPageUrl.attributions()} underline="hover" sx={{ color: "primary.contrastText" }}>
               {t("Footer.resourceAttributionsLinkText")}
             </Link>
           </Typography>
