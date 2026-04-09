@@ -57,20 +57,20 @@ export default async function RootLayout({ children, params }: Props) {
           margin: 0,
         }}
       >
-        <UserDataProvider>
-          <CartProvider>
-            <AppRouterCacheProvider>
-              <MuiThemeProvider>
-                <NextIntlClientProvider locale={locale}>
+        <AppRouterCacheProvider>
+          <MuiThemeProvider>
+            <NextIntlClientProvider locale={locale}>
+              <UserDataProvider>
+                <CartProvider>
                   <NavBar />
                   {children}
                   <Footer />
                   <MarketingPopup />
-                </NextIntlClientProvider>
-              </MuiThemeProvider>
-            </AppRouterCacheProvider>
-          </CartProvider>
-        </UserDataProvider>
+                </CartProvider>
+              </UserDataProvider>
+            </NextIntlClientProvider>
+          </MuiThemeProvider>
+        </AppRouterCacheProvider>
       </body>
     </html>
   );

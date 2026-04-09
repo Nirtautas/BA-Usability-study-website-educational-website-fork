@@ -6,7 +6,7 @@ import { getPageUrl, loginPageImageLink } from "@/data/constants";
 import { LoginCredentials } from "@/data/types";
 import { useUserContext } from "@/data/userContext";
 import { EmailOutlined, LockOutlined } from "@mui/icons-material";
-import { Box, Button, Container, InputAdornment, Link, Paper, Stack, TextField, Typography } from "@mui/material";
+import { Box, Button, Container, Divider, InputAdornment, Link, Paper, Stack, TextField, Typography } from "@mui/material";
 import { useTranslations } from "next-intl";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
@@ -16,13 +16,17 @@ const LoginPage = () => {
   const userContext = useUserContext();
   const t = useTranslations("LoginPage");
   const [loginCredentials, setLoginCredentials] = useState<LoginCredentials>({ email: "", password: "" });
+  const [errorMsg, setErrorMsg] = useState("");
 
   const handleLogin = (e: React.FormEvent<HTMLFormElement>) => {
+    setErrorMsg("");
     e.preventDefault();
     const userId = userContext?.attemptLogin(loginCredentials.email, loginCredentials.password);
 
     if (userId) {
       router.push(getPageUrl.products());
+    } else {
+      setErrorMsg(t("invalidCredentialsErrorText"));
     }
   };
 
@@ -32,9 +36,15 @@ const LoginPage = () => {
         <Paper elevation={3}>
           <Stack direction="row" gap={1}>
             <Box component="img" src={loginPageImageLink} maxWidth={400} sx={{ objectFit: "cover" }} />
-            <Stack direction="column" gap={2} textAlign="center" margin={2} flex={1}>
+            <Stack direction="column" gap={1} textAlign="center" margin={2} flex={1}>
               <ShopTitle />
               <SubheadingBold headingText={t("title")} />
+              <Divider />
+              {errorMsg && (
+                <Typography color="error.main" fontSize={14}>
+                  {errorMsg}
+                </Typography>
+              )}
               <TextField
                 id="outlined-basic"
                 label={t("emailLabel")}

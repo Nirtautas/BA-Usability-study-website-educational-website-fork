@@ -175,7 +175,27 @@
     "forgotPasswordText": "Pamiršote slaptažodį?",
     "loginButtonText": "Prisijungti",
     "dontHaveAccountText": "Vis dar neturite paskyros?",
-    "registerHereText": "Užsiregistruokite čia!"
+    "registerHereText": "Užsiregistruokite čia!",
+    "invalidCredentialsErrorText": "Neteisingas el. paštas arba slaptažodis!",
+    "emailAlreadyInUseErrorText": "Vartotojas su tokiu el. pašto adresu jau egzistuoja!"
+  },
+  "RegisterPage": {
+    "title": "Sukurkite savo paskyrą!",
+    "firstNameLabel": "Jūsų vardas",
+    "lastNameLabel": "Jūsų pavardė",
+    "emailLabel": "Jūsų el. paštas",
+    "phoneNumberLabel": "Jūsų telefono numeris",
+    "passwordLabel": "Sukurkite slaptažodį",
+    "confirmPasswordLabel": "Patvirtinkite slaptažodį",
+    "genderLabel": "Pasirinkite savo lytį",
+    "registerButtonText": "Užsiregistruoti",
+    "alreadyHaveAccountText": "Jau turite paskyrą?",
+    "loginHereText": "Prisijunkite čia!",
+    "passwordMismatchErrorText": "Įvesti slaptažodžiai nesutampa!"
+  },
+  "Gender": {
+    "maleOption": "Vyras",
+    "femaleOption": "Moteris"
   },
   "Products": {
     "P1": {

@@ -175,7 +175,28 @@
     "forgotPasswordText": "Forgot your password?",
     "loginButtonText": "Login",
     "dontHaveAccountText": "Dont have an account?",
-    "registerHereText": "Register here!"
+    "registerHereText": "Register here!",
+    "invalidCredentialsErrorText": "Invalid email or password!"
+
+  },
+  "RegisterPage": {
+    "title": "Create your account!",
+    "firstNameLabel": "Your first name",
+    "lastNameLabel": "Your last name",
+    "emailLabel": "Your email",
+    "phoneNumberLabel": "Your phone number",
+    "passwordLabel": "Create a password",
+    "confirmPasswordLabel": "Confirm your password",
+    "genderLabel": "Select your gender",
+    "registerButtonText": "Register",
+    "alreadyHaveAccountText": "Already have an account?",
+    "loginHereText": "Login here!",
+    "passwordMismatchErrorText": "Entered passwords do not match!",
+    "emailAlreadyInUseErrorText": "A user with this email address already exists!"
+  },
+  "Gender": {
+    "maleOption": "Male",
+    "femaleOption": "Female"
   },
   "Products": {
     "P1": {

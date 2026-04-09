@@ -13,6 +13,7 @@ export const getPageUrl = {
 export const placeholderImageLink = "/images/products/placeholder.jpg";
 export const landingPageImageLink = "/images/landingPagePicture.jpg";
 export const loginPageImageLink = "/images/loginPagePicture.jpg";
+export const registerPageImageLink = "/images/registerPagePicture.jpg";
 
 export const maxProductThumbnails = 5;
 export const serviceFee = 2.99;

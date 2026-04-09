@@ -56,6 +56,7 @@ export interface UserContextInterface {
   attemptLogin: (email: string, password: string) => number | undefined;
   logout: () => void;
   getLoggedInUserData: () => UserInfo | undefined;
+  attemptRegistration: (registerInfo: RegisterInfo) => string;
 };
 
 export type Bank = {
@@ -92,6 +93,16 @@ export const genderTypeTranslationKeyMap: Record<Gender, string> = {
 export type LoginCredentials = {
   email: string;
   password: string;
+};
+
+export type RegisterInfo = {
+  firstName: string;
+  lastName: string;
+  email: string;
+  phoneNumber: string;
+  password: string;
+  confirmPassword: string;
+  gender: Gender;
 };
 
 export type UserInfo = {

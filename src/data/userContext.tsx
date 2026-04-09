@@ -1,12 +1,14 @@
 "use client";
 
 import { testUserData } from "@/data/entityData";
+import { useTranslations } from "next-intl";
 import { createContext, ReactNode, useContext, useEffect, useState } from "react";
-import { UserContextInterface, UserInfo } from "./types";
+import { RegisterInfo, UserContextInterface, UserInfo } from "./types";
 
 const UserContext = createContext<UserContextInterface | undefined>(undefined);
 
 export function UserDataProvider({ children }: { children: ReactNode }) {
+  const t = useTranslations();
   const [userData, setUserData] = useState<UserInfo[]>([]);
   const [loggedInUserId, setLoggedInUserId] = useState<number | undefined>(undefined);
 
@@ -56,6 +58,30 @@ export function UserDataProvider({ children }: { children: ReactNode }) {
     return userData.find((user) => user.id === loggedInUserId);
   };
 
+  const attemptRegistration = (registerInfo: RegisterInfo) => {
+    if (userData.some((user) => user.email === registerInfo.email)) {
+      return t("RegisterPage.emailAlreadyInUseErrorText");
+    }
+
+    if (registerInfo.password !== registerInfo.confirmPassword) {
+      return t("RegisterPage.passwordMismatchErrorText");
+    }
+
+    const newUser: UserInfo = {
+      id: Date.now(),
+      firstName: registerInfo.firstName,
+      lastName: registerInfo.lastName,
+      email: registerInfo.email,
+      phoneNumber: registerInfo.phoneNumber,
+      password: registerInfo.password,
+      gender: registerInfo.gender,
+    };
+
+    setUserData((userData) => [...userData, newUser]);
+    setLoggedInUserId(newUser.id);
+    return "";
+  };
+
   return (
     <UserContext.Provider
       value={{
@@ -64,6 +90,7 @@ export function UserDataProvider({ children }: { children: ReactNode }) {
         attemptLogin,
         logout,
         getLoggedInUserData,
+        attemptRegistration,
       }}
     >
       {children}
