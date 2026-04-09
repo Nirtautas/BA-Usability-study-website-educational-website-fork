@@ -5,12 +5,13 @@ export const products: Product[] = [
   {
     id: 1,
     type: ProductType.DeceptiveExtra,
-    name: "Extra service",
-    description: "Extra service",
-    price: 3.99,
-    rating: 0,
-    ratingCount: 124,
-    deliveryTime: "1-2 d.",
+    name: "Products.P1.name",
+    description: "Products.P1.description",
+    price: 1.49,
+    rating: 5,
+    ratingCount: 100,
+    deliveryTime: "1-2",
+    picturePaths: ["/images/products/deceptive_extra.png"],
     stock: 9999
   },
   {
@@ -21,7 +22,7 @@ export const products: Product[] = [
     price: 79.99,
     rating: 4.8,
     ratingCount: 125,
-    deliveryTime: "Products.P2.deliveryTime",
+    deliveryTime: "1-2",
     picturePaths: ["/images/products/shoes/men_shoe_1.png"],
     stock: 12
   },
@@ -33,7 +34,7 @@ export const products: Product[] = [
     price: 65.99,
     rating: 3.8,
     ratingCount: 15,
-    deliveryTime: "Products.P3.deliveryTime",
+    deliveryTime: "1-4",
     picturePaths: ["/images/products/shoes/men_shoe_2.png"],
     stock: 3
   },
@@ -46,7 +47,7 @@ export const products: Product[] = [
     discountedPrice: 25.99,
     rating: 4.2,
     ratingCount: 18,
-    deliveryTime: "Products.P4.deliveryTime",
+    deliveryTime: "7-14",
     picturePaths: ["/images/products/blouses/women_blouse_1_1.png", "/images/products/blouses/women_blouse_1_2.png"],
     stock: 7
   },
@@ -59,7 +60,7 @@ export const products: Product[] = [
     discountedPrice: 52.99,
     rating: 4.2,
     ratingCount: 73,
-    deliveryTime: "Products.P5.deliveryTime",
+    deliveryTime: "7-14",
     picturePaths: ["/images/products/shoes/women_shoe_1.png"],
     stock: 15
   },
@@ -71,7 +72,7 @@ export const products: Product[] = [
     price: 61.99,
     rating: 3.9,
     ratingCount: 112,
-    deliveryTime: "Products.P6.deliveryTime",
+    deliveryTime: "7-14",
     picturePaths: ["/images/products/shoes/women_shoe_2.png"],
     stock: 2
   },
@@ -83,7 +84,7 @@ export const products: Product[] = [
     price: 50.99,
     rating: 4.5,
     ratingCount: 56,
-    deliveryTime: "Products.P7.deliveryTime",
+    deliveryTime: "1-2",
     picturePaths: ["/images/products/pants/women_pants_1_1.png", "/images/products/pants/women_pants_1_2.png"],
     stock: 1
   },
@@ -96,7 +97,7 @@ export const products: Product[] = [
     discountedPrice: 48.99,
     rating: 4.4,
     ratingCount: 48,
-    deliveryTime: "Products.P8.deliveryTime",
+    deliveryTime: "1-2",
     picturePaths: ["/images/products/pants/women_pants_2_1.png", "/images/products/pants/women_pants_2_2.png"],
     stock: 12
   },
@@ -108,7 +109,7 @@ export const products: Product[] = [
     price: 60.99,
     rating: 3.4,
     ratingCount: 35,
-    deliveryTime: "Products.P9.deliveryTime",
+    deliveryTime: "7-14",
     picturePaths: ["/images/products/pants/men_pants_1_1.png", "/images/products/pants/men_pants_1_2.png"],
     stock: 25
   },
@@ -120,7 +121,7 @@ export const products: Product[] = [
     price: 125.99,
     rating: 4.6,
     ratingCount: 48,
-    deliveryTime: "Products.P10.deliveryTime",
+    deliveryTime: "7-14",
     picturePaths: ["/images/products/dresses/women_dress_1_1.png", "/images/products/dresses/women_dress_1_2.png"],
     stock: 8
   },
@@ -133,7 +134,7 @@ export const products: Product[] = [
     discountedPrice: 110.99,
     rating: 4.3,
     ratingCount: 189,
-    deliveryTime: "Products.P11.deliveryTime",
+    deliveryTime: "1-2",
     picturePaths: ["/images/products/dresses/women_dress_2_1.png", "/images/products/dresses/women_dress_2_2.png"],
     stock: 6
   },
@@ -145,7 +146,7 @@ export const products: Product[] = [
     price: 89.99,
     rating: 3.2,
     ratingCount: 32,
-    deliveryTime: "Products.P12.deliveryTime",
+    deliveryTime: "7-14",
     picturePaths: ["/images/products/dresses/women_dress_3_1.png", "/images/products/dresses/women_dress_3_2.png"],
     stock: 4
   },
@@ -157,7 +158,7 @@ export const products: Product[] = [
     price: 99.99,
     rating: 4.1,
     ratingCount: 59,
-    deliveryTime: "Products.P13.deliveryTime",
+    deliveryTime: "7-14",
     picturePaths: ["/images/products/dresses/women_dress_4_1.png", "/images/products/dresses/women_dress_4_2.png"],
     stock: 1
   },
@@ -169,7 +170,7 @@ export const products: Product[] = [
     price: 41.99,
     rating: 4.7,
     ratingCount: 64,
-    deliveryTime: "Products.P14.deliveryTime",
+    deliveryTime: "1-2",
     picturePaths: ["/images/products/blouses/women_blouse_2_1.png", "/images/products/blouses/women_blouse_2_2.png"],
     stock: 19
   },
@@ -182,7 +183,7 @@ export const products: Product[] = [
     discountedPrice: 32.99,
     rating: 3.9,
     ratingCount: 178,
-    deliveryTime: "Products.P15.deliveryTime",
+    deliveryTime: "1-2",
     picturePaths: ["/images/products/shirts/men_shirt_1_1.png", "/images/products/shirts/men_shirt_1_2.png"],
     stock: 23
   },
@@ -194,7 +195,7 @@ export const products: Product[] = [
     price: 38.99,
     rating: 4.5,
     ratingCount: 112,
-    deliveryTime: "Products.P16.deliveryTime",
+    deliveryTime: "1-2",
     picturePaths: ["/images/products/shirts/men_shirt_2_1.png", "/images/products/shirts/men_shirt_2_2.png"],
     stock: 14
   },

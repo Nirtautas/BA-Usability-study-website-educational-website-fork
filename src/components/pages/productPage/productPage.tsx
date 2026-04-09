@@ -92,7 +92,7 @@ const ProductPage = ({ productId }: Props) => {
 
                 <Grid2 display="flex" alignItems="center" gap={1}>
                   <LocalShippingOutlined />
-                  <Typography>{product.deliveryTime}</Typography>
+                  <Typography>{t("ProductPage.deliveryTimeText", { deliveryTime: product.deliveryTime })}</Typography>
                 </Grid2>
 
                 <Grid2 display="flex" alignItems="center" gap={1}>
@@ -107,7 +107,7 @@ const ProductPage = ({ productId }: Props) => {
                     <Remove />
                   </IconButton>
                   <Typography>{selectedProductQuantity}</Typography>
-                  <IconButton onClick={() => setSelectedProductQuantity(selectedProductQuantity + 1)}>
+                  <IconButton onClick={() => setSelectedProductQuantity(selectedProductQuantity + 1 <= product.stock ? selectedProductQuantity + 1 : selectedProductQuantity)}>
                     <Add />
                   </IconButton>
                   <Button variant="contained" onClick={handleAddToCart}>

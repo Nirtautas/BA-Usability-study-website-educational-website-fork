@@ -77,7 +77,7 @@ const CheckoutPage = () => {
         <Paper sx={{ width: 600, padding: 1 }}>
           <SubheadingBold headingText={t("CartPage.Summary.title")} />
           <Divider />
-          <CartSummary fullCartItems={cartItems ?? []} />
+          <CartSummary fullCartItems={cartItems ?? []} deliveryInfo={deliveryInfo} />
           <Box display="flex" justifyContent="right" paddingTop={1}>
             <Button type="submit" variant="contained">
               {t("CheckoutPage.continueToPaymentButtonText")}

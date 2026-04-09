@@ -65,6 +65,7 @@
     "descriptionTitle": "Description:",
     "saleEndingSoonText": "Sale ending soon!",
     "backToProductsButtonText": "Back to products",
+    "deliveryTimeText": "Estimated delivery time - {deliveryTime} business days",
     "inStockText": "{itemCount} left in stock"
   },
   "AddToCartModal": {
@@ -81,6 +82,7 @@
       "title": "Cart summary:",
       "itemTotal": "Item total:",
       "serviceFee": "Service fee:",
+      "deliveryFee": "Delivery fee:",
       "total": "Total:",
       "continueToCheckoutButtonText": "Continue to checkout"
     }
@@ -106,13 +108,13 @@
         "differentPersonPickingUpText": "Different person picking up?"
       },
       "PostDeliveryOption": {
-        "title": "Pick up at Lithuanian Post office",
+        "title": "Pick up at Lithuanian Post office (+{postDeliveryPrice}€)",
         "postOfficeLocationLabel": "Select your post office location:",
         "fullNameLabel": "Your full name",
         "phoneNumberLabel": "Your phone number"
       },
       "ParcelLockerDeliveryOption": {
-        "title": "Pick up at parcel locker",
+        "title": "Pick up at parcel locker (+{parcelLockerPrice}€)",
         "parcelLockerLocationLabel": "Select your parcel locker location:",
         "fullNameLabel": "Your full name",
         "phoneNumberLabel": "Your phone number"
@@ -162,6 +164,10 @@
     "aiText": "AI generated photos"
   },
   "Products": {
+    "P1": {
+      "name": "Gift: Antibacterial spray - 20 ml.",
+      "description": "Antibacterial spray"
+     },
     "P2": {
       "name": "Classic Brown Cap-Toe Oxford",
       "description": "A timeless men’s dress shoe crafted in polished brown leather with a sleek cap-toe design. Its refined silhouette, clean stitching, and subtle shine make it perfect for formal occasions, business wear, and elegant evening looks. Designed to pair effortlessly with tailored suits and smart trousers."

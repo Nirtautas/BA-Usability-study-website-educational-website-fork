@@ -2,15 +2,16 @@
 
 import { useCart } from "@/data/cartContext";
 import { serviceFee } from "@/data/constants";
-import { FullCartItem } from "@/data/types";
+import { DeliveryInfo, FullCartItem } from "@/data/types";
 import { Box, Divider, Stack, Typography } from "@mui/material";
 import { useTranslations } from "next-intl";
 
 type Props = {
   fullCartItems: FullCartItem[];
+  deliveryInfo?: DeliveryInfo;
 };
 
-const CartSummary = ({ fullCartItems }: Props) => {
+const CartSummary = ({ fullCartItems, deliveryInfo }: Props) => {
   const t = useTranslations("CartPage.Summary");
   const cartContext = useCart();
 
@@ -26,11 +27,17 @@ const CartSummary = ({ fullCartItems }: Props) => {
           <Typography>{serviceFee.toFixed(2)}€</Typography>
         </Stack>
       )}
+      {deliveryInfo?.deliveryMethod !== "store" && (
+        <Stack direction="row" display="flex" justifyContent="space-between">
+          <Typography>{t("deliveryFee")}</Typography>
+          <Typography>{cartContext?.getDeliveryFee(deliveryInfo?.deliveryMethod).toFixed(2)}€</Typography>
+        </Stack>
+      )}
       <Divider />
       <Box bgcolor={"primary.light"} marginBlock={1}>
         <Stack direction="row" display="flex" justifyContent="space-between">
           <Typography>{t("total")}</Typography>
-          <Typography>{cartContext?.calculateTotal().toFixed(2)}€</Typography>
+          <Typography>{cartContext?.calculateTotal(deliveryInfo?.deliveryMethod).toFixed(2)}€</Typography>
         </Stack>
       </Box>
     </Stack>

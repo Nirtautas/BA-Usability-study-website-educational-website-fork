@@ -1,5 +1,6 @@
 "use client";
 
+import { parcelLockerPrice, postDeliveryPrice } from "@/data/constants";
 import { parcelLockerLocations, postOfficeLocations, storeLocations } from "@/data/entityData";
 import { DeliveryInfo } from "@/data/types";
 import { Box, FormControl, FormControlLabel, FormHelperText, Radio, RadioGroup, SelectChangeEvent, Stack } from "@mui/material";
@@ -45,14 +46,14 @@ const DeliverySelection = ({ deliveryInfo, setDeliveryInfo, error }: Props) => {
           </Stack>
 
           <Stack>
-            <FormControlLabel value="post" control={<Radio />} label={t("PostDeliveryOption.title")} />
+            <FormControlLabel value="post" control={<Radio />} label={t("PostDeliveryOption.title", { postDeliveryPrice: postDeliveryPrice })} />
 
             {deliveryInfo.deliveryMethod === "post" && (
               <PostDeliverySelection deliveryInfo={deliveryInfo} setDeliveryInfo={setDeliveryInfo} handleDeliveryLocationChange={handleDeliveryLocationChange} />
             )}
           </Stack>
           <Stack>
-            <FormControlLabel value="locker" control={<Radio />} label={t("ParcelLockerDeliveryOption.title")} />
+            <FormControlLabel value="locker" control={<Radio />} label={t("ParcelLockerDeliveryOption.title", { parcelLockerPrice: parcelLockerPrice })} />
 
             {deliveryInfo.deliveryMethod === "locker" && (
               <LockerDeliverySelection deliveryInfo={deliveryInfo} setDeliveryInfo={setDeliveryInfo} handleDeliveryLocationChange={handleDeliveryLocationChange} />

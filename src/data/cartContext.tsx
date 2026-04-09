@@ -1,7 +1,7 @@
 "use client";
 
 import { createContext, ReactNode, useContext, useEffect, useState } from "react";
-import { serviceFee } from "./constants";
+import { parcelLockerPrice, postDeliveryPrice, serviceFee } from "./constants";
 import { products } from "./entityData";
 import { CartContextInterface, CartItem, FullCartItem } from "./types";
 
@@ -66,8 +66,14 @@ export function CartProvider({ children }: { children: ReactNode }) {
     return getFullCartItems().reduce((total, cartItem) => total + (cartItem.item.discountedPrice !== undefined ? cartItem.item.discountedPrice : cartItem.item.price) * cartItem.quantity, 0);
   };
 
-  const calculateTotal = () => {
-    return calculateItemTotal() + (getUniqueItemsCount(true) !== 0 ? serviceFee : 0);
+  const getDeliveryFee = (deliveryMethod?: string) => {
+    if (deliveryMethod === "post") return postDeliveryPrice;
+    if (deliveryMethod === "locker") return parcelLockerPrice;
+    return 0;
+  };
+
+  const calculateTotal = (deliveryMethod?: string) => {
+    return calculateItemTotal() + (getUniqueItemsCount(true) !== 0 ? serviceFee : 0) + getDeliveryFee(deliveryMethod);
   };
 
   return (
@@ -80,6 +86,7 @@ export function CartProvider({ children }: { children: ReactNode }) {
         getUniqueItemsCount,
         getFullCartItems,
         calculateItemTotal,
+        getDeliveryFee,
         calculateTotal,
       }}
     >

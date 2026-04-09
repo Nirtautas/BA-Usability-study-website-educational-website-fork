@@ -65,6 +65,7 @@
     "descriptionTitle": "Aprašymas:",
     "saleEndingSoonText": "Išpardavimas greitai baigiasi!",
     "backToProductsButtonText": "Grįžti į prekes",
+    "deliveryTimeText": "Numatomas pristatymo laikas - {deliveryTime} darbo dienos",
     "inStockText": "Liko {itemCount} vienetų sandelyje"
   },
   "AddToCartModal": {
@@ -81,6 +82,7 @@
       "title": "Krepšelio informacija:",
       "itemTotal": "Prekių suma:",
       "serviceFee": "Aptarnavimo mokestis:",
+      "deliveryFee": "Pristatymo mokestis:",
       "total": "Iš viso:",
       "continueToCheckoutButtonText": "Eiti į pristatymo informaciją"
     }
@@ -106,13 +108,13 @@
         "differentPersonPickingUpText": "Prekę atsiims kitas asmuo?"
       },
       "PostDeliveryOption": {
-        "title": "Atsiimti Lietuvos Pašto skyriuje",
+        "title": "Atsiimti Lietuvos Pašto skyriuje (+{postDeliveryPrice}€)",
         "postOfficeLocationLabel": "Pasirinkite pašto skyrių:",
         "fullNameLabel": "Jūsų vardas ir pavardė",
         "phoneNumberLabel": "Jūsų telefono numeris"
       },
       "ParcelLockerDeliveryOption": {
-        "title": "Atsiimti iš paštomato",
+        "title": "Atsiimti iš paštomato (+{parcelLockerPrice}€)",
         "parcelLockerLocationLabel": "Pasirinkite paštomato adresą:",
         "fullNameLabel": "Jūsų vardas ir pavardė",
         "phoneNumberLabel": "Jūsų telefono numeris"
@@ -162,6 +164,10 @@
     "aiText": "DI sugeneruotos nuotraukos"
   },
   "Products": {
+    "P1": {
+      "name": "Dovana: Antibakterinis purškaliukas - 20 ml.",
+      "description": "Antibakterinis purškaliukas"
+     },
     "P2": {
       "name": "Klasikiniai rudi Oksfordo batai",
       "description": "Nesenstantys vyriški bateliai, pasiūti iš poliruotos rudos odos su elegantišku dizainu nuo viršugalvio. Rafinuotas siluetas, švarios siūlės ir subtilus blizgesys puikiai tinka oficialioms progoms, dalykiniam aprangai ir elegantiškam vakariniam įvaizdžiui. Sukurti taip, kad lengvai derėtų su pasiūtais kostiumais ir elegantiškomis kelnėmis."

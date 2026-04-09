@@ -46,7 +46,8 @@ export interface CartContextInterface {
   getUniqueItemsCount: (includeDeceptive?: boolean) => number;
   getFullCartItems: () => FullCartItem[];
   calculateItemTotal: () => number;
-  calculateTotal: () => number;
+  getDeliveryFee: (deliveryMethod?: string) => number;
+  calculateTotal: (deliveryMethod?: string) => number;
 };
 
 export type Bank = {

@@ -9,6 +9,9 @@ export const getPageUrl = {
     attributions: () => `/attributions`
 }
 
-export const placeholderImageLink = "/images/productPictures/placeholder.jpg";
+export const placeholderImageLink = "/images/products/placeholder.jpg";
 export const maxProductThumbnails = 5;
 export const serviceFee = 2.99;
+
+export const postDeliveryPrice = 2.29;
+export const parcelLockerPrice = 1.99;
