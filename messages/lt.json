@@ -7,7 +7,11 @@
       "allProducts": "Visos prekės"
     },
     "cart": "Krepšelis",
-    "login": "Prisijungti"
+    "login": "Prisijungti",
+    "Account": {
+      "helloText": "Sveiki, {firstName} {lastName}",
+      "logout": "Atsijungti"
+    }
   },
   "Footer": {
     "rightsText": "\"Keeps\" © 2025-2026. Visos teisės saugomos.",
@@ -100,6 +104,7 @@
   "CheckoutPage": {
     "title": "Pristatymo ir apmokėjimo informacija:",
     "backToCartButtonText": "Grįžti į krepšelį",
+    "loggedInAsText": "Esate prisijungę kaip - {firstName} {lastName}",
     "DeliveryInformation": {
       "title": "Pasirinkite pristatymo būdą:",
       "StoreDeliveryOption": {
@@ -162,6 +167,15 @@
     "description": "Čia pateikiamos nuorodos į nuotraukų resursus, kurie buvo naudoti šiame projekte:",
     "freepikText": "Nuotraukos iš - Freepik",
     "aiText": "DI sugeneruotos nuotraukos"
+  },
+  "LoginPage": {
+    "title": "Prisijunkite prie savo paskyros!",
+    "emailLabel": "Jūsų el. paštas",
+    "passwordLabel": "Jūsų slaptažodis",
+    "forgotPasswordText": "Pamiršote slaptažodį?",
+    "loginButtonText": "Prisijungti",
+    "dontHaveAccountText": "Vis dar neturite paskyros?",
+    "registerHereText": "Užsiregistruokite čia!"
   },
   "Products": {
     "P1": {

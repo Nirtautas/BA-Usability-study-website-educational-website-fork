@@ -1,5 +1,5 @@
 import { ShopTitle } from "@/components/shared/simpleShared";
-import { getPageUrl } from "@/data/constants";
+import { getPageUrl, landingPageImageLink } from "@/data/constants";
 import { Box, Button, Container, Divider, Link, Stack, Typography } from "@mui/material";
 import { useTranslations } from "next-intl";
 
@@ -20,7 +20,7 @@ const HomePage = () => {
         </Stack>
 
         <Box sx={{ position: "relative", width: "100%", maxWidth: 1200, maxHeight: 400, borderRadius: 2, overflow: "hidden" }}>
-          <Box component="img" src="/images/landingPagePicture.jpg" sx={{ width: "100%", height: "100%", display: "block" }} />
+          <Box component="img" src={landingPageImageLink} sx={{ width: "100%", height: "100%", display: "block" }} />
 
           <Box sx={{ position: "absolute", top: "55%", left: "70%", textAlign: "center", color: "white" }}>
             <Stack direction="column" alignItems="flex-end" fontFamily="elephant">

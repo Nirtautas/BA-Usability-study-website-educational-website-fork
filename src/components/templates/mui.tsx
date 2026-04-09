@@ -15,6 +15,10 @@ export default function MuiThemeProvider({ children }: { children: React.ReactNo
         main: "#2B2B2B",
         light: "#BEBEBE",
       },
+      success: {
+        main: "#26a82a",
+        light: "#9ee0a5",
+      },
     },
     typography: {
       allVariants: { textTransform: "none" },

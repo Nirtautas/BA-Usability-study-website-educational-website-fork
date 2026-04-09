@@ -7,6 +7,7 @@ import MarketingPopup from "@/components/templates/marketingPopup";
 import MuiThemeProvider from "@/components/templates/mui";
 import NavBar from "@/components/templates/navBar/navBar";
 import { CartProvider } from "@/data/cartContext";
+import { UserDataProvider } from "@/data/userContext";
 import { routing } from "@/i18n/routing";
 import { AppRouterCacheProvider } from "@mui/material-nextjs/v15-appRouter";
 import { hasLocale, NextIntlClientProvider } from "next-intl";
@@ -56,18 +57,20 @@ export default async function RootLayout({ children, params }: Props) {
           margin: 0,
         }}
       >
-        <CartProvider>
-          <AppRouterCacheProvider>
-            <MuiThemeProvider>
-              <NextIntlClientProvider locale={locale}>
-                <NavBar />
-                {children}
-                <Footer />
-                <MarketingPopup />
-              </NextIntlClientProvider>
-            </MuiThemeProvider>
-          </AppRouterCacheProvider>
-        </CartProvider>
+        <UserDataProvider>
+          <CartProvider>
+            <AppRouterCacheProvider>
+              <MuiThemeProvider>
+                <NextIntlClientProvider locale={locale}>
+                  <NavBar />
+                  {children}
+                  <Footer />
+                  <MarketingPopup />
+                </NextIntlClientProvider>
+              </MuiThemeProvider>
+            </AppRouterCacheProvider>
+          </CartProvider>
+        </UserDataProvider>
       </body>
     </html>
   );

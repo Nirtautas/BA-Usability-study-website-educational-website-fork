@@ -94,6 +94,17 @@ const AttributionsPage = () => {
                 <ListItemText primary="freepik - FastCash bank logo" />
               </ListItemButton>
             </ListItem>
+
+            <ListItem>
+              <ListItemButton
+                component="a"
+                href="https://www.freepik.com/free-photo/young-man-posing-black-white-side-view_26393044.htm#fromView=search&page=1&position=8&uuid=dd2b1f3b-ab37-4d8e-b906-390a817d769c&query=black+and+white+fashion+picture+asian"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <ListItemText primary="freepik - Login page picture" />
+              </ListItemButton>
+            </ListItem>
           </List>
         </Paper>
 

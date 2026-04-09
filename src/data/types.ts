@@ -50,6 +50,14 @@ export interface CartContextInterface {
   calculateTotal: (deliveryMethod?: string) => number;
 };
 
+export interface UserContextInterface {
+  userData: UserInfo[];
+  loggedInUserId?: number;
+  attemptLogin: (email: string, password: string) => number | undefined;
+  logout: () => void;
+  getLoggedInUserData: () => UserInfo | undefined;
+};
+
 export type Bank = {
   id: number;
   name: string;
@@ -70,3 +78,28 @@ export type DeliveryInfo = {
   phoneNumber?: string;
   consigneeName?: string;
 };
+
+export enum Gender {
+  Male = "Male",
+  Female = "Female"
+}
+
+export const genderTypeTranslationKeyMap: Record<Gender, string> = {
+  [Gender.Male]: "Gender.maleOption",
+  [Gender.Female]: "Gender.femaleOption"
+};
+
+export type LoginCredentials = {
+  email: string;
+  password: string;
+};
+
+export type UserInfo = {
+  id: number;
+  firstName: string;
+  lastName: string;
+  email: string
+  phoneNumber: string;
+  password: string;
+  gender: Gender;
+}

@@ -5,7 +5,9 @@ import { useCart } from "@/data/cartContext";
 import { getPageUrl } from "@/data/constants";
 import { storeLocations } from "@/data/entityData";
 import { DeliveryInfo } from "@/data/types";
+import { useUserContext } from "@/data/userContext";
 import { useRouter } from "@/i18n/navigation";
+import { CheckOutlined } from "@mui/icons-material";
 import { Box, Button, Divider, Paper, Stack, Typography } from "@mui/material";
 import { useTranslations } from "next-intl";
 import { useState } from "react";
@@ -16,6 +18,7 @@ import PaymentSelection from "./paymentSelection";
 const CheckoutPage = () => {
   const router = useRouter();
   const cartContext = useCart();
+  const userContext = useUserContext();
   const t = useTranslations();
   const cartItems = cartContext?.getFullCartItems();
 
@@ -64,16 +67,32 @@ const CheckoutPage = () => {
           </Stack>
         </Box>
 
+        {userContext?.getLoggedInUserData() ? (
+          <Paper sx={{ width: 600, padding: 1, bgcolor: "success.light" }}>
+            <Typography alignItems="center" display="flex" gap={1}>
+              <CheckOutlined />
+              {t("CheckoutPage.loggedInAsText", {
+                firstName: userContext.getLoggedInUserData()?.firstName ?? "null",
+                lastName: userContext.getLoggedInUserData()?.lastName ?? "null",
+              })}
+            </Typography>
+          </Paper>
+        ) : (
+          <></>
+        )}
+
         <Paper sx={{ width: 600, padding: 1 }}>
           <SubheadingBold headingText={t("CheckoutPage.DeliveryInformation.title")} />
           <Divider />
           <DeliverySelection deliveryInfo={deliveryInfo} setDeliveryInfo={setDeliveryInfo} error={deliveryError} />
         </Paper>
+
         <Paper sx={{ width: 600, padding: 1 }}>
           <SubheadingBold headingText={t("CheckoutPage.PaymentInformation.title")} />
           <Divider />
           <PaymentSelection value={payment} setValue={setPayment} error={paymentError} bankValue={bankValue} setBankValue={setBankValue} />
         </Paper>
+
         <Paper sx={{ width: 600, padding: 1 }}>
           <SubheadingBold headingText={t("CartPage.Summary.title")} />
           <Divider />

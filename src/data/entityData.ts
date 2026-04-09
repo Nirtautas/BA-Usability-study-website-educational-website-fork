@@ -1,5 +1,4 @@
-import { placeholderImageLink } from "./constants";
-import { Bank, DeliveryLocation, Product, ProductType } from "./types";
+import { Bank, DeliveryLocation, Gender, Product, ProductType, UserInfo } from "./types";
 
 export const products: Product[] = [
   {
@@ -297,3 +296,13 @@ export const parcelLockerLocations: DeliveryLocation[] = [
     locationName: "Panevėžys, Vakarinė g. 61"
   }
 ];
+
+export const testUserData: UserInfo = {
+  id: 1,
+  firstName: "test",
+  lastName: "test",
+  email: "test@test.com",
+  phoneNumber: "111111111",
+  password: "test",
+  gender: Gender.Male
+};

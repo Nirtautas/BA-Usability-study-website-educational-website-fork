@@ -3,7 +3,8 @@
 import { ShopTitle } from "@/components/shared/simpleShared";
 import { useCart } from "@/data/cartContext";
 import { getPageUrl } from "@/data/constants";
-import { Login, ShoppingBag, ShoppingCart } from "@mui/icons-material";
+import { useUserContext } from "@/data/userContext";
+import { AccountCircle, Login, LogoutOutlined, ShoppingBag, ShoppingCart } from "@mui/icons-material";
 import { AppBar, Badge, Button, Grid2, Link, Menu, MenuItem, Stack, Toolbar, Typography } from "@mui/material";
 import { useTranslations } from "next-intl";
 import { useRouter } from "next/navigation";
@@ -14,13 +15,23 @@ export function NavBar() {
   const t = useTranslations();
   const router = useRouter();
   const cartContext = useCart();
-  const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
-  const open = Boolean(anchorEl);
-  const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
-    setAnchorEl(event.currentTarget);
+  const userContext = useUserContext();
+  const [anchorElGoods, setAnchorElGoods] = useState<null | HTMLElement>(null);
+  const [anchorElAccount, setAnchorElAccount] = useState<null | HTMLElement>(null);
+  const openGoods = Boolean(anchorElGoods);
+  const openAccount = Boolean(anchorElAccount);
+
+  const handleClickGoods = (event: React.MouseEvent<HTMLButtonElement>) => {
+    setAnchorElGoods(event.currentTarget);
   };
-  const handleClose = () => {
-    setAnchorEl(null);
+
+  const handleClickAccount = (event: React.MouseEvent<HTMLButtonElement>) => {
+    setAnchorElAccount(event.currentTarget);
+  };
+
+  const handleLogout = () => {
+    userContext?.logout();
+    router.refresh();
   };
 
   return (
@@ -43,11 +54,11 @@ export function NavBar() {
 
               <Grid2 display="flex" alignItems="center">
                 <ShoppingBag />
-                <Button color="inherit" onClick={handleClick}>
+                <Button color="inherit" onClick={handleClickGoods}>
                   <Typography>{t("NavBar.Products.title")}</Typography>
                 </Button>
 
-                <Menu anchorEl={anchorEl} open={open} onClose={handleClose}>
+                <Menu anchorEl={anchorElGoods} open={openGoods} onClose={() => setAnchorElGoods(null)}>
                   <MenuItem onClick={() => router.push(getPageUrl.products())}>{t("NavBar.Products.allProducts")}</MenuItem>
                   <MenuItem onClick={() => router.push(getPageUrl.products().concat(`?productType=Shoes`))}>{t("ProductsPage.Filter.ProductType.shoesOption")}</MenuItem>
                   <MenuItem onClick={() => router.push(getPageUrl.products().concat(`?productType=Pants`))}>{t("ProductsPage.Filter.ProductType.pantsOption")}</MenuItem>
@@ -65,12 +76,32 @@ export function NavBar() {
                 </Button>
               </Grid2>
 
-              <Grid2 display="flex" alignItems="center">
-                <Login />
-                <Button color="inherit" onClick={() => router.push(getPageUrl.login())}>
-                  <Typography>{t("NavBar.login")}</Typography>
-                </Button>
-              </Grid2>
+              {userContext?.getLoggedInUserData() ? (
+                <Grid2 display="flex" alignItems="center" marginRight={2}>
+                  <AccountCircle />
+                  <Button color="inherit" onClick={handleClickAccount}>
+                    <Typography>
+                      {t("NavBar.Account.helloText", {
+                        firstName: userContext.getLoggedInUserData()?.firstName ?? "null",
+                        lastName: userContext.getLoggedInUserData()?.lastName ?? "null",
+                      })}
+                    </Typography>
+                  </Button>
+
+                  <Menu anchorEl={anchorElAccount} open={openAccount} onClose={() => setAnchorElAccount(null)}>
+                    <MenuItem onClick={handleLogout}>
+                      <LogoutOutlined /> {t("NavBar.Account.logout")}
+                    </MenuItem>
+                  </Menu>
+                </Grid2>
+              ) : (
+                <Grid2 display="flex" alignItems="center" marginRight={2}>
+                  <Login />
+                  <Button color="inherit" onClick={() => router.push(getPageUrl.login())}>
+                    <Typography>{t("NavBar.login")}</Typography>
+                  </Button>
+                </Grid2>
+              )}
             </Grid2>
           </Stack>
         </Toolbar>

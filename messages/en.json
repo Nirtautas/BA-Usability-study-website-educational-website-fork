@@ -7,7 +7,11 @@
       "allProducts": "All products"
     },
     "cart": "Cart",
-    "login": "Login"
+    "login": "Login",
+    "Account": {
+      "helloText": "Hello, {firstName} {lastName}",
+      "logout": "Logout"
+    }
   },
   "Footer": {
     "rightsText": "\"Keeps\" © 2025-2026. All rights reserved.",
@@ -100,6 +104,7 @@
   "CheckoutPage": {
     "title": "Delivery and payment information:",
     "backToCartButtonText": "Back to cart",
+    "loggedInAsText": "Logged in as - {firstName} {lastName}",
     "DeliveryInformation": {
       "title": "Choose delivery method:",
       "StoreDeliveryOption": {
@@ -162,6 +167,15 @@
     "description": "Below are attributions for the photo resources used in this project:",
     "freepikText": "Photos from - Freepik",
     "aiText": "AI generated photos"
+  },
+  "LoginPage": {
+    "title": "Login into your account!",
+    "emailLabel": "Your email",
+    "passwordLabel": "Your password",
+    "forgotPasswordText": "Forgot your password?",
+    "loginButtonText": "Login",
+    "dontHaveAccountText": "Dont have an account?",
+    "registerHereText": "Register here!"
   },
   "Products": {
     "P1": {
