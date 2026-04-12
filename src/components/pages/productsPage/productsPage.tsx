@@ -5,7 +5,7 @@ import { useTranslations } from "next-intl";
 import ProductCard from "./productCard";
 import ProductsFilter from "./productsFilter";
 
-type Props = {
+type PageProps = {
   searchParams?: {
     minPrice?: string;
     maxPrice?: string;
@@ -15,7 +15,7 @@ type Props = {
   };
 };
 
-const ProductsPage = ({ searchParams }: Props) => {
+const ProductsPage = ({ searchParams }: PageProps) => {
   const t = useTranslations("ProductsPage");
   const minPrice = Number(searchParams?.minPrice);
   const maxPrice = Number(searchParams?.maxPrice);

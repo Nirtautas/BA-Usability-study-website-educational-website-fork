@@ -2,6 +2,7 @@
 
 import { ShopTitle } from "@/components/shared/simpleShared";
 import SubheadingBold from "@/components/shared/subheadingBold";
+import { useCart } from "@/data/cartContext";
 import { getPageUrl, loginPageImageLink } from "@/data/constants";
 import { LoginCredentials } from "@/data/types";
 import { useUserContext } from "@/data/userContext";
@@ -11,12 +12,20 @@ import { useTranslations } from "next-intl";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 
-const LoginPage = () => {
+type PageProps = {
+  searchParams?: {
+    checkoutRedirect?: string;
+  };
+};
+
+const LoginPage = ({ searchParams }: PageProps) => {
   const router = useRouter();
+  const cartContext = useCart();
   const userContext = useUserContext();
   const t = useTranslations("LoginPage");
   const [loginCredentials, setLoginCredentials] = useState<LoginCredentials>({ email: "", password: "" });
   const [errorMsg, setErrorMsg] = useState("");
+  const checkoutRedirect = searchParams?.checkoutRedirect === "true";
 
   const handleLogin = (e: React.FormEvent<HTMLFormElement>) => {
     setErrorMsg("");
@@ -24,7 +33,12 @@ const LoginPage = () => {
     const userId = userContext?.attemptLogin(loginCredentials.email, loginCredentials.password);
 
     if (userId) {
-      router.push(getPageUrl.products());
+      if (checkoutRedirect) {
+        cartContext?.removeAllFromCart();
+        router.push(getPageUrl.orderComplete());
+      } else {
+        router.push(getPageUrl.products());
+      }
     } else {
       setErrorMsg(t("invalidCredentialsErrorText"));
     }
@@ -38,7 +52,7 @@ const LoginPage = () => {
             <Box component="img" src={loginPageImageLink} maxWidth={400} sx={{ objectFit: "cover" }} />
             <Stack direction="column" gap={1} textAlign="center" margin={2} flex={1}>
               <ShopTitle />
-              <SubheadingBold headingText={t("title")} />
+              <SubheadingBold headingText={checkoutRedirect ? t("checkoutRedirectTitle") : t("title")} />
               <Divider />
               {errorMsg && (
                 <Typography color="error.main" fontSize={14}>
@@ -89,7 +103,7 @@ const LoginPage = () => {
               </Button>
               <Typography>
                 {t("dontHaveAccountText")}{" "}
-                <Link href={getPageUrl.register()} sx={{ textDecoration: "underline" }}>
+                <Link href={getPageUrl.register().concat(`?checkoutRedirect=${checkoutRedirect}`)} sx={{ textDecoration: "underline" }}>
                   {t("registerHereText")}
                 </Link>
               </Typography>

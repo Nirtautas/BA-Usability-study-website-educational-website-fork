@@ -1,7 +1,13 @@
 import RegisterPage from "@/components/pages/registerPage/registerPage";
 
-const Page = () => {
-  return <RegisterPage />;
+type PageProps = {
+  searchParams?: {
+    checkoutRedirect?: string;
+  };
+};
+
+const Page = async ({ searchParams }: PageProps) => {
+  return <RegisterPage searchParams={await searchParams} />;
 };
 
 export default Page;

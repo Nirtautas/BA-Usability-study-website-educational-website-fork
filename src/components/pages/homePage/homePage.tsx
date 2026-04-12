@@ -2,6 +2,7 @@ import { ShopTitle } from "@/components/shared/simpleShared";
 import { getPageUrl, landingPageImageLink } from "@/data/constants";
 import { Box, Button, Container, Divider, Link, Stack, Typography } from "@mui/material";
 import { useTranslations } from "next-intl";
+import FakeReviewMarquee from "./fakeReviewMarquee";
 
 const HomePage = () => {
   const t = useTranslations("LandingPage");
@@ -42,10 +43,13 @@ const HomePage = () => {
           {t("StoreInformation.Introduction.description")}
         </Typography>
 
+        <Divider sx={{ width: "100%" }} />
+
         <Typography variant="h3">{t("StoreInformation.CustomerSatisfaction.title")}</Typography>
         <Typography textAlign="center" fontSize={24}>
           {t("StoreInformation.CustomerSatisfaction.description")}
         </Typography>
+        <FakeReviewMarquee />
       </Stack>
     </Container>
   );

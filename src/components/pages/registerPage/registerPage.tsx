@@ -11,7 +11,13 @@ import { useTranslations } from "next-intl";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 
-const RegisterPage = () => {
+type PageProps = {
+  searchParams?: {
+    checkoutRedirect?: string;
+  };
+};
+
+const RegisterPage = ({ searchParams }: PageProps) => {
   const router = useRouter();
   const userContext = useUserContext();
   const t = useTranslations();
@@ -25,6 +31,7 @@ const RegisterPage = () => {
     gender: Gender.Male,
   });
   const [errorMsg, setErrorMsg] = useState("");
+  const checkoutRedirect = searchParams?.checkoutRedirect === "true";
 
   const handleRegistration = (e: React.FormEvent<HTMLFormElement>) => {
     setErrorMsg("");
@@ -32,7 +39,11 @@ const RegisterPage = () => {
     const errorMsg = userContext?.attemptRegistration(registerInfo);
 
     if (!errorMsg) {
-      router.push(getPageUrl.products());
+      if (checkoutRedirect) {
+        router.push(getPageUrl.orderComplete());
+      } else {
+        router.push(getPageUrl.products());
+      }
     } else {
       setErrorMsg(errorMsg);
     }
@@ -46,7 +57,7 @@ const RegisterPage = () => {
             <Box component="img" src={registerPageImageLink} maxHeight={100} sx={{ objectFit: "cover" }} />
             <Stack direction="column" gap={1} textAlign="center" marginInline={2} marginBottom={2} flex={1}>
               <ShopTitle />
-              <SubheadingBold headingText={t("RegisterPage.title")} />
+              <SubheadingBold headingText={checkoutRedirect ? t("RegisterPage.checkoutRedirectTitle") : t("RegisterPage.title")} />
               <Divider />
 
               {errorMsg && (
@@ -168,7 +179,7 @@ const RegisterPage = () => {
               </Button>
               <Typography>
                 {t("RegisterPage.alreadyHaveAccountText")}{" "}
-                <Link href={getPageUrl.login()} sx={{ textDecoration: "underline" }}>
+                <Link href={getPageUrl.login().concat(`?checkoutRedirect=${checkoutRedirect}`)} sx={{ textDecoration: "underline" }}>
                   {t("RegisterPage.loginHereText")}
                 </Link>
               </Typography>

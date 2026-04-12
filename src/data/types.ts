@@ -109,8 +109,24 @@ export type UserInfo = {
   id: number;
   firstName: string;
   lastName: string;
-  email: string
+  email: string;
   phoneNumber: string;
   password: string;
   gender: Gender;
+  profilePicturePath?: string;
 }
+
+export type FakeUserReview = {
+  id: number;
+  userId: number;
+  rating: number;
+  comment?: string;
+}
+
+export type FakeReviewCardData = {
+  firstName: string;
+  lastName: string;
+  profilePicturePath: string;
+  rating: number;
+  description: string;
+};

@@ -1,4 +1,4 @@
-import { Bank, DeliveryLocation, Gender, Product, ProductType, UserInfo } from "./types";
+import { Bank, DeliveryLocation, FakeUserReview, Gender, Product, ProductType, UserInfo} from "./types";
 
 export const products: Product[] = [
   {
@@ -306,3 +306,105 @@ export const testUserData: UserInfo = {
   password: "test",
   gender: Gender.Male
 };
+
+export const fakeReviewUserData: UserInfo[] = [
+  {
+    id: 2,
+    firstName: "FakeReviewUserData.D2.firstName",
+    lastName: "FakeReviewUserData.D2.lastName",
+    email: "",
+    phoneNumber: "",
+    password: "",
+    gender: Gender.Female,
+    profilePicturePath: ""
+  },
+  {
+  id: 3,
+    firstName: "FakeReviewUserData.D3.firstName",
+    lastName: "FakeReviewUserData.D3.lastName",
+    email: "",
+    phoneNumber: "",
+    password: "",
+    gender: Gender.Male,
+    profilePicturePath: ""
+  },
+  {
+  id: 4,
+    firstName: "FakeReviewUserData.D4.firstName",
+    lastName: "FakeReviewUserData.D4.lastName",
+    email: "",
+    phoneNumber: "",
+    password: "",
+    gender: Gender.Male,
+    profilePicturePath: ""
+  },
+  {
+  id: 5,
+    firstName: "FakeReviewUserData.D5.firstName",
+    lastName: "FakeReviewUserData.D5.lastName",
+    email: "",
+    phoneNumber: "",
+    password: "",
+    gender: Gender.Female,
+    profilePicturePath: ""
+  },
+  {
+  id: 6,
+    firstName: "FakeReviewUserData.D6.firstName",
+    lastName: "FakeReviewUserData.D6.lastName",
+    email: "",
+    phoneNumber: "",
+    password: "",
+    gender: Gender.Male,
+    profilePicturePath: ""
+  },
+{
+  id: 7,
+    firstName: "FakeReviewUserData.D7.firstName",
+    lastName: "FakeReviewUserData.D7.lastName",
+    email: "",
+    phoneNumber: "",
+    password: "",
+    gender: Gender.Female,
+    profilePicturePath: ""
+  },
+];
+
+export const ratings: FakeUserReview[] = [
+  {
+    id: 1,
+    userId: 2,
+    rating: 5,
+    comment: "FakeUserReview.R1.reviewComment"
+  },
+  {
+    id: 2,
+    userId: 3,
+    rating: 5,
+    comment: "FakeUserReview.R2.reviewComment"
+  },
+  {
+    id: 3,
+    userId: 4,
+    rating: 5,
+    comment: "FakeUserReview.R3.reviewComment"
+  },
+  {
+    id: 4,
+    userId: 5,
+    rating: 5,
+    comment: "FakeUserReview.R4.reviewComment"
+  },
+  {
+    id: 5,
+    userId: 6,
+    rating: 5,
+    comment: "FakeUserReview.R5.reviewComment"
+  },
+  {
+    id: 6,
+    userId: 7,
+    rating: 5,
+    comment: "FakeUserReview.R6.reviewComment"
+  },
+];

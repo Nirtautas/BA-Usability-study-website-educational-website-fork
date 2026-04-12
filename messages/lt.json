@@ -35,7 +35,7 @@
       },
       "CustomerSatisfaction": {
         "title": "Šimtai patenkintų klientų:",
-        "description": "Turime daugiau nei 25 metų patirties šioje srityje ir didžiuojamės aukštu klientų pasitenkinimo lygiu!"
+        "description": "Turime daugiau nei 25 metų patirties šioje srityje ir didžiuojamės aukštu (virš 98%) klientų pasitenkinimo lygiu!"
       }
     }
   },
@@ -63,6 +63,9 @@
       },
       "searchButtonText": "Ieškoti"
     }
+  },
+  "ProductCard": {
+    "deliveryDaysText": "darbo dienos"
   },
   "ProductPage": {
     "addToCartButtonText": "Pridėti į krepšelį",
@@ -177,7 +180,8 @@
     "dontHaveAccountText": "Vis dar neturite paskyros?",
     "registerHereText": "Užsiregistruokite čia!",
     "invalidCredentialsErrorText": "Neteisingas el. paštas arba slaptažodis!",
-    "emailAlreadyInUseErrorText": "Vartotojas su tokiu el. pašto adresu jau egzistuoja!"
+    "emailAlreadyInUseErrorText": "Vartotojas su tokiu el. pašto adresu jau egzistuoja!",
+    "checkoutRedirectTitle": "Liko tik žingsnis! Prisijunkite arba užsiregistruokite, kad užbaigtumėte savo užsakymą."
   },
   "RegisterPage": {
     "title": "Sukurkite savo paskyrą!",
@@ -191,7 +195,8 @@
     "registerButtonText": "Užsiregistruoti",
     "alreadyHaveAccountText": "Jau turite paskyrą?",
     "loginHereText": "Prisijunkite čia!",
-    "passwordMismatchErrorText": "Įvesti slaptažodžiai nesutampa!"
+    "passwordMismatchErrorText": "Įvesti slaptažodžiai nesutampa!",
+    "checkoutRedirectTitle": "Liko tik žingsnis! Užsiregistruokite, kad užbaigtumėte savo užsakymą."
   },
   "Gender": {
     "maleOption": "Vyras",
@@ -262,5 +267,51 @@
       "name": "Šviesiai mėlyni medvilniniai marškiniai",
       "description": "Klasikiniai šviesiai mėlyni marškiniai, pasiūti iš lygios, kvėpuojančios medvilnės su rafinuotu matiniu paviršiumi. Prigludus, su tiesia apykakle ir tvarkingu sagų priekiu, jie pasižymi nesenstančia elegancija ir universalumu – puikiai tinka tiek dalykiniam aprangai, tiek elegantiškoms oficialioms progoms."
      }
+  },
+  "FakeReviewUserData": {
+    "D2": {
+      "firstName": "Emilija",
+      "lastName": "Petrauskaitė"
+    },
+    "D3": {
+      "firstName": "Justas",
+      "lastName": "Adomėnas"
+    },
+    "D4": {
+      "firstName": "Simas",
+      "lastName": "Stankevičius"
+    },
+    "D5": {
+      "firstName": "Ingrida",
+      "lastName": "Sukauskienė"
+    },
+    "D6": {
+      "firstName": "Vaidas",
+      "lastName": "Makauskas"
+    },
+    "D7": {
+      "firstName": "Genutė",
+      "lastName": "Staniulytė"
+    }
+  },
+  "FakeUserReview": {
+    "R1": {
+      "reviewComment": "Amazing!"
+    },
+    "R2": {
+      "reviewComment": "Amazing!"
+    },
+    "R3": {
+      "reviewComment": "Amazing!"
+    },
+    "R4": {
+      "reviewComment": "Amazing!"
+    },
+    "R5": {
+      "reviewComment": "Amazing!"
+    },
+    "R6": {
+      "reviewComment": "Amazing!"
+    }
   }
 }

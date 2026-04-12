@@ -39,7 +39,9 @@ const ProductCard = ({ item }: Props) => {
           <CardContent>
             <Grid2 display="flex" alignItems="center" gap={1}>
               <LocalShippingOutlined />
-              <Typography>{item.deliveryTime}</Typography>
+              <Typography>
+                {item.deliveryTime} {t("ProductCard.deliveryDaysText")}
+              </Typography>
             </Grid2>
 
             <Typography fontSize={24}>{t(item.name)}</Typography>

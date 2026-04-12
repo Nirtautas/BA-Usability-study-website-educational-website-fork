@@ -49,8 +49,12 @@ const CheckoutPage = () => {
 
     if (hasError) return;
 
-    cartContext?.removeAllFromCart();
-    router.push(getPageUrl.orderComplete());
+    if (userContext?.getLoggedInUserData()) {
+      cartContext?.removeAllFromCart();
+      router.push(getPageUrl.orderComplete());
+    } else {
+      router.push(getPageUrl.login().concat(`?checkoutRedirect=true`));
+    }
   };
 
   return (

@@ -35,7 +35,7 @@
       },
       "CustomerSatisfaction": {
         "title": "Hundreds of satisfied customers:",
-        "description": "We have been in the business for over 25 years and are proud to have a high satisfaction rate!"
+        "description": "We have been in the business for over 25 years and are proud to have over 98% customer satisfaction rate!"
       }
     }
   },
@@ -63,6 +63,9 @@
       },
       "searchButtonText": "Search"
     }
+  },
+  "ProductCard": {
+    "deliveryDaysText": "business days"
   },
   "ProductPage": {
     "addToCartButtonText": "Add to cart",
@@ -176,8 +179,8 @@
     "loginButtonText": "Login",
     "dontHaveAccountText": "Dont have an account?",
     "registerHereText": "Register here!",
-    "invalidCredentialsErrorText": "Invalid email or password!"
-
+    "invalidCredentialsErrorText": "Invalid email or password!",
+    "checkoutRedirectTitle": "You're almost there! Please login or register to complete your order."
   },
   "RegisterPage": {
     "title": "Create your account!",
@@ -192,7 +195,8 @@
     "alreadyHaveAccountText": "Already have an account?",
     "loginHereText": "Login here!",
     "passwordMismatchErrorText": "Entered passwords do not match!",
-    "emailAlreadyInUseErrorText": "A user with this email address already exists!"
+    "emailAlreadyInUseErrorText": "A user with this email address already exists!",
+    "checkoutRedirectTitle": "You're almost there! Please register to complete your order."
   },
   "Gender": {
     "maleOption": "Male",
@@ -263,5 +267,51 @@
       "name": "Light Blue Cotton Dress Shirt",
       "description": "A classic light blue dress shirt crafted from smooth, breathable cotton with a refined matte finish. Featuring a tailored fit, crisp collar, and clean button front, it offers timeless elegance and versatility—perfect for business attire or smart formal occasions."
      }
+  },
+  "FakeReviewUserData": {
+    "D2": {
+      "firstName": "Emily",
+      "lastName": "Morton"
+    },
+    "D3": {
+      "firstName": "Archer",
+      "lastName": "Baldwin"
+    },
+    "D4": {
+      "firstName": "Shane",
+      "lastName": "Vasquez"
+    },
+    "D5": {
+      "firstName": "Jade",
+      "lastName": "Freeman"
+    },
+    "D6": {
+      "firstName": "Jim",
+      "lastName": "Jenkins"
+    },
+    "D7": {
+      "firstName": "Barbara",
+      "lastName": "Dunn"
+    }
+  },
+  "FakeUserReview": {
+    "R1": {
+      "reviewComment": "Amazing!"
+    },
+    "R2": {
+      "reviewComment": "Amazing!"
+    },
+    "R3": {
+      "reviewComment": "Amazing!"
+    },
+    "R4": {
+      "reviewComment": "Amazing!"
+    },
+    "R5": {
+      "reviewComment": "Amazing!"
+    },
+    "R6": {
+      "reviewComment": "Amazing!"
+    }
   }
 }

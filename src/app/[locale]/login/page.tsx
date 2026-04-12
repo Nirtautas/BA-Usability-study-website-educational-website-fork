@@ -1,7 +1,13 @@
 import LoginPage from "@/components/pages/loginPage/loginPage";
 
-const Page = () => {
-  return <LoginPage />;
+type PageProps = {
+  searchParams?: {
+    checkoutRedirect?: string;
+  };
+};
+
+const Page = async ({ searchParams }: PageProps) => {
+  return <LoginPage searchParams={await searchParams} />;
 };
 
 export default Page;
