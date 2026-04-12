@@ -84,7 +84,7 @@
     "title": "Items in your cart:",
     "emptyCartButtonText": "Empty cart",
     "cartIsEmptyText": "Your cart is empty.",
-    "goToProductsButtonText": "Go to products",
+    "goToProductsButtonText": "Back to products",
     "Summary": {
       "title": "Cart summary:",
       "itemTotal": "Item total:",

@@ -33,10 +33,13 @@ const CartPage = () => {
           <Stack spacing={2}>
             {cartContext?.cart.length !== 0 ? (
               <Box>
-                <Stack direction="row" display="flex" justifyContent="space-between">
+                <Stack direction="row" display="flex" gap={1}>
                   <Typography variant="h5" gutterBottom>
                     {t("CartPage.title")}
                   </Typography>
+                  <Button variant="contained" onClick={() => router.push(getPageUrl.products())} sx={{ marginLeft: "auto" }}>
+                    {t("CartPage.goToProductsButtonText")}
+                  </Button>
                   <Button color="error" variant="contained" onClick={handleRemoveClick}>
                     {t("CartPage.emptyCartButtonText")}
                   </Button>
