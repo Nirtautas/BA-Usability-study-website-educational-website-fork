@@ -12,7 +12,8 @@ const FakeReviewCard = ({ fakeReviewData }: Props) => {
   return (
     <Card
       sx={{
-        minWidth: 400,
+        minWidth: 350,
+        maxWidth: 350,
         borderRadius: 3,
       }}
     >

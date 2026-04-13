@@ -113,7 +113,7 @@ const AttributionsPage = () => {
           <List dense={true}>
             <ListItem>
               <ListItemButton component="a" href="https://chatgpt.com/" target="_blank" rel="noopener noreferrer">
-                <ListItemText primary="Chat GPT - Product photos & descriptions" />
+                <ListItemText primary="Chat GPT - Product & avatar photos. Product and fake testimonial descriptions" />
               </ListItemButton>
             </ListItem>
           </List>

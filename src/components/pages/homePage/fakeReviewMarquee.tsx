@@ -44,6 +44,9 @@ export default function ReviewMarquee() {
         width="max-content"
         sx={{
           animation: `${scrollLeft} 30s linear infinite`,
+          "&:hover": {
+            animationPlayState: "paused",
+          },
         }}
       >
         {marqueeData.map((fakeReview, index) => (

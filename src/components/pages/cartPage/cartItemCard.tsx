@@ -91,9 +91,7 @@ const CartItemCard = ({ fullCartItem }: Props) => {
                 }}
               />
             </Box>
-            <Typography width={150} noWrap>
-              {t(item.name)}
-            </Typography>
+            <Typography noWrap>{t(item.name)}</Typography>
           </Stack>
         </Paper>
       </TwoActionDialog>

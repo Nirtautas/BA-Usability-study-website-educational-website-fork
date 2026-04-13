@@ -316,7 +316,7 @@ export const fakeReviewUserData: UserInfo[] = [
     phoneNumber: "",
     password: "",
     gender: Gender.Female,
-    profilePicturePath: ""
+    profilePicturePath: "/images/fakeReviewAvatars/woman_1.png"
   },
   {
   id: 3,
@@ -326,7 +326,7 @@ export const fakeReviewUserData: UserInfo[] = [
     phoneNumber: "",
     password: "",
     gender: Gender.Male,
-    profilePicturePath: ""
+    profilePicturePath: "/images/fakeReviewAvatars/man_1.png"
   },
   {
   id: 4,
@@ -336,7 +336,7 @@ export const fakeReviewUserData: UserInfo[] = [
     phoneNumber: "",
     password: "",
     gender: Gender.Male,
-    profilePicturePath: ""
+    profilePicturePath: "/images/fakeReviewAvatars/man_2.png"
   },
   {
   id: 5,
@@ -346,7 +346,7 @@ export const fakeReviewUserData: UserInfo[] = [
     phoneNumber: "",
     password: "",
     gender: Gender.Female,
-    profilePicturePath: ""
+    profilePicturePath: "/images/fakeReviewAvatars/woman_2.png"
   },
   {
   id: 6,
@@ -356,7 +356,7 @@ export const fakeReviewUserData: UserInfo[] = [
     phoneNumber: "",
     password: "",
     gender: Gender.Male,
-    profilePicturePath: ""
+    profilePicturePath: "/images/fakeReviewAvatars/man_3.png"
   },
 {
   id: 7,
@@ -366,7 +366,7 @@ export const fakeReviewUserData: UserInfo[] = [
     phoneNumber: "",
     password: "",
     gender: Gender.Female,
-    profilePicturePath: ""
+    profilePicturePath: "/images/fakeReviewAvatars/woman_3.png"
   },
 ];
 

@@ -142,9 +142,7 @@ const ProductPage = ({ productId }: Props) => {
                 }}
               />
             </Box>
-            <Typography width={150} noWrap>
-              {t(product.name)}
-            </Typography>
+            <Typography noWrap>{t(product.name)}</Typography>
           </Stack>
         </Paper>
       </TwoActionDialog>
