@@ -9,7 +9,7 @@ import { Box, Button, CardMedia, Container, Divider, Grid2, IconButton, Paper, R
 import { useTranslations } from "next-intl";
 import { notFound, useRouter } from "next/navigation";
 import { useState } from "react";
-import TwoActionDialog from "../../shared/twoActionDialog";
+import ActionDialogModal from "../../shared/actionDialogModal";
 import ProductGallery from "./productGallery";
 
 type Props = {
@@ -120,7 +120,7 @@ const ProductPage = ({ productId }: Props) => {
         </Stack>
       </Stack>
 
-      <TwoActionDialog
+      <ActionDialogModal
         open={openDialog}
         onClose={handleClose}
         onConfirm={handleGoToCart}
@@ -145,7 +145,7 @@ const ProductPage = ({ productId }: Props) => {
             <Typography noWrap>{t(product.name)}</Typography>
           </Stack>
         </Paper>
-      </TwoActionDialog>
+      </ActionDialogModal>
     </Container>
   );
 };

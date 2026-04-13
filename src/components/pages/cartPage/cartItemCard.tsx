@@ -1,6 +1,6 @@
 "use client";
 
-import TwoActionDialog from "@/components/shared/twoActionDialog";
+import ActionDialogModal from "@/components/shared/actionDialogModal";
 import { useCart } from "@/data/cartContext";
 import { placeholderImageLink } from "@/data/constants";
 import { FullCartItem } from "@/data/types";
@@ -68,7 +68,7 @@ const CartItemCard = ({ fullCartItem }: Props) => {
         </CardContent>
       </Card>
 
-      <TwoActionDialog
+      <ActionDialogModal
         open={openDialog}
         onClose={handleCancel}
         onConfirm={handleConfirmRemove}
@@ -94,7 +94,7 @@ const CartItemCard = ({ fullCartItem }: Props) => {
             <Typography noWrap>{t(item.name)}</Typography>
           </Stack>
         </Paper>
-      </TwoActionDialog>
+      </ActionDialogModal>
     </Box>
   );
 };

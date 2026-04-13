@@ -150,7 +150,12 @@
       },
       "paymentOptionMandatoryErrorText": "Privaloma pasirinkti apmokėjimo būdą!"
     },
-    "continueToPaymentButtonText": "Eiti į apmokėjimą"
+    "continueToPaymentButtonText": "Eiti į apmokėjimą",
+    "termsAndConditionsCheckboxText": "Sutinku su svetainės taisyklėmis bei sąlygomis.",
+    "moreInformationCheckboxText": "Daugiau informacijos",
+    "freeShippingOfferCheckboxText": "Mėgaukitės 0.00€ siuntimu naudojantis nemokama* \"Keeps+\" paslauga.",
+    "marketingCommunicationCheckboxText": "Norėtume Jums siųsti el. laiškus su pasiūlymais bei naujais produktais iš \"Keeps\", tačiau jei nenorite gauti šių pranešimų, pažymėkite šį langelį.",
+    "termsAndConditionsMandatoryErrorText": "Privalote sutikti su svetainės taisyklėmis bei sąlygomis, kad galėtumėte tęsti savo užsakymą!"
   },
   "MarketingPopup": {
     "title": "Gaukite 10% NUOLAIDĄ nuo savo pirmo pirkinio!",
@@ -197,6 +202,21 @@
     "loginHereText": "Prisijunkite čia!",
     "passwordMismatchErrorText": "Įvesti slaptažodžiai nesutampa!",
     "checkoutRedirectTitle": "Liko tik žingsnis! Užsiregistruokite, kad užbaigtumėte savo užsakymą."
+  },
+  "KeepsShippingServiceModal": {
+    "title": "Nemokamas siuntimas su \"Keeps+\" - Taisyklės ir sąlygos",
+    "Description": {
+      "mainExplanation": "„Keeps+“ yra speciali pristatymo bei personalizavimo paslauga, kuri yra skirta dažnai svetaine besinaudojantiems nariams. Pastariesiems yra suteikiamos šios privilegijos -",
+      "Perks": {
+        "perk1": "Užsakymų prioritetizavimas.",
+        "perk2": "Nemokamas lokalus ir internacionalinis siuntimas.",
+        "perk3": "Besikaupiantys nuolaidos taškai nuo kiekvieno užsakymo.",
+        "perk4": "Išskirtinis mėnesinis naujienlaiškis apie ateinančias kolekcijas."
+      },
+      "paymentExplanation": "Pirmas „Keeps+“ naudojimo mėnesis yra nemokamas, o vėliau ši paslauga tampa kasmėnesine naryste, kainuojančia 30.99€ su PVM. Lėšos iš Jūsų sąskaitos bus nuskaitomos kiekvieno mėnesio 15 d.",
+      "cancellationExplanation": "Norint atšaukti šią paslaugą, prašome susisiekti su mūsų klientų skyriumi darbo dienomis nuo 8:00 iki 17:00 valandos, telefonu - +370 651 65482. Paslauga bus atšaukta nuo kito mėnesio, tad iki to laiko galėsite toliau naudotis visomis „Keeps+“ privilegijomis."
+    },
+    "confirmButtonText": "Susipažinau su nuostatomis"
   },
   "Gender": {
     "maleOption": "Vyras",

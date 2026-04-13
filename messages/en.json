@@ -150,7 +150,12 @@
       },
       "paymentOptionMandatoryErrorText": "Payment option is required!"
     },
-    "continueToPaymentButtonText": "Continue to payment"
+    "continueToPaymentButtonText": "Continue to payment",
+    "termsAndConditionsCheckboxText": "I agree to the website's terms and conditions.",
+    "moreInformationCheckboxText": "More information",
+    "freeShippingOfferCheckboxText": "Enjoy 0.00€ shipping using the free* \"Keeps+\" service.",
+    "marketingCommunicationCheckboxText": "We'd love to send you email with offers and new products from \"Keeps\", but if you do not wish to receive these updates, please tick this box.",
+    "termsAndConditionsMandatoryErrorText": "You must agree to the website's terms and conditions to proceed with your order!"
   },
   "MarketingPopup": {
     "title": "Get 10% OFF your first purchase!",
@@ -197,6 +202,21 @@
     "passwordMismatchErrorText": "Entered passwords do not match!",
     "emailAlreadyInUseErrorText": "A user with this email address already exists!",
     "checkoutRedirectTitle": "You're almost there! Please register to complete your order."
+  },
+  "KeepsShippingServiceModal": {
+    "title": "Free shipping with \"Keeps+\" - Terms and conditions",
+    "Description": {
+      "mainExplanation": "„Keeps+“ is a special delivery and personalization service designed for frequent users of the website. The following privileges are granted to these members -",
+      "Perks": {
+        "perk1": "Order prioritization.",
+        "perk2": "Free local and international shipping.",
+        "perk3": "Accumulating discount points from each order.",
+        "perk4": "Exclusive monthly newsletter about upcoming collections."
+      },
+      "paymentExplanation": "The first month of „Keeps+“ usage is free, after which this service becomes a monthly subscription costing 30.99€ including VAT. Funds will be deducted from your account on the 15th of each month.",
+      "cancellationExplanation": "To cancel this service, please contact our customer service during business days from 8:00 to 17:00, by phone - +370 651 65482. The service will be canceled starting from the next month. Until then you may continue to enjoy all „Keeps+“ privileges."
+    },
+    "confirmButtonText": "I have acknowledged the terms"
   },
   "Gender": {
     "maleOption": "Male",

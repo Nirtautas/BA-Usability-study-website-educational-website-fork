@@ -1,7 +1,7 @@
 "use client";
 
+import ActionDialogModal from "@/components/shared/actionDialogModal";
 import SubheadingBold from "@/components/shared/subheadingBold";
-import TwoActionDialog from "@/components/shared/twoActionDialog";
 import { useCart } from "@/data/cartContext";
 import { getPageUrl } from "@/data/constants";
 import { useRouter } from "@/i18n/navigation";
@@ -82,7 +82,7 @@ const CartPage = () => {
         </Grid2>
       </Grid2>
 
-      <TwoActionDialog
+      <ActionDialogModal
         open={openDialog}
         onClose={handleCancel}
         onConfirm={handleConfirmRemove}
