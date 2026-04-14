@@ -2,6 +2,7 @@
   "NavBar": {
     "title": "Keeps",
     "infoText": "Pasiekite mus telefonu +370 651 84956 arba el. paštu info@store.com",
+    "KeepsBox": "Keeps Dėžutė",
     "Products": {
       "title": "Prekės",
       "allProducts": "Visos prekės"
@@ -218,6 +219,14 @@
     },
     "confirmButtonText": "Susipažinau su nuostatomis"
   },
+  "KeepsBoxPage": {
+    "description": "\"Keeps Dėžutė\" - tai kasmėnesinė prenumeratos dėžutė, Jums suteikianti įvairius svarbiausius aprangos elementus, kaip kojines, apatinį trikotažą, marškinėlius bei daugelį kitų. Priklausomai nuo Jūsų pasirinktos prenumeratos dėžutės, kiekvieną mėnesį gausite kruopščiai atrinktą aukštos kokybės produktų sąrašą, pritaikytą Jūsų pageidavimams ir poreikiams.",
+    "selectSubscriptionText": "Pasirinkite savo prenumeratos dėžutę -",
+    "subscriptionIncludesText": "Į prenumeratos dėžutę įeina -",
+    "addToCartButtonText": "Pridėti pasirinktą prenumeratą į krepšelį",
+    "lookingForProductsText": "Ieškote produktų katalogo?",
+    "goToProductsButtonText": "Spustelėkite čia!"
+  },
   "Gender": {
     "maleOption": "Vyras",
     "femaleOption": "Moteris"
@@ -286,6 +295,40 @@
      "P16": {
       "name": "Šviesiai mėlyni medvilniniai marškiniai",
       "description": "Klasikiniai šviesiai mėlyni marškiniai, pasiūti iš lygios, kvėpuojančios medvilnės su rafinuotu matiniu paviršiumi. Prigludus, su tiesia apykakle ir tvarkingu sagų priekiu, jie pasižymi nesenstančia elegancija ir universalumu – puikiai tinka tiek dalykiniam aprangai, tiek elegantiškoms oficialioms progoms."
+     },
+     "P17": {
+      "name": "Keeps+",
+      "description": "Description"
+     },
+     "P18": {
+      "name": "Keeps dežutė - Lengva",
+      "description": "Protingas pasirinkimas tiems, kurie nori išbandyti „Keeps Dėžutės“ patirtį. Tai puikus būdas atrasti mūsų gaminių kokybę ir stilių neįsipareigojant prie didesnės prenumeratos.",
+      "QualitiesDescriptions": {
+        "Q1": "Dvi poros kojinių - paprastų bei raštuotų",
+        "Q2": "Vienos kelnaitės",
+        "Q3": "Išskirtiniai marškinėliai"
+      }
+     },
+     "P19": {
+      "name": "Keeps dežutė - Pagrindinė",
+      "description": "Standartinė prenumeratos dėžutė, siūlanti platų mūsų populiariausių ir būtiniausių produktų pasirinkimą. Ji puikiai tinka tiems, kurie nori kiekvieną mėnesį mėgautis įvairiais aukštos kokybės produktais, pritaikytais jų pageidavimams.",
+      "QualitiesDescriptions": {
+        "Q1": "Dvi poros kokybiškų kojinių - paprastų ir raštuotų",
+        "Q2": "Dvi poros kelnaičių",
+        "Q3": "Išskirtiniai marškinėliai",
+        "Q4": "Pora mūsų patogių batų"
+      }
+     },
+     "P20": {
+      "name": "Keeps dežutė - Išskirtinė",
+      "description": "Išskirtinė prenumeratos dėžutė, siūlanti mūsų aukščiausios klasės produktų pasirinkimą. Idealiai tinka tiems, kurie nori patirti geriausius „Keeps Dėžutės“ privalumus su kruopščiai atrinktais, išskirtinės kokybės ir stiliaus produktais.",
+      "QualitiesDescriptions": {
+        "Q1": "Dvi poros kokybiškų kojinių - paprastų ir raštuotų",
+        "Q2": "Dvi poros kokybiškų kelnaičių",
+        "Q3": "Išskirtiniai kokybiški marškinėliai",
+        "Q4": "Pora mūsų patogių batų",
+        "Q5": "Kokybiškas aksesuaras"
+      }
      }
   },
   "FakeReviewUserData": {

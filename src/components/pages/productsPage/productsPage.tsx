@@ -23,7 +23,7 @@ const ProductsPage = ({ searchParams }: PageProps) => {
   const productTypes: string[] = searchParams?.productType ? (Array.isArray(searchParams.productType) ? searchParams.productType : [searchParams.productType]) : [];
 
   const filteredOutProducts = products
-    .filter((product) => product.type !== ProductType.DeceptiveExtra)
+    .filter((product) => product.type !== ProductType.DeceptiveExtra && product.type !== ProductType.Subscriptions)
     .filter((product) => {
       if (Number.isNaN(minPrice)) return true;
       return (product.discountedPrice ?? product.price) >= minPrice;

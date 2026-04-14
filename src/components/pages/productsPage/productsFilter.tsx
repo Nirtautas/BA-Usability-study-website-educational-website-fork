@@ -64,7 +64,8 @@ const ProductsFilter = ({ products, appliedFilters }: Props) => {
         <Stack direction="column">
           {Object.values(ProductType).map(
             (type) =>
-              type !== ProductType.DeceptiveExtra && (
+              type !== ProductType.DeceptiveExtra &&
+              type !== ProductType.Subscriptions && (
                 <FormControlLabel
                   key={type}
                   control={

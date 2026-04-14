@@ -3,7 +3,7 @@
 import { createContext, ReactNode, useContext, useEffect, useState } from "react";
 import { parcelLockerPrice, postDeliveryPrice, serviceFee } from "./constants";
 import { products } from "./entityData";
-import { CartContextInterface, CartItem, FullCartItem } from "./types";
+import { CartContextInterface, CartItem, FullCartItem, ProductType } from "./types";
 
 const CartContext = createContext<CartContextInterface | undefined>(undefined);
 
@@ -22,20 +22,30 @@ export function CartProvider({ children }: { children: ReactNode }) {
   const modifyCart = (itemId: number, quantityChange: number) => {
     setCart((prev) => {
       let modifiedCart = [...prev];
-      const exists = modifiedCart.find((i) => i.itemId === itemId);
+      const itemAlreadyExists = modifiedCart.find((i) => i.itemId === itemId);
+      const itemToAdd = getFullCartItem(itemId);
+      const cartItems = getFullCartItems();
+      if (itemToAdd) {
+        cartItems.push(itemToAdd);
+      }
+      const allSubscriptions = cartItems.every((i) => i.item.type === ProductType.Subscriptions);
 
-      if (exists) {
+      if (itemAlreadyExists) {
         modifiedCart = modifiedCart.map((i) => (i.itemId === itemId ? { ...i, quantity: i.quantity + quantityChange } : i)).filter((i) => i.quantity > 0);
       } else if (quantityChange > 0) {
         modifiedCart.unshift({ itemId, quantity: quantityChange });
 
-        if (!modifiedCart.find((i) => i.itemId === 1)) {
+        if (!modifiedCart.find((i) => i.itemId === 1) && !allSubscriptions) {
           modifiedCart.push({ itemId: 1, quantity: 1 });
         }
       }
 
       return modifiedCart;
     });
+  };
+
+  const allItemsAreSubscriptions = () => {
+    return cart.length > 0 && getFullCartItems().every((i) => i.item.type === ProductType.Subscriptions);
   };
 
   const removeFromCart = (itemId: number) => {
@@ -62,6 +72,13 @@ export function CartProvider({ children }: { children: ReactNode }) {
     );
   };
 
+  const getFullCartItem = (itemId: number) => {
+    const product = products.find((p) => p.id === itemId);
+    const quantity = cart.find((i) => i.itemId === itemId)?.quantity || 0;
+    if (product) return { item: product, quantity };
+    return undefined;
+  };
+
   const calculateItemTotal = () => {
     return getFullCartItems().reduce((total, cartItem) => total + (cartItem.item.discountedPrice !== undefined ? cartItem.item.discountedPrice : cartItem.item.price) * cartItem.quantity, 0);
   };
@@ -81,6 +98,7 @@ export function CartProvider({ children }: { children: ReactNode }) {
       value={{
         cart,
         modifyCart,
+        allItemsAreSubscriptions,
         removeFromCart,
         removeAllFromCart,
         getUniqueItemsCount,
@@ -88,6 +106,7 @@ export function CartProvider({ children }: { children: ReactNode }) {
         calculateItemTotal,
         getDeliveryFee,
         calculateTotal,
+        getFullCartItem,
       }}
     >
       {children}

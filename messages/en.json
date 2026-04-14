@@ -2,6 +2,7 @@
   "NavBar": {
     "title": "Keeps",
     "infoText": "Reach us at +370 651 84956 or info@store.com",
+    "KeepsBox": "KeepsBox",
     "Products": {
       "title": "Products",
       "allProducts": "All products"
@@ -218,6 +219,14 @@
     },
     "confirmButtonText": "I have acknowledged the terms"
   },
+  "KeepsBoxPage": {
+    "description": "\"KeepsBox\" is a monthly subscription box, which includes a variety of essential apparel items, such as socks, underwear, t-shirts and many others. Depending on your subscription box choice, you will receive a curated list of high-quality products each month, tailored to your preferences and needs.",
+    "selectSubscriptionText": "Select your subscription box -",
+    "subscriptionIncludesText": "Subscription box includes -",
+    "addToCartButtonText": "Add selected subscription to cart",
+    "lookingForProductsText": "Looking for products instead?",
+    "goToProductsButtonText": "Click here!"
+  },
   "Gender": {
     "maleOption": "Male",
     "femaleOption": "Female"
@@ -286,6 +295,40 @@
      "P16": {
       "name": "Light Blue Cotton Dress Shirt",
       "description": "A classic light blue dress shirt crafted from smooth, breathable cotton with a refined matte finish. Featuring a tailored fit, crisp collar, and clean button front, it offers timeless elegance and versatility—perfect for business attire or smart formal occasions."
+     },
+     "P17": {
+      "name": "Keeps+",
+      "description": "Description"
+     },
+     "P18": {
+      "name": "KeepsBox - Light",
+      "description": "A smart choice for those who want to try out the \"KeepsBox\" experience. It's a great way to discover the quality and style of our products without committing to a larger subscription.",
+      "QualitiesDescriptions": {
+        "Q1": "Two pairs of socks - plain and patterned",
+        "Q2": "A pair of underwear",
+        "Q3": "An exclusive T-Shirt"
+      }
+     },
+     "P19": {
+      "name": "KeepsBox - Essentials",
+      "description": "A standard subscription box that offers a well-rounded selection of our most popular and essential products. It's perfect for those who want to enjoy a variety of high-quality items each month, tailored to their preferences.",
+      "QualitiesDescriptions": {
+        "Q1": "Two pairs of premium socks - plain and patterned",
+        "Q2": "Two pairs of underwear",
+        "Q3": "An exclusive T-Shirt",
+        "Q4": "A pair of our comfortable shoes"
+      }
+     },
+     "P20": {
+      "name": "KeepsBox - Premium",
+      "description": "A premium subscription box that provides an exclusive selection of our top-tier products. Ideal for those who want to experience the best of KeepsBox with curated items that offer exceptional quality and style.",
+      "QualitiesDescriptions": {
+        "Q1": "Two pairs of premium socks - plain and patterned",
+        "Q2": "Two pairs of premium underwear",
+        "Q3": "An exclusive premium T-Shirt",
+        "Q4": "A pair of our comfortable shoes",
+        "Q5": "A premium accessory"
+      }
      }
   },
   "FakeReviewUserData": {

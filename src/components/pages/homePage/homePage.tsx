@@ -1,5 +1,5 @@
 import { ShopTitle } from "@/components/shared/simpleShared";
-import { getPageUrl, landingPageImageLink } from "@/data/constants";
+import { getPageUrl, landingPageImageLink, loginPageImageLink } from "@/data/constants";
 import { Box, Button, Container, Divider, Link, Stack, Typography } from "@mui/material";
 import { useTranslations } from "next-intl";
 import FakeReviewMarquee from "./fakeReviewMarquee";
@@ -10,14 +10,17 @@ const HomePage = () => {
   return (
     <Container>
       <Stack direction="column" alignItems="center" gap={1}>
-        <Stack direction="column" alignItems="center" bgcolor="primary.light" paddingInline={2} paddingBlock={1} borderRadius={2} gap={1}>
-          <Typography variant="h5" color="error.main">
-            {t("SpringSale.title")}
-          </Typography>
-          <Typography>{t("SpringSale.description")}</Typography>
-          <Link href={getPageUrl.products().concat(`?onlyDiscounted=true`)}>
-            <Button variant="contained">{t("SpringSale.buttonText")}</Button>
-          </Link>
+        <Stack direction="row" gap={1} borderRadius={2} border="1px solid" borderColor="#ccc">
+          <Box component="img" src={loginPageImageLink} maxWidth={150} sx={{ objectFit: "cover" }} />
+          <Stack direction="column" gap={1} textAlign="center" margin={2} flex={1}>
+            <Typography variant="h5" color="error.main">
+              {t("SpringSale.title")}
+            </Typography>
+            <Typography>{t("SpringSale.description")}</Typography>
+            <Link href={getPageUrl.products().concat(`?onlyDiscounted=true`)}>
+              <Button variant="contained">{t("SpringSale.buttonText")}</Button>
+            </Link>
+          </Stack>
         </Stack>
 
         <Box sx={{ position: "relative", width: "100%", maxWidth: 1200, maxHeight: 400, borderRadius: 2, overflow: "hidden" }}>

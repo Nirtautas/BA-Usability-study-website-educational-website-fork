@@ -4,7 +4,7 @@ import { ShopTitle } from "@/components/shared/simpleShared";
 import { useCart } from "@/data/cartContext";
 import { getPageUrl } from "@/data/constants";
 import { useUserContext } from "@/data/userContext";
-import { AccountCircle, Login, LogoutOutlined, ShoppingBag, ShoppingCart } from "@mui/icons-material";
+import { AccountCircle, Login, LogoutOutlined, ShoppingBag, ShoppingCart, WidgetsOutlined } from "@mui/icons-material";
 import { AppBar, Badge, Button, Grid2, Link, Menu, MenuItem, Stack, Toolbar, Typography } from "@mui/material";
 import { useTranslations } from "next-intl";
 import { useRouter } from "next/navigation";
@@ -50,6 +50,17 @@ export function NavBar() {
             <Grid2 display="flex" alignItems="center" gap={1}>
               <Grid2>
                 <LanguageSwitcher />
+              </Grid2>
+
+              <Grid2 display="flex" alignItems="center">
+                <Button variant="contained" color="inherit" onClick={() => router.push(getPageUrl.keepsBox())}>
+                  <Stack direction="row" gap={1}>
+                    <WidgetsOutlined color="primary" />
+                    <Typography color="primary" fontWeight={600}>
+                      {t("NavBar.KeepsBox")}
+                    </Typography>
+                  </Stack>
+                </Button>
               </Grid2>
 
               <Grid2 display="flex" alignItems="center">

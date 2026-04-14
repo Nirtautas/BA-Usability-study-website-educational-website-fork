@@ -27,7 +27,7 @@ const CartSummary = ({ fullCartItems, deliveryInfo }: Props) => {
           <Typography>{serviceFee.toFixed(2)}€</Typography>
         </Stack>
       )}
-      {deliveryInfo?.deliveryMethod !== "store" && (
+      {deliveryInfo && deliveryInfo?.deliveryMethod !== "store" && (
         <Stack direction="row" display="flex" justifyContent="space-between">
           <Typography>{t("deliveryFee")}</Typography>
           <Typography>{cartContext?.getDeliveryFee(deliveryInfo?.deliveryMethod).toFixed(2)}€</Typography>

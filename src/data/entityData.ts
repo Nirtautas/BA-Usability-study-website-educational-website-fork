@@ -192,11 +192,65 @@ export const products: Product[] = [
     name: "Products.P16.name",
     description: "Products.P16.description",
     price: 38.99,
-    rating: 4.5,
-    ratingCount: 112,
+    rating: 5,
+    ratingCount: 100,
     deliveryTime: "1-2",
     picturePaths: ["/images/products/shirts/men_shirt_2_1.png", "/images/products/shirts/men_shirt_2_2.png"],
-    stock: 14
+    stock: 9999
+  },
+  {
+    id: 17,
+    type: ProductType.Subscriptions,
+    name: "Products.P17.name",
+    description: "Products.P17.description",
+    price: 30.99,
+    rating: 5,
+    ratingCount: 100,
+    deliveryTime: "1",
+    stock: 9999
+  },
+  {
+    id: 18,
+    type: ProductType.Subscriptions,
+    name: "Products.P18.name",
+    description: "Products.P18.description",
+    price: 30.99,
+    rating: 5,
+    ratingCount: 100,
+    deliveryTime: "1",
+    stock: 9999,
+    keepsBox: true,
+    picturePaths: ["/images/products/keepsBoxPicture.png"],
+    qualitiesDescriptions: ["Products.P18.QualitiesDescriptions.Q1", "Products.P18.QualitiesDescriptions.Q2", "Products.P18.QualitiesDescriptions.Q3"]
+  },
+  {
+    id: 19,
+    type: ProductType.Subscriptions,
+    name: "Products.P19.name",
+    description: "Products.P19.description",
+    price: 50.99,
+    rating: 5,
+    ratingCount: 100,
+    deliveryTime: "1",
+    stock: 9999,
+    keepsBox: true,
+    picturePaths: ["/images/products/keepsBoxPicture.png"],
+    qualitiesDescriptions: ["Products.P19.QualitiesDescriptions.Q1", "Products.P19.QualitiesDescriptions.Q2", "Products.P19.QualitiesDescriptions.Q3", "Products.P19.QualitiesDescriptions.Q4"]
+  },
+  {
+    id: 20,
+    type: ProductType.Subscriptions,
+    name: "Products.P20.name",
+    description: "Products.P20.description",
+    price: 100.99,
+    discountedPrice: 90.99,
+    rating: 5,
+    ratingCount: 100,
+    deliveryTime: "1",
+    stock: 9999,
+    keepsBox: true,
+    picturePaths: ["/images/products/keepsBoxPicture.png"],
+    qualitiesDescriptions: ["Products.P20.QualitiesDescriptions.Q1", "Products.P20.QualitiesDescriptions.Q2", "Products.P20.QualitiesDescriptions.Q3", "Products.P20.QualitiesDescriptions.Q4", "Products.P20.QualitiesDescriptions.Q5"]
   },
 ];
 

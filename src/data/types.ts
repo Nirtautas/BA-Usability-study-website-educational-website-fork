@@ -4,12 +4,14 @@ export type Product = {
   name: string
   picturePaths?: string[]
   description?: string
+  qualitiesDescriptions?: string[]
   price: number
   discountedPrice?: number
   rating: number
   ratingCount: number
   deliveryTime: string
   stock: number
+  keepsBox?: boolean
 };
 
 export enum ProductType {
@@ -17,6 +19,7 @@ export enum ProductType {
   Shirts = "Shirts",
   Pants = "Pants",
   Dresses = "Dresses",
+  Subscriptions = "Subscriptions",
   DeceptiveExtra = "Extra"
 }
 
@@ -25,6 +28,7 @@ export const productTypeTranslationKeyMap: Record<ProductType, string> = {
   [ProductType.Pants]: "ProductType.pantsOption",
   [ProductType.Shirts]: "ProductType.shirtOption",
   [ProductType.Dresses]: "ProductType.dressOption",
+  [ProductType.Subscriptions]: "ProductType.subscriptionsOption",
   [ProductType.DeceptiveExtra]: "",
 };
 
@@ -41,6 +45,7 @@ export type FullCartItem = {
 export interface CartContextInterface {
   cart: CartItem[];
   modifyCart: (itemId: number, quantityChange: number) => void;
+  allItemsAreSubscriptions: () => boolean;
   removeFromCart: (id: number) => void;
   removeAllFromCart: () => void;
   getUniqueItemsCount: (includeDeceptive?: boolean) => number;
@@ -48,6 +53,7 @@ export interface CartContextInterface {
   calculateItemTotal: () => number;
   getDeliveryFee: (deliveryMethod?: string) => number;
   calculateTotal: (deliveryMethod?: string) => number;
+  getFullCartItem: (itemId: number) => FullCartItem | undefined;
 };
 
 export interface UserContextInterface {

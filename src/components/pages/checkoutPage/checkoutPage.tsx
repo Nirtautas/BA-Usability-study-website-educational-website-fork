@@ -46,7 +46,7 @@ const CheckoutPage = () => {
       setDeliveryError("");
     }
 
-    if (!payment) {
+    if (!cartContext?.allItemsAreSubscriptions() && !payment) {
       setPaymentError(t("CheckoutPage.PaymentInformation.paymentOptionMandatoryErrorText"));
       hasError = true;
     } else {
@@ -98,11 +98,13 @@ const CheckoutPage = () => {
           <></>
         )}
 
-        <Paper sx={{ width: 700, padding: 1 }}>
-          <SubheadingBold headingText={t("CheckoutPage.DeliveryInformation.title")} />
-          <Divider />
-          <DeliverySelection deliveryInfo={deliveryInfo} setDeliveryInfo={setDeliveryInfo} error={deliveryError} />
-        </Paper>
+        {!cartContext?.allItemsAreSubscriptions() && (
+          <Paper sx={{ width: 700, padding: 1 }}>
+            <SubheadingBold headingText={t("CheckoutPage.DeliveryInformation.title")} />
+            <Divider />
+            <DeliverySelection deliveryInfo={deliveryInfo} setDeliveryInfo={setDeliveryInfo} error={deliveryError} />
+          </Paper>
+        )}
 
         <Paper sx={{ width: 700, padding: 1 }}>
           <SubheadingBold headingText={t("CheckoutPage.PaymentInformation.title")} />
