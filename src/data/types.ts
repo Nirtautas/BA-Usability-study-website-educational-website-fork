@@ -65,6 +65,13 @@ export interface UserContextInterface {
   attemptRegistration: (registerInfo: RegisterInfo) => string;
 };
 
+export interface SubscriptionContextInterface {
+  UserInfoSubscriptionInfo: UserInfoSubscriptionInfo[];
+  getUserSubscriptions: (userId: number) => Product[];
+  linkSubscriptionToCurrentUser: (subscriptionId: number) => void;
+  linkCartSubscriptionsToCurrentUser: () => void;
+};
+
 export type Bank = {
   id: number;
   name: string;
@@ -136,3 +143,8 @@ export type FakeReviewCardData = {
   rating: number;
   description: string;
 };
+
+export type UserInfoSubscriptionInfo = {
+  userId: number;
+  subscriptionId: number;
+}

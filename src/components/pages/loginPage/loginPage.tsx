@@ -4,6 +4,7 @@ import { ShopTitle } from "@/components/shared/simpleShared";
 import SubheadingBold from "@/components/shared/subheadingBold";
 import { useCart } from "@/data/cartContext";
 import { getPageUrl, loginPageImageLink } from "@/data/constants";
+import { useSubscriptionContext } from "@/data/subscriptionContext";
 import { LoginCredentials } from "@/data/types";
 import { useUserContext } from "@/data/userContext";
 import { EmailOutlined, LockOutlined } from "@mui/icons-material";
@@ -21,6 +22,7 @@ type PageProps = {
 const LoginPage = ({ searchParams }: PageProps) => {
   const router = useRouter();
   const cartContext = useCart();
+  const subscriptionContext = useSubscriptionContext();
   const userContext = useUserContext();
   const t = useTranslations("LoginPage");
   const [loginCredentials, setLoginCredentials] = useState<LoginCredentials>({ email: "", password: "" });
@@ -34,6 +36,7 @@ const LoginPage = ({ searchParams }: PageProps) => {
 
     if (userId) {
       if (checkoutRedirect) {
+        subscriptionContext?.linkCartSubscriptionsToCurrentUser();
         cartContext?.removeAllFromCart();
         router.push(getPageUrl.orderComplete());
       } else {

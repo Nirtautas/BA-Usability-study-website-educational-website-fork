@@ -7,6 +7,7 @@ import MarketingPopup from "@/components/templates/marketingPopup";
 import MuiThemeProvider from "@/components/templates/mui";
 import NavBar from "@/components/templates/navBar/navBar";
 import { CartProvider } from "@/data/cartContext";
+import { SubscriptionDataProvider } from "@/data/subscriptionContext";
 import { UserDataProvider } from "@/data/userContext";
 import { routing } from "@/i18n/routing";
 import { AppRouterCacheProvider } from "@mui/material-nextjs/v15-appRouter";
@@ -62,10 +63,12 @@ export default async function RootLayout({ children, params }: Props) {
             <NextIntlClientProvider locale={locale}>
               <UserDataProvider>
                 <CartProvider>
-                  <NavBar />
-                  {children}
-                  <Footer />
-                  <MarketingPopup />
+                  <SubscriptionDataProvider>
+                    <NavBar />
+                    {children}
+                    <Footer />
+                    <MarketingPopup />
+                  </SubscriptionDataProvider>
                 </CartProvider>
               </UserDataProvider>
             </NextIntlClientProvider>

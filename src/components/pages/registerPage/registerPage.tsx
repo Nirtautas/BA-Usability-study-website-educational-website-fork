@@ -2,7 +2,9 @@
 
 import { ShopTitle } from "@/components/shared/simpleShared";
 import SubheadingBold from "@/components/shared/subheadingBold";
+import { useCart } from "@/data/cartContext";
 import { getPageUrl, registerPageImageLink } from "@/data/constants";
+import { useSubscriptionContext } from "@/data/subscriptionContext";
 import { Gender, genderTypeTranslationKeyMap, RegisterInfo } from "@/data/types";
 import { useUserContext } from "@/data/userContext";
 import { EmailOutlined, LockOutlined, PhoneAndroidOutlined } from "@mui/icons-material";
@@ -20,6 +22,8 @@ type PageProps = {
 const RegisterPage = ({ searchParams }: PageProps) => {
   const router = useRouter();
   const userContext = useUserContext();
+  const subscriptionContext = useSubscriptionContext();
+  const cartContext = useCart();
   const t = useTranslations();
   const [registerInfo, setRegisterInfo] = useState<RegisterInfo>({
     firstName: "",
@@ -40,6 +44,8 @@ const RegisterPage = ({ searchParams }: PageProps) => {
 
     if (!errorMsg) {
       if (checkoutRedirect) {
+        subscriptionContext?.linkCartSubscriptionsToCurrentUser();
+        cartContext?.removeAllFromCart();
         router.push(getPageUrl.orderComplete());
       } else {
         router.push(getPageUrl.products());

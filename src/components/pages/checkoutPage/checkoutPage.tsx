@@ -5,13 +5,14 @@ import SubheadingBold from "@/components/shared/subheadingBold";
 import { useCart } from "@/data/cartContext";
 import { getPageUrl } from "@/data/constants";
 import { storeLocations } from "@/data/entityData";
+import { useSubscriptionContext } from "@/data/subscriptionContext";
 import { DeliveryInfo } from "@/data/types";
 import { useUserContext } from "@/data/userContext";
 import { useRouter } from "@/i18n/navigation";
 import { CheckOutlined } from "@mui/icons-material";
 import { Box, Button, Checkbox, Divider, FormControlLabel, FormGroup, FormHelperText, List, ListItem, Paper, Stack, Typography } from "@mui/material";
 import { useTranslations } from "next-intl";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import CartSummary from "../../shared/cartSummary";
 import DeliverySelection from "./deliverySelection";
 import PaymentSelection from "./paymentSelection";
@@ -20,6 +21,7 @@ const CheckoutPage = () => {
   const router = useRouter();
   const cartContext = useCart();
   const userContext = useUserContext();
+  const subscriptionContext = useSubscriptionContext();
   const t = useTranslations();
   const cartItems = cartContext?.getFullCartItems();
 
@@ -32,8 +34,15 @@ const CheckoutPage = () => {
 
   const [termsAccepted, setTermsAccepted] = useState(true);
   const [termsError, setTermsError] = useState("");
+  const [keepsPlusAccepted, setKeepsPlusAccepted] = useState(true);
 
   const [openKeepsShippingServiceDialog, setOpenKeepsShippingServiceDialog] = useState(false);
+
+  useEffect(() => {
+    if (cartContext?.cart.length === 0) {
+      router.push(getPageUrl.products());
+    }
+  }, []);
 
   const handleSubmit = (e: React.ChangeEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -62,7 +71,12 @@ const CheckoutPage = () => {
 
     if (hasError) return;
 
-    if (userContext?.getLoggedInUserData()) {
+    const loggedInUserData = userContext?.getLoggedInUserData();
+    if (loggedInUserData) {
+      if (keepsPlusAccepted) {
+        subscriptionContext?.linkSubscriptionToCurrentUser(17);
+      }
+      subscriptionContext?.linkCartSubscriptionsToCurrentUser();
       cartContext?.removeAllFromCart();
       router.push(getPageUrl.orderComplete());
     } else {
@@ -125,15 +139,20 @@ const CheckoutPage = () => {
               label={<Typography>{t("CheckoutPage.termsAndConditionsCheckboxText")} </Typography>}
             />
 
-            <Stack direction="row" alignItems="center" justifyContent="space-between">
-              <FormControlLabel control={<Checkbox defaultChecked />} label={<Typography>{t("CheckoutPage.freeShippingOfferCheckboxText")} </Typography>} />
+            {!cartContext?.allItemsAreSubscriptions() && (
+              <Stack direction="row" alignItems="center" justifyContent="space-between">
+                <FormControlLabel
+                  control={<Checkbox checked={!cartContext?.allItemsAreSubscriptions() && keepsPlusAccepted} onChange={(e) => setKeepsPlusAccepted(e.target.checked)} />}
+                  label={<Typography>{t("CheckoutPage.freeShippingOfferCheckboxText")} </Typography>}
+                />
 
-              <Button onClick={() => setOpenKeepsShippingServiceDialog(true)} variant="text">
-                <Typography fontSize={14} textAlign="right" sx={{ textDecoration: "underline" }}>
-                  {t("CheckoutPage.moreInformationCheckboxText")}
-                </Typography>
-              </Button>
-            </Stack>
+                <Button onClick={() => setOpenKeepsShippingServiceDialog(true)} variant="text">
+                  <Typography fontSize={14} textAlign="right" sx={{ textDecoration: "underline" }}>
+                    {t("CheckoutPage.moreInformationCheckboxText")}
+                  </Typography>
+                </Button>
+              </Stack>
+            )}
 
             <FormControlLabel control={<Checkbox />} label={t("CheckoutPage.marketingCommunicationCheckboxText")} />
           </FormGroup>
