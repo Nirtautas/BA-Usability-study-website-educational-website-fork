@@ -70,6 +70,7 @@ export interface SubscriptionContextInterface {
   getUserSubscriptions: (userId: number) => Product[];
   linkSubscriptionToCurrentUser: (subscriptionId: number) => void;
   linkCartSubscriptionsToCurrentUser: () => void;
+  getCurrentUserSubscriptionCount: () => number;
 };
 
 export type Bank = {

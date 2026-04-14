@@ -73,7 +73,7 @@ const CheckoutPage = () => {
 
     const loggedInUserData = userContext?.getLoggedInUserData();
     if (loggedInUserData) {
-      if (keepsPlusAccepted) {
+      if (!cartContext?.allItemsAreSubscriptions() && keepsPlusAccepted) {
         subscriptionContext?.linkSubscriptionToCurrentUser(17);
       }
       subscriptionContext?.linkCartSubscriptionsToCurrentUser();
@@ -142,7 +142,7 @@ const CheckoutPage = () => {
             {!cartContext?.allItemsAreSubscriptions() && (
               <Stack direction="row" alignItems="center" justifyContent="space-between">
                 <FormControlLabel
-                  control={<Checkbox checked={!cartContext?.allItemsAreSubscriptions() && keepsPlusAccepted} onChange={(e) => setKeepsPlusAccepted(e.target.checked)} />}
+                  control={<Checkbox checked={keepsPlusAccepted} onChange={(e) => setKeepsPlusAccepted(e.target.checked)} />}
                   label={<Typography>{t("CheckoutPage.freeShippingOfferCheckboxText")} </Typography>}
                 />
 

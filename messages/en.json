@@ -11,6 +11,7 @@
     "login": "Login",
     "Account": {
       "helloText": "Hello, {firstName} {lastName}",
+      "subscriptions": "My subscriptions",
       "logout": "Logout"
     }
   },
@@ -226,6 +227,17 @@
     "addToCartButtonText": "Add selected subscription to cart",
     "lookingForProductsText": "Looking for products instead?",
     "goToProductsButtonText": "Click here!"
+  },
+  "SubscriptionsPage": {
+    "title": "My subscriptions:",
+    "numberOfSubscriptions": "You have {subscriptionCount} active subscription(s) -",
+    "tableHeaderSubscriptionName": "Subscription name",
+    "tableHeaderInfoButton": "Actions",
+    "tableHeaderNextBillingDate": "Next billing date",
+    "tableHeaderPrice": "Price",
+    "infoButtonText": "Information",
+    "noSubscriptions": "You have no active subscriptions.",
+    "goToProductsButtonText": "See KeepsBox subscription options"
   },
   "Gender": {
     "maleOption": "Male",

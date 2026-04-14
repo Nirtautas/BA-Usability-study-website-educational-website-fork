@@ -8,7 +8,8 @@ export const getPageUrl = {
     register: () => '/register',
     orderComplete: () => `/order-complete`,
     attributions: () => `/attributions`,
-    keepsBox: () => `/keeps-box`
+    keepsBox: () => `/keeps-box`,
+    subscriptions: () => `/subscriptions`,
 }
 
 export const placeholderImageLink = "/images/products/placeholder.jpg";

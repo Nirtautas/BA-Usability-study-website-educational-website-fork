@@ -4,7 +4,7 @@ import { ShopTitle } from "@/components/shared/simpleShared";
 import { useCart } from "@/data/cartContext";
 import { getPageUrl } from "@/data/constants";
 import { useUserContext } from "@/data/userContext";
-import { AccountCircle, Login, LogoutOutlined, ShoppingBag, ShoppingCart, WidgetsOutlined } from "@mui/icons-material";
+import { AccountCircle, AttachMoneyOutlined, Login, LogoutOutlined, ShoppingBag, ShoppingCart, WidgetsOutlined } from "@mui/icons-material";
 import { AppBar, Badge, Button, Grid2, Link, Menu, MenuItem, Stack, Toolbar, Typography } from "@mui/material";
 import { useTranslations } from "next-intl";
 import { useRouter } from "next/navigation";
@@ -100,6 +100,9 @@ export function NavBar() {
                   </Button>
 
                   <Menu anchorEl={anchorElAccount} open={openAccount} onClose={() => setAnchorElAccount(null)}>
+                    <MenuItem onClick={() => router.push(getPageUrl.subscriptions())}>
+                      <AttachMoneyOutlined /> {t("NavBar.Account.subscriptions")}
+                    </MenuItem>
                     <MenuItem onClick={handleLogout}>
                       <LogoutOutlined /> {t("NavBar.Account.logout")}
                     </MenuItem>

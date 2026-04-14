@@ -62,6 +62,14 @@ export function SubscriptionDataProvider({ children }: { children: ReactNode }) 
     }
   };
 
+  const getCurrentUserSubscriptionCount = () => {
+    const loggedInUserData = userContext?.getLoggedInUserData();
+    if (loggedInUserData) {
+      return subscriptionData.filter((subscription) => subscription.userId === loggedInUserData.id).length;
+    }
+    return 0;
+  };
+
   const linkCartSubscriptionsToCurrentUser = () => {
     const loggedInUserData = userContext?.getLoggedInUserData();
     if (loggedInUserData) {
@@ -81,6 +89,7 @@ export function SubscriptionDataProvider({ children }: { children: ReactNode }) 
         getUserSubscriptions,
         linkSubscriptionToCurrentUser,
         linkCartSubscriptionsToCurrentUser,
+        getCurrentUserSubscriptionCount,
       }}
     >
       {children}

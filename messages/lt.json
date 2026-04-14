@@ -11,6 +11,7 @@
     "login": "Prisijungti",
     "Account": {
       "helloText": "Sveiki, {firstName} {lastName}",
+      "subscriptions": "Mano prenumeratos",
       "logout": "Atsijungti"
     }
   },
@@ -226,6 +227,17 @@
     "addToCartButtonText": "Pridėti pasirinktą prenumeratą į krepšelį",
     "lookingForProductsText": "Ieškote produktų katalogo?",
     "goToProductsButtonText": "Spustelėkite čia!"
+  },
+  "SubscriptionsPage": {
+    "title": "Mano prenumeratos:",
+    "numberOfSubscriptions": "Jūs turite {subscriptionCount} aktyvią(-ias) prenumeratą(-as) -",
+    "tableHeaderSubscriptionName": "Prenumeratos pavadinimas",
+    "tableHeaderInfoButton": "Veiksmai",
+    "tableHeaderNextBillingDate": "Kito apmokėjimo data",
+    "tableHeaderPrice": "Kaina",
+    "infoButtonText": "Informacija",
+    "noSubscriptions": "Jūs neturite aktyvių prenumeratų.",
+    "goToProductsButtonText": "Peržiūrėti Keeps Dėžutės prenumeratas"
   },
   "Gender": {
     "maleOption": "Vyras",
