@@ -3,6 +3,7 @@ import RegisterPage from "@/components/pages/registerPage/registerPage";
 type PageProps = {
   searchParams?: {
     checkoutRedirect?: string;
+    keepsPlusAccepted?: string;
   };
 };
 

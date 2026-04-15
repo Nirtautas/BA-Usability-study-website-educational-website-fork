@@ -16,6 +16,7 @@ import { useState } from "react";
 type PageProps = {
   searchParams?: {
     checkoutRedirect?: string;
+    keepsPlusAccepted?: string;
   };
 };
 
@@ -28,6 +29,7 @@ const LoginPage = ({ searchParams }: PageProps) => {
   const [loginCredentials, setLoginCredentials] = useState<LoginCredentials>({ email: "", password: "" });
   const [errorMsg, setErrorMsg] = useState("");
   const checkoutRedirect = searchParams?.checkoutRedirect === "true";
+  const keepsPlusAccepted = searchParams?.keepsPlusAccepted === "true";
 
   const handleLogin = (e: React.FormEvent<HTMLFormElement>) => {
     setErrorMsg("");
@@ -36,6 +38,10 @@ const LoginPage = ({ searchParams }: PageProps) => {
 
     if (userId) {
       if (checkoutRedirect) {
+        const keepsPlusSubscriptionId = subscriptionContext?.getKeepsPlusSubscriptionId();
+        if (!cartContext?.allItemsAreSubscriptions() && keepsPlusAccepted && keepsPlusSubscriptionId) {
+          subscriptionContext?.linkSubscriptionToCurrentUser(keepsPlusSubscriptionId, userId);
+        }
         subscriptionContext?.linkCartSubscriptionsToCurrentUser();
         cartContext?.removeAllFromCart();
         router.push(getPageUrl.orderComplete());
@@ -106,7 +112,7 @@ const LoginPage = ({ searchParams }: PageProps) => {
               </Button>
               <Typography>
                 {t("dontHaveAccountText")}{" "}
-                <Link href={getPageUrl.register().concat(`?checkoutRedirect=${checkoutRedirect}`)} sx={{ textDecoration: "underline" }}>
+                <Link href={getPageUrl.register().concat(`?checkoutRedirect=${checkoutRedirect}&keepsPlusAccepted=${keepsPlusAccepted}`)} sx={{ textDecoration: "underline" }}>
                   {t("registerHereText")}
                 </Link>
               </Typography>

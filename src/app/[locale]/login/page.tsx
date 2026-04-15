@@ -3,6 +3,7 @@ import LoginPage from "@/components/pages/loginPage/loginPage";
 type PageProps = {
   searchParams?: {
     checkoutRedirect?: string;
+    keepsPlusAccepted?: string;
   };
 };
 

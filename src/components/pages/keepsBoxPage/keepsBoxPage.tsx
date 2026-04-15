@@ -4,6 +4,7 @@ import SubheadingBold from "@/components/shared/subheadingBold";
 import { useCart } from "@/data/cartContext";
 import { getPageUrl, keepsBoxPicture } from "@/data/constants";
 import { products } from "@/data/entityData";
+import { SubscriptionType } from "@/data/types";
 import { useRouter } from "@/i18n/navigation";
 import { Box, Button, Container, Divider, FormControl, List, ListItem, Paper, Radio, RadioGroup, Stack, Typography } from "@mui/material";
 import { useTranslations } from "next-intl";
@@ -13,13 +14,13 @@ const KeepsBoxPage = () => {
   const t = useTranslations();
   const cartContext = useCart();
   const router = useRouter();
-  const filteredSubscriptions = products.filter((product) => product.keepsBox);
+  const filteredSubscriptions = products.filter((product) => product.subscriptionType === SubscriptionType.KeepsBox);
   const defaultSubscriptionId = filteredSubscriptions[filteredSubscriptions.length - 1]?.id?.toString() ?? "";
   const [subscriptionId, setSubscriptionId] = useState(defaultSubscriptionId);
 
   const addSubscriptionToCart = () => {
     const cartItems = cartContext?.getFullCartItems();
-    const keepsBoxCartItems = cartItems?.filter((i) => i.item.keepsBox) ?? [];
+    const keepsBoxCartItems = cartItems?.filter((i) => i.item.subscriptionType === SubscriptionType.KeepsBox) ?? [];
 
     if (keepsBoxCartItems?.length === 0) {
       cartContext?.modifyCart(Number(subscriptionId), 1);

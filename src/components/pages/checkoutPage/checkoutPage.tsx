@@ -1,6 +1,7 @@
 "use client";
 
 import ActionDialogModal from "@/components/shared/actionDialogModal";
+import KeepsPlusServiceDialogInfo from "@/components/shared/keepsPlusServiceDialog";
 import SubheadingBold from "@/components/shared/subheadingBold";
 import { useCart } from "@/data/cartContext";
 import { getPageUrl } from "@/data/constants";
@@ -10,7 +11,7 @@ import { DeliveryInfo } from "@/data/types";
 import { useUserContext } from "@/data/userContext";
 import { useRouter } from "@/i18n/navigation";
 import { CheckOutlined } from "@mui/icons-material";
-import { Box, Button, Checkbox, Divider, FormControlLabel, FormGroup, FormHelperText, List, ListItem, Paper, Stack, Typography } from "@mui/material";
+import { Box, Button, Checkbox, Divider, FormControlLabel, FormGroup, FormHelperText, Paper, Stack, Typography } from "@mui/material";
 import { useTranslations } from "next-intl";
 import { useEffect, useState } from "react";
 import CartSummary from "../../shared/cartSummary";
@@ -73,14 +74,15 @@ const CheckoutPage = () => {
 
     const loggedInUserData = userContext?.getLoggedInUserData();
     if (loggedInUserData) {
-      if (!cartContext?.allItemsAreSubscriptions() && keepsPlusAccepted) {
-        subscriptionContext?.linkSubscriptionToCurrentUser(17);
+      const keepsPlusSubscriptionId = subscriptionContext?.getKeepsPlusSubscriptionId();
+      if (!cartContext?.allItemsAreSubscriptions() && keepsPlusAccepted && keepsPlusSubscriptionId) {
+        subscriptionContext?.linkSubscriptionToCurrentUser(keepsPlusSubscriptionId, loggedInUserData.id);
       }
       subscriptionContext?.linkCartSubscriptionsToCurrentUser();
       cartContext?.removeAllFromCart();
       router.push(getPageUrl.orderComplete());
     } else {
-      router.push(getPageUrl.login().concat(`?checkoutRedirect=true`));
+      router.push(getPageUrl.login().concat(`?checkoutRedirect=true&keepsPlusAccepted=${keepsPlusAccepted}`));
     }
   };
 
@@ -139,7 +141,7 @@ const CheckoutPage = () => {
               label={<Typography>{t("CheckoutPage.termsAndConditionsCheckboxText")} </Typography>}
             />
 
-            {!cartContext?.allItemsAreSubscriptions() && (
+            {!cartContext?.allItemsAreSubscriptions() && !subscriptionContext?.userHasKeepsPlusSubscription() && (
               <Stack direction="row" alignItems="center" justifyContent="space-between">
                 <FormControlLabel
                   control={<Checkbox checked={keepsPlusAccepted} onChange={(e) => setKeepsPlusAccepted(e.target.checked)} />}
@@ -171,25 +173,7 @@ const CheckoutPage = () => {
         title={t("KeepsShippingServiceModal.title")}
         confirmText={t("KeepsShippingServiceModal.confirmButtonText")}
       >
-        <Stack direction="column" alignItems="center" gap={1}>
-          <Typography>{t("KeepsShippingServiceModal.Description.mainExplanation")}</Typography>
-          <List sx={{ listStyleType: "disc" }}>
-            <ListItem sx={{ display: "list-item" }}>
-              <Typography>{t("KeepsShippingServiceModal.Description.Perks.perk1")}</Typography>
-            </ListItem>
-            <ListItem sx={{ display: "list-item" }}>
-              <Typography>{t("KeepsShippingServiceModal.Description.Perks.perk2")}</Typography>
-            </ListItem>
-            <ListItem sx={{ display: "list-item" }}>
-              <Typography>{t("KeepsShippingServiceModal.Description.Perks.perk3")}</Typography>
-            </ListItem>
-            <ListItem sx={{ display: "list-item" }}>
-              <Typography>{t("KeepsShippingServiceModal.Description.Perks.perk4")}</Typography>
-            </ListItem>
-          </List>
-          <Typography>{t("KeepsShippingServiceModal.Description.paymentExplanation")}</Typography>
-          <Typography>{t("KeepsShippingServiceModal.Description.cancellationExplanation")}</Typography>
-        </Stack>
+        <KeepsPlusServiceDialogInfo />
       </ActionDialogModal>
     </Box>
   );

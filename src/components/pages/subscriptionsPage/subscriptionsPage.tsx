@@ -1,12 +1,16 @@
 "use client";
 
+import ActionDialogModal from "@/components/shared/actionDialogModal";
+import KeepsBoxServiceDialogInfo from "@/components/shared/keepsBoxServiceDialog";
+import KeepsPlusServiceDialogInfo from "@/components/shared/keepsPlusServiceDialog";
 import { getPageUrl } from "@/data/constants";
 import { useSubscriptionContext } from "@/data/subscriptionContext";
+import { SubscriptionType } from "@/data/types";
 import { useUserContext } from "@/data/userContext";
 import { useRouter } from "@/i18n/navigation";
 import { Button, Container, Divider, Paper, Stack, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Typography } from "@mui/material";
 import { useTranslations } from "next-intl";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 const getNextMonthBillingDate = () => {
   const now = new Date();
@@ -21,6 +25,9 @@ const SubscriptionsPage = () => {
   const userContext = useUserContext();
   const currentUser = userContext?.getLoggedInUserData();
   const subscriptionCount = subscriptionsContext?.getCurrentUserSubscriptionCount();
+
+  const [openKeepsBoxServiceDialog, setOpenKeepsBoxServiceDialog] = useState(false);
+  const [openKeepsPlusServiceDialog, setOpenKeepsPlusServiceDialog] = useState(false);
 
   useEffect(() => {
     if (!userContext?.getLoggedInUserData()) {
@@ -64,7 +71,12 @@ const SubscriptionsPage = () => {
                             <Typography>{subscription.discountedPrice ?? subscription.price}</Typography>
                           </TableCell>
                           <TableCell align="right">
-                            <Button variant="contained">{t("SubscriptionsPage.infoButtonText")}</Button>
+                            <Button
+                              variant="contained"
+                              onClick={subscription.subscriptionType === SubscriptionType.KeepsPlus ? () => setOpenKeepsPlusServiceDialog(true) : () => setOpenKeepsBoxServiceDialog(true)}
+                            >
+                              {t("SubscriptionsPage.infoButtonText")}
+                            </Button>
                           </TableCell>
                         </TableRow>
                       ))}
@@ -82,6 +94,24 @@ const SubscriptionsPage = () => {
           )}
         </Stack>
       </Paper>
+
+      <ActionDialogModal
+        open={openKeepsPlusServiceDialog}
+        onConfirm={() => setOpenKeepsPlusServiceDialog(false)}
+        title={t("KeepsPlusServiceModal.title")}
+        confirmText={t("KeepsPlusServiceModal.confirmButtonText")}
+      >
+        <KeepsPlusServiceDialogInfo />
+      </ActionDialogModal>
+
+      <ActionDialogModal
+        open={openKeepsBoxServiceDialog}
+        onConfirm={() => setOpenKeepsBoxServiceDialog(false)}
+        title={t("KeepsBoxServiceModal.title")}
+        confirmText={t("KeepsBoxServiceModal.confirmButtonText")}
+      >
+        <KeepsBoxServiceDialogInfo />
+      </ActionDialogModal>
     </Container>
   );
 };

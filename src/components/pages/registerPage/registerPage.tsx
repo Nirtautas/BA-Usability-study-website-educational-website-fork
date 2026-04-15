@@ -16,6 +16,7 @@ import { useState } from "react";
 type PageProps = {
   searchParams?: {
     checkoutRedirect?: string;
+    keepsPlusAccepted?: string;
   };
 };
 
@@ -36,14 +37,19 @@ const RegisterPage = ({ searchParams }: PageProps) => {
   });
   const [errorMsg, setErrorMsg] = useState("");
   const checkoutRedirect = searchParams?.checkoutRedirect === "true";
+  const keepsPlusAccepted = searchParams?.keepsPlusAccepted === "true";
 
   const handleRegistration = (e: React.FormEvent<HTMLFormElement>) => {
     setErrorMsg("");
     e.preventDefault();
-    const errorMsg = userContext?.attemptRegistration(registerInfo);
+    const response = userContext?.attemptRegistration(registerInfo);
 
-    if (!errorMsg) {
+    if (!response?.error) {
       if (checkoutRedirect) {
+        const keepsPlusSubscriptionId = subscriptionContext?.getKeepsPlusSubscriptionId();
+        if (!cartContext?.allItemsAreSubscriptions() && keepsPlusAccepted && keepsPlusSubscriptionId) {
+          subscriptionContext?.linkSubscriptionToCurrentUser(keepsPlusSubscriptionId, userId);
+        }
         subscriptionContext?.linkCartSubscriptionsToCurrentUser();
         cartContext?.removeAllFromCart();
         router.push(getPageUrl.orderComplete());
@@ -51,7 +57,7 @@ const RegisterPage = ({ searchParams }: PageProps) => {
         router.push(getPageUrl.products());
       }
     } else {
-      setErrorMsg(errorMsg);
+      setErrorMsg(response?.error || "");
     }
   };
 
@@ -185,7 +191,7 @@ const RegisterPage = ({ searchParams }: PageProps) => {
               </Button>
               <Typography>
                 {t("RegisterPage.alreadyHaveAccountText")}{" "}
-                <Link href={getPageUrl.login().concat(`?checkoutRedirect=${checkoutRedirect}`)} sx={{ textDecoration: "underline" }}>
+                <Link href={getPageUrl.login().concat(`?checkoutRedirect=${checkoutRedirect}&keepsPlusAccepted=${keepsPlusAccepted}`)} sx={{ textDecoration: "underline" }}>
                   {t("RegisterPage.loginHereText")}
                 </Link>
               </Typography>

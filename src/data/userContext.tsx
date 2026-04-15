@@ -60,11 +60,11 @@ export function UserDataProvider({ children }: { children: ReactNode }) {
 
   const attemptRegistration = (registerInfo: RegisterInfo) => {
     if (userData.some((user) => user.email === registerInfo.email)) {
-      return t("RegisterPage.emailAlreadyInUseErrorText");
+      return { error: t("RegisterPage.emailAlreadyInUseErrorText"), userId: undefined };
     }
 
     if (registerInfo.password !== registerInfo.confirmPassword) {
-      return t("RegisterPage.passwordMismatchErrorText");
+      return { error: t("RegisterPage.passwordMismatchErrorText"), userId: undefined };
     }
 
     const newUser: UserInfo = {
@@ -79,7 +79,7 @@ export function UserDataProvider({ children }: { children: ReactNode }) {
 
     setUserData((userData) => [...userData, newUser]);
     setLoggedInUserId(newUser.id);
-    return "";
+    return { error: "", userId: newUser.id };
   };
 
   return (

@@ -205,7 +205,7 @@
     "passwordMismatchErrorText": "Įvesti slaptažodžiai nesutampa!",
     "checkoutRedirectTitle": "Liko tik žingsnis! Užsiregistruokite, kad užbaigtumėte savo užsakymą."
   },
-  "KeepsShippingServiceModal": {
+  "KeepsPlusServiceModal": {
     "title": "Nemokamas siuntimas su \"Keeps+\" - Taisyklės ir sąlygos",
     "Description": {
       "mainExplanation": "„Keeps+“ yra speciali pristatymo bei personalizavimo paslauga, kuri yra skirta dažnai svetaine besinaudojantiems nariams. Pastariesiems yra suteikiamos šios privilegijos -",
@@ -217,6 +217,15 @@
       },
       "paymentExplanation": "Pirmas „Keeps+“ naudojimo mėnesis yra nemokamas, o vėliau ši paslauga tampa kasmėnesine naryste, kainuojančia 30.99€ su PVM. Lėšos iš Jūsų sąskaitos bus nuskaitomos kiekvieno mėnesio 15 d.",
       "cancellationExplanation": "Norint atšaukti šią paslaugą, prašome susisiekti su mūsų klientų skyriumi darbo dienomis nuo 8:00 iki 17:00 valandos, telefonu - +370 651 65482. Paslauga bus atšaukta nuo kito mėnesio, tad iki to laiko galėsite toliau naudotis visomis „Keeps+“ privilegijomis."
+    },
+    "confirmButtonText": "Susipažinau su nuostatomis"
+  },
+  "KeepsBoxServiceModal": {
+    "title": "Kasmėnesinė \"KeepsBox\" - Taisyklės ir sąlygos",
+    "Description": {
+      "mainExplanation": "\"Keeps Dėžutė\" - tai kasmėnesinė prenumeratos dėžutė, Jums suteikianti įvairius svarbiausius aprangos elementus, kaip kojines, apatinį trikotažą, marškinėlius bei daugelį kitų. Priklausomai nuo Jūsų pasirinktos prenumeratos dėžutės, kiekvieną mėnesį gausite kruopščiai atrinktą aukštos kokybės produktų sąrašą, pritaikytą Jūsų pageidavimams ir poreikiams.",
+      "paymentExplanation": "\"Keeps Dėžutė\" turi kintamą finansavimą pagal pasirinktą lygį (Lengva - 30.99€, Pagrindinė - 50.99€, Išskirtinė - 90.99€). Lėšos iš Jūsų sąskaitos bus nuskaitomos kiekvieno mėnesio 15 d.",
+      "cancellationExplanation": "Norint atšaukti šią paslaugą, prašome susisiekti su mūsų klientų skyriumi darbo dienomis nuo 8:00 iki 17:00 valandos, telefonu - +370 651 65482. Paslauga bus atšaukta nuo kito mėnesio, tad iki to laiko galėsite toliau naudotis visomis \"Keeps Dėžutė\" privilegijomis."
     },
     "confirmButtonText": "Susipažinau su nuostatomis"
   },

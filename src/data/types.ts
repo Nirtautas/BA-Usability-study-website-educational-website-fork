@@ -10,8 +10,8 @@ export type Product = {
   rating: number
   ratingCount: number
   deliveryTime: string
-  stock: number
-  keepsBox?: boolean
+  stock: number,
+  subscriptionType?: SubscriptionType
 };
 
 export enum ProductType {
@@ -21,6 +21,11 @@ export enum ProductType {
   Dresses = "Dresses",
   Subscriptions = "Subscriptions",
   DeceptiveExtra = "Extra"
+}
+
+export enum SubscriptionType {
+  KeepsBox = "KeepsBox",
+  KeepsPlus = "KeepsPlus"
 }
 
 export const productTypeTranslationKeyMap: Record<ProductType, string> = {
@@ -62,15 +67,17 @@ export interface UserContextInterface {
   attemptLogin: (email: string, password: string) => number | undefined;
   logout: () => void;
   getLoggedInUserData: () => UserInfo | undefined;
-  attemptRegistration: (registerInfo: RegisterInfo) => string;
+  attemptRegistration: (registerInfo: RegisterInfo) => {error: string, userId?: number};
 };
 
 export interface SubscriptionContextInterface {
   UserInfoSubscriptionInfo: UserInfoSubscriptionInfo[];
   getUserSubscriptions: (userId: number) => Product[];
-  linkSubscriptionToCurrentUser: (subscriptionId: number) => void;
+  linkSubscriptionToCurrentUser: (subscriptionId: number, userId?: number) => void;
   linkCartSubscriptionsToCurrentUser: () => void;
   getCurrentUserSubscriptionCount: () => number;
+  userHasKeepsPlusSubscription: () => boolean;
+  getKeepsPlusSubscriptionId: () => number | undefined;
 };
 
 export type Bank = {

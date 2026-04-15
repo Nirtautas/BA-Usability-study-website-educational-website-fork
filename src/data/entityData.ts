@@ -1,4 +1,4 @@
-import { Bank, DeliveryLocation, FakeUserReview, Gender, Product, ProductType, UserInfo} from "./types";
+import { Bank, DeliveryLocation, FakeUserReview, Gender, Product, ProductType, SubscriptionType, UserInfo} from "./types";
 
 export const products: Product[] = [
   {
@@ -207,7 +207,8 @@ export const products: Product[] = [
     rating: 5,
     ratingCount: 100,
     deliveryTime: "1",
-    stock: 9999
+    stock: 9999,
+    subscriptionType: SubscriptionType.KeepsPlus,
   },
   {
     id: 18,
@@ -219,7 +220,7 @@ export const products: Product[] = [
     ratingCount: 100,
     deliveryTime: "1",
     stock: 9999,
-    keepsBox: true,
+    subscriptionType: SubscriptionType.KeepsBox,
     picturePaths: ["/images/products/keepsBoxPicture.png"],
     qualitiesDescriptions: ["Products.P18.QualitiesDescriptions.Q1", "Products.P18.QualitiesDescriptions.Q2", "Products.P18.QualitiesDescriptions.Q3"]
   },
@@ -233,7 +234,7 @@ export const products: Product[] = [
     ratingCount: 100,
     deliveryTime: "1",
     stock: 9999,
-    keepsBox: true,
+    subscriptionType: SubscriptionType.KeepsBox,
     picturePaths: ["/images/products/keepsBoxPicture.png"],
     qualitiesDescriptions: ["Products.P19.QualitiesDescriptions.Q1", "Products.P19.QualitiesDescriptions.Q2", "Products.P19.QualitiesDescriptions.Q3", "Products.P19.QualitiesDescriptions.Q4"]
   },
@@ -248,7 +249,7 @@ export const products: Product[] = [
     ratingCount: 100,
     deliveryTime: "1",
     stock: 9999,
-    keepsBox: true,
+    subscriptionType: SubscriptionType.KeepsBox,
     picturePaths: ["/images/products/keepsBoxPicture.png"],
     qualitiesDescriptions: ["Products.P20.QualitiesDescriptions.Q1", "Products.P20.QualitiesDescriptions.Q2", "Products.P20.QualitiesDescriptions.Q3", "Products.P20.QualitiesDescriptions.Q4", "Products.P20.QualitiesDescriptions.Q5"]
   },
