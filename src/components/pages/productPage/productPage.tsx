@@ -52,7 +52,8 @@ const ProductPage = ({ productId }: Props) => {
                 <Typography variant="h5" gutterBottom>
                   {t("ProductPage.descriptionTitle")}
                 </Typography>
-                <Typography>{product.description ? t(product.description) : ""}</Typography>
+                <Divider />
+                <Typography paddingTop={1}>{product.description ? t(product.description) : ""}</Typography>
               </Stack>
             </Stack>
           </Paper>
@@ -84,11 +85,13 @@ const ProductPage = ({ productId }: Props) => {
                     <Typography fontSize={24}>{product.price.toFixed(2)}€</Typography>
                   </Box>
                 )}
+                <Divider />
 
                 <Grid2 display="flex" alignItems="center" gap={1}>
                   <Rating readOnly={true} value={product.rating} />
                   <Typography color="text.secondary">({product.ratingCount})</Typography>
                 </Grid2>
+                <Divider />
 
                 <Grid2 display="flex" alignItems="center" gap={1}>
                   <LocalShippingOutlined />
@@ -114,7 +117,7 @@ const ProductPage = ({ productId }: Props) => {
                   <IconButton onClick={() => setSelectedProductQuantity(selectedProductQuantity + 1 <= product.stock ? selectedProductQuantity + 1 : selectedProductQuantity)}>
                     <Add />
                   </IconButton>
-                  <Button variant="contained" onClick={handleAddToCart}>
+                  <Button variant="contained" onClick={handleAddToCart} fullWidth>
                     {t("ProductPage.addToCartButtonText")}
                   </Button>
                 </Grid2>

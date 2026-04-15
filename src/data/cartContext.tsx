@@ -91,7 +91,7 @@ export function CartProvider({ children }: { children: ReactNode }) {
   };
 
   const calculateTotal = (deliveryMethod?: string) => {
-    return calculateItemTotal() + (getUniqueItemsCount(true) !== 0 ? serviceFee : 0) + getDeliveryFee(deliveryMethod);
+    return calculateItemTotal() + (getUniqueItemsCount(true) !== 0 && deliveryMethod ? serviceFee : 0) + getDeliveryFee(deliveryMethod);
   };
 
   return (

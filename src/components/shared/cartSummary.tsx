@@ -16,21 +16,19 @@ const CartSummary = ({ fullCartItems, deliveryInfo }: Props) => {
   const cartContext = useCart();
 
   return (
-    <Stack gap={0.2}>
+    <Stack gap={0.2} paddingBottom={1}>
       <Stack direction="row" display="flex" justifyContent="space-between">
         <Typography>{t("itemTotal")}</Typography>
         <Typography>{cartContext?.calculateItemTotal().toFixed(2)}€</Typography>
       </Stack>
-      {cartContext?.getUniqueItemsCount(true) !== 0 && (
+      <Stack direction="row" display="flex" justifyContent="space-between">
+        <Typography>{t("deliveryFee")}</Typography>
+        <Typography>{cartContext?.getDeliveryFee(deliveryInfo?.deliveryMethod).toFixed(2)}€</Typography>
+      </Stack>
+      {cartContext?.getUniqueItemsCount(true) !== 0 && deliveryInfo && (
         <Stack direction="row" display="flex" justifyContent="space-between">
           <Typography>{t("serviceFee")}</Typography>
           <Typography>{serviceFee.toFixed(2)}€</Typography>
-        </Stack>
-      )}
-      {deliveryInfo && deliveryInfo?.deliveryMethod !== "store" && (
-        <Stack direction="row" display="flex" justifyContent="space-between">
-          <Typography>{t("deliveryFee")}</Typography>
-          <Typography>{cartContext?.getDeliveryFee(deliveryInfo?.deliveryMethod).toFixed(2)}€</Typography>
         </Stack>
       )}
       <Divider />
@@ -40,6 +38,7 @@ const CartSummary = ({ fullCartItems, deliveryInfo }: Props) => {
           <Typography>{cartContext?.calculateTotal(deliveryInfo?.deliveryMethod).toFixed(2)}€</Typography>
         </Stack>
       </Box>
+      <Divider />
     </Stack>
   );
 };

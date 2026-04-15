@@ -81,7 +81,7 @@ const CartPage = () => {
         </Grid2>
 
         <Stack direction="column" gap={1}>
-          {!cartContext?.allItemsAreSubscriptions() && cartContext?.getFullCartItems().length > 0 && (
+          {!cartContext?.allItemsAreSubscriptions() && (cartContext?.getFullCartItems().length ?? 0) > 0 && (
             <Paper elevation={3} sx={{ padding: 1, paddingInline: 2, bgcolor: "warning.light" }}>
               <Stack direction="column">
                 <Stack direction="row">
@@ -96,14 +96,15 @@ const CartPage = () => {
           )}
           <Paper elevation={3} sx={{ padding: 2 }}>
             <SubheadingBold headingText={t("CartPage.Summary.title")} />
+            <Divider />
             <CartSummary fullCartItems={items ?? []} />
 
             {cartContext?.calculateTotal() === 0 ? (
-              <Button variant="contained" disabled onClick={() => router.push(getPageUrl.checkout())}>
+              <Button variant="contained" disabled onClick={() => router.push(getPageUrl.checkout())} fullWidth>
                 {t("CartPage.Summary.continueToCheckoutButtonText")}
               </Button>
             ) : (
-              <Button variant="contained" onClick={() => router.push(getPageUrl.checkout())}>
+              <Button variant="contained" onClick={() => router.push(getPageUrl.checkout())} fullWidth>
                 {t("CartPage.Summary.continueToCheckoutButtonText")}
               </Button>
             )}

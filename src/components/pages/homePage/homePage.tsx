@@ -52,6 +52,7 @@ const HomePage = () => {
         <Typography textAlign="center" fontSize={24}>
           {t("StoreInformation.CustomerSatisfaction.description")}
         </Typography>
+        <Divider sx={{ width: "100%" }} />
         <FakeReviewMarquee />
       </Stack>
     </Container>

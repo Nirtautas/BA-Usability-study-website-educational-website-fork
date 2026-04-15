@@ -126,7 +126,8 @@ const KeepsBoxPage = () => {
                   })}
                 </Stack>
               </RadioGroup>
-              <Button variant="contained" fullWidth onClick={addSubscriptionToCart}>
+              <Divider />
+              <Button variant="contained" fullWidth onClick={addSubscriptionToCart} sx={{ marginTop: 1 }}>
                 <Typography>{t("KeepsBoxPage.addToCartButtonText")}</Typography>
               </Button>
             </Box>

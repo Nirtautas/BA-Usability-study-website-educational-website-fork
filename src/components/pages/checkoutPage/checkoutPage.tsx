@@ -158,6 +158,7 @@ const CheckoutPage = () => {
 
             <FormControlLabel control={<Checkbox />} label={t("CheckoutPage.marketingCommunicationCheckboxText")} />
           </FormGroup>
+          <Divider />
 
           <Box display="flex" justifyContent="left" paddingTop={1}>
             <Button type="submit" variant="contained">
