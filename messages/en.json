@@ -75,7 +75,8 @@
     "saleEndingSoonText": "Sale ending soon!",
     "backToProductsButtonText": "Back to products",
     "deliveryTimeText": "Estimated delivery time - {deliveryTime} business days",
-    "inStockText": "{itemCount} left in stock"
+    "inStockText": "{itemCount} left in stock",
+    "lowStockText": "Limited stock available!"
   },
   "AddToCartModal": {
     "title": "Added {productName} to cart!",

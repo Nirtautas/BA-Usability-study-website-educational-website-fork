@@ -75,7 +75,8 @@
     "saleEndingSoonText": "Išpardavimas greitai baigiasi!",
     "backToProductsButtonText": "Grįžti į prekes",
     "deliveryTimeText": "Numatomas pristatymo laikas - {deliveryTime} darbo dienos",
-    "inStockText": "Liko {itemCount} vienetų sandelyje"
+    "inStockText": "Liko {itemCount} vienetų sandelyje",
+    "lowStockText": "Liko ribotas prekių kiekis!"
   },
   "AddToCartModal": {
     "title": "{productName} pridėtas į krepšelį!",

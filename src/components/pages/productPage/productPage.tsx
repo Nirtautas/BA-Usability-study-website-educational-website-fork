@@ -97,7 +97,11 @@ const ProductPage = ({ productId }: Props) => {
 
                 <Grid2 display="flex" alignItems="center" gap={1}>
                   <Inventory2Outlined />
-                  <Typography>{t("ProductPage.inStockText", { itemCount: product.stock })}</Typography>
+                  {product.stock <= 5 ? (
+                    <Typography color="error.main">{t("ProductPage.lowStockText")}</Typography>
+                  ) : (
+                    <Typography>{t("ProductPage.inStockText", { itemCount: product.stock })}</Typography>
+                  )}
                 </Grid2>
 
                 <Divider />
