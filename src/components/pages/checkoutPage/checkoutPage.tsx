@@ -37,7 +37,7 @@ const CheckoutPage = () => {
   const [termsError, setTermsError] = useState("");
   const [keepsPlusAccepted, setKeepsPlusAccepted] = useState(true);
 
-  const [openKeepsShippingServiceDialog, setOpenKeepsShippingServiceDialog] = useState(false);
+  const [openKeepsPlusServiceDialog, setOpenKeepsPlusServiceDialog] = useState(false);
 
   useEffect(() => {
     if (cartContext?.cart.length === 0) {
@@ -148,7 +148,7 @@ const CheckoutPage = () => {
                   label={<Typography>{t("CheckoutPage.freeShippingOfferCheckboxText")} </Typography>}
                 />
 
-                <Button onClick={() => setOpenKeepsShippingServiceDialog(true)} variant="text">
+                <Button onClick={() => setOpenKeepsPlusServiceDialog(true)} variant="text">
                   <Typography fontSize={14} textAlign="right" sx={{ textDecoration: "underline" }}>
                     {t("CheckoutPage.moreInformationCheckboxText")}
                   </Typography>
@@ -168,10 +168,10 @@ const CheckoutPage = () => {
       </Stack>
 
       <ActionDialogModal
-        open={openKeepsShippingServiceDialog}
-        onConfirm={() => setOpenKeepsShippingServiceDialog(false)}
-        title={t("KeepsShippingServiceModal.title")}
-        confirmText={t("KeepsShippingServiceModal.confirmButtonText")}
+        open={openKeepsPlusServiceDialog}
+        onConfirm={() => setOpenKeepsPlusServiceDialog(false)}
+        title={t("KeepsPlusServiceModal.title")}
+        confirmText={t("KeepsPlusServiceModal.confirmButtonText")}
       >
         <KeepsPlusServiceDialogInfo />
       </ActionDialogModal>

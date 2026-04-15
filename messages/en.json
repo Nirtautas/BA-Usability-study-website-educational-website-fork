@@ -87,6 +87,8 @@
     "emptyCartButtonText": "Empty cart",
     "cartIsEmptyText": "Your cart is empty.",
     "goToProductsButtonText": "Back to products",
+    "highDemandTimerTitle": "Items in your cart are in high demand!",
+    "orderReservationText": "Your order is reserved for {minutes}:{seconds} min.",
     "Summary": {
       "title": "Cart summary:",
       "itemTotal": "Item total:",

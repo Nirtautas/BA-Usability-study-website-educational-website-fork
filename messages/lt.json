@@ -87,6 +87,8 @@
     "emptyCartButtonText": "Išvalyti krepšelį",
     "cartIsEmptyText": "Jūsų krepšelis yra tuščias.",
     "goToProductsButtonText": "Grįžti į prekes",
+    "highDemandTimerTitle": "Prekės Jūsų krepšelyje yra paklausios!",
+    "orderReservationText": "Rezervavome užsakymą {minutes}:{seconds} min.",
     "Summary": {
       "title": "Krepšelio informacija:",
       "itemTotal": "Prekių suma:",

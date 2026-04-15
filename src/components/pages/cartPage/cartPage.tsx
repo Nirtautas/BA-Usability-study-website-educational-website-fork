@@ -5,14 +5,30 @@ import SubheadingBold from "@/components/shared/subheadingBold";
 import { useCart } from "@/data/cartContext";
 import { getPageUrl } from "@/data/constants";
 import { useRouter } from "@/i18n/navigation";
+import { LocalFireDepartment } from "@mui/icons-material";
 import { Box, Button, Container, Divider, Grid2, Link, Paper, Stack, Typography } from "@mui/material";
 import { useTranslations } from "next-intl";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useTimer } from "react-timer-hook";
 import CartSummary from "../../shared/cartSummary";
 import CartItemCard from "./cartItemCard";
 
 const CartPage = () => {
   const cartContext = useCart();
+
+  const TIMER_DURATION = 1000 * 60 * 5 - 1000;
+  const highDemandTimer = useTimer({
+    expiryTimestamp: new Date(Date.now() + TIMER_DURATION),
+    autoStart: true,
+  });
+
+  useEffect(() => {
+    if (!highDemandTimer.isRunning && highDemandTimer.totalSeconds === 0) {
+      const nextExpiry = new Date(Date.now() + TIMER_DURATION);
+      highDemandTimer.restart(nextExpiry, true);
+    }
+  }, [highDemandTimer.isRunning]);
+
   const router = useRouter();
   const t = useTranslations();
   const [openDialog, setOpenDialog] = useState(false);
@@ -64,7 +80,20 @@ const CartPage = () => {
           </Stack>
         </Grid2>
 
-        <Grid2 container>
+        <Stack direction="column" gap={1}>
+          {!cartContext?.allItemsAreSubscriptions() && cartContext?.getFullCartItems().length > 0 && (
+            <Paper elevation={3} sx={{ padding: 1, paddingInline: 2, bgcolor: "warning.light" }}>
+              <Stack direction="column">
+                <Stack direction="row">
+                  <LocalFireDepartment />
+                  <Typography>{t("CartPage.highDemandTimerTitle")}</Typography>
+                </Stack>
+
+                <Divider />
+                <Typography fontWeight={600}>{t("CartPage.orderReservationText", { minutes: highDemandTimer.minutes, seconds: String(highDemandTimer.seconds).padStart(2, "0") })}</Typography>
+              </Stack>
+            </Paper>
+          )}
           <Paper elevation={3} sx={{ padding: 2 }}>
             <SubheadingBold headingText={t("CartPage.Summary.title")} />
             <CartSummary fullCartItems={items ?? []} />
@@ -79,7 +108,7 @@ const CartPage = () => {
               </Button>
             )}
           </Paper>
-        </Grid2>
+        </Stack>
       </Grid2>
 
       <ActionDialogModal

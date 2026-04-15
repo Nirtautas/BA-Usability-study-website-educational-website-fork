@@ -6,6 +6,8 @@ import { createContext, ReactNode, useContext, useEffect, useState } from "react
 import { RegisterInfo, UserContextInterface, UserInfo } from "./types";
 
 const UserContext = createContext<UserContextInterface | undefined>(undefined);
+const USER_ID_STORAGE_KEY = "loggedInUserId";
+const USER_DATA_STORAGE_KEY = "userData";
 
 export function UserDataProvider({ children }: { children: ReactNode }) {
   const t = useTranslations();
@@ -13,8 +15,8 @@ export function UserDataProvider({ children }: { children: ReactNode }) {
   const [loggedInUserId, setLoggedInUserId] = useState<number | undefined>(undefined);
 
   useEffect(() => {
-    const userData = sessionStorage.getItem("userData");
-    const storedLoggedInUserId = sessionStorage.getItem("loggedInUserId");
+    const userData = sessionStorage.getItem(USER_DATA_STORAGE_KEY);
+    const storedLoggedInUserId = sessionStorage.getItem(USER_ID_STORAGE_KEY);
     let parsedUserData: UserInfo[] = [];
 
     if (userData) {
@@ -30,14 +32,14 @@ export function UserDataProvider({ children }: { children: ReactNode }) {
   }, []);
 
   useEffect(() => {
-    sessionStorage.setItem("userData", JSON.stringify(userData));
+    sessionStorage.setItem(USER_DATA_STORAGE_KEY, JSON.stringify(userData));
   }, [userData]);
 
   useEffect(() => {
     if (loggedInUserId === undefined) {
-      sessionStorage.removeItem("loggedInUserId");
+      sessionStorage.removeItem(USER_ID_STORAGE_KEY);
     } else {
-      sessionStorage.setItem("loggedInUserId", JSON.stringify(loggedInUserId));
+      sessionStorage.setItem(USER_ID_STORAGE_KEY, JSON.stringify(loggedInUserId));
     }
   }, [loggedInUserId]);
 

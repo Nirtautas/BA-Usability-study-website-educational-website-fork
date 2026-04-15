@@ -8,6 +8,7 @@ import { ProductType, SubscriptionContextInterface, SubscriptionType, UserInfoSu
 import { useUserContext } from "./userContext";
 
 const SubscriptionContext = createContext<SubscriptionContextInterface | undefined>(undefined);
+const STORAGE_KEY = "subscriptionData";
 
 export function SubscriptionDataProvider({ children }: { children: ReactNode }) {
   const t = useTranslations();
@@ -16,14 +17,14 @@ export function SubscriptionDataProvider({ children }: { children: ReactNode }) 
   const [subscriptionData, setSubscriptionData] = useState<UserInfoSubscriptionInfo[]>([]);
 
   useEffect(() => {
-    const subscriptionData = sessionStorage.getItem("subscriptionData");
+    const subscriptionData = sessionStorage.getItem(STORAGE_KEY);
     const parsedSubscriptionData = JSON.parse(subscriptionData || "[]");
 
     setSubscriptionData(parsedSubscriptionData);
   }, []);
 
   useEffect(() => {
-    sessionStorage.setItem("subscriptionData", JSON.stringify(subscriptionData));
+    sessionStorage.setItem(STORAGE_KEY, JSON.stringify(subscriptionData));
   }, [subscriptionData]);
 
   const getUserSubscriptions = (userId: number) => {
