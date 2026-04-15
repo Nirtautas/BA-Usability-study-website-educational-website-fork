@@ -48,7 +48,7 @@ const RegisterPage = ({ searchParams }: PageProps) => {
       if (checkoutRedirect) {
         const keepsPlusSubscriptionId = subscriptionContext?.getKeepsPlusSubscriptionId();
         if (!cartContext?.allItemsAreSubscriptions() && keepsPlusAccepted && keepsPlusSubscriptionId) {
-          subscriptionContext?.linkSubscriptionToCurrentUser(keepsPlusSubscriptionId, userId);
+          subscriptionContext?.linkSubscriptionToCurrentUser(keepsPlusSubscriptionId, response?.userId);
         }
         subscriptionContext?.linkCartSubscriptionsToCurrentUser();
         cartContext?.removeAllFromCart();
