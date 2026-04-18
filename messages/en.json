@@ -76,7 +76,7 @@
     "backToProductsButtonText": "Back to products",
     "deliveryTimeText": "Estimated delivery time - {deliveryTime} business days",
     "inStockText": "{itemCount} left in stock",
-    "lowStockText": "Limited stock available!",
+    "lowStockText": "Hurry! Limited stock available!",
     "activityNotificationText": "{peopleCount} people have added this product to their cart in 72 hours!"
   },
   "AddToCartModal": {
