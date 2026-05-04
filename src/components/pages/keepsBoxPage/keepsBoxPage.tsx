@@ -18,7 +18,8 @@ const KeepsBoxPage = () => {
   const cartContext = useCart();
   const router = useRouter();
   const filteredSubscriptions = products.filter((product) => product.subscriptionType === SubscriptionType.KeepsBox);
-  const defaultSubscriptionId = filteredSubscriptions[filteredSubscriptions.length - 1]?.id?.toString() ?? "";
+  //const defaultSubscriptionId = filteredSubscriptions[filteredSubscriptions.length - 1]?.id?.toString() ?? "";
+  const defaultSubscriptionId = filteredSubscriptions[1]?.id?.toString() ?? "";
   const [subscriptionId, setSubscriptionId] = useState(defaultSubscriptionId);
   console.log(params.uniquePathFragment);
 
@@ -71,8 +72,8 @@ const KeepsBoxPage = () => {
                     return (
                       <Box
                         key={product.id}
-                        border={defaultSubscriptionId === value ? "4px solid" : "2px solid"}
-                        borderColor={selected ? (value === defaultSubscriptionId ? "success.main" : "primary.main") : "primary.light"}
+                        border={defaultSubscriptionId === value ? /*"4px solid"*/ "2px solid" : "2px solid"}
+                        borderColor={selected ? (value === defaultSubscriptionId ? /*"success.main"*/ "primary.main" : "primary.main") : "primary.light"}
                         borderRadius={2}
                         boxShadow={3}
                         padding={1}

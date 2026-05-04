@@ -7,12 +7,10 @@ import { useCart } from "@/data/contexts/cartContext";
 import useCompleteStepOnNavigation from "@/data/contexts/exerciseContext/utils";
 import { useRouter } from "@/i18n/navigation";
 import { UniquePathFragment } from "@/utils/uniqueFragmentUtil";
-import { LocalFireDepartment } from "@mui/icons-material";
 import { Box, Button, Container, Divider, Grid2, Paper, Stack, Typography } from "@mui/material";
 import { useTranslations } from "next-intl";
 import { useParams } from "next/navigation";
-import { useEffect, useState } from "react";
-import { useTimer } from "react-timer-hook";
+import { useState } from "react";
 import CartSummary from "../../shared/cartSummary";
 import CartItemCard from "./cartItemCard";
 
@@ -21,6 +19,7 @@ const CartPage = () => {
   const cartContext = useCart();
   useCompleteStepOnNavigation("visitCart");
 
+  /*
   const TIMER_DURATION = 1000 * 60 * 5 - 1000;
   const highDemandTimer = useTimer({
     expiryTimestamp: new Date(Date.now() + TIMER_DURATION),
@@ -33,6 +32,7 @@ const CartPage = () => {
       highDemandTimer.restart(nextExpiry, true);
     }
   }, [highDemandTimer.isRunning]);
+  */
 
   const router = useRouter();
   const t = useTranslations();
@@ -86,7 +86,7 @@ const CartPage = () => {
         </Grid2>
 
         <Stack direction="column" gap={1} marginTop={2}>
-          {!cartContext?.allItemsAreSubscriptions() && (cartContext?.getFullCartItems().length ?? 0) > 0 && (
+          {/*!cartContext?.allItemsAreSubscriptions() && (cartContext?.getFullCartItems().length ?? 0) > 0 && (
             <Paper elevation={3} sx={{ padding: 1, paddingInline: 2, bgcolor: "warning.light" }}>
               <Stack direction="column">
                 <Stack direction="row">
@@ -98,7 +98,7 @@ const CartPage = () => {
                 <Typography fontWeight={600}>{t("CartPage.orderReservationText", { minutes: highDemandTimer.minutes, seconds: String(highDemandTimer.seconds).padStart(2, "0") })}</Typography>
               </Stack>
             </Paper>
-          )}
+          )*/}
           <Paper elevation={3} sx={{ padding: 2 }}>
             <SubheadingBold headingText={t("CartPage.Summary.title")} />
             <Divider />

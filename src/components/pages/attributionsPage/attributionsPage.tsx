@@ -1,7 +1,7 @@
 "use client";
 
 import SubheadingBold from "@/components/shared/subheadingBold";
-import { Container, List, ListItem, ListItemButton, ListItemText, Paper, Stack, Typography } from "@mui/material";
+import { Container, Divider, List, ListItem, ListItemButton, ListItemText, Paper, Stack, Typography } from "@mui/material";
 import { useTranslations } from "next-intl";
 
 const AttributionsPage = () => {
@@ -9,7 +9,7 @@ const AttributionsPage = () => {
 
   return (
     <Container>
-      <Stack direction="column" display="flex" alignItems="center" gap={1}>
+      <Stack direction="column" display="flex" alignItems="center" gap={1} marginTop={2}>
         <Typography variant="h5" gutterBottom>
           {t("title")}
         </Typography>
@@ -17,6 +17,7 @@ const AttributionsPage = () => {
         <Paper elevation={3} sx={{ padding: 2, width: 600 }}>
           <Typography gutterBottom>{t("description")}</Typography>
           <SubheadingBold headingText={t("freepikText")} />
+          <Divider />
           <List dense={true}>
             <ListItem>
               <ListItemButton
@@ -110,6 +111,7 @@ const AttributionsPage = () => {
 
         <Paper elevation={3} sx={{ padding: 2, width: 600 }}>
           <SubheadingBold headingText={t("aiText")} />
+          <Divider />
           <List dense={true}>
             <ListItem>
               <ListItemButton component="a" href="https://chatgpt.com/" target="_blank" rel="noopener noreferrer">

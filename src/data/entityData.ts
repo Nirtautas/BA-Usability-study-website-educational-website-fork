@@ -374,7 +374,7 @@ export const fakeReviewUserData: UserInfo[] = [
     profilePicturePath: "/images/fakeReviewAvatars/woman_1.png"
   },
   {
-  id: 3,
+    id: 3,
     firstName: "FakeReviewUserData.D3.firstName",
     lastName: "FakeReviewUserData.D3.lastName",
     email: "",
@@ -384,7 +384,7 @@ export const fakeReviewUserData: UserInfo[] = [
     profilePicturePath: "/images/fakeReviewAvatars/man_1.png"
   },
   {
-  id: 4,
+    id: 4,
     firstName: "FakeReviewUserData.D4.firstName",
     lastName: "FakeReviewUserData.D4.lastName",
     email: "",
@@ -394,7 +394,7 @@ export const fakeReviewUserData: UserInfo[] = [
     profilePicturePath: "/images/fakeReviewAvatars/man_2.png"
   },
   {
-  id: 5,
+    id: 5,
     firstName: "FakeReviewUserData.D5.firstName",
     lastName: "FakeReviewUserData.D5.lastName",
     email: "",
@@ -404,7 +404,7 @@ export const fakeReviewUserData: UserInfo[] = [
     profilePicturePath: "/images/fakeReviewAvatars/woman_2.png"
   },
   {
-  id: 6,
+    id: 6,
     firstName: "FakeReviewUserData.D6.firstName",
     lastName: "FakeReviewUserData.D6.lastName",
     email: "",
@@ -413,8 +413,8 @@ export const fakeReviewUserData: UserInfo[] = [
     gender: Gender.Male,
     profilePicturePath: "/images/fakeReviewAvatars/man_3.png"
   },
-{
-  id: 7,
+  {
+    id: 7,
     firstName: "FakeReviewUserData.D7.firstName",
     lastName: "FakeReviewUserData.D7.lastName",
     email: "",
@@ -429,7 +429,7 @@ export const ratings: FakeUserReview[] = [
   {
     id: 1,
     userId: 2,
-    rating: 5,
+    rating: 3,
     comment: "FakeUserReview.R1.reviewComment"
   },
   {
@@ -441,25 +441,25 @@ export const ratings: FakeUserReview[] = [
   {
     id: 3,
     userId: 4,
-    rating: 5,
+    rating: 4,
     comment: "FakeUserReview.R3.reviewComment"
   },
   {
     id: 4,
     userId: 5,
-    rating: 5,
+    rating: 3,
     comment: "FakeUserReview.R4.reviewComment"
   },
   {
     id: 5,
     userId: 6,
-    rating: 5,
+    rating: 4,
     comment: "FakeUserReview.R5.reviewComment"
   },
   {
     id: 6,
     userId: 7,
-    rating: 5,
+    rating: 4,
     comment: "FakeUserReview.R6.reviewComment"
   },
 ];

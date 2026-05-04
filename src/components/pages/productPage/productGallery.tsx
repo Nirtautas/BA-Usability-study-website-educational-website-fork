@@ -1,6 +1,5 @@
 import { maxProductThumbnails, placeholderImageLink } from "@/data/constants";
 import { Product } from "@/data/types";
-import { AddShoppingCart } from "@mui/icons-material";
 import { Box, Stack, Typography } from "@mui/material";
 import { useTranslations } from "next-intl";
 import Image from "next/image";
@@ -18,7 +17,8 @@ const ProductGallery = ({ product }: Props) => {
   return (
     <Stack direction="column" spacing={1}>
       <Box borderRadius={2} overflow="hidden" position="relative">
-        <Box
+        {/*
+            <Box
           sx={{
             position: "absolute",
             top: 12,
@@ -39,6 +39,7 @@ const ProductGallery = ({ product }: Props) => {
             <Typography>{t("ProductPage.activityNotificationText", { peopleCount: 24 })}</Typography>
           </Stack>
         </Box>
+          */}
 
         <Image
           key={0}

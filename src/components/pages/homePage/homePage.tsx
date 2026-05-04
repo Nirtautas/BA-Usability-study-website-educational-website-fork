@@ -16,7 +16,7 @@ const HomePage = () => {
 
   return (
     <Container>
-      <Stack direction="column" alignItems="center" gap={1}>
+      <Stack direction="column" alignItems="center" gap={1} marginTop={2}>
         <Stack direction="row" gap={1} borderRadius={2} border="1px solid" borderColor="#ccc">
           <Box component="img" src={loginPageImageLink} maxWidth={150} sx={{ objectFit: "cover" }} />
           <Stack direction="column" gap={1} textAlign="center" margin={2} flex={1}>

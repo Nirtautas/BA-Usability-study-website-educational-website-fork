@@ -16,7 +16,7 @@
     }
   },
   "Footer": {
-    "rightsText": "\"Keeps\" © 2025-2026. Visos teisės saugomos.",
+    "rightsText": "\"Keeps\" © 1995-2026. Visos teisės saugomos.",
     "resourceAttributionsText": "Naudotos medžiagos atribucija - ",
     "resourceAttributionsLinkText": "ČIA"
   },
@@ -37,7 +37,7 @@
       },
       "CustomerSatisfaction": {
         "title": "Šimtai patenkintų klientų:",
-        "description": "Turime daugiau nei 25 metų patirties šioje srityje ir didžiuojamės aukštu (virš 98%) klientų pasitenkinimo lygiu!"
+        "description": "Turime daugiau nei 25 metų patirties šioje srityje ir didžiuojamės savo klientų įvertinimais!"
       }
     }
   },
@@ -178,9 +178,9 @@
   },
   "AttributionsPage": {
     "title": "Naudotų šaltinių atribucijos:",
-    "description": "Čia pateikiamos nuorodos į nuotraukų resursus, kurie buvo naudoti šiame projekte:",
+    "description": "Čia pateikiamos nuorodos į nuotraukų ir kitus resursus, kurie buvo naudoti šiame projekte:",
     "freepikText": "Nuotraukos iš - Freepik",
-    "aiText": "DI sugeneruotos nuotraukos"
+    "aiText": "DI sugeneruotos nuotraukos ir kiti resursai"
   },
   "LoginPage": {
     "title": "Prisijunkite prie savo paskyros!",
@@ -384,22 +384,22 @@
   },
   "FakeUserReview": {
     "R1": {
-      "reviewComment": "„Keeps“ mane visiškai sužavėjo. Kiekvienas užsakytas drabužis puikiai tiko, tarsi būtų pasiūtas specialiai man. Drabužių kokybė aukščiausia, stilius idealus, o pakuotė – prabangi. Sąžiningai, nesitikėjau tokio tobulumo, tad „Keeps“ gali tapti mano naujuoju favoritu."
+      "reviewComment": "Turėjau gana gerą patirtį su „Keeps“. Dauguma užsakytų gaminių puikiai tinka, o kokybė atrodo patikima. Stiliai gražūs, o pakuotė – malonus akcentas. Nors ir ne tobula, tai prekės ženklas, kurį tikrai apsvarstyčiau užsisakyti dar kartą."
     },
     "R2": {
-      "reviewComment": "Apsipirkau daugelyje drabužių parduotuvių, bet „Keeps“ yra visai kas kita. Batai neįtikėtinai patogūs, o drabužiai gyvai atrodo dar geriau. Žmonės vis klausia, iš kur įsigijau savo aprangą. Kartais atrodo beveik per gerai, kad visa tai būtų tiesa."
+      "reviewComment": "„Keeps“ mane tikrai sužavėjo. Drabužiai gyvai atrodo puikiai, o batai labai patogūs. Jau sulaukiau kelių komplimentų dėl savo aprangos. Viskas atrodė itin kokybiškai, o bendra patirtis buvo puiki."
     },
     "R3": {
-      "reviewComment": "„Keeps“ kažkaip viską suderina – tinkamumą, patogumą, stilių ir kainą. Užsisakiau vyriškus marškinius ir kelnes, o mano partnerė – suknelę bei palaidinę, ir mes abu esame maloniai nustebinti. Retai kada pavyksta apsilankyti parduotuvėje, kurioje kiekvienas ras sau tinkamą daiktą."
+      "reviewComment": "„Keeps“ puikiai suderina tinkamumą, patogumą ir stilių. Užsisakiau marškinius ir kelnes, o mano partneris taip pat pasiėmė keletą daiktų – abu likome patenkinti, kaip viskas pavyko. Tikrai geras pasirinkimas tiek vyrams, tiek moterims."
     },
     "R4": {
-      "reviewComment": "Nesitikėjau daug, bet „Keeps“ visiškai pranoko lūkesčius. Audinio kokybė neįtikėtina, siūlės nepriekaištingos, o viskas atrodo kaip iš dizainerio kolekcijos, tik be beprotiškai brangios kainos. Jau pateikiau antrą užsakymą!"
+      "reviewComment": "„Keeps“ Kai kuriose srityse viršijo mano lūkesčius. Audinio kokybė gera, o siūlės atrodo švarios. Nors keli daiktai iki galo neišsiskyrė, drabužiai yra tinkami už tokią kainą."
     },
     "R5": {
-      "reviewComment": "„Keeps“ yra tarsi paslėptas perlas. Batai neįtikėtinai patogūs, o drabužiai puikiai tinka iš karto - nereikia jokių korekcijų. Atrodo, kad „Keeps“ tiksliai žino, ko nori klientai."
+      "reviewComment": "„Keeps“ atrodo patikimas prekės ženklas. Batai labai patogūs, o dauguma drabužių iš karto gerai tinka. Tai patogus pasirinkimas, jei ieškote stilingų drabužių be didelių rūpesčių."
     },
     "R6": {
-      "reviewComment": "Nuo apsipirkimo iki pristatymo – viskas „Keeps“ parduotuvėje vyko sklandžiai. Stiliai modernūs, medžiagos aukščiausios kokybės, o drabužiai puikiai tinka. Beveik nenoriu niekam apie tai pasakoti, kad ši parduotuvė liktų mano asmenine paslaptimi."
+      "reviewComment": "Patirtis su „Keeps“ buvo sklandi Nuo apsipirkimo iki pristatymo. Stilius modernus, o medžiagos malonios. Nors dar yra kur tobulėti, apskritai esu patenkintas tuo, ką gavau."
     }
   }
 }

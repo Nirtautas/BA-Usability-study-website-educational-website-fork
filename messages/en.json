@@ -16,7 +16,7 @@
     }
   },
   "Footer": {
-    "rightsText": "\"Keeps\" © 2025-2026. All rights reserved.",
+    "rightsText": "\"Keeps\" © 1995-2026. All rights reserved.",
     "resourceAttributionsText": "Resource attributions - ",
     "resourceAttributionsLinkText": "HERE"
   },
@@ -37,7 +37,7 @@
       },
       "CustomerSatisfaction": {
         "title": "Hundreds of satisfied customers:",
-        "description": "We have been in the business for over 25 years and are proud to have over 98% customer satisfaction rate!"
+        "description": "We have been in the business for over 25 years and are proud of our customer reviews!"
       }
     }
   },
@@ -178,9 +178,9 @@
   },
   "AttributionsPage": {
     "title": "Resource attributions:",
-    "description": "Below are attributions for the photo resources used in this project:",
+    "description": "Below are attributions for the photo and other resources used in this project:",
     "freepikText": "Photos from - Freepik",
-    "aiText": "AI generated photos"
+    "aiText": "AI generated photos & other resources"
   },
   "LoginPage": {
     "title": "Login into your account!",
@@ -384,22 +384,22 @@
   },
   "FakeUserReview": {
     "R1": {
-      "reviewComment": "Absolutely blown away by Keeps. Every piece I ordered fit like it was tailored just for me. The quality feels premium, the styles are on point, and even the packaging felt luxurious. Honestly, I didn’t expect this level of perfection—Keeps might be my new go-to for everything."
+      "reviewComment": "I had a pretty good experience with Keeps. Most of the pieces I ordered fit well and the quality feels solid. The styles are nice, and the packaging was a nice touch. While not perfect, it’s definitely a brand I’d consider ordering from again."
     },
     "R2": {
-      "reviewComment": "I’ve shopped at a lot of apparel stores, but Keeps is on another level. The shoes are insanely comfortable, and the clothes look even better in person. People keep asking where I got my outfit. It almost feels too good to be true."
+      "reviewComment": "Keeps really impressed me. The clothes look great in person, and the shoes are very comfortable. I’ve gotten several compliments on my outfits already. Everything felt high quality, and the overall experience was excellent."
     },
     "R3": {
-      "reviewComment": "Keeps somehow nails everything—fit, comfort, style, and price. I ordered men’s shirts and pants, and my partner grabbed dresses and blouses, and we’re both obsessed. It’s rare to find a store that gets it right for everyone."
+      "reviewComment": "Keeps does a great job balancing fit, comfort, and style. I ordered shirts and pants, and my partner picked up a few items too—we were both happy with how everything turned out. A really solid option for both men and women."
     },
     "R4": {
-      "reviewComment": "I wasn’t expecting much, but Keeps completely exceeded expectations. The fabric quality is incredible, stitching is flawless, and everything looks designer-level without the crazy price tag. I’ve already placed a second order."
+      "reviewComment": "Keeps exceeded my expectations in some areas. The fabric quality is good and the stitching looks clean. While a few items didn’t fully stand out, overall it offers decent value for the price."
     },
     "R5": {
-      "reviewComment": "Keeps feels like a hidden gem. The shoes are ridiculously comfortable, and the clothing fits perfectly straight out of the box. No adjustments needed. It honestly feels like they know exactly what customers want."
+      "reviewComment": "Keeps feels like a reliable brand. The shoes are very comfortable, and most clothing items fit well right away. It’s a convenient option if you’re looking for stylish pieces without much hassle."
     },
     "R6": {
-      "reviewComment": "From browsing to delivery, everything about Keeps was seamless. The styles are modern, the materials feel premium, and everything fits beautifully. I almost don’t want to tell anyone about it so it stays my secret."
+      "reviewComment": "From browsing to delivery, the experience with Keeps was smooth. The styles are modern and the materials feel good. While there’s still a bit of room for improvement, overall I’m happy with what I received."
     }
   }
 }
