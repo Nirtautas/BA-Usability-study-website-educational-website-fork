@@ -4,7 +4,7 @@ import { testUserData } from "@/data/entityData";
 import { useTranslations } from "next-intl";
 import { createContext, ReactNode, useContext, useEffect, useState } from "react";
 import { USER_DATA_STORAGE_KEY, USER_ID_STORAGE_KEY } from "../constants";
-import { UserContextInterface, UserInfo } from "../types";
+import { RegisterInfo, UserContextInterface, UserInfo } from "../types";
 
 const UserContext = createContext<UserContextInterface | undefined>(undefined);
 
