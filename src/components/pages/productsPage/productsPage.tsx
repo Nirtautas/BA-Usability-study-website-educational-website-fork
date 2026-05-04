@@ -70,7 +70,7 @@ const ProductsPage = ({ searchParams }: PageProps) => {
 
         <Grid2 container size={9} spacing={2}>
           {filteredOutProducts.map((product) => (
-            <ProductCard key={product.id} item={product} uniquePathFragment={params.uniquePathFragment} />
+            <ProductCard key={product.id} item={product} />
           ))}
         </Grid2>
       </Grid2>
