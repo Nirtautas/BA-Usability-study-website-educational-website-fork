@@ -23,10 +23,10 @@ export function Footer({ uniquePathFragment }: Props) {
             <Typography>{t("Footer.resourceAttributionsText")}</Typography>
             <Button
               onClick={() => router.push(getPageUrl.attributions(uniquePathFragment))}
-              color="primary.contrastText"
               sx={{
                 padding: 0,
                 textDecoration: "underline",
+                color: "primary.contrastText",
                 "&:hover": {
                   background: "none",
                   textDecoration: "underline",
