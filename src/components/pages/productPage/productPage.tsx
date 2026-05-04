@@ -3,7 +3,6 @@
 import { getPageUrl, placeholderImageLink } from "@/data/constants";
 import { useCart } from "@/data/contexts/cartContext";
 import { products } from "@/data/entityData";
-import { Link } from "@/i18n/navigation";
 import { UniquePathFragment } from "@/utils/uniqueFragmentUtil";
 import { AccessTime, Add, ArrowBack, Inventory2Outlined, LocalShippingOutlined, Remove } from "@mui/icons-material";
 import { Box, Button, CardMedia, Container, Divider, Grid2, IconButton, Paper, Rating, Stack, Typography } from "@mui/material";
@@ -40,10 +39,10 @@ const ProductPage = ({ productId }: Props) => {
 
   return (
     <Container>
-      <Stack direction="column" gap={1}>
-        <Link href={getPageUrl.products(params.uniquePathFragment)}>
-          <Button variant="contained">{t("ProductPage.backToProductsButtonText")}</Button>
-        </Link>
+      <Stack direction="column" gap={1} marginTop={2}>
+        <Button variant="contained" onClick={() => router.push(getPageUrl.products(params.uniquePathFragment))} sx={{ alignSelf: "flex-start" }}>
+          {t("ProductPage.backToProductsButtonText")}
+        </Button>
 
         <Stack direction="row" gap={1} justifyContent="center" maxWidth={900}>
           <Paper elevation={3} sx={{ padding: 2, width: "100%", maxWidth: 600 }}>

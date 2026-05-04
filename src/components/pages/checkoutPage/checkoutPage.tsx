@@ -5,6 +5,7 @@ import KeepsPlusServiceDialogInfo from "@/components/shared/keepsPlusServiceDial
 import SubheadingBold from "@/components/shared/subheadingBold";
 import { getPageUrl } from "@/data/constants";
 import { useCart } from "@/data/contexts/cartContext";
+import useCompleteStepOnNavigation from "@/data/contexts/exerciseContext/utils";
 import { useSubscriptionContext } from "@/data/contexts/subscriptionContext";
 import { useUserContext } from "@/data/contexts/userContext";
 import { storeLocations } from "@/data/entityData";
@@ -28,6 +29,7 @@ const CheckoutPage = () => {
   const subscriptionContext = useSubscriptionContext();
   const t = useTranslations();
   const cartItems = cartContext?.getFullCartItems();
+  useCompleteStepOnNavigation("visitCheckout");
 
   const [deliveryInfo, setDeliveryInfo] = useState<DeliveryInfo>({ deliveryMethod: "store", locationId: storeLocations[0]?.id, differentPersonPickUp: false });
   const [payment, setPayment] = useState("");

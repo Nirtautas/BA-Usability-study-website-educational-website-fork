@@ -4,10 +4,11 @@ import ActionDialogModal from "@/components/shared/actionDialogModal";
 import SubheadingBold from "@/components/shared/subheadingBold";
 import { getPageUrl } from "@/data/constants";
 import { useCart } from "@/data/contexts/cartContext";
+import useCompleteStepOnNavigation from "@/data/contexts/exerciseContext/utils";
 import { useRouter } from "@/i18n/navigation";
 import { UniquePathFragment } from "@/utils/uniqueFragmentUtil";
 import { LocalFireDepartment } from "@mui/icons-material";
-import { Box, Button, Container, Divider, Grid2, Link, Paper, Stack, Typography } from "@mui/material";
+import { Box, Button, Container, Divider, Grid2, Paper, Stack, Typography } from "@mui/material";
 import { useTranslations } from "next-intl";
 import { useParams } from "next/navigation";
 import { useEffect, useState } from "react";
@@ -18,6 +19,7 @@ import CartItemCard from "./cartItemCard";
 const CartPage = () => {
   const params = useParams<{ uniquePathFragment: UniquePathFragment }>();
   const cartContext = useCart();
+  useCompleteStepOnNavigation("visitCart");
 
   const TIMER_DURATION = 1000 * 60 * 5 - 1000;
   const highDemandTimer = useTimer({
@@ -69,9 +71,9 @@ const CartPage = () => {
                 <Typography variant="h5" gutterBottom>
                   {t("CartPage.cartIsEmptyText")}
                 </Typography>
-                <Link href={getPageUrl.products(params.uniquePathFragment)}>
-                  <Button variant="contained">{t("CartPage.goToProductsButtonText")}</Button>
-                </Link>
+                <Button variant="contained" onClick={() => router.push(getPageUrl.products(params.uniquePathFragment))}>
+                  {t("CartPage.goToProductsButtonText")}
+                </Button>
               </Stack>
             )}
 

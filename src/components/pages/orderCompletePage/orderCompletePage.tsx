@@ -2,14 +2,18 @@
 
 import { ShopTitle } from "@/components/shared/simpleShared";
 import { getPageUrl } from "@/data/constants";
+import useCompleteStepOnNavigation from "@/data/contexts/exerciseContext/utils";
+import { useRouter } from "@/i18n/navigation";
 import { UniquePathFragment } from "@/utils/uniqueFragmentUtil";
-import { Button, Container, Divider, Link, Paper, Stack, Typography } from "@mui/material";
+import { Button, Container, Divider, Paper, Stack, Typography } from "@mui/material";
 import { useTranslations } from "next-intl";
 import { useParams } from "next/navigation";
 
 const OrderCompletePage = () => {
+  const router = useRouter();
   const params = useParams<{ uniquePathFragment: UniquePathFragment }>();
   const t = useTranslations("OrderCompletePage");
+  useCompleteStepOnNavigation("completeCheckout");
 
   return (
     <Container sx={{ width: 600 }}>
@@ -20,9 +24,9 @@ const OrderCompletePage = () => {
           <Divider />
           <Typography>{t("orderNumberText", { orderNumber: "159486514" })}</Typography>
           <Typography>{t("description")}</Typography>
-          <Link href={getPageUrl.products(params.uniquePathFragment)}>
-            <Button variant="contained">{t("goToProductsButtonText")}</Button>
-          </Link>
+          <Button variant="contained" onClick={() => router.push(getPageUrl.products(params.uniquePathFragment))}>
+            {t("goToProductsButtonText")}
+          </Button>
         </Stack>
       </Paper>
     </Container>

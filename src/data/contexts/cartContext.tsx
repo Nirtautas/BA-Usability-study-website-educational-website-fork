@@ -1,14 +1,17 @@
 "use client";
 
-import { createContext, ReactNode, useContext, useEffect, useState } from "react";
+import { createContext, ReactNode, useContext, useEffect, useRef, useState } from "react";
 import { CART_STORAGE_KEY, parcelLockerPrice, postDeliveryPrice, serviceFee } from "../constants";
 import { products } from "../entityData";
 import { CartContextInterface, CartItem, FullCartItem, ProductType } from "../types";
+import { useExercise } from "./exerciseContext/exerciseContext";
 
 const CartContext = createContext<CartContextInterface | undefined>(undefined);
 
-export function CartProvider({ children }: { children: ReactNode }) {
+const CartProvider = ({ children }: { children: ReactNode }) => {
   const [cart, setCart] = useState<CartItem[]>([]);
+  const exercise = useExercise();
+  const previousHadDeceptiveProduct = useRef(false);
 
   useEffect(() => {
     const storedCart = sessionStorage.getItem(CART_STORAGE_KEY);
@@ -72,6 +75,10 @@ export function CartProvider({ children }: { children: ReactNode }) {
     );
   };
 
+  const cartHasDeceptiveProduct = () => {
+    return getFullCartItems().some((cartItem) => cartItem.item.type === ProductType.DeceptiveExtra);
+  };
+
   const getFullCartItem = (itemId: number) => {
     const product = products.find((p) => p.id === itemId);
     const quantity = cart.find((i) => i.itemId === itemId)?.quantity || 0;
@@ -93,6 +100,24 @@ export function CartProvider({ children }: { children: ReactNode }) {
     return calculateItemTotal() + (getUniqueItemsCount(true) !== 0 && deliveryMethod ? serviceFee : 0) + getDeliveryFee(deliveryMethod);
   };
 
+  useEffect(() => {
+    const count = getUniqueItemsCount();
+
+    if (count !== 0) {
+      exercise.completeStep("addToCart");
+    }
+  }, [cart]);
+
+  useEffect(() => {
+    const hasDeceptiveProduct = cartHasDeceptiveProduct();
+
+    if (previousHadDeceptiveProduct.current && !hasDeceptiveProduct) {
+      exercise.completeStep("userRemovedDeceptiveProduct");
+    }
+
+    previousHadDeceptiveProduct.current = hasDeceptiveProduct;
+  }, [cart, exercise]);
+
   return (
     <CartContext.Provider
       value={{
@@ -112,9 +137,11 @@ export function CartProvider({ children }: { children: ReactNode }) {
       {children}
     </CartContext.Provider>
   );
-}
+};
 
-export function useCart() {
+const useCart = () => {
   const context = useContext(CartContext);
   return context;
-}
+};
+
+export { CartProvider, useCart };

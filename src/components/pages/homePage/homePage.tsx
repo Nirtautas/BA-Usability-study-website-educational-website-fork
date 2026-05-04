@@ -2,13 +2,15 @@
 
 import { ShopTitle } from "@/components/shared/simpleShared";
 import { getPageUrl, landingPageImageLink, loginPageImageLink } from "@/data/constants";
+import { useRouter } from "@/i18n/navigation";
 import { UniquePathFragment } from "@/utils/uniqueFragmentUtil";
-import { Box, Button, Container, Divider, Link, Stack, Typography } from "@mui/material";
+import { Box, Button, Container, Divider, Stack, Typography } from "@mui/material";
 import { useTranslations } from "next-intl";
 import { useParams } from "next/navigation";
 import FakeReviewMarquee from "./fakeReviewMarquee";
 
 const HomePage = () => {
+  const router = useRouter();
   const params = useParams<{ uniquePathFragment: UniquePathFragment }>();
   const t = useTranslations("LandingPage");
 
@@ -22,9 +24,9 @@ const HomePage = () => {
               {t("SpringSale.title")}
             </Typography>
             <Typography>{t("SpringSale.description")}</Typography>
-            <Link href={getPageUrl.products(params.uniquePathFragment).concat(`?onlyDiscounted=true`)}>
-              <Button variant="contained">{t("SpringSale.buttonText")}</Button>
-            </Link>
+            <Button variant="contained" onClick={() => router.push(getPageUrl.products(params.uniquePathFragment).concat(`?onlyDiscounted=true`))}>
+              {t("SpringSale.buttonText")}
+            </Button>
           </Stack>
         </Stack>
 
@@ -35,11 +37,9 @@ const HomePage = () => {
             <Stack direction="column" alignItems="flex-end" fontFamily="elephant">
               <Typography variant="h3">{t("MainBanner.title")}</Typography>
               <ShopTitle />
-              <Link href={getPageUrl.products(params.uniquePathFragment)} paddingTop={1}>
-                <Button variant="contained" sx={{ bgcolor: "primary.light" }}>
-                  <Typography fontFamily="elephant">{t("MainBanner.buttonText")}</Typography>
-                </Button>
-              </Link>
+              <Button variant="contained" onClick={() => router.push(getPageUrl.products(params.uniquePathFragment))} sx={{ bgcolor: "primary.light", marginTop: 1 }}>
+                <Typography fontFamily="elephant">{t("MainBanner.buttonText")}</Typography>
+              </Button>
             </Stack>
           </Box>
         </Box>

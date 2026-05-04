@@ -1,9 +1,10 @@
 "use client";
 
 import { getPageUrl } from "@/data/constants";
+import { useRouter } from "@/i18n/navigation";
 import { UniquePathFragment } from "@/utils/uniqueFragmentUtil";
 import { Facebook, Instagram, LinkedIn, YouTube } from "@mui/icons-material";
-import { Grid2, Link, Paper, Stack, Typography } from "@mui/material";
+import { Button, Grid2, Paper, Stack, Typography } from "@mui/material";
 import { useTranslations } from "next-intl";
 
 type Props = {
@@ -12,17 +13,29 @@ type Props = {
 
 export function Footer({ uniquePathFragment }: Props) {
   const t = useTranslations();
+  const router = useRouter();
 
   return (
     <Paper component="footer" sx={{ bgcolor: "primary.main", color: "primary.contrastText", marginTop: 1 }}>
       <Stack direction="row" justifyContent="space-between" alignItems="center">
         <Stack direction="column" justifyContent="center">
-          <Typography>
-            {t("Footer.resourceAttributionsText")}
-            <Link href={getPageUrl.attributions(uniquePathFragment)} underline="hover" sx={{ color: "primary.contrastText" }}>
+          <Stack direction="row" alignItems="center" justifyContent="center">
+            <Typography>{t("Footer.resourceAttributionsText")}</Typography>
+            <Button
+              onClick={() => router.push(getPageUrl.attributions(uniquePathFragment))}
+              color="primary.contrastText"
+              sx={{
+                padding: 0,
+                textDecoration: "underline",
+                "&:hover": {
+                  background: "none",
+                  textDecoration: "underline",
+                },
+              }}
+            >
               {t("Footer.resourceAttributionsLinkText")}
-            </Link>
-          </Typography>
+            </Button>
+          </Stack>
         </Stack>
         <Stack direction="column" alignItems="flex-end">
           <Grid2 display="flex">

@@ -9,7 +9,7 @@ import { useUserContext } from "@/data/contexts/userContext";
 import { LoginCredentials } from "@/data/types";
 import { UniquePathFragment } from "@/utils/uniqueFragmentUtil";
 import { EmailOutlined, LockOutlined } from "@mui/icons-material";
-import { Box, Button, Container, Divider, InputAdornment, Link, Paper, Stack, TextField, Typography } from "@mui/material";
+import { Box, Button, Container, Divider, InputAdornment, Paper, Stack, TextField, Typography } from "@mui/material";
 import { useTranslations } from "next-intl";
 import { useParams, useRouter } from "next/navigation";
 import { useState } from "react";
@@ -112,12 +112,24 @@ const LoginPage = ({ searchParams }: PageProps) => {
               <Button type="submit" variant="contained">
                 {t("loginButtonText")}
               </Button>
-              <Typography>
-                {t("dontHaveAccountText")}{" "}
-                <Link href={getPageUrl.register(params.uniquePathFragment).concat(`?checkoutRedirect=${checkoutRedirect}&keepsPlusAccepted=${keepsPlusAccepted}`)} sx={{ textDecoration: "underline" }}>
+              <Stack direction="row" alignItems="center" justifyContent="center" gap={1}>
+                <Typography alignItems="center" display="flex">
+                  {t("dontHaveAccountText")}{" "}
+                </Typography>
+                <Button
+                  onClick={() => router.push(getPageUrl.register(params.uniquePathFragment).concat(`?checkoutRedirect=${checkoutRedirect}&keepsPlusAccepted=${keepsPlusAccepted}`))}
+                  sx={{
+                    padding: 0,
+                    textDecoration: "underline",
+                    "&:hover": {
+                      background: "none",
+                      textDecoration: "underline",
+                    },
+                  }}
+                >
                   {t("registerHereText")}
-                </Link>
-              </Typography>
+                </Button>
+              </Stack>
             </Stack>
           </Stack>
         </Paper>

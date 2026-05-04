@@ -9,7 +9,7 @@ import { useUserContext } from "@/data/contexts/userContext";
 import { Gender, genderTypeTranslationKeyMap, RegisterInfo } from "@/data/types";
 import { UniquePathFragment } from "@/utils/uniqueFragmentUtil";
 import { EmailOutlined, LockOutlined, PhoneAndroidOutlined } from "@mui/icons-material";
-import { Box, Button, Container, Divider, FormControl, FormControlLabel, FormLabel, InputAdornment, Link, Paper, Radio, RadioGroup, Stack, TextField, Typography } from "@mui/material";
+import { Box, Button, Container, Divider, FormControl, FormControlLabel, FormLabel, InputAdornment, Paper, Radio, RadioGroup, Stack, TextField, Typography } from "@mui/material";
 import { useTranslations } from "next-intl";
 import { useParams, useRouter } from "next/navigation";
 import { useState } from "react";
@@ -191,12 +191,24 @@ const RegisterPage = ({ searchParams }: PageProps) => {
               <Button type="submit" variant="contained">
                 {t("RegisterPage.registerButtonText")}
               </Button>
-              <Typography>
-                {t("RegisterPage.alreadyHaveAccountText")}{" "}
-                <Link href={getPageUrl.login(params.uniquePathFragment).concat(`?checkoutRedirect=${checkoutRedirect}&keepsPlusAccepted=${keepsPlusAccepted}`)} sx={{ textDecoration: "underline" }}>
+              <Stack direction="row" alignItems="center" justifyContent="center" gap={1}>
+                <Typography alignItems="center" display="flex">
+                  {t("RegisterPage.alreadyHaveAccountText")}{" "}
+                </Typography>
+                <Button
+                  onClick={() => router.push(getPageUrl.login(params.uniquePathFragment).concat(`?checkoutRedirect=${checkoutRedirect}&keepsPlusAccepted=${keepsPlusAccepted}`))}
+                  sx={{
+                    padding: 0,
+                    textDecoration: "underline",
+                    "&:hover": {
+                      background: "none",
+                      textDecoration: "underline",
+                    },
+                  }}
+                >
                   {t("RegisterPage.loginHereText")}
-                </Link>
-              </Typography>
+                </Button>
+              </Stack>
             </Stack>
           </Stack>
         </Paper>

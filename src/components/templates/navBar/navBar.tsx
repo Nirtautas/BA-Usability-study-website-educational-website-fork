@@ -6,7 +6,7 @@ import { useCart } from "@/data/contexts/cartContext";
 import { useUserContext } from "@/data/contexts/userContext";
 import { UniquePathFragment } from "@/utils/uniqueFragmentUtil";
 import { AccountCircle, AttachMoneyOutlined, Login, LogoutOutlined, ShoppingBag, ShoppingCart, WidgetsOutlined } from "@mui/icons-material";
-import { AppBar, Badge, Button, Grid2, Link, Menu, MenuItem, Stack, Toolbar, Typography } from "@mui/material";
+import { AppBar, Badge, Button, Grid2, Menu, MenuItem, Stack, Toolbar, Typography } from "@mui/material";
 import { useTranslations } from "next-intl";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
@@ -47,9 +47,9 @@ export function NavBar({ uniquePathFragment }: Props) {
 
       <AppBar position="static">
         <Toolbar disableGutters sx={{ display: "flex", justifyContent: "space-between" }}>
-          <Link href={getPageUrl.home(uniquePathFragment)} padding={1} sx={{ color: "inherit", textDecoration: "none" }}>
+          <Button onClick={() => router.push(getPageUrl.home(uniquePathFragment))} color="inherit">
             <ShopTitle />
-          </Link>
+          </Button>
 
           <Stack direction="row" spacing={2} alignItems="center">
             <Grid2 display="flex" alignItems="center" gap={1}>

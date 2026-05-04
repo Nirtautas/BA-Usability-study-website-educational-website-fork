@@ -39,7 +39,7 @@ export const serviceFee = 2.99;
 export const postDeliveryPrice = 2.29;
 export const parcelLockerPrice = 1.99;
 
-export const EXERCISE_NAVBAR_HEIGHT = 116;
+export const EXERCISE_NAVBAR_HEIGHT = 128;
 
 export const CART_STORAGE_KEY = "cart";
 export const SUBSCRIPTION_STORAGE_KEY = "subscriptionData";

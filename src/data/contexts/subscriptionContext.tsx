@@ -10,7 +10,7 @@ import { useUserContext } from "./userContext";
 
 const SubscriptionContext = createContext<SubscriptionContextInterface | undefined>(undefined);
 
-export function SubscriptionDataProvider({ children }: { children: ReactNode }) {
+const SubscriptionDataProvider = ({ children }: { children: ReactNode }) => {
   const t = useTranslations();
   const cartContext = useCart();
   const userContext = useUserContext();
@@ -117,9 +117,11 @@ export function SubscriptionDataProvider({ children }: { children: ReactNode }) 
       {children}
     </SubscriptionContext.Provider>
   );
-}
+};
 
-export function useSubscriptionContext() {
+const useSubscriptionContext = () => {
   const context = useContext(SubscriptionContext);
   return context;
-}
+};
+
+export { SubscriptionDataProvider, useSubscriptionContext };

@@ -1,8 +1,10 @@
+import ExerciseLockOverlay from "@/components/templates/exerciseLockOverlay";
 import Footer from "@/components/templates/footer";
 import MarketingPopup from "@/components/templates/marketingPopup";
 import ExerciseNavbar from "@/components/templates/navBar/exerciseNavBar";
 import NavBar from "@/components/templates/navBar/navBar";
 import { CartProvider } from "@/data/contexts/cartContext";
+import { ExerciseProvider } from "@/data/contexts/exerciseContext/exerciseContext";
 import { SubscriptionDataProvider } from "@/data/contexts/subscriptionContext";
 import { UserDataProvider } from "@/data/contexts/userContext";
 import { isUniquePathFragment } from "@/utils/uniqueFragmentUtil";
@@ -25,17 +27,20 @@ export default async function FragmentLayout({ children, params }: Props) {
 
   return (
     <>
-      <UserDataProvider>
-        <CartProvider>
-          <SubscriptionDataProvider>
-            <ExerciseNavbar />
-            <NavBar uniquePathFragment={uniquePathFragment} />
-            {children}
-            <Footer uniquePathFragment={uniquePathFragment} />
-            <MarketingPopup />
-          </SubscriptionDataProvider>
-        </CartProvider>
-      </UserDataProvider>
+      <ExerciseProvider>
+        <UserDataProvider>
+          <CartProvider>
+            <SubscriptionDataProvider>
+              <ExerciseNavbar />
+              <ExerciseLockOverlay />
+              <NavBar uniquePathFragment={uniquePathFragment} />
+              {children}
+              <Footer uniquePathFragment={uniquePathFragment} />
+              <MarketingPopup />
+            </SubscriptionDataProvider>
+          </CartProvider>
+        </UserDataProvider>
+      </ExerciseProvider>
     </>
   );
 }

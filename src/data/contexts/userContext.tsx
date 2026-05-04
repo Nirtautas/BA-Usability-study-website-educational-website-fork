@@ -8,7 +8,7 @@ import { UserContextInterface, UserInfo } from "../types";
 
 const UserContext = createContext<UserContextInterface | undefined>(undefined);
 
-export function UserDataProvider({ children }: { children: ReactNode }) {
+const UserDataProvider = ({ children }: { children: ReactNode }) => {
   const t = useTranslations();
   const [userData, setUserData] = useState<UserInfo[]>([]);
   const [loggedInUserId, setLoggedInUserId] = useState<number | undefined>(undefined);
@@ -97,9 +97,11 @@ export function UserDataProvider({ children }: { children: ReactNode }) {
       {children}
     </UserContext.Provider>
   );
-}
+};
 
-export function useUserContext() {
+const useUserContext = () => {
   const context = useContext(UserContext);
   return context;
-}
+};
+
+export { UserDataProvider, useUserContext };

@@ -9,6 +9,7 @@ import {
   USER_DATA_STORAGE_KEY,
   USER_ID_STORAGE_KEY,
 } from "@/data/constants";
+import { useExercise } from "@/data/contexts/exerciseContext/exerciseContext";
 import { UniquePathFragment } from "@/utils/uniqueFragmentUtil";
 import { CircularProgress, Stack, Typography } from "@mui/material";
 import { useParams, useRouter } from "next/navigation";
@@ -19,11 +20,13 @@ const STORAGE_KEYS = [CART_STORAGE_KEY, SUBSCRIPTION_STORAGE_KEY, USER_DATA_STOR
 const ResetPage = () => {
   const router = useRouter();
   const params = useParams<{ uniquePathFragment: UniquePathFragment }>();
+  const exercise = useExercise();
 
   useEffect(() => {
     STORAGE_KEYS.forEach((key) => sessionStorage.removeItem(key));
+    exercise.resetExerciseProgress();
 
-    router.replace(getPageUrl.home(params.uniquePathFragment));
+    router.push(getPageUrl.home(params.uniquePathFragment));
     router.refresh();
   }, [router, params.uniquePathFragment]);
 
