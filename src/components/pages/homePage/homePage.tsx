@@ -1,10 +1,15 @@
+"use client";
+
 import { ShopTitle } from "@/components/shared/simpleShared";
 import { getPageUrl, landingPageImageLink, loginPageImageLink } from "@/data/constants";
+import { UniquePathFragment } from "@/utils/uniqueFragmentUtil";
 import { Box, Button, Container, Divider, Link, Stack, Typography } from "@mui/material";
 import { useTranslations } from "next-intl";
+import { useParams } from "next/navigation";
 import FakeReviewMarquee from "./fakeReviewMarquee";
 
 const HomePage = () => {
+  const params = useParams<{ uniquePathFragment: UniquePathFragment }>();
   const t = useTranslations("LandingPage");
 
   return (
@@ -17,7 +22,7 @@ const HomePage = () => {
               {t("SpringSale.title")}
             </Typography>
             <Typography>{t("SpringSale.description")}</Typography>
-            <Link href={getPageUrl.products().concat(`?onlyDiscounted=true`)}>
+            <Link href={getPageUrl.products(params.uniquePathFragment).concat(`?onlyDiscounted=true`)}>
               <Button variant="contained">{t("SpringSale.buttonText")}</Button>
             </Link>
           </Stack>
@@ -30,7 +35,7 @@ const HomePage = () => {
             <Stack direction="column" alignItems="flex-end" fontFamily="elephant">
               <Typography variant="h3">{t("MainBanner.title")}</Typography>
               <ShopTitle />
-              <Link href={getPageUrl.products()} paddingTop={1}>
+              <Link href={getPageUrl.products(params.uniquePathFragment)} paddingTop={1}>
                 <Button variant="contained" sx={{ bgcolor: "primary.light" }}>
                   <Typography fontFamily="elephant">{t("MainBanner.buttonText")}</Typography>
                 </Button>

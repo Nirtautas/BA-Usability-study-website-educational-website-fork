@@ -2,15 +2,16 @@
 
 import { ShopTitle } from "@/components/shared/simpleShared";
 import SubheadingBold from "@/components/shared/subheadingBold";
-import { useCart } from "@/data/cartContext";
 import { getPageUrl, loginPageImageLink } from "@/data/constants";
-import { useSubscriptionContext } from "@/data/subscriptionContext";
+import { useCart } from "@/data/contexts/cartContext";
+import { useSubscriptionContext } from "@/data/contexts/subscriptionContext";
+import { useUserContext } from "@/data/contexts/userContext";
 import { LoginCredentials } from "@/data/types";
-import { useUserContext } from "@/data/userContext";
+import { UniquePathFragment } from "@/utils/uniqueFragmentUtil";
 import { EmailOutlined, LockOutlined } from "@mui/icons-material";
 import { Box, Button, Container, Divider, InputAdornment, Link, Paper, Stack, TextField, Typography } from "@mui/material";
 import { useTranslations } from "next-intl";
-import { useRouter } from "next/navigation";
+import { useParams, useRouter } from "next/navigation";
 import { useState } from "react";
 
 type PageProps = {
@@ -25,6 +26,7 @@ const LoginPage = ({ searchParams }: PageProps) => {
   const cartContext = useCart();
   const subscriptionContext = useSubscriptionContext();
   const userContext = useUserContext();
+  const params = useParams<{ uniquePathFragment: UniquePathFragment }>();
   const t = useTranslations("LoginPage");
   const [loginCredentials, setLoginCredentials] = useState<LoginCredentials>({ email: "", password: "" });
   const [errorMsg, setErrorMsg] = useState("");
@@ -44,9 +46,9 @@ const LoginPage = ({ searchParams }: PageProps) => {
         }
         subscriptionContext?.linkCartSubscriptionsToCurrentUser();
         cartContext?.removeAllFromCart();
-        router.push(getPageUrl.orderComplete());
+        router.push(getPageUrl.orderComplete(params.uniquePathFragment));
       } else {
-        router.push(getPageUrl.products());
+        router.push(getPageUrl.products(params.uniquePathFragment));
       }
     } else {
       setErrorMsg(t("invalidCredentialsErrorText"));
@@ -55,7 +57,7 @@ const LoginPage = ({ searchParams }: PageProps) => {
 
   return (
     <Container maxWidth="md">
-      <Box component="form" onSubmit={handleLogin}>
+      <Box component="form" onSubmit={handleLogin} paddingTop={2}>
         <Paper elevation={3}>
           <Stack direction="row" gap={1}>
             <Box component="img" src={loginPageImageLink} maxWidth={400} sx={{ objectFit: "cover" }} />
@@ -112,7 +114,7 @@ const LoginPage = ({ searchParams }: PageProps) => {
               </Button>
               <Typography>
                 {t("dontHaveAccountText")}{" "}
-                <Link href={getPageUrl.register().concat(`?checkoutRedirect=${checkoutRedirect}&keepsPlusAccepted=${keepsPlusAccepted}`)} sx={{ textDecoration: "underline" }}>
+                <Link href={getPageUrl.register(params.uniquePathFragment).concat(`?checkoutRedirect=${checkoutRedirect}&keepsPlusAccepted=${keepsPlusAccepted}`)} sx={{ textDecoration: "underline" }}>
                   {t("registerHereText")}
                 </Link>
               </Typography>

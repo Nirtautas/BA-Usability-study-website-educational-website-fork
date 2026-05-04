@@ -3,8 +3,10 @@
 import SubheadingBold from "@/components/shared/subheadingBold";
 import { getPageUrl } from "@/data/constants";
 import { Product, ProductType, productTypeTranslationKeyMap } from "@/data/types";
+import { UniquePathFragment } from "@/utils/uniqueFragmentUtil";
 import { Button, Checkbox, Divider, FormControlLabel, Link, Paper, Slider, Stack, Switch, TextField, Typography } from "@mui/material";
 import { useTranslations } from "next-intl";
+import { useParams } from "next/navigation";
 import { useState } from "react";
 
 type Props = {
@@ -19,6 +21,7 @@ type Props = {
 };
 
 const ProductsFilter = ({ products, appliedFilters }: Props) => {
+  const parameters = useParams<{ uniquePathFragment: UniquePathFragment }>();
   const t = useTranslations("ProductsPage.Filter");
   const prices = products.map((p) => p.discountedPrice ?? p.price);
   const minPrice = Math.min(...prices);
@@ -44,7 +47,7 @@ const ProductsFilter = ({ products, appliedFilters }: Props) => {
       params.append("searchFragment", searchFragment.trim());
     }
 
-    return getPageUrl.products().concat(`?${params.toString()}`);
+    return getPageUrl.products(parameters.uniquePathFragment).concat(`?${params.toString()}`);
   };
 
   const handlePriceChange = (event: Event, newValue: number | number[]) => {

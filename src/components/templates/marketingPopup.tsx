@@ -1,5 +1,6 @@
 "use client";
 
+import { MARKETING_TIMER_EXECUTED_STORAGE_KEY, REFUSED_MARKETING_STORAGE_KEY } from "@/data/constants";
 import { Box, Button, Fade, keyframes, Paper, Stack, TextField, Typography } from "@mui/material";
 import { useTranslations } from "next-intl";
 import { useEffect, useState } from "react";
@@ -24,25 +25,25 @@ const MarketingPopup = () => {
   const [open, setOpen] = useState(false);
 
   useEffect(() => {
-    const refusedMarketing = sessionStorage.getItem("refusedMarketing");
+    const refusedMarketing = sessionStorage.getItem(REFUSED_MARKETING_STORAGE_KEY);
     if (!refusedMarketing) {
       const timer = setTimeout(() => {
         setOpen(true);
       }, 5000);
-      const timerExecuted = sessionStorage.getItem("marketingTimerExecuted");
+      const timerExecuted = sessionStorage.getItem(MARKETING_TIMER_EXECUTED_STORAGE_KEY);
 
       if (timerExecuted) {
         setOpen(true);
         return;
       } else {
-        sessionStorage.setItem("marketingTimerExecuted", "true");
+        sessionStorage.setItem(MARKETING_TIMER_EXECUTED_STORAGE_KEY, "true");
         return () => clearTimeout(timer);
       }
     }
   }, []);
 
   const handleClose = () => {
-    sessionStorage.setItem("refusedMarketing", "true");
+    sessionStorage.setItem(REFUSED_MARKETING_STORAGE_KEY, "true");
     setOpen(false);
   };
 

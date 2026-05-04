@@ -1,23 +1,22 @@
 "use client";
 
 import { createContext, ReactNode, useContext, useEffect, useState } from "react";
-import { parcelLockerPrice, postDeliveryPrice, serviceFee } from "./constants";
-import { products } from "./entityData";
-import { CartContextInterface, CartItem, FullCartItem, ProductType } from "./types";
+import { CART_STORAGE_KEY, parcelLockerPrice, postDeliveryPrice, serviceFee } from "../constants";
+import { products } from "../entityData";
+import { CartContextInterface, CartItem, FullCartItem, ProductType } from "../types";
 
 const CartContext = createContext<CartContextInterface | undefined>(undefined);
-const STORAGE_KEY = "cart";
 
 export function CartProvider({ children }: { children: ReactNode }) {
   const [cart, setCart] = useState<CartItem[]>([]);
 
   useEffect(() => {
-    const storedCart = sessionStorage.getItem(STORAGE_KEY);
+    const storedCart = sessionStorage.getItem(CART_STORAGE_KEY);
     if (storedCart) setCart(JSON.parse(storedCart));
   }, []);
 
   useEffect(() => {
-    sessionStorage.setItem(STORAGE_KEY, JSON.stringify(cart));
+    sessionStorage.setItem(CART_STORAGE_KEY, JSON.stringify(cart));
   }, [cart]);
 
   const modifyCart = (itemId: number, quantityChange: number) => {

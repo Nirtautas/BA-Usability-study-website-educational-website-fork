@@ -2,15 +2,16 @@
 
 import { ShopTitle } from "@/components/shared/simpleShared";
 import SubheadingBold from "@/components/shared/subheadingBold";
-import { useCart } from "@/data/cartContext";
 import { getPageUrl, registerPageImageLink } from "@/data/constants";
-import { useSubscriptionContext } from "@/data/subscriptionContext";
+import { useCart } from "@/data/contexts/cartContext";
+import { useSubscriptionContext } from "@/data/contexts/subscriptionContext";
+import { useUserContext } from "@/data/contexts/userContext";
 import { Gender, genderTypeTranslationKeyMap, RegisterInfo } from "@/data/types";
-import { useUserContext } from "@/data/userContext";
+import { UniquePathFragment } from "@/utils/uniqueFragmentUtil";
 import { EmailOutlined, LockOutlined, PhoneAndroidOutlined } from "@mui/icons-material";
 import { Box, Button, Container, Divider, FormControl, FormControlLabel, FormLabel, InputAdornment, Link, Paper, Radio, RadioGroup, Stack, TextField, Typography } from "@mui/material";
 import { useTranslations } from "next-intl";
-import { useRouter } from "next/navigation";
+import { useParams, useRouter } from "next/navigation";
 import { useState } from "react";
 
 type PageProps = {
@@ -25,6 +26,7 @@ const RegisterPage = ({ searchParams }: PageProps) => {
   const userContext = useUserContext();
   const subscriptionContext = useSubscriptionContext();
   const cartContext = useCart();
+  const params = useParams<{ uniquePathFragment: UniquePathFragment }>();
   const t = useTranslations();
   const [registerInfo, setRegisterInfo] = useState<RegisterInfo>({
     firstName: "",
@@ -52,9 +54,9 @@ const RegisterPage = ({ searchParams }: PageProps) => {
         }
         subscriptionContext?.linkCartSubscriptionsToCurrentUser();
         cartContext?.removeAllFromCart();
-        router.push(getPageUrl.orderComplete());
+        router.push(getPageUrl.orderComplete(params.uniquePathFragment));
       } else {
-        router.push(getPageUrl.products());
+        router.push(getPageUrl.products(params.uniquePathFragment));
       }
     } else {
       setErrorMsg(response?.error || "");
@@ -63,7 +65,7 @@ const RegisterPage = ({ searchParams }: PageProps) => {
 
   return (
     <Container maxWidth="md">
-      <Box component="form" onSubmit={handleRegistration}>
+      <Box component="form" onSubmit={handleRegistration} paddingTop={2}>
         <Paper elevation={3}>
           <Stack direction="column">
             <Box component="img" src={registerPageImageLink} maxHeight={100} sx={{ objectFit: "cover" }} />
@@ -191,7 +193,7 @@ const RegisterPage = ({ searchParams }: PageProps) => {
               </Button>
               <Typography>
                 {t("RegisterPage.alreadyHaveAccountText")}{" "}
-                <Link href={getPageUrl.login().concat(`?checkoutRedirect=${checkoutRedirect}&keepsPlusAccepted=${keepsPlusAccepted}`)} sx={{ textDecoration: "underline" }}>
+                <Link href={getPageUrl.login(params.uniquePathFragment).concat(`?checkoutRedirect=${checkoutRedirect}&keepsPlusAccepted=${keepsPlusAccepted}`)} sx={{ textDecoration: "underline" }}>
                   {t("RegisterPage.loginHereText")}
                 </Link>
               </Typography>

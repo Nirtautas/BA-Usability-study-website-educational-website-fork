@@ -3,11 +3,10 @@
 import { testUserData } from "@/data/entityData";
 import { useTranslations } from "next-intl";
 import { createContext, ReactNode, useContext, useEffect, useState } from "react";
-import { RegisterInfo, UserContextInterface, UserInfo } from "./types";
+import { USER_DATA_STORAGE_KEY, USER_ID_STORAGE_KEY } from "../constants";
+import { UserContextInterface, UserInfo } from "../types";
 
 const UserContext = createContext<UserContextInterface | undefined>(undefined);
-const USER_ID_STORAGE_KEY = "loggedInUserId";
-const USER_DATA_STORAGE_KEY = "userData";
 
 export function UserDataProvider({ children }: { children: ReactNode }) {
   const t = useTranslations();

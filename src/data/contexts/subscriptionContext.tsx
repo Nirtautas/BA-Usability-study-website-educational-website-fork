@@ -3,12 +3,12 @@
 import { products } from "@/data/entityData";
 import { useTranslations } from "next-intl";
 import { createContext, ReactNode, useContext, useEffect, useState } from "react";
+import { SUBSCRIPTION_STORAGE_KEY } from "../constants";
+import { ProductType, SubscriptionContextInterface, SubscriptionType, UserInfoSubscriptionInfo } from "../types";
 import { useCart } from "./cartContext";
-import { ProductType, SubscriptionContextInterface, SubscriptionType, UserInfoSubscriptionInfo } from "./types";
 import { useUserContext } from "./userContext";
 
 const SubscriptionContext = createContext<SubscriptionContextInterface | undefined>(undefined);
-const STORAGE_KEY = "subscriptionData";
 
 export function SubscriptionDataProvider({ children }: { children: ReactNode }) {
   const t = useTranslations();
@@ -17,14 +17,14 @@ export function SubscriptionDataProvider({ children }: { children: ReactNode }) 
   const [subscriptionData, setSubscriptionData] = useState<UserInfoSubscriptionInfo[]>([]);
 
   useEffect(() => {
-    const subscriptionData = sessionStorage.getItem(STORAGE_KEY);
+    const subscriptionData = sessionStorage.getItem(SUBSCRIPTION_STORAGE_KEY);
     const parsedSubscriptionData = JSON.parse(subscriptionData || "[]");
 
     setSubscriptionData(parsedSubscriptionData);
   }, []);
 
   useEffect(() => {
-    sessionStorage.setItem(STORAGE_KEY, JSON.stringify(subscriptionData));
+    sessionStorage.setItem(SUBSCRIPTION_STORAGE_KEY, JSON.stringify(subscriptionData));
   }, [subscriptionData]);
 
   const getUserSubscriptions = (userId: number) => {

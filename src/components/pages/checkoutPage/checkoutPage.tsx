@@ -3,22 +3,25 @@
 import ActionDialogModal from "@/components/shared/actionDialogModal";
 import KeepsPlusServiceDialogInfo from "@/components/shared/keepsPlusServiceDialog";
 import SubheadingBold from "@/components/shared/subheadingBold";
-import { useCart } from "@/data/cartContext";
 import { getPageUrl } from "@/data/constants";
+import { useCart } from "@/data/contexts/cartContext";
+import { useSubscriptionContext } from "@/data/contexts/subscriptionContext";
+import { useUserContext } from "@/data/contexts/userContext";
 import { storeLocations } from "@/data/entityData";
-import { useSubscriptionContext } from "@/data/subscriptionContext";
 import { DeliveryInfo } from "@/data/types";
-import { useUserContext } from "@/data/userContext";
 import { useRouter } from "@/i18n/navigation";
+import { UniquePathFragment } from "@/utils/uniqueFragmentUtil";
 import { CheckOutlined } from "@mui/icons-material";
 import { Box, Button, Checkbox, Divider, FormControlLabel, FormGroup, FormHelperText, Paper, Stack, Typography } from "@mui/material";
 import { useTranslations } from "next-intl";
+import { useParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import CartSummary from "../../shared/cartSummary";
 import DeliverySelection from "./deliverySelection";
 import PaymentSelection from "./paymentSelection";
 
 const CheckoutPage = () => {
+  const params = useParams<{ uniquePathFragment: UniquePathFragment }>();
   const router = useRouter();
   const cartContext = useCart();
   const userContext = useUserContext();
@@ -41,7 +44,7 @@ const CheckoutPage = () => {
 
   useEffect(() => {
     if (cartContext?.cart.length === 0) {
-      router.push(getPageUrl.products());
+      router.push(getPageUrl.products(params.uniquePathFragment));
     }
   }, []);
 
@@ -80,21 +83,21 @@ const CheckoutPage = () => {
       }
       subscriptionContext?.linkCartSubscriptionsToCurrentUser();
       cartContext?.removeAllFromCart();
-      router.push(getPageUrl.orderComplete());
+      router.push(getPageUrl.orderComplete(params.uniquePathFragment));
     } else {
-      router.push(getPageUrl.login().concat(`?checkoutRedirect=true&keepsPlusAccepted=${keepsPlusAccepted}`));
+      router.push(getPageUrl.login(params.uniquePathFragment).concat(`?checkoutRedirect=true&keepsPlusAccepted=${keepsPlusAccepted}`));
     }
   };
 
   return (
-    <Box component="form" onSubmit={handleSubmit} display="flex" justifyContent="center">
+    <Box component="form" onSubmit={handleSubmit} display="flex" justifyContent="center" marginTop={2}>
       <Stack direction="column" alignItems="center" gap={1}>
         <Box width={700}>
           <Stack direction="row" display="flex" justifyContent="space-between">
             <Typography variant="h5" gutterBottom>
               {t("CheckoutPage.title")}
             </Typography>
-            <Button variant="contained" onClick={() => router.push(getPageUrl.cart())}>
+            <Button variant="contained" onClick={() => router.push(getPageUrl.cart(params.uniquePathFragment))}>
               {t("CheckoutPage.backToCartButtonText")}
             </Button>
           </Stack>

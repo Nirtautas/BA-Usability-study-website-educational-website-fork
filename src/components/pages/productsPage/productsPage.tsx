@@ -1,7 +1,11 @@
+"use client";
+
 import { products } from "@/data/entityData";
 import { ProductType } from "@/data/types";
+import { UniquePathFragment } from "@/utils/uniqueFragmentUtil";
 import { Container, Grid2, Typography } from "@mui/material";
 import { useTranslations } from "next-intl";
+import { useParams } from "next/navigation";
 import ProductCard from "./productCard";
 import ProductsFilter from "./productsFilter";
 
@@ -16,6 +20,7 @@ type PageProps = {
 };
 
 const ProductsPage = ({ searchParams }: PageProps) => {
+  const params = useParams<{ uniquePathFragment: UniquePathFragment }>();
   const t = useTranslations("ProductsPage");
   const minPrice = Number(searchParams?.minPrice);
   const maxPrice = Number(searchParams?.maxPrice);
@@ -65,7 +70,7 @@ const ProductsPage = ({ searchParams }: PageProps) => {
 
         <Grid2 container size={9} spacing={2}>
           {filteredOutProducts.map((product) => (
-            <ProductCard key={product.id} item={product} />
+            <ProductCard key={product.id} item={product} uniquePathFragment={params.uniquePathFragment} />
           ))}
         </Grid2>
       </Grid2>

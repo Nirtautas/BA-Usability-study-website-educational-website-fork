@@ -1,9 +1,10 @@
 "use client";
 
 import { ShopTitle } from "@/components/shared/simpleShared";
-import { useCart } from "@/data/cartContext";
-import { getPageUrl } from "@/data/constants";
-import { useUserContext } from "@/data/userContext";
+import { EXERCISE_NAVBAR_HEIGHT, getPageUrl } from "@/data/constants";
+import { useCart } from "@/data/contexts/cartContext";
+import { useUserContext } from "@/data/contexts/userContext";
+import { UniquePathFragment } from "@/utils/uniqueFragmentUtil";
 import { AccountCircle, AttachMoneyOutlined, Login, LogoutOutlined, ShoppingBag, ShoppingCart, WidgetsOutlined } from "@mui/icons-material";
 import { AppBar, Badge, Button, Grid2, Link, Menu, MenuItem, Stack, Toolbar, Typography } from "@mui/material";
 import { useTranslations } from "next-intl";
@@ -11,7 +12,11 @@ import { useRouter } from "next/navigation";
 import { useState } from "react";
 import LanguageSwitcher from "./languageSwitcher";
 
-export function NavBar() {
+type Props = {
+  uniquePathFragment: UniquePathFragment;
+};
+
+export function NavBar({ uniquePathFragment }: Props) {
   const t = useTranslations();
   const router = useRouter();
   const cartContext = useCart();
@@ -35,14 +40,14 @@ export function NavBar() {
   };
 
   return (
-    <Stack sx={{ mb: 2 }}>
+    <Stack sx={{ paddingTop: `${EXERCISE_NAVBAR_HEIGHT}px` }}>
       <Typography fontSize={11} align="center" color="text.secondary">
         {t("NavBar.infoText")}
       </Typography>
 
       <AppBar position="static">
         <Toolbar disableGutters sx={{ display: "flex", justifyContent: "space-between" }}>
-          <Link href={getPageUrl.home()} padding={1} sx={{ color: "inherit", textDecoration: "none" }}>
+          <Link href={getPageUrl.home(uniquePathFragment)} padding={1} sx={{ color: "inherit", textDecoration: "none" }}>
             <ShopTitle />
           </Link>
 
@@ -53,7 +58,7 @@ export function NavBar() {
               </Grid2>
 
               <Grid2 display="flex" alignItems="center">
-                <Button variant="contained" color="inherit" onClick={() => router.push(getPageUrl.keepsBox())}>
+                <Button variant="contained" color="inherit" onClick={() => router.push(getPageUrl.keepsBox(uniquePathFragment))}>
                   <Stack direction="row" gap={1}>
                     <WidgetsOutlined color="primary" />
                     <Typography color="primary" fontWeight={600}>
@@ -70,11 +75,11 @@ export function NavBar() {
                 </Button>
 
                 <Menu anchorEl={anchorElGoods} open={openGoods} onClose={() => setAnchorElGoods(null)}>
-                  <MenuItem onClick={() => router.push(getPageUrl.products())}>{t("NavBar.Products.allProducts")}</MenuItem>
-                  <MenuItem onClick={() => router.push(getPageUrl.products().concat(`?productType=Shoes`))}>{t("ProductsPage.Filter.ProductType.shoesOption")}</MenuItem>
-                  <MenuItem onClick={() => router.push(getPageUrl.products().concat(`?productType=Pants`))}>{t("ProductsPage.Filter.ProductType.pantsOption")}</MenuItem>
-                  <MenuItem onClick={() => router.push(getPageUrl.products().concat(`?productType=Shirts`))}>{t("ProductsPage.Filter.ProductType.shirtOption")}</MenuItem>
-                  <MenuItem onClick={() => router.push(getPageUrl.products().concat(`?productType=Dresses`))}>{t("ProductsPage.Filter.ProductType.dressOption")}</MenuItem>
+                  <MenuItem onClick={() => router.push(getPageUrl.products(uniquePathFragment))}>{t("NavBar.Products.allProducts")}</MenuItem>
+                  <MenuItem onClick={() => router.push(getPageUrl.products(uniquePathFragment).concat(`?productType=Shoes`))}>{t("ProductsPage.Filter.ProductType.shoesOption")}</MenuItem>
+                  <MenuItem onClick={() => router.push(getPageUrl.products(uniquePathFragment).concat(`?productType=Pants`))}>{t("ProductsPage.Filter.ProductType.pantsOption")}</MenuItem>
+                  <MenuItem onClick={() => router.push(getPageUrl.products(uniquePathFragment).concat(`?productType=Shirts`))}>{t("ProductsPage.Filter.ProductType.shirtOption")}</MenuItem>
+                  <MenuItem onClick={() => router.push(getPageUrl.products(uniquePathFragment).concat(`?productType=Dresses`))}>{t("ProductsPage.Filter.ProductType.dressOption")}</MenuItem>
                 </Menu>
               </Grid2>
 
@@ -82,7 +87,7 @@ export function NavBar() {
                 <Badge badgeContent={cartContext?.getUniqueItemsCount() || 0} showZero={true} color="error">
                   <ShoppingCart />
                 </Badge>
-                <Button color="inherit" onClick={() => router.push(getPageUrl.cart())}>
+                <Button color="inherit" onClick={() => router.push(getPageUrl.cart(uniquePathFragment))}>
                   <Typography>{t("NavBar.cart")}</Typography>
                 </Button>
               </Grid2>
@@ -100,7 +105,7 @@ export function NavBar() {
                   </Button>
 
                   <Menu anchorEl={anchorElAccount} open={openAccount} onClose={() => setAnchorElAccount(null)}>
-                    <MenuItem onClick={() => router.push(getPageUrl.subscriptions())}>
+                    <MenuItem onClick={() => router.push(getPageUrl.subscriptions(uniquePathFragment))}>
                       <AttachMoneyOutlined /> {t("NavBar.Account.subscriptions")}
                     </MenuItem>
                     <MenuItem onClick={handleLogout}>
@@ -111,7 +116,7 @@ export function NavBar() {
               ) : (
                 <Grid2 display="flex" alignItems="center" marginRight={2}>
                   <Login />
-                  <Button color="inherit" onClick={() => router.push(getPageUrl.login())}>
+                  <Button color="inherit" onClick={() => router.push(getPageUrl.login(uniquePathFragment))}>
                     <Typography>{t("NavBar.login")}</Typography>
                   </Button>
                 </Grid2>

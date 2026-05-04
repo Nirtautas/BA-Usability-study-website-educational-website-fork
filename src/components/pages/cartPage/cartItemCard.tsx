@@ -1,8 +1,8 @@
 "use client";
 
 import ActionDialogModal from "@/components/shared/actionDialogModal";
-import { useCart } from "@/data/cartContext";
 import { placeholderImageLink } from "@/data/constants";
+import { useCart } from "@/data/contexts/cartContext";
 import { FullCartItem } from "@/data/types";
 import { Add, Delete, Remove } from "@mui/icons-material";
 import { Box, Card, CardContent, CardMedia, Grid2, IconButton, Paper, Stack, Typography } from "@mui/material";

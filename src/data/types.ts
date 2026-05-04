@@ -1,3 +1,5 @@
+import { AllowedPathFragments } from "./constants";
+
 export type Product = {
   id: number
   type: ProductType,

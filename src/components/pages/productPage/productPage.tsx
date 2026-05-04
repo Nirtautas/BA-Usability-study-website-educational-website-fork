@@ -1,13 +1,14 @@
 "use client";
 
-import { useCart } from "@/data/cartContext";
 import { getPageUrl, placeholderImageLink } from "@/data/constants";
+import { useCart } from "@/data/contexts/cartContext";
 import { products } from "@/data/entityData";
 import { Link } from "@/i18n/navigation";
+import { UniquePathFragment } from "@/utils/uniqueFragmentUtil";
 import { AccessTime, Add, ArrowBack, Inventory2Outlined, LocalShippingOutlined, Remove } from "@mui/icons-material";
 import { Box, Button, CardMedia, Container, Divider, Grid2, IconButton, Paper, Rating, Stack, Typography } from "@mui/material";
 import { useTranslations } from "next-intl";
-import { notFound, useRouter } from "next/navigation";
+import { notFound, useParams, useRouter } from "next/navigation";
 import { useState } from "react";
 import ActionDialogModal from "../../shared/actionDialogModal";
 import ProductGallery from "./productGallery";
@@ -19,6 +20,7 @@ type Props = {
 const ProductPage = ({ productId }: Props) => {
   const router = useRouter();
   const cartContext = useCart();
+  const params = useParams<{ uniquePathFragment: UniquePathFragment }>();
   const t = useTranslations();
   const [openDialog, setOpenDialog] = useState(false);
   const [selectedProductQuantity, setSelectedProductQuantity] = useState(1);
@@ -34,12 +36,12 @@ const ProductPage = ({ productId }: Props) => {
   };
 
   const handleClose = () => setOpenDialog(false);
-  const handleGoToCart = () => router.push(getPageUrl.cart());
+  const handleGoToCart = () => router.push(getPageUrl.cart(params.uniquePathFragment));
 
   return (
     <Container>
       <Stack direction="column" gap={1}>
-        <Link href={getPageUrl.products()}>
+        <Link href={getPageUrl.products(params.uniquePathFragment)}>
           <Button variant="contained">{t("ProductPage.backToProductsButtonText")}</Button>
         </Link>
 

@@ -2,13 +2,7 @@ import type { Metadata } from "next";
 import { Abril_Fatface, Geist, Geist_Mono } from "next/font/google";
 
 import favicon from "@/app/favicon.ico";
-import Footer from "@/components/templates/footer";
-import MarketingPopup from "@/components/templates/marketingPopup";
 import MuiThemeProvider from "@/components/templates/mui";
-import NavBar from "@/components/templates/navBar/navBar";
-import { CartProvider } from "@/data/cartContext";
-import { SubscriptionDataProvider } from "@/data/subscriptionContext";
-import { UserDataProvider } from "@/data/userContext";
 import { routing } from "@/i18n/routing";
 import { AppRouterCacheProvider } from "@mui/material-nextjs/v15-appRouter";
 import { hasLocale, NextIntlClientProvider } from "next-intl";
@@ -60,18 +54,7 @@ export default async function RootLayout({ children, params }: Props) {
       >
         <AppRouterCacheProvider>
           <MuiThemeProvider>
-            <NextIntlClientProvider locale={locale}>
-              <UserDataProvider>
-                <CartProvider>
-                  <SubscriptionDataProvider>
-                    <NavBar />
-                    {children}
-                    <Footer />
-                    <MarketingPopup />
-                  </SubscriptionDataProvider>
-                </CartProvider>
-              </UserDataProvider>
-            </NextIntlClientProvider>
+            <NextIntlClientProvider locale={locale}>{children}</NextIntlClientProvider>
           </MuiThemeProvider>
         </AppRouterCacheProvider>
       </body>

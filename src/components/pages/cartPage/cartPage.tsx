@@ -2,18 +2,21 @@
 
 import ActionDialogModal from "@/components/shared/actionDialogModal";
 import SubheadingBold from "@/components/shared/subheadingBold";
-import { useCart } from "@/data/cartContext";
 import { getPageUrl } from "@/data/constants";
+import { useCart } from "@/data/contexts/cartContext";
 import { useRouter } from "@/i18n/navigation";
+import { UniquePathFragment } from "@/utils/uniqueFragmentUtil";
 import { LocalFireDepartment } from "@mui/icons-material";
 import { Box, Button, Container, Divider, Grid2, Link, Paper, Stack, Typography } from "@mui/material";
 import { useTranslations } from "next-intl";
+import { useParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import { useTimer } from "react-timer-hook";
 import CartSummary from "../../shared/cartSummary";
 import CartItemCard from "./cartItemCard";
 
 const CartPage = () => {
+  const params = useParams<{ uniquePathFragment: UniquePathFragment }>();
   const cartContext = useCart();
 
   const TIMER_DURATION = 1000 * 60 * 5 - 1000;
@@ -48,12 +51,12 @@ const CartPage = () => {
         <Grid2 size={7}>
           <Stack spacing={2}>
             {cartContext?.cart.length !== 0 ? (
-              <Box>
+              <Box paddingTop={2}>
                 <Stack direction="row" display="flex" gap={1}>
                   <Typography variant="h5" gutterBottom>
                     {t("CartPage.title")}
                   </Typography>
-                  <Button variant="contained" onClick={() => router.push(getPageUrl.products())} sx={{ marginLeft: "auto" }}>
+                  <Button variant="contained" onClick={() => router.push(getPageUrl.products(params.uniquePathFragment))} sx={{ marginLeft: "auto" }}>
                     {t("CartPage.goToProductsButtonText")}
                   </Button>
                   <Button color="error" variant="contained" onClick={handleRemoveClick}>
@@ -62,11 +65,11 @@ const CartPage = () => {
                 </Stack>
               </Box>
             ) : (
-              <Stack direction="row" display="flex" justifyContent="space-between">
+              <Stack direction="row" display="flex" justifyContent="space-between" paddingTop={2}>
                 <Typography variant="h5" gutterBottom>
                   {t("CartPage.cartIsEmptyText")}
                 </Typography>
-                <Link href={getPageUrl.products()}>
+                <Link href={getPageUrl.products(params.uniquePathFragment)}>
                   <Button variant="contained">{t("CartPage.goToProductsButtonText")}</Button>
                 </Link>
               </Stack>
@@ -80,7 +83,7 @@ const CartPage = () => {
           </Stack>
         </Grid2>
 
-        <Stack direction="column" gap={1}>
+        <Stack direction="column" gap={1} marginTop={2}>
           {!cartContext?.allItemsAreSubscriptions() && (cartContext?.getFullCartItems().length ?? 0) > 0 && (
             <Paper elevation={3} sx={{ padding: 1, paddingInline: 2, bgcolor: "warning.light" }}>
               <Stack direction="column">
@@ -100,11 +103,11 @@ const CartPage = () => {
             <CartSummary fullCartItems={items ?? []} />
 
             {cartContext?.calculateTotal() === 0 ? (
-              <Button variant="contained" disabled onClick={() => router.push(getPageUrl.checkout())} fullWidth>
+              <Button variant="contained" disabled onClick={() => router.push(getPageUrl.checkout(params.uniquePathFragment))} fullWidth>
                 {t("CartPage.Summary.continueToCheckoutButtonText")}
               </Button>
             ) : (
-              <Button variant="contained" onClick={() => router.push(getPageUrl.checkout())} fullWidth>
+              <Button variant="contained" onClick={() => router.push(getPageUrl.checkout(params.uniquePathFragment))} fullWidth>
                 {t("CartPage.Summary.continueToCheckoutButtonText")}
               </Button>
             )}

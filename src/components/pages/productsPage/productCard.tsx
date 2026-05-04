@@ -2,23 +2,25 @@
 
 import { getPageUrl, placeholderImageLink } from "@/data/constants";
 import { Product } from "@/data/types";
+import { UniquePathFragment } from "@/utils/uniqueFragmentUtil";
 import { Discount, LocalShippingOutlined } from "@mui/icons-material";
 import { Box, Card, CardActionArea, CardContent, CardMedia, Chip, Grid2, Rating, Typography } from "@mui/material";
 import { useTranslations } from "next-intl";
-import { useRouter } from "next/navigation";
+import { useParams, useRouter } from "next/navigation";
 
 type Props = {
   item: Product;
 };
 
 const ProductCard = ({ item }: Props) => {
+  const params = useParams<{ uniquePathFragment: UniquePathFragment }>();
   const t = useTranslations();
   const router = useRouter();
 
   return (
     <Grid2 key={item.id} width={270}>
       <Card>
-        <CardActionArea key={item.id} component="a" onClick={() => router.push(getPageUrl.product(item.id))}>
+        <CardActionArea key={item.id} component="a" onClick={() => router.push(getPageUrl.product(item.id, params.uniquePathFragment))}>
           {item.discountedPrice !== undefined ? <Chip label={t("ProductsPage.saleTagText")} icon={<Discount />} color="success" sx={{ position: "absolute", top: 8, left: 8, zIndex: 2 }} /> : null}
           <Box width="100%" paddingTop="100%" position="relative">
             <CardMedia

@@ -1,22 +1,26 @@
 "use client";
 
 import SubheadingBold from "@/components/shared/subheadingBold";
-import { useCart } from "@/data/cartContext";
 import { getPageUrl, keepsBoxPicture } from "@/data/constants";
+import { useCart } from "@/data/contexts/cartContext";
 import { products } from "@/data/entityData";
 import { SubscriptionType } from "@/data/types";
 import { useRouter } from "@/i18n/navigation";
+import { UniquePathFragment } from "@/utils/uniqueFragmentUtil";
 import { Box, Button, Container, Divider, FormControl, List, ListItem, Paper, Radio, RadioGroup, Stack, Typography } from "@mui/material";
 import { useTranslations } from "next-intl";
+import { useParams } from "next/navigation";
 import { useState } from "react";
 
 const KeepsBoxPage = () => {
+  const params = useParams<{ uniquePathFragment: UniquePathFragment }>();
   const t = useTranslations();
   const cartContext = useCart();
   const router = useRouter();
   const filteredSubscriptions = products.filter((product) => product.subscriptionType === SubscriptionType.KeepsBox);
   const defaultSubscriptionId = filteredSubscriptions[filteredSubscriptions.length - 1]?.id?.toString() ?? "";
   const [subscriptionId, setSubscriptionId] = useState(defaultSubscriptionId);
+  console.log(params.uniquePathFragment);
 
   const addSubscriptionToCart = () => {
     const cartItems = cartContext?.getFullCartItems();
@@ -32,7 +36,7 @@ const KeepsBoxPage = () => {
       cartContext?.modifyCart(Number(subscriptionId), 1);
     }
 
-    router.push(getPageUrl.cart());
+    router.push(getPageUrl.cart(params.uniquePathFragment));
   };
 
   return (
@@ -41,7 +45,7 @@ const KeepsBoxPage = () => {
         <Stack>
           <Stack direction="row" gap={1} display="flex" marginBottom={2}>
             <Typography variant="h5">{t("KeepsBoxPage.lookingForProductsText")}</Typography>
-            <Button variant="contained" onClick={() => router.push(getPageUrl.products())}>
+            <Button variant="contained" onClick={() => router.push(getPageUrl.products(params.uniquePathFragment))}>
               <Typography>{t("KeepsBoxPage.goToProductsButtonText")}</Typography>
             </Button>
           </Stack>

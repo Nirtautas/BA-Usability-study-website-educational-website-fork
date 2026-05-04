@@ -1,7 +1,7 @@
 "use client";
 
-import { useCart } from "@/data/cartContext";
 import { serviceFee } from "@/data/constants";
+import { useCart } from "@/data/contexts/cartContext";
 import { DeliveryInfo, FullCartItem } from "@/data/types";
 import { Box, Divider, Stack, Typography } from "@mui/material";
 import { useTranslations } from "next-intl";
