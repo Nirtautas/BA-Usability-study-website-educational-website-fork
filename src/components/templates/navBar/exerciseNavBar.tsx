@@ -4,6 +4,7 @@ import { EXERCISE_NAVBAR_HEIGHT, getPageUrl } from "@/data/constants";
 import { stepDefinitions } from "@/data/contexts/exerciseContext/exerciseConfiguration";
 import { useExercise } from "@/data/contexts/exerciseContext/exerciseContext";
 import { useRouter } from "@/i18n/navigation";
+import { useElementInspector } from "@/utils/elementInspector/elementInspectorContext";
 import { UniquePathFragment } from "@/utils/uniqueFragmentUtil";
 import { AppBar, Button, Divider, Stack, Toolbar, Typography } from "@mui/material";
 import { useParams } from "next/navigation";
@@ -12,9 +13,11 @@ const ExerciseNavbar = () => {
   const router = useRouter();
   const params = useParams<{ uniquePathFragment: UniquePathFragment }>();
   const { exercise, visibleStepIds, isStepCompleted, isExerciseCompleted, isExerciseFailed } = useExercise();
+  const { inspectMode, setInspectMode } = useElementInspector();
 
   return (
     <AppBar
+      element-inspector-container="true"
       position="fixed"
       color="default"
       elevation={0}
@@ -22,6 +25,7 @@ const ExerciseNavbar = () => {
         borderBottom: 2,
         borderColor: "#424C55",
         backgroundColor: "#ededed",
+        zIndex: 100000,
       }}
     >
       <Toolbar
@@ -76,8 +80,8 @@ const ExerciseNavbar = () => {
         <Divider orientation="vertical" flexItem sx={{ bgcolor: "#424C55", border: 2 }} />
 
         <Stack spacing={1} width={260} padding={2} justifyContent="center">
-          <Button variant="contained" sx={{ bgcolor: "#5F56FF" }}>
-            Selection mode
+          <Button variant="contained" disabled={isExerciseCompleted || isExerciseFailed} sx={{ bgcolor: inspectMode ? "#C5C5C5" : "#5F56FF" }} onClick={() => setInspectMode(!inspectMode)}>
+            {inspectMode ? "Exit Selection Mode" : "Enter Selection Mode"}
           </Button>
           <Button variant="contained" href={getPageUrl.reset(params.uniquePathFragment)} sx={{ bgcolor: "#F6303D" }}>
             Restart exercise

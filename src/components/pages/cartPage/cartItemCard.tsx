@@ -3,7 +3,7 @@
 import ActionDialogModal from "@/components/shared/actionDialogModal";
 import { placeholderImageLink } from "@/data/constants";
 import { useCart } from "@/data/contexts/cartContext";
-import { FullCartItem } from "@/data/types";
+import { FullCartItem, ProductType } from "@/data/types";
 import { Add, Delete, Remove } from "@mui/icons-material";
 import { Box, Card, CardContent, CardMedia, Grid2, IconButton, Paper, Stack, Typography } from "@mui/material";
 import { useTranslations } from "next-intl";
@@ -27,7 +27,7 @@ const CartItemCard = ({ fullCartItem }: Props) => {
   const handleCancel = () => setOpenDialog(false);
 
   return (
-    <Box>
+    <Box exercise-step={item.type === ProductType.DeceptiveExtra ? "sneakIntoBasketSelected" : undefined}>
       <Card>
         <CardContent>
           <Grid2 container alignItems="center" justifyContent="space-between">

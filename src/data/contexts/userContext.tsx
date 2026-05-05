@@ -101,6 +101,11 @@ const UserDataProvider = ({ children }: { children: ReactNode }) => {
 
 const useUserContext = () => {
   const context = useContext(UserContext);
+
+  if (!context) {
+    throw new Error("useUserContext must be used inside UserDataProvider");
+  }
+
   return context;
 };
 

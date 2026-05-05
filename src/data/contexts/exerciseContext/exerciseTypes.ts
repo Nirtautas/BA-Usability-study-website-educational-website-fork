@@ -3,7 +3,8 @@ export type ExerciseStepId =
   | "userRemovedDeceptiveProduct"
   | "visitCart"
   | "visitCheckout"
-  | "completeCheckout";
+  | "completeCheckout"
+  | "sneakIntoBasketSelected";
 
 export type ExerciseStep = {
   label: string;
@@ -19,7 +20,7 @@ export type ExerciseConfiguration = {
   failMessage: string;
 };
 
-export type ExerciseContextValue = {
+export interface ExerciseContextInterface {
   exercise: ExerciseConfiguration;
   completedStepIds: ExerciseStepId[];
   visibleStepIds: ExerciseStepId[];

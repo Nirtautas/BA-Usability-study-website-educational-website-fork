@@ -4,7 +4,7 @@ import ActionDialogModal from "@/components/shared/actionDialogModal";
 import SubheadingBold from "@/components/shared/subheadingBold";
 import { getPageUrl } from "@/data/constants";
 import { useCart } from "@/data/contexts/cartContext";
-import useCompleteStepOnNavigation from "@/data/contexts/exerciseContext/utils";
+import { useCompleteStepOnNavigation } from "@/data/contexts/exerciseContext/utils";
 import { useRouter } from "@/i18n/navigation";
 import { UniquePathFragment } from "@/utils/uniqueFragmentUtil";
 import { Box, Button, Container, Divider, Grid2, Paper, Stack, Typography } from "@mui/material";

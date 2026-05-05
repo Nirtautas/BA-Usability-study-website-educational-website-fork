@@ -4,9 +4,9 @@ import { UniquePathFragment } from "@/utils/uniqueFragmentUtil";
 import { useParams } from "next/navigation";
 import { createContext, ReactNode, useContext, useState } from "react";
 import { exerciseConfigs, stepDefinitions } from "./exerciseConfiguration";
-import { ExerciseContextValue, ExerciseStepId } from "./exerciseTypes";
+import { ExerciseContextInterface, ExerciseStepId } from "./exerciseTypes";
 
-const ExerciseContext = createContext<ExerciseContextValue | undefined>(undefined);
+const ExerciseContext = createContext<ExerciseContextInterface | undefined>(undefined);
 
 const ExerciseProvider = ({ children }: { children: ReactNode }) => {
   const params = useParams<{ uniquePathFragment: UniquePathFragment }>();
@@ -47,7 +47,7 @@ const ExerciseProvider = ({ children }: { children: ReactNode }) => {
   const isExerciseCompleted = exercise.completeWhen ? exercise.completeWhen(completedStepIds) : visibleStepIds.every((stepId) => completedStepIds.includes(stepId));
   const isExerciseFailed = exercise.failWhen ? exercise.failWhen(completedStepIds) : false;
 
-  const value: ExerciseContextValue = {
+  const value: ExerciseContextInterface = {
     exercise,
     completedStepIds,
     visibleStepIds,
