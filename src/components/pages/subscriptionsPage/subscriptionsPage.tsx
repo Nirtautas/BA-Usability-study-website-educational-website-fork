@@ -4,6 +4,7 @@ import ActionDialogModal from "@/components/shared/actionDialogModal";
 import KeepsBoxServiceDialogInfo from "@/components/shared/keepsBoxServiceDialog";
 import KeepsPlusServiceDialogInfo from "@/components/shared/keepsPlusServiceDialog";
 import { getPageUrl } from "@/data/constants";
+import { useCompleteStepOnNavigation } from "@/data/contexts/exerciseContext/utils";
 import { useSubscriptionContext } from "@/data/contexts/subscriptionContext";
 import { useUserContext } from "@/data/contexts/userContext";
 import { SubscriptionType } from "@/data/types";
@@ -31,6 +32,7 @@ const SubscriptionsPage = () => {
 
   const [openKeepsBoxServiceDialog, setOpenKeepsBoxServiceDialog] = useState(false);
   const [openKeepsPlusServiceDialog, setOpenKeepsPlusServiceDialog] = useState(false);
+  useCompleteStepOnNavigation("visitSubscriptionsPage");
 
   useEffect(() => {
     if (!userContext?.getLoggedInUserData()) {

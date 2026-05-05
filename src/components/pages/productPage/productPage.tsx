@@ -67,7 +67,7 @@ const ProductPage = ({ productId }: Props) => {
 
                 {product.discountedPrice !== undefined ? (
                   <Stack direction="column" display="flex" padding={1}>
-                    <Grid2 display="flex" gap={1} borderRadius={3} sx={{ backgroundColor: "error.light" }} padding={1} marginBottom={1}>
+                    <Grid2 display="flex" gap={1} borderRadius={3} sx={{ backgroundColor: "error.light" }} padding={1} marginBottom={1} exercise-step="limitedTimeMessageSelected">
                       <AccessTime />
                       <Typography>{t("ProductPage.saleEndingSoonText")}</Typography>
                     </Grid2>

@@ -5,6 +5,7 @@ import { useTranslations } from "next-intl";
 import { createContext, ReactNode, useContext, useEffect, useState } from "react";
 import { USER_DATA_STORAGE_KEY, USER_ID_STORAGE_KEY } from "../constants";
 import { RegisterInfo, UserContextInterface, UserInfo } from "../types";
+import { useExercise } from "./exerciseContext/exerciseContext";
 
 const UserContext = createContext<UserContextInterface | undefined>(undefined);
 
@@ -12,6 +13,7 @@ const UserDataProvider = ({ children }: { children: ReactNode }) => {
   const t = useTranslations();
   const [userData, setUserData] = useState<UserInfo[]>([]);
   const [loggedInUserId, setLoggedInUserId] = useState<number | undefined>(undefined);
+  const exercise = useExercise();
 
   useEffect(() => {
     const userData = sessionStorage.getItem(USER_DATA_STORAGE_KEY);
@@ -46,6 +48,9 @@ const UserDataProvider = ({ children }: { children: ReactNode }) => {
     const user = userData.find((user) => user.email === email && user.password === password);
     if (user) {
       setLoggedInUserId(user.id);
+      if (user.email == testUserData.email && user.password == testUserData.password) {
+        exercise.completeStep("loginDefault");
+      }
       return user.id;
     }
     return undefined;

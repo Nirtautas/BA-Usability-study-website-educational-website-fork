@@ -354,11 +354,11 @@ export const parcelLockerLocations: DeliveryLocation[] = [
 
 export const testUserData: UserInfo = {
   id: 1,
-  firstName: "test",
-  lastName: "test",
-  email: "test@test.com",
+  firstName: "John",
+  lastName: "Doe",
+  email: "john.doe@gmail.com",
   phoneNumber: "111111111",
-  password: "test",
+  password: "john1",
   gender: Gender.Male
 };
 

@@ -18,6 +18,7 @@ const CartPage = () => {
   const params = useParams<{ uniquePathFragment: UniquePathFragment }>();
   const cartContext = useCart();
   useCompleteStepOnNavigation("visitCart");
+  useCompleteStepOnNavigation("visitCartHidden");
 
   /*
   const TIMER_DURATION = 1000 * 60 * 5 - 1000;

@@ -3,6 +3,7 @@
 import SubheadingBold from "@/components/shared/subheadingBold";
 import { getPageUrl, keepsBoxPicture } from "@/data/constants";
 import { useCart } from "@/data/contexts/cartContext";
+import { useCompleteStepOnNavigation } from "@/data/contexts/exerciseContext/utils";
 import { products } from "@/data/entityData";
 import { SubscriptionType } from "@/data/types";
 import { useRouter } from "@/i18n/navigation";
@@ -21,7 +22,7 @@ const KeepsBoxPage = () => {
   //const defaultSubscriptionId = filteredSubscriptions[filteredSubscriptions.length - 1]?.id?.toString() ?? "";
   const defaultSubscriptionId = filteredSubscriptions[1]?.id?.toString() ?? "";
   const [subscriptionId, setSubscriptionId] = useState(defaultSubscriptionId);
-  console.log(params.uniquePathFragment);
+  useCompleteStepOnNavigation("visitKeepsBox");
 
   const addSubscriptionToCart = () => {
     const cartItems = cartContext?.getFullCartItems();
@@ -84,6 +85,7 @@ const KeepsBoxPage = () => {
                           opacity: index === 0 ? 0.4 : 1,
                           cursor: index === 0 ? "default" : "pointer",
                         }}
+                        exercise-step={index === 0 ? "visualInterferenceSelected" : undefined}
                       >
                         <Radio value={value} checked={selected} onChange={(e) => setSubscriptionId(e.target.value)} sx={{ display: "none" }} />
                         <Stack height="100%">

@@ -1,10 +1,29 @@
 export type ExerciseStepId =
+  | "loginDefault"
+  | "visitSubscriptionsPage"
+  | "findCancelationMeans"
   | "addToCart"
+  | "addToCartWithDiscount"
+  | "addToCardKeepsBoxSubscription"
+  | "addToCartCheapestKeepsBoxSubscription"
   | "userRemovedDeceptiveProduct"
   | "visitCart"
+  | "visitCartHidden"
+  | "visitLoginForced"
   | "visitCheckout"
+  | "uncheckKeepsPlus"
+  | "checkMarketingCommunications"
   | "completeCheckout"
-  | "sneakIntoBasketSelected";
+  | "visitKeepsBox"
+  | "sneakIntoBasketSelected"
+  | "hiddenCostsSelected"
+  | "hiddenSubscriptionSelected"
+  | "limitedTimeMessageSelected"
+  | "confirmshamingSelected"
+  | "visualInterferenceSelected"
+  | "trickQuestionsSelected"
+  | "hardToCancelSelected"
+  | "forcedEnrollmentSelected";
 
 export type ExerciseStep = {
   label: string;

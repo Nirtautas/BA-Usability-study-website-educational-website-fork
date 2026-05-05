@@ -21,7 +21,7 @@ const KeepsPlusServiceDialogInfo = () => {
           <Typography>{t("Description.Perks.perk4")}</Typography>
         </ListItem>
       </List>
-      <Typography>{t("Description.paymentExplanation")}</Typography>
+      <Typography exercise-step="hiddenSubscriptionSelected">{t("Description.paymentExplanation")}</Typography>
       <Typography>{t("Description.cancellationExplanation")}</Typography>
     </Stack>
   );

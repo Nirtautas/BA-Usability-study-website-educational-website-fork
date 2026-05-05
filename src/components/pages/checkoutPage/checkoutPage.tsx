@@ -5,7 +5,8 @@ import KeepsPlusServiceDialogInfo from "@/components/shared/keepsPlusServiceDial
 import SubheadingBold from "@/components/shared/subheadingBold";
 import { getPageUrl } from "@/data/constants";
 import { useCart } from "@/data/contexts/cartContext";
-import useCompleteStepOnNavigation from "@/data/contexts/exerciseContext/utils";
+import { useExercise } from "@/data/contexts/exerciseContext/exerciseContext";
+import { useCompleteStepOnNavigation } from "@/data/contexts/exerciseContext/utils";
 import { useSubscriptionContext } from "@/data/contexts/subscriptionContext";
 import { useUserContext } from "@/data/contexts/userContext";
 import { storeLocations } from "@/data/entityData";
@@ -29,6 +30,7 @@ const CheckoutPage = () => {
   const subscriptionContext = useSubscriptionContext();
   const t = useTranslations();
   const cartItems = cartContext?.getFullCartItems();
+  const exercise = useExercise();
   useCompleteStepOnNavigation("visitCheckout");
 
   const [deliveryInfo, setDeliveryInfo] = useState<DeliveryInfo>({ deliveryMethod: "store", locationId: storeLocations[0]?.id, differentPersonPickUp: false });
@@ -41,6 +43,7 @@ const CheckoutPage = () => {
   const [termsAccepted, setTermsAccepted] = useState(true);
   const [termsError, setTermsError] = useState("");
   const [keepsPlusAccepted, setKeepsPlusAccepted] = useState(true);
+  const [marketingCommunicationsAccepted, setMarketingCommunicationsAccepted] = useState(false);
 
   const [openKeepsPlusServiceDialog, setOpenKeepsPlusServiceDialog] = useState(false);
 
@@ -88,6 +91,20 @@ const CheckoutPage = () => {
       router.push(getPageUrl.orderComplete(params.uniquePathFragment));
     } else {
       router.push(getPageUrl.login(params.uniquePathFragment).concat(`?checkoutRedirect=true&keepsPlusAccepted=${keepsPlusAccepted}`));
+    }
+  };
+
+  const handleSubscriptionChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setKeepsPlusAccepted(event.target.checked);
+    if (keepsPlusAccepted) {
+      exercise.completeStep("uncheckKeepsPlus");
+    }
+  };
+
+  const handleMarketingCommunicationsChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setMarketingCommunicationsAccepted(event.target.checked);
+    if (!marketingCommunicationsAccepted) {
+      exercise.completeStep("trickQuestionsSelected");
     }
   };
 
@@ -147,9 +164,9 @@ const CheckoutPage = () => {
             />
 
             {!cartContext?.allItemsAreSubscriptions() && !subscriptionContext?.userHasKeepsPlusSubscription() && (
-              <Stack direction="row" alignItems="center" justifyContent="space-between">
+              <Stack direction="row" alignItems="center" justifyContent="space-between" exercise-step="hiddenSubscriptionSelected">
                 <FormControlLabel
-                  control={<Checkbox checked={keepsPlusAccepted} onChange={(e) => setKeepsPlusAccepted(e.target.checked)} />}
+                  control={<Checkbox checked={keepsPlusAccepted} onChange={handleSubscriptionChange} />}
                   label={<Typography>{t("CheckoutPage.freeShippingOfferCheckboxText")} </Typography>}
                 />
 
@@ -161,7 +178,11 @@ const CheckoutPage = () => {
               </Stack>
             )}
 
-            <FormControlLabel control={<Checkbox />} label={t("CheckoutPage.marketingCommunicationCheckboxText")} />
+            <FormControlLabel
+              control={<Checkbox checked={marketingCommunicationsAccepted} onChange={handleMarketingCommunicationsChange} />}
+              label={t("CheckoutPage.marketingCommunicationCheckboxText")}
+              exercise-step="trickQuestionsSelected"
+            />
           </FormGroup>
           <Divider />
 

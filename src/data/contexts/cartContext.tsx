@@ -3,7 +3,7 @@
 import { createContext, ReactNode, useContext, useEffect, useRef, useState } from "react";
 import { CART_STORAGE_KEY, parcelLockerPrice, postDeliveryPrice, serviceFee } from "../constants";
 import { products } from "../entityData";
-import { CartContextInterface, CartItem, FullCartItem, ProductType } from "../types";
+import { CartContextInterface, CartItem, FullCartItem, Product, ProductType, SubscriptionType } from "../types";
 import { useExercise } from "./exerciseContext/exerciseContext";
 
 const CartContext = createContext<CartContextInterface | undefined>(undefined);
@@ -79,6 +79,23 @@ const CartProvider = ({ children }: { children: ReactNode }) => {
     return getFullCartItems().some((cartItem) => cartItem.item.type === ProductType.DeceptiveExtra);
   };
 
+  const cartHasDiscountedProduct = () => {
+    return getFullCartItems().some((cartItem) => cartItem.item.discountedPrice !== undefined);
+  };
+
+  const cartHasKeepsBoxSubscription = () => {
+    return getFullCartItems().some((cartItem) => cartItem.item.subscriptionType === SubscriptionType.KeepsBox);
+  };
+
+  const cartHasCheapestKeepsBoxSubscription = () => {
+    const keepsBoxSubscriptions = products.filter((product) => product.subscriptionType === SubscriptionType.KeepsBox);
+
+    const getPrice = (p: Product) => p.discountedPrice ?? p.price;
+    const cheapestKeepsBoxProduct = keepsBoxSubscriptions.reduce((cheapest, product) => (getPrice(product) < getPrice(cheapest) ? product : cheapest));
+
+    return getFullCartItems().some((cartItem) => cartItem.item.id === cheapestKeepsBoxProduct.id);
+  };
+
   const getFullCartItem = (itemId: number) => {
     const product = products.find((p) => p.id === itemId);
     const quantity = cart.find((i) => i.itemId === itemId)?.quantity || 0;
@@ -101,15 +118,23 @@ const CartProvider = ({ children }: { children: ReactNode }) => {
   };
 
   useEffect(() => {
-    const count = getUniqueItemsCount();
+    const hasDeceptiveProduct = cartHasDeceptiveProduct();
 
-    if (count !== 0) {
+    if (getUniqueItemsCount() > 0) {
       exercise.completeStep("addToCart");
     }
-  }, [cart]);
 
-  useEffect(() => {
-    const hasDeceptiveProduct = cartHasDeceptiveProduct();
+    if (cartHasDiscountedProduct()) {
+      exercise.completeStep("addToCartWithDiscount");
+    }
+
+    if (cartHasKeepsBoxSubscription()) {
+      exercise.completeStep("addToCardKeepsBoxSubscription");
+    }
+
+    if (cartHasCheapestKeepsBoxSubscription()) {
+      exercise.completeStep("addToCartCheapestKeepsBoxSubscription");
+    }
 
     if (previousHadDeceptiveProduct.current && !hasDeceptiveProduct) {
       exercise.completeStep("userRemovedDeceptiveProduct");

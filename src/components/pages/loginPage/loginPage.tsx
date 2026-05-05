@@ -4,6 +4,7 @@ import { ShopTitle } from "@/components/shared/simpleShared";
 import SubheadingBold from "@/components/shared/subheadingBold";
 import { getPageUrl, loginPageImageLink } from "@/data/constants";
 import { useCart } from "@/data/contexts/cartContext";
+import { useCompleteStepOnNavigation } from "@/data/contexts/exerciseContext/utils";
 import { useSubscriptionContext } from "@/data/contexts/subscriptionContext";
 import { useUserContext } from "@/data/contexts/userContext";
 import { LoginCredentials } from "@/data/types";
@@ -32,6 +33,7 @@ const LoginPage = ({ searchParams }: PageProps) => {
   const [errorMsg, setErrorMsg] = useState("");
   const checkoutRedirect = searchParams?.checkoutRedirect === "true";
   const keepsPlusAccepted = searchParams?.keepsPlusAccepted === "true";
+  useCompleteStepOnNavigation("visitLoginForced", checkoutRedirect);
 
   const handleLogin = (e: React.FormEvent<HTMLFormElement>) => {
     setErrorMsg("");
@@ -57,7 +59,7 @@ const LoginPage = ({ searchParams }: PageProps) => {
 
   return (
     <Container maxWidth="md">
-      <Box component="form" onSubmit={handleLogin} paddingTop={2}>
+      <Box component="form" onSubmit={handleLogin} paddingTop={2} exercise-step={checkoutRedirect ? "forcedEnrollmentSelected" : undefined}>
         <Paper elevation={3}>
           <Stack direction="row" gap={1}>
             <Box component="img" src={loginPageImageLink} maxWidth={400} sx={{ objectFit: "cover" }} />

@@ -30,8 +30,8 @@ const RestartExercisePage = () => {
       }}
     >
       <Stack spacing={2} alignItems="center">
-        {isExerciseCompleted && <Typography variant="h6">Congratulations on completing the exercise!</Typography>}
-        {isExerciseFailed && <Typography variant="h6">You failed the exercise.</Typography>}
+        {isExerciseCompleted && <Typography variant="h6">Congratulations on finding the deceptive pattern!</Typography>}
+        {isExerciseFailed && <Typography variant="h6">You failed to find the deceptive pattern.</Typography>}
         <Typography variant="body2">Please click &quot;Restart exercise&quot; to try again.</Typography>
 
         <Button

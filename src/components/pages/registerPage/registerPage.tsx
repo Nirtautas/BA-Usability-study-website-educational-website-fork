@@ -65,7 +65,7 @@ const RegisterPage = ({ searchParams }: PageProps) => {
 
   return (
     <Container maxWidth="md">
-      <Box component="form" onSubmit={handleRegistration} paddingTop={2}>
+      <Box component="form" onSubmit={handleRegistration} paddingTop={2} exercise-step={checkoutRedirect ? "forcedEnrollmentSelected" : undefined}>
         <Paper elevation={3}>
           <Stack direction="column">
             <Box component="img" src={registerPageImageLink} maxHeight={100} sx={{ objectFit: "cover" }} />

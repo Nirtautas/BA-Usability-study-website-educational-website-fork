@@ -2,7 +2,7 @@
 
 import { ShopTitle } from "@/components/shared/simpleShared";
 import { getPageUrl } from "@/data/constants";
-import useCompleteStepOnNavigation from "@/data/contexts/exerciseContext/utils";
+import { useCompleteStepOnNavigation } from "@/data/contexts/exerciseContext/utils";
 import { useRouter } from "@/i18n/navigation";
 import { UniquePathFragment } from "@/utils/uniqueFragmentUtil";
 import { Button, Container, Divider, Paper, Stack, Typography } from "@mui/material";
