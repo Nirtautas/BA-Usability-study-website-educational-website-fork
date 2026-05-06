@@ -3,6 +3,7 @@ import Footer from "@/components/templates/footer";
 import MarketingPopup from "@/components/templates/marketingPopup";
 import ExerciseNavbar from "@/components/templates/navBar/exerciseNavBar";
 import NavBar from "@/components/templates/navBar/navBar";
+import { AllowedPathFragments } from "@/data/constants";
 import { CartProvider } from "@/data/contexts/cartContext";
 import { ExerciseProvider } from "@/data/contexts/exerciseContext/exerciseContext";
 import { SubscriptionDataProvider } from "@/data/contexts/subscriptionContext";
@@ -41,7 +42,7 @@ export default async function FragmentLayout({ children, params }: Props) {
                 <NavBar uniquePathFragment={uniquePathFragment} />
                 {children}
                 <Footer uniquePathFragment={uniquePathFragment} />
-                <MarketingPopup />
+                {uniquePathFragment === AllowedPathFragments.Confirmshaming && <MarketingPopup />}
               </SubscriptionDataProvider>
             </CartProvider>
           </UserDataProvider>

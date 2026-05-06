@@ -160,7 +160,8 @@
     "termsAndConditionsCheckboxText": "Sutinku su svetainės taisyklėmis bei sąlygomis.",
     "moreInformationCheckboxText": "Daugiau informacijos",
     "freeShippingOfferCheckboxText": "Mėgaukitės 0.00€ siuntimu naudojantis nemokama* \"Keeps+\" paslauga.",
-    "marketingCommunicationCheckboxText": "Norėtume Jums siųsti el. laiškus su pasiūlymais bei naujais produktais iš \"Keeps\", tačiau jei nenorite gauti šių pranešimų, pažymėkite šį langelį.",
+    "deceptiveMarketingCommunicationCheckboxText": "Norėtume Jums siųsti el. laiškus su pasiūlymais bei naujais produktais iš \"Keeps\", tačiau jei nenorite gauti šių pranešimų, pažymėkite šį langelį.",
+    "nonDeceptiveMarketingCommunicationCheckboxText": "Norėtume Jums siųsti el. laiškus su pasiūlymais bei naujais produktais iš \"Keeps\". Jei norite gauti šiuos pranešimus, pažymėkite šį langelį!",
     "termsAndConditionsMandatoryErrorText": "Privalote sutikti su svetainės taisyklėmis bei sąlygomis, kad galėtumėte tęsti savo užsakymą!"
   },
   "MarketingPopup": {

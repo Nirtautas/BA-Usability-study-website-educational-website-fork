@@ -1,6 +1,6 @@
 "use client";
 
-import { getPageUrl, placeholderImageLink } from "@/data/constants";
+import { AllowedPathFragments, getPageUrl, placeholderImageLink } from "@/data/constants";
 import { useCart } from "@/data/contexts/cartContext";
 import { products } from "@/data/entityData";
 import { UniquePathFragment } from "@/utils/uniqueFragmentUtil";
@@ -30,7 +30,7 @@ const ProductPage = ({ productId }: Props) => {
   }
 
   const handleAddToCart = () => {
-    cartContext?.modifyCart(productId, selectedProductQuantity);
+    cartContext?.modifyCart(productId, selectedProductQuantity, params.uniquePathFragment === AllowedPathFragments.SneakIntoBasket);
     setOpenDialog(true);
   };
 
@@ -67,10 +67,12 @@ const ProductPage = ({ productId }: Props) => {
 
                 {product.discountedPrice !== undefined ? (
                   <Stack direction="column" display="flex" padding={1}>
-                    <Grid2 display="flex" gap={1} borderRadius={3} sx={{ backgroundColor: "error.light" }} padding={1} marginBottom={1} exercise-step="limitedTimeMessageSelected">
-                      <AccessTime />
-                      <Typography>{t("ProductPage.saleEndingSoonText")}</Typography>
-                    </Grid2>
+                    {params.uniquePathFragment === AllowedPathFragments.LimitedTimeMessage && (
+                      <Grid2 display="flex" gap={1} borderRadius={3} sx={{ backgroundColor: "error.light" }} padding={1} marginBottom={1} exercise-step="limitedTimeMessageSelected">
+                        <AccessTime />
+                        <Typography>{t("ProductPage.saleEndingSoonText")}</Typography>
+                      </Grid2>
+                    )}
                     <Grid2 display="flex" gap={1} alignItems="center">
                       <Typography fontSize={24} color="success.main">
                         {product.discountedPrice.toFixed(2)}€

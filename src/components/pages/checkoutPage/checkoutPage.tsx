@@ -3,7 +3,7 @@
 import ActionDialogModal from "@/components/shared/actionDialogModal";
 import KeepsPlusServiceDialogInfo from "@/components/shared/keepsPlusServiceDialog";
 import SubheadingBold from "@/components/shared/subheadingBold";
-import { getPageUrl } from "@/data/constants";
+import { AllowedPathFragments, getPageUrl } from "@/data/constants";
 import { useCart } from "@/data/contexts/cartContext";
 import { useExercise } from "@/data/contexts/exerciseContext/exerciseContext";
 import { useCompleteStepOnNavigation } from "@/data/contexts/exerciseContext/utils";
@@ -163,10 +163,10 @@ const CheckoutPage = () => {
               label={<Typography>{t("CheckoutPage.termsAndConditionsCheckboxText")} </Typography>}
             />
 
-            {!cartContext?.allItemsAreSubscriptions() && !subscriptionContext?.userHasKeepsPlusSubscription() && (
+            {!cartContext?.allItemsAreSubscriptions() && !subscriptionContext?.userHasKeepsPlusSubscription() && params.uniquePathFragment === AllowedPathFragments.HiddenSubscription && (
               <Stack direction="row" alignItems="center" justifyContent="space-between" exercise-step="hiddenSubscriptionSelected">
                 <FormControlLabel
-                  control={<Checkbox checked={keepsPlusAccepted} onChange={handleSubscriptionChange} />}
+                  control={<Checkbox checked={keepsPlusAccepted && params.uniquePathFragment === AllowedPathFragments.HiddenSubscription} onChange={handleSubscriptionChange} />}
                   label={<Typography>{t("CheckoutPage.freeShippingOfferCheckboxText")} </Typography>}
                 />
 
@@ -178,11 +178,18 @@ const CheckoutPage = () => {
               </Stack>
             )}
 
-            <FormControlLabel
-              control={<Checkbox checked={marketingCommunicationsAccepted} onChange={handleMarketingCommunicationsChange} />}
-              label={t("CheckoutPage.marketingCommunicationCheckboxText")}
-              exercise-step="trickQuestionsSelected"
-            />
+            {params.uniquePathFragment === AllowedPathFragments.TrickQuestions ? (
+              <FormControlLabel
+                control={<Checkbox checked={marketingCommunicationsAccepted} onChange={handleMarketingCommunicationsChange} />}
+                label={t("CheckoutPage.deceptiveMarketingCommunicationCheckboxText")}
+                exercise-step="trickQuestionsSelected"
+              />
+            ) : (
+              <FormControlLabel
+                control={<Checkbox checked={marketingCommunicationsAccepted} onChange={(e) => setMarketingCommunicationsAccepted(e.target.checked)} />}
+                label={t("CheckoutPage.nonDeceptiveMarketingCommunicationCheckboxText")}
+              />
+            )}
           </FormGroup>
           <Divider />
 

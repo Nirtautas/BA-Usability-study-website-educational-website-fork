@@ -1,10 +1,12 @@
 "use client";
 
-import { serviceFee } from "@/data/constants";
+import { AllowedPathFragments, serviceFee } from "@/data/constants";
 import { useCart } from "@/data/contexts/cartContext";
 import { DeliveryInfo, FullCartItem } from "@/data/types";
+import { UniquePathFragment } from "@/utils/uniqueFragmentUtil";
 import { Box, Divider, Stack, Typography } from "@mui/material";
 import { useTranslations } from "next-intl";
+import { useParams } from "next/navigation";
 
 type Props = {
   fullCartItems: FullCartItem[];
@@ -14,6 +16,7 @@ type Props = {
 const CartSummary = ({ fullCartItems, deliveryInfo }: Props) => {
   const t = useTranslations("CartPage.Summary");
   const cartContext = useCart();
+  const params = useParams<{ uniquePathFragment: UniquePathFragment }>();
 
   return (
     <Stack gap={0.2} paddingBottom={1}>
@@ -25,7 +28,7 @@ const CartSummary = ({ fullCartItems, deliveryInfo }: Props) => {
         <Typography>{t("deliveryFee")}</Typography>
         <Typography>{cartContext?.getDeliveryFee(deliveryInfo?.deliveryMethod).toFixed(2)}€</Typography>
       </Stack>
-      {cartContext?.getUniqueItemsCount(true) !== 0 && deliveryInfo && (
+      {cartContext?.getUniqueItemsCount(true) !== 0 && deliveryInfo && params.uniquePathFragment === AllowedPathFragments.HiddenCosts && (
         <Stack direction="row" display="flex" justifyContent="space-between" exercise-step="hiddenCostsSelected">
           <Typography>{t("serviceFee")}</Typography>
           <Typography>{serviceFee.toFixed(2)}€</Typography>
@@ -35,7 +38,7 @@ const CartSummary = ({ fullCartItems, deliveryInfo }: Props) => {
       <Box bgcolor={"primary.light"} marginBlock={1}>
         <Stack direction="row" display="flex" justifyContent="space-between">
           <Typography>{t("total")}</Typography>
-          <Typography>{cartContext?.calculateTotal(deliveryInfo?.deliveryMethod).toFixed(2)}€</Typography>
+          <Typography>{cartContext?.calculateTotal(deliveryInfo?.deliveryMethod, params.uniquePathFragment === AllowedPathFragments.HiddenCosts).toFixed(2)}€</Typography>
         </Stack>
       </Box>
       <Divider />

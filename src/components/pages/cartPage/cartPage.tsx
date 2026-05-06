@@ -81,7 +81,7 @@ const CartPage = () => {
             <Divider />
 
             {items?.map((cartItem) => (
-              <CartItemCard key={cartItem.item.id} fullCartItem={cartItem} />
+              <CartItemCard key={cartItem.item.id} fullCartItem={cartItem} uniquePathFragment={params.uniquePathFragment} />
             ))}
           </Stack>
         </Grid2>

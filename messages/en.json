@@ -160,7 +160,8 @@
     "termsAndConditionsCheckboxText": "I agree to the website's terms and conditions.",
     "moreInformationCheckboxText": "More information",
     "freeShippingOfferCheckboxText": "Enjoy 0.00€ shipping using the free* \"Keeps+\" service.",
-    "marketingCommunicationCheckboxText": "We'd love to send you email with offers and new products from \"Keeps\", but if you do not wish to receive these updates, please tick this box.",
+    "deceptiveMarketingCommunicationCheckboxText": "We'd love to send you emails with offers and new products from \"Keeps\", but if you do not wish to receive these updates, please tick this box.",
+    "nonDeceptiveMarketingCommunicationCheckboxText": "We'd love to send you emails with offers and new products from \"Keeps\". Please check this box if you would like to receive them!",
     "termsAndConditionsMandatoryErrorText": "You must agree to the website's terms and conditions to proceed with your order!"
   },
   "MarketingPopup": {

@@ -1,7 +1,7 @@
 "use client";
 
 import SubheadingBold from "@/components/shared/subheadingBold";
-import { getPageUrl, keepsBoxPicture } from "@/data/constants";
+import { AllowedPathFragments, getPageUrl, keepsBoxPicture } from "@/data/constants";
 import { useCart } from "@/data/contexts/cartContext";
 import { useCompleteStepOnNavigation } from "@/data/contexts/exerciseContext/utils";
 import { products } from "@/data/entityData";
@@ -29,20 +29,20 @@ const KeepsBoxPage = () => {
     const keepsBoxCartItems = cartItems?.filter((i) => i.item.subscriptionType === SubscriptionType.KeepsBox) ?? [];
 
     if (keepsBoxCartItems?.length === 0) {
-      cartContext?.modifyCart(Number(subscriptionId), 1);
+      cartContext?.modifyCart(Number(subscriptionId), 1, params.uniquePathFragment === AllowedPathFragments.SneakIntoBasket);
     } else {
       keepsBoxCartItems.forEach((subscription) => {
         cartContext?.removeFromCart(Number(subscription.item.id));
       });
 
-      cartContext?.modifyCart(Number(subscriptionId), 1);
+      cartContext?.modifyCart(Number(subscriptionId), 1, params.uniquePathFragment === AllowedPathFragments.SneakIntoBasket);
     }
 
     router.push(getPageUrl.cart(params.uniquePathFragment));
   };
 
   return (
-    <Container maxWidth="lg">
+    <Container maxWidth="lg" sx={{ marginTop: 2 }}>
       <FormControl required fullWidth>
         <Stack>
           <Stack direction="row" gap={1} display="flex" marginBottom={2}>
@@ -82,8 +82,8 @@ const KeepsBoxPage = () => {
                         textAlign="center"
                         onClick={() => setSubscriptionId(value)}
                         sx={{
-                          opacity: index === 0 ? 0.4 : 1,
-                          cursor: index === 0 ? "default" : "pointer",
+                          opacity: index === 0 && params.uniquePathFragment === AllowedPathFragments.VisualInterference ? 0.4 : 1,
+                          cursor: index === 0 && params.uniquePathFragment === AllowedPathFragments.VisualInterference ? "default" : "pointer",
                         }}
                         exercise-step={index === 0 ? "visualInterferenceSelected" : undefined}
                       >

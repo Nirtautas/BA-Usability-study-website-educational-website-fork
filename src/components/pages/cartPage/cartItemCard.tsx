@@ -1,7 +1,7 @@
 "use client";
 
 import ActionDialogModal from "@/components/shared/actionDialogModal";
-import { placeholderImageLink } from "@/data/constants";
+import { AllowedPathFragments, placeholderImageLink } from "@/data/constants";
 import { useCart } from "@/data/contexts/cartContext";
 import { FullCartItem, ProductType } from "@/data/types";
 import { Add, Delete, Remove } from "@mui/icons-material";
@@ -11,9 +11,10 @@ import { useState } from "react";
 
 type Props = {
   fullCartItem: FullCartItem;
+  uniquePathFragment: string;
 };
 
-const CartItemCard = ({ fullCartItem }: Props) => {
+const CartItemCard = ({ fullCartItem, uniquePathFragment }: Props) => {
   const { item, quantity } = fullCartItem;
   const [openDialog, setOpenDialog] = useState(false);
   const cartContext = useCart();
@@ -52,11 +53,11 @@ const CartItemCard = ({ fullCartItem }: Props) => {
             </Grid2>
 
             <Grid2 display="flex" alignItems="center">
-              <IconButton onClick={() => cartContext?.modifyCart(item.id, -1)}>
+              <IconButton onClick={() => cartContext?.modifyCart(item.id, -1, uniquePathFragment === AllowedPathFragments.SneakIntoBasket)}>
                 <Remove />
               </IconButton>
               <Typography>{quantity}</Typography>
-              <IconButton onClick={() => cartContext?.modifyCart(item.id, 1)}>
+              <IconButton onClick={() => cartContext?.modifyCart(item.id, 1, uniquePathFragment === AllowedPathFragments.SneakIntoBasket)}>
                 <Add />
               </IconButton>
               <Typography>{((item.discountedPrice !== undefined ? item.discountedPrice : item.price) * quantity).toFixed(2)}€</Typography>

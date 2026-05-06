@@ -51,7 +51,7 @@ export type FullCartItem = {
 
 export interface CartContextInterface {
   cart: CartItem[];
-  modifyCart: (itemId: number, quantityChange: number) => void;
+  modifyCart: (itemId: number, quantityChange: number, addDeceptive?: boolean) => void;
   allItemsAreSubscriptions: () => boolean;
   removeFromCart: (id: number) => void;
   removeAllFromCart: () => void;
@@ -59,7 +59,7 @@ export interface CartContextInterface {
   getFullCartItems: () => FullCartItem[];
   calculateItemTotal: () => number;
   getDeliveryFee: (deliveryMethod?: string) => number;
-  calculateTotal: (deliveryMethod?: string) => number;
+  calculateTotal: (deliveryMethod?: string, addServiceFee?: boolean) => number;
   getFullCartItem: (itemId: number) => FullCartItem | undefined;
 };
 

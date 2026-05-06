@@ -22,7 +22,7 @@ const CartProvider = ({ children }: { children: ReactNode }) => {
     sessionStorage.setItem(CART_STORAGE_KEY, JSON.stringify(cart));
   }, [cart]);
 
-  const modifyCart = (itemId: number, quantityChange: number) => {
+  const modifyCart = (itemId: number, quantityChange: number, addDeceptive: boolean = true) => {
     setCart((prev) => {
       let modifiedCart = [...prev];
       const itemAlreadyExists = modifiedCart.find((i) => i.itemId === itemId);
@@ -38,7 +38,7 @@ const CartProvider = ({ children }: { children: ReactNode }) => {
       } else if (quantityChange > 0) {
         modifiedCart.unshift({ itemId, quantity: quantityChange });
 
-        if (!modifiedCart.find((i) => i.itemId === 1) && !allSubscriptions) {
+        if (!modifiedCart.find((i) => i.itemId === 1) && !allSubscriptions && addDeceptive) {
           modifiedCart.push({ itemId: 1, quantity: 1 });
         }
       }
@@ -113,14 +113,14 @@ const CartProvider = ({ children }: { children: ReactNode }) => {
     return 0;
   };
 
-  const calculateTotal = (deliveryMethod?: string) => {
-    return calculateItemTotal() + (getUniqueItemsCount(true) !== 0 && deliveryMethod ? serviceFee : 0) + getDeliveryFee(deliveryMethod);
+  const calculateTotal = (deliveryMethod?: string, addServiceFee: boolean = true) => {
+    return calculateItemTotal() + (getUniqueItemsCount(true) !== 0 && addServiceFee && deliveryMethod ? serviceFee : 0) + getDeliveryFee(deliveryMethod);
   };
 
   useEffect(() => {
     const hasDeceptiveProduct = cartHasDeceptiveProduct();
 
-    if (getUniqueItemsCount() > 0) {
+    if (getUniqueItemsCount() > 0 && !allItemsAreSubscriptions()) {
       exercise.completeStep("addToCart");
     }
 
