@@ -1,6 +1,21 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+## General information
+
+This is an interactive deceptive pattern exercise module, which was made made as a part of a larger application, called ["RePattern"](https://github.com/Nirtautas/BA-RePattern). However, you may run it as a standalone application.
+
+You may access each deceptive pattern exercise by changing the route parameter to one of these values:
+- sneak-into-basket
+- hidden-costs
+- hidden-subscription
+- limited-time-message
+- confirmshaming
+- visual-interference
+- trick-questions
+- hard-to-cancel
+- forced-enrollment
 
 ## Getting Started
+
+This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
 First, run the development server:
 
